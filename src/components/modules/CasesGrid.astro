@@ -1,0 +1,430 @@
+---
+import { cases } from '../../data/cases.ts';
+
+const serviceColors: Record<string, string> = {
+  'Kalibratie':    'rgba(122, 175, 196, 0.15)',
+  'Reparatie':     'rgba(196, 138, 100, 0.15)',
+  'Certificering': 'rgba(100, 196, 138, 0.15)',
+  'Justeren':      'rgba(196, 175, 100, 0.15)',
+  'Reiniging':     'rgba(150, 150, 196, 0.15)',
+};
+const serviceTextColors: Record<string, string> = {
+  'Kalibratie':    '#7AAFC4',
+  'Reparatie':     '#C48A64',
+  'Certificering': '#64C48A',
+  'Justeren':      '#C4AF64',
+  'Reiniging':     '#9696C4',
+};
+---
+
+<section id="cases" class="cases-section py-24 md:py-32 px-6 md:px-12 lg:px-16">
+  <div class="max-w-screen-xl mx-auto">
+
+    <!-- Section header — centred -->
+    <div class="flex flex-col items-center text-center mb-14" data-animate>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons Werk</span>
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white mb-3">
+        Elke sleutel vertelt een verhaal.
+      </h2>
+      <p class="text-base max-w-md leading-relaxed" style="color:#A8BAC2;">
+        Klik op een case om de volledige voor- en na-documentatie te bekijken.
+      </p>
+    </div>
+
+    <!-- Cases grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      {cases.map((c, i) => (
+        <article
+          class="case-card group cursor-pointer"
+          data-case-id={c.id}
+          data-animate
+          data-animate-delay={String((i % 3) * 0.1)}
+          role="button"
+          tabindex="0"
+          aria-label={`Bekijk case: ${c.model}`}
+        >
+          <!-- Image area -->
+          <div class="case-image relative aspect-[4/3] overflow-hidden rounded-t-xl">
+            {c.before ? (
+              <img
+                src={c.before}
+                alt={`${c.model} — voor service`}
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="case-placeholder w-full h-full flex flex-col items-center justify-center gap-3 relative overflow-hidden">
+                <div class="case-grid absolute inset-0"></div>
+                <!-- Mini wrench icon -->
+                <svg width="48" height="48" viewBox="0 0 80 32" fill="none" class="relative z-10 opacity-25">
+                  <circle cx="12" cy="16" r="10" stroke="#7AAFC4" stroke-width="1.5"/>
+                  <circle cx="12" cy="16" r="5" stroke="#7AAFC4" stroke-width="1"/>
+                  <rect x="22" y="12" width="38" height="8" rx="2" stroke="#7AAFC4" stroke-width="1.5"/>
+                  <rect x="60" y="10" width="14" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
+                </svg>
+                <span class="relative z-10 text-[10px] tracking-[0.2em] uppercase font-medium" style="color: rgba(122,175,196,0.35);">
+                  {c.model}
+                </span>
+              </div>
+            )}
+
+            <!-- Hover overlay -->
+            <div class="case-overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="view-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-[0.12em] uppercase"
+                style="background: rgba(122,175,196,0.9); color: #08090B;">
+                Bekijk details
+              </span>
+            </div>
+          </div>
+
+          <!-- Card info -->
+          <div class="case-info rounded-b-xl p-5">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div>
+                <h3 class="text-sm font-bold text-white leading-tight">{c.model}</h3>
+                <p class="text-xs mt-0.5" style="color:#9AAAB4;">{c.type} · {c.range}</p>
+              </div>
+              <span class="text-[10px] shrink-0 mt-0.5" style="color:rgba(122,175,196,0.65);">{c.date.split(' ').slice(-2).join(' ')}</span>
+            </div>
+
+            <!-- Service badges -->
+            <div class="flex flex-wrap gap-1.5">
+              {c.services.map(s => (
+                <span
+                  class="px-2 py-0.5 rounded-md text-[10px] font-semibold tracking-wide"
+                  style={`background: ${serviceColors[s] ?? 'rgba(122,175,196,0.1)'}; color: ${serviceTextColors[s] ?? '#7AAFC4'};`}
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- View all link -->
+    <div class="flex justify-center mt-12" data-animate>
+      <a
+        href="/werk"
+        class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border text-sm font-medium tracking-wide transition-all duration-300"
+        style="border-color: rgba(122,175,196,0.25); color: rgba(184,196,204,0.7);"
+        onmouseover="this.style.borderColor='rgba(122,175,196,0.5)'; this.style.color='rgba(184,196,204,1)';"
+        onmouseout="this.style.borderColor='rgba(122,175,196,0.25)'; this.style.color='rgba(184,196,204,0.7)';"
+      >
+        Bekijk al ons werk
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MODAL ─── -->
+<div
+  id="case-modal-overlay"
+  class="modal-overlay fixed inset-0 z-[200] flex items-center justify-center px-4 py-8 pointer-events-none opacity-0"
+  aria-modal="true"
+  role="dialog"
+  aria-label="Case detail"
+>
+  <!-- Backdrop -->
+  <div id="modal-backdrop" class="absolute inset-0" style="background: rgba(4,5,6,0.88); backdrop-filter: blur(8px);"></div>
+
+  <!-- Modal card -->
+  <div id="case-modal" class="modal-card relative w-full max-w-3xl rounded-2xl overflow-hidden flex flex-col max-h-[90vh]">
+
+    <!-- Header -->
+    <div class="modal-header flex items-start justify-between p-6 pb-4" style="border-bottom: 1px solid rgba(122,175,196,0.1);">
+      <div>
+        <p class="text-dts-blue text-[10px] font-semibold tracking-[0.25em] uppercase mb-1.5" id="modal-type"></p>
+        <h3 class="text-xl font-black text-white" id="modal-model"></h3>
+        <p class="text-sm mt-1" style="color: #7A8A94;" id="modal-meta"></p>
+      </div>
+      <button
+        id="modal-close"
+        class="modal-close-btn shrink-0 ml-4 p-2 rounded-lg transition-colors duration-200"
+        aria-label="Sluit modal"
+      >
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="modal-body overflow-y-auto flex-1 p-6">
+
+      <!-- Before / After image tabs -->
+      <div class="ba-container mb-6">
+        <div class="flex gap-1 mb-3">
+          <button class="ba-tab-btn active" data-tab="before">Voor service</button>
+          <button class="ba-tab-btn" data-tab="after">Na service</button>
+        </div>
+        <div class="ba-image-wrap relative aspect-[16/9] rounded-xl overflow-hidden">
+          <div id="modal-before-img" class="ba-panel absolute inset-0 active">
+            <div class="ba-placeholder w-full h-full flex flex-col items-center justify-center gap-3">
+              <div class="ba-grid absolute inset-0"></div>
+              <svg width="56" height="24" viewBox="0 0 80 32" fill="none" class="relative z-10 opacity-20">
+                <circle cx="12" cy="16" r="10" stroke="#7AAFC4" stroke-width="1.5"/>
+                <circle cx="12" cy="16" r="5" stroke="#7AAFC4" stroke-width="1"/>
+                <rect x="22" y="12" width="38" height="8" rx="2" stroke="#7AAFC4" stroke-width="1.5"/>
+                <rect x="60" y="10" width="14" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
+              </svg>
+              <span class="relative z-10 text-[11px] tracking-[0.2em] uppercase" style="color: rgba(122,175,196,0.3);">Voor foto</span>
+            </div>
+          </div>
+          <div id="modal-after-img" class="ba-panel absolute inset-0">
+            <div class="ba-placeholder w-full h-full flex flex-col items-center justify-center gap-3">
+              <div class="ba-grid absolute inset-0"></div>
+              <svg width="56" height="24" viewBox="0 0 80 32" fill="none" class="relative z-10 opacity-20">
+                <circle cx="12" cy="16" r="10" stroke="#7AAFC4" stroke-width="1.5"/>
+                <circle cx="12" cy="16" r="5" stroke="#7AAFC4" stroke-width="1"/>
+                <rect x="22" y="12" width="38" height="8" rx="2" stroke="#7AAFC4" stroke-width="1.5"/>
+                <rect x="60" y="10" width="14" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
+              </svg>
+              <span class="relative z-10 text-[11px] tracking-[0.2em] uppercase" style="color: rgba(122,175,196,0.3);">Na foto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="mb-5">
+        <p class="text-[10px] font-semibold tracking-[0.25em] uppercase mb-3" style="color: #7A8A94;">Uitgevoerde werkzaamheden</p>
+        <div id="modal-services" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- Notes -->
+      <div class="modal-notes rounded-xl p-5">
+        <p class="text-[10px] font-semibold tracking-[0.25em] uppercase mb-3" style="color: #7A8A94;">Technische notities</p>
+        <p id="modal-notes-text" class="text-sm leading-relaxed" style="color: rgba(184,196,204,0.75);"></p>
+      </div>
+
+      <!-- Footer: DTS cert mark -->
+      <div class="flex items-center justify-between mt-6 pt-5" style="border-top: 1px solid rgba(122,175,196,0.1);">
+        <span class="text-xs font-black tracking-wider" style="background: linear-gradient(135deg, #9BC5D8, #7AAFC4, #B8C4CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">DTS</span>
+        <span class="text-[10px]" style="color: rgba(122,175,196,0.45);">Dutch Torque Service — ISO 6789:2017 gecertificeerd</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cases-section {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+  }
+
+  /* Case card — no CSS hover transform (prevents flicker; handled by GSAP) */
+  .case-card {
+    background: transparent;
+    border: 1px solid rgba(122, 175, 196, 0.1);
+    border-radius: 1rem;
+    overflow: visible; /* allow GSAP transform to escape */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+  }
+  .case-card.card-hovered {
+    border-color: rgba(122, 175, 196, 0.32);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45), 0 0 24px rgba(122, 175, 196, 0.09);
+  }
+  /* Clip inner content to card radius */
+  .case-card > .case-image { border-radius: 1rem 1rem 0 0; overflow: hidden; }
+  .case-card:focus-visible {
+    outline: 2px solid rgba(122, 175, 196, 0.6);
+    outline-offset: 2px;
+  }
+
+  .case-placeholder {
+    background: #0E1118;
+  }
+  .case-grid {
+    background-image:
+      linear-gradient(rgba(122,175,196,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,175,196,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .case-info {
+    background: transparent;
+    border-top: 1px solid rgba(122, 175, 196, 0.07);
+  }
+
+  .case-overlay {
+    background: rgba(8, 9, 11, 0.5);
+  }
+
+  /* Modal */
+  .modal-overlay { transition: opacity 0.3s ease; }
+  .modal-overlay.open { pointer-events: auto; opacity: 1; }
+
+  .modal-card {
+    background: #0E1118;
+    border: 1px solid rgba(122, 175, 196, 0.18);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(122, 175, 196, 0.06);
+  }
+
+  .modal-header { background: #0E1118; }
+
+  .modal-close-btn {
+    color: rgba(184, 196, 204, 0.5);
+    background: rgba(122, 175, 196, 0.06);
+  }
+  .modal-close-btn:hover {
+    background: rgba(122, 175, 196, 0.14);
+    color: rgba(184, 196, 204, 0.9);
+  }
+
+  /* BA tabs */
+  .ba-tab-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(122, 175, 196, 0.5);
+    background: transparent;
+    border: 1px solid rgba(122, 175, 196, 0.12);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ba-tab-btn.active,
+  .ba-tab-btn:hover {
+    background: rgba(122, 175, 196, 0.12);
+    color: #7AAFC4;
+    border-color: rgba(122, 175, 196, 0.3);
+  }
+
+  .ba-image-wrap { background: #0A0B0E; }
+
+  .ba-panel {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .ba-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .ba-placeholder { position: relative; overflow: hidden; }
+  .ba-grid {
+    background-image:
+      linear-gradient(rgba(122,175,196,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,175,196,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .modal-notes {
+    background: rgba(122, 175, 196, 0.04);
+    border: 1px solid rgba(122, 175, 196, 0.1);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { cases } from '../../data/cases.ts';
+
+  const overlay   = document.getElementById('case-modal-overlay')!;
+  const modal     = document.getElementById('case-modal')!;
+  const backdrop  = document.getElementById('modal-backdrop')!;
+  const closeBtn  = document.getElementById('modal-close')!;
+
+  // Cache modal fields
+  const fType     = document.getElementById('modal-type')!;
+  const fModel    = document.getElementById('modal-model')!;
+  const fMeta     = document.getElementById('modal-meta')!;
+  const fServices = document.getElementById('modal-services')!;
+  const fNotes    = document.getElementById('modal-notes-text')!;
+
+  const serviceTextColors: Record<string, string> = {
+    'Kalibratie': '#7AAFC4', 'Reparatie': '#C48A64',
+    'Certificering': '#64C48A', 'Justeren': '#C4AF64', 'Reiniging': '#9696C4',
+  };
+  const serviceBgColors: Record<string, string> = {
+    'Kalibratie': 'rgba(122,175,196,0.12)', 'Reparatie': 'rgba(196,138,100,0.12)',
+    'Certificering': 'rgba(100,196,138,0.12)', 'Justeren': 'rgba(196,175,100,0.12)',
+    'Reiniging': 'rgba(150,150,196,0.12)',
+  };
+
+  function openModal(id: string) {
+    const c = cases.find(x => x.id === id);
+    if (!c) return;
+
+    // Populate fields
+    fType.textContent     = c.type;
+    fModel.textContent    = c.model;
+    fMeta.textContent     = `${c.range} · ${c.date}`;
+    fNotes.textContent    = c.notes;
+
+    fServices.innerHTML = c.services.map(s =>
+      `<span style="background:${serviceBgColors[s] ?? 'rgba(122,175,196,0.1)'};color:${serviceTextColors[s] ?? '#7AAFC4'};padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">${s}</span>`
+    ).join('');
+
+    // Tabs: reset to 'before'
+    document.querySelectorAll('.ba-tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('[data-tab="before"]')?.classList.add('active');
+    document.getElementById('modal-before-img')?.classList.add('active');
+    document.getElementById('modal-after-img')?.classList.remove('active');
+
+    // Open overlay
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    gsap.fromTo(modal,
+      { scale: 0.92, opacity: 0, y: 20 },
+      { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+    );
+  }
+
+  function closeModal() {
+    gsap.to(modal, {
+      scale: 0.94, opacity: 0, y: 16, duration: 0.25, ease: 'power2.in',
+      onComplete: () => {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // GSAP hover — avoids CSS transform hover-flicker
+  document.querySelectorAll<HTMLElement>('.case-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.classList.add('card-hovered');
+      gsap.to(card, { y: -6, duration: 0.3, ease: 'power2.out' });
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('card-hovered');
+      gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
+    });
+
+    const open = () => openModal(card.dataset.caseId!);
+    card.addEventListener('click', open);
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+  });
+
+  // Close
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // BA tabs
+  document.querySelectorAll('.ba-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ba-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = (btn as HTMLElement).dataset.tab;
+      document.querySelectorAll('.ba-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(`modal-${tab}-img`)?.classList.add('active');
+    });
+  });
+</script>

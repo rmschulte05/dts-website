@@ -1,0 +1,377 @@
+---
+const cx = 105, cy = 115; // ratchet head center = GSAP rotation pivot (do not change)
+
+// ── Ratchet head geometry ──
+// Wider than tall — matches real torque wrench proportions
+const HEAD_RX = 65, HEAD_RY = 55;
+
+// Gear ring — elliptical, 14 teeth INSIDE the housing ellipse
+// Smaller proportion: tips at 72%, roots at 61% — subtle, not spiky
+const TEETH = 12;
+const gearPath = (() => {
+  const pts = Array.from({ length: TEETH * 2 }, (_, i) => {
+    const a   = (i / (TEETH * 2)) * Math.PI * 2 - Math.PI / 2;
+    const tip = i % 2 === 0;
+    const rx  = HEAD_RX * (tip ? 0.72 : 0.61);
+    const ry  = HEAD_RY * (tip ? 0.72 : 0.61);
+    return `${+(cx + rx * Math.cos(a)).toFixed(1)},${+(cy + ry * Math.sin(a)).toFixed(1)}`;
+  });
+  return `M ${pts.join(' L ')} Z`;
+})();
+
+// Hex socket (6 sides, r=12)
+const hexPath = (() => {
+  const pts = Array.from({ length: 6 }, (_, i) => {
+    const a = (i / 6) * Math.PI * 2 + Math.PI / 6;
+    return `${+(cx + 12 * Math.cos(a)).toFixed(1)},${+(cy + 12 * Math.sin(a)).toFixed(1)}`;
+  });
+  return `M ${pts.join(' L ')} Z`;
+})();
+
+// Dense knurling — main grip body (x: 265–490, every 4 px)
+const bodyKnurl = Array.from({ length: Math.floor((490 - 265) / 4) }, (_, i) => 265 + i * 4);
+
+// Dense knurling — handle end (x: 685–875, every 4 px)
+const handleKnurl = Array.from({ length: Math.floor((875 - 685) / 4) }, (_, i) => 685 + i * 4);
+
+// ── Display screen ticker ──
+// One segment repeated 4× — GSAP scrolls exactly one segment then seamlessly loops
+const TICKER_SEGMENT = 'DUTCH TORQUE SERVICE \u2022 ';
+const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
+---
+
+<!-- Fixed torque wrench: sits behind all page sections, rotates on scroll -->
+<div class="wrench-bg-wrap" aria-hidden="true">
+  <svg
+    class="bg-wrench-svg"
+    viewBox="0 0 920 240"
+    overflow="visible"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <!-- Clips ticker text to screen area -->
+      <clipPath id="display-clip">
+        <rect x="494" y="90" width="142" height="50"/>
+      </clipPath>
+    </defs>
+
+    <!-- ══ ALL WRENCH CONTENT — rotates around (105,115) ══ -->
+    <g class="wrench-rotate-group">
+
+      <!-- ── RATCHET HEAD ── -->
+      <!-- Smooth outer housing — wider than tall like a real wrench head -->
+      <ellipse cx={cx} cy={cy} rx={HEAD_RX} ry={HEAD_RY}
+        stroke="#B8D8EC" stroke-width="1.8" class="draw-path"/>
+      <!-- Gear ring — elliptical teeth inside housing -->
+      <path d={gearPath} stroke="#B8D8EC" stroke-width="1.2"
+        stroke-linejoin="round" class="draw-path"/>
+      <!-- Inner mechanism ring -->
+      <circle cx={cx} cy={cy} r="28" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <!-- Fine dashed bearing detail -->
+      <circle cx={cx} cy={cy} r="20" stroke="#B8D8EC" stroke-width="0.7"
+        stroke-dasharray="2 2.5" stroke-opacity="0.55"/>
+      <!-- Hub ring -->
+      <circle cx={cx} cy={cy} r="14" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <!-- Hex socket -->
+      <path d={hexPath} stroke="#B8D8EC" stroke-width="1.5" stroke-linejoin="round"
+        fill="rgba(184,216,236,0.07)" class="draw-path"/>
+
+      <!-- ── NECK — tapered connector ── -->
+      <!-- Exits ellipse near centre (narrow ~14px gap), fans out to full body width over 80px -->
+      <path d="M 147 70 C 190 75 238 87 265 97"
+        stroke="#B8D8EC" stroke-width="1.5" stroke-linecap="round" fill="none" class="draw-path"/>
+      <path d="M 147 160 C 190 155 238 143 265 133"
+        stroke="#B8D8EC" stroke-width="1.5" stroke-linecap="round" fill="none" class="draw-path"/>
+      <!-- Neck-body junction -->
+      <line x1="265" y1="97" x2="265" y2="133" stroke="#B8D8EC" stroke-width="1.5"/>
+
+      <!-- ── MAIN GRIP BODY ── -->
+      <line x1="265" y1="97"  x2="490" y2="97"  stroke="#B8D8EC" stroke-width="1.5" class="draw-path"/>
+      <line x1="265" y1="133" x2="490" y2="133" stroke="#B8D8EC" stroke-width="1.5" class="draw-path"/>
+      {bodyKnurl.map(x => (
+        <line x1={x} y1="97" x2={x} y2="133"
+          stroke="#B8D8EC" stroke-width="0.65" stroke-opacity="0.40"/>
+      ))}
+
+      <!-- ── DISPLAY MODULE ── -->
+      <!-- Step-up transitions body → housing -->
+      <line x1="490" y1="88" x2="490" y2="97"  stroke="#B8D8EC" stroke-width="1.5"/>
+      <line x1="490" y1="133" x2="490" y2="142" stroke="#B8D8EC" stroke-width="1.5"/>
+      <line x1="680" y1="88" x2="680" y2="97"  stroke="#B8D8EC" stroke-width="1.5"/>
+      <line x1="680" y1="133" x2="680" y2="142" stroke="#B8D8EC" stroke-width="1.5"/>
+      <!-- Display housing — extended to include button panel -->
+      <rect x="490" y="88" width="190" height="54" rx="3"
+        stroke="#B8D8EC" stroke-width="1.5" class="draw-path"/>
+      <!-- Screen bezel -->
+      <rect x="494" y="90" width="142" height="50" rx="2"
+        stroke="#B8D8EC" stroke-width="1.2" stroke-opacity="0.85" class="draw-path"/>
+      <!-- Screen backlight — GSAP boots from off → bright blue-white -->
+      <rect class="screen-bg" x="494" y="90" width="142" height="50" rx="2"
+        fill="rgba(184,216,236,0)"/>
+      <!-- Scrolling ticker — clipped to screen, started by GSAP after boot -->
+      <g class="clip-display-wrap" clip-path="url(#display-clip)">
+        <g class="ticker-group" opacity="0">
+          <text
+            class="ticker-text"
+            x="0" y="0"
+            dominant-baseline="central"
+            font-size="22"
+            font-family="'Courier New', Courier, monospace"
+            font-weight="bold"
+            fill="#08090B"
+            letter-spacing="0.5"
+          >{TICKER_TEXT}</text>
+        </g>
+      </g>
+      <!-- Vent ticks top -->
+      {[0,1,2,3,4,5].map(i => (
+        <line x1={504 + i * 20} y1="88" x2={504 + i * 20} y2="92"
+          stroke="#B8D8EC" stroke-width="1" stroke-opacity="0.35"/>
+      ))}
+      <!-- Vent ticks bottom -->
+      {[0,1,2,3,4,5].map(i => (
+        <line x1={504 + i * 20} y1="138" x2={504 + i * 20} y2="142"
+          stroke="#B8D8EC" stroke-width="1" stroke-opacity="0.35"/>
+      ))}
+      <!-- ── BUTTON PANEL — 2×2 grid to the right of screen ── -->
+      <!-- Vertical separator between screen and buttons -->
+      <line x1="641" y1="91" x2="641" y2="139"
+        stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.5"/>
+      <!-- 6 buttons — 3 columns × 2 rows, centred in panel -->
+      <!-- Row 1 -->
+      <circle cx="648" cy="105" r="5" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <circle cx="648" cy="105" r="2" stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.6"/>
+      <circle cx="661" cy="105" r="5" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <circle cx="661" cy="105" r="2" stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.6"/>
+      <circle cx="674" cy="105" r="5" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <circle cx="674" cy="105" r="2" stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.6"/>
+      <!-- Row 2 -->
+      <circle cx="648" cy="125" r="5" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <circle cx="648" cy="125" r="2" stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.6"/>
+      <circle cx="661" cy="125" r="5" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <circle cx="661" cy="125" r="2" stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.6"/>
+      <circle cx="674" cy="125" r="5" stroke="#B8D8EC" stroke-width="1.2" class="draw-path"/>
+      <circle cx="674" cy="125" r="2" stroke="#B8D8EC" stroke-width="0.8" stroke-opacity="0.6"/>
+
+      <!-- ── HANDLE BODY ── -->
+      <line x1="680" y1="97"  x2="875" y2="97"  stroke="#B8D8EC" stroke-width="1.5" class="draw-path"/>
+      <line x1="680" y1="133" x2="875" y2="133" stroke="#B8D8EC" stroke-width="1.5" class="draw-path"/>
+      {handleKnurl.map(x => (
+        <line x1={x} y1="97" x2={x} y2="133"
+          stroke="#B8D8EC" stroke-width="0.65" stroke-opacity="0.40"/>
+      ))}
+
+      <!-- ── END CAP ── -->
+      <rect x="875" y="99" width="38" height="32" rx="10"
+        stroke="#B8D8EC" stroke-width="1.5" class="draw-path"/>
+      <circle cx="894" cy="115" r="10"
+        stroke="#B8D8EC" stroke-width="1.2" stroke-opacity="0.80" class="draw-path"/>
+
+      <!-- ── BRAND TEXT ── -->
+      <text x="490" y="178" text-anchor="middle" fill="#B8D8EC" font-size="8.5"
+        font-family="Inter, monospace" letter-spacing="2.5" opacity="0.25">
+        DUTCH TORQUE SERVICE — ISO 6789:2017
+      </text>
+
+    </g><!-- end wrench-rotate-group -->
+  </svg>
+</div>
+
+<style>
+  .wrench-bg-wrap {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: min(64vw, 880px);
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+    opacity: 0; /* GSAP animates from 0 → 1 on load */
+  }
+
+  .bg-wrench-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    animation: wrenchGlow 5s ease-in-out infinite;
+  }
+
+  @keyframes wrenchGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 2px rgba(184, 216, 236, 0.70));
+    }
+    50% {
+      filter: drop-shadow(0 0 4px rgba(184, 216, 236, 0.90))
+              drop-shadow(0 0 10px rgba(184, 216, 236, 0.25));
+    }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Scroll rotation — always on, independent of entrance ──
+  gsap.to('.wrench-rotate-group', {
+    rotation: 720,
+    svgOrigin: '105 115',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: document.body,
+      start: 'top top',
+      end:   'bottom bottom',
+      scrub: 2,
+    },
+  });
+
+  // ─────────────────────────────────────────────────────────────
+  //  ENTRANCE: "Technical Blueprint Draw-in"
+  //  ① Plotter scan-line sweeps left → right
+  //  ② Structural lines draw stroke-by-stroke
+  //  ③ Knurling fills in randomly
+  //  ④ Calibration pulse flare
+  //  ⑤ Screen boots — scrolling ticker starts
+  // ─────────────────────────────────────────────────────────────
+
+  const wrap        = document.querySelector<HTMLElement>('.wrench-bg-wrap')!;
+  const svg         = document.querySelector<SVGSVGElement>('.bg-wrench-svg')!;
+  const rotateGroup = document.querySelector<SVGGElement>('.wrench-rotate-group')!;
+  const drawPaths   = [...document.querySelectorAll<SVGGeometryElement>('.draw-path')];
+
+  // Set up stroke-dashoffset on every structural element
+  drawPaths.forEach(el => {
+    const len = el.getTotalLength();
+    gsap.set(el, { strokeDasharray: len, strokeDashoffset: len, opacity: 1 });
+  });
+
+  // Hide detail elements — exclude the display clip wrapper (ticker managed separately)
+  const detailEls = [...rotateGroup.children].filter(el =>
+    !el.classList.contains('draw-path') &&
+    !el.classList.contains('clip-display-wrap')
+  );
+  gsap.set(detailEls, { opacity: 0 });
+  gsap.set(wrap, { opacity: 1 });
+
+  // Inject scan-line + crosshair ticks
+  const ns       = 'http://www.w3.org/2000/svg';
+  const scanLine = document.createElementNS(ns, 'line');
+  Object.entries({
+    x1: '105', y1: '20', x2: '105', y2: '215',
+    stroke: '#B8D8EC', 'stroke-width': '0.9',
+    'stroke-opacity': '0', 'stroke-dasharray': '3 6',
+  }).forEach(([k, v]) => scanLine.setAttribute(k, v));
+  svg.appendChild(scanLine);
+
+  const tickTop = document.createElementNS(ns, 'line');
+  const tickBot = document.createElementNS(ns, 'line');
+  [tickTop, tickBot].forEach(t => {
+    Object.entries({ stroke: '#B8D8EC', 'stroke-width': '1.5', 'stroke-opacity': '0' })
+      .forEach(([k, v]) => t.setAttribute(k, v));
+    svg.appendChild(t);
+  });
+
+  const proxy = { x: 105 };
+  function moveTicks(x: number) {
+    tickTop.setAttribute('x1', String(x - 5)); tickTop.setAttribute('x2', String(x + 5));
+    tickTop.setAttribute('y1', '20');           tickTop.setAttribute('y2', '20');
+    tickBot.setAttribute('x1', String(x - 5)); tickBot.setAttribute('x2', String(x + 5));
+    tickBot.setAttribute('y1', '215');          tickBot.setAttribute('y2', '215');
+  }
+  moveTicks(105);
+
+  const DRAW = 1.7;
+  const tl   = gsap.timeline({ delay: 0.5 });
+
+  tl
+    // ① Scan-line + crosshair appear
+    .to([scanLine, tickTop, tickBot], { attr: { 'stroke-opacity': 0.55 }, duration: 0.18, ease: 'none' })
+    // ② Sweep
+    .to(proxy,    { x: 912, duration: DRAW, ease: 'power1.inOut', onUpdate() { moveTicks(proxy.x); } }, '<')
+    .to(scanLine, { attr: { x1: '912', x2: '912' }, duration: DRAW, ease: 'power1.inOut' }, '<')
+    // ③ Draw structural lines
+    .to(drawPaths, {
+      strokeDashoffset: 0, duration: DRAW * 0.78, ease: 'power1.out',
+      stagger: { each: 0.10, from: 'start' },
+    }, '<0.04')
+    // Scan-line fades
+    .to([scanLine, tickTop, tickBot], { attr: { 'stroke-opacity': 0 }, duration: 0.2 })
+    // ④ Knurling materialises randomly
+    .to(detailEls, {
+      opacity: 1, duration: 0.05, ease: 'none',
+      stagger: { each: 0.004, from: 'random' },
+    }, '-=0.12')
+    // ⑤ Calibration pulse
+    .to(svg, {
+      filter: 'drop-shadow(0 0 6px rgba(184,216,236,1)) drop-shadow(0 0 20px rgba(184,216,236,0.55))',
+      duration: 0.22, ease: 'power2.in',
+    })
+    .to(svg, {
+      filter: 'drop-shadow(0 0 2px rgba(184,216,236,0.70))',
+      duration: 0.75, ease: 'power3.out',
+      onComplete() {
+        gsap.set(svg, { clearProps: 'filter' });
+        scanLine.remove(); tickTop.remove(); tickBot.remove();
+      },
+    })
+    // ⑥ Screen cold-start flicker
+    .to('.screen-bg', { attr: { fill: 'rgba(184,216,236,0.18)' }, duration: 0.06, ease: 'none' })
+    .to('.screen-bg', { attr: { fill: 'rgba(184,216,236,0.88)' }, duration: 0.08, ease: 'none' })
+    .to('.screen-bg', { attr: { fill: 'rgba(184,216,236,0.72)' }, duration: 0.06, ease: 'none' })
+    .to('.screen-bg', { attr: { fill: 'rgba(184,216,236,0.92)' }, duration: 0.12, ease: 'none' })
+    // ⑦ Start scrolling ticker
+    .add(() => startTicker());
+
+  // Register scroll triggers only after the full entrance completes
+  tl.eventCallback('onComplete', setupScrollTriggers);
+
+  // ── Continuous scrolling display ticker ──
+  function startTicker() {
+    const group = document.querySelector<SVGGElement>('.ticker-group')!;
+    const text  = document.querySelector<SVGTextElement>('.ticker-text')!;
+
+    // Place the ticker group: x at screen left edge, y at screen vertical center
+    gsap.set(group, { opacity: 1, x: 494, y: 115 });
+
+    // Measure one segment (total text / 4 repetitions)
+    const totalW   = text.getComputedTextLength() || 1200;
+    const segmentW = totalW / 4;
+
+    // Scroll one segment then instantly reset — seamless loop
+    gsap.fromTo(group,
+      { x: 494 },
+      { x: 494 - segmentW, duration: 9, ease: 'none', repeat: -1 }
+    );
+  }
+
+  function setupScrollTriggers() {
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+      gsap.fromTo(wrap,
+        { opacity: 1 },
+        {
+          opacity: 0.5, immediateRender: false,
+          scrollTrigger: {
+            trigger: heroSection,
+            start: 'bottom 80%', end: 'bottom top', scrub: 1.5,
+          },
+        }
+      );
+    }
+    const aboutSection = document.getElementById('over-ons');
+    if (aboutSection) {
+      gsap.fromTo(wrap,
+        { filter: 'blur(0px)' },
+        {
+          filter: 'blur(5px)', immediateRender: false,
+          scrollTrigger: {
+            trigger: aboutSection,
+            start: 'top 92%', end: 'top 10%', scrub: 2,
+          },
+        }
+      );
+    }
+  }
+</script>

@@ -1,0 +1,192 @@
+---
+interface Props {
+  currentPage?: string;
+}
+const { currentPage = 'home' } = Astro.props;
+
+const links = [
+  { label: 'Home',     href: '/',         key: 'home' },
+  { label: 'Werk',     href: '/werk',     key: 'werk' },
+  { label: 'Over Ons', href: '/over-ons', key: 'over-ons' },
+  { label: 'Contact',  href: '/contact',  key: 'contact' },
+];
+---
+
+<header id="nav-header" class="fixed top-5 left-0 right-0 z-50 flex justify-center px-4">
+  <nav
+    class="nav-island flex items-center gap-6 md:gap-8 px-4 md:px-6 py-3 rounded-2xl"
+    aria-label="Hoofdnavigatie"
+  >
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2.5 shrink-0 group">
+      <span class="dts-logo-text font-black text-base tracking-[0.06em]">DTS</span>
+    </a>
+
+    <!-- Divider -->
+    <div class="hidden md:block w-px h-4 bg-white/10"></div>
+
+    <!-- Links -->
+    <div class="hidden md:flex items-center gap-6">
+      {links.map(link => (
+        <a
+          href={link.href}
+          class={[
+            'text-xs font-medium tracking-[0.14em] uppercase transition-colors duration-200',
+            currentPage === link.key
+              ? 'text-white'
+              : 'text-white/40 hover:text-white/75',
+          ].join(' ')}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <a
+      href="/contact"
+      class="nav-cta hidden md:inline-flex items-center px-4 py-2 rounded-xl text-xs font-semibold tracking-[0.14em] uppercase transition-all duration-200"
+    >
+      Offerte
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="nav-toggle"
+      class="md:hidden flex flex-col gap-1.5 p-1 ml-auto"
+      aria-label="Menu openen"
+      aria-expanded="false"
+    >
+      <span class="ham-line block w-5 h-0.5 bg-white/60 rounded transition-all duration-300"></span>
+      <span class="ham-line block w-5 h-0.5 bg-white/60 rounded transition-all duration-300"></span>
+      <span class="ham-line block w-3 h-0.5 bg-white/60 rounded transition-all duration-300"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile dropdown -->
+  <div
+    id="nav-mobile"
+    class="mobile-menu absolute top-full left-4 right-4 mt-2 rounded-2xl overflow-hidden"
+    aria-hidden="true"
+  >
+    <div class="flex flex-col p-5 gap-4">
+      {links.map(link => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-white/60 hover:text-white tracking-wide transition-colors py-1 border-b border-white/5 last:border-0"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="text-center py-2.5 px-4 text-xs font-semibold tracking-[0.14em] uppercase rounded-xl nav-cta mt-1"
+      >
+        Offerte Aanvragen
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav-island {
+    background: rgba(8, 9, 11, 0.72);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    border: 1px solid rgba(122, 175, 196, 0.18);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.45),
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 0 0 1px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .nav-island:hover {
+    border-color: rgba(122, 175, 196, 0.28);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(122, 175, 196, 0.06),
+      0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  }
+
+  .dts-logo-text {
+    background: linear-gradient(135deg, #9BC5D8 0%, #7AAFC4 40%, #B8C4CC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-cta {
+    background: linear-gradient(135deg, #7AAFC4 0%, #5A95B0 100%);
+    color: #08090B;
+    box-shadow: 0 2px 12px rgba(122, 175, 196, 0.25);
+  }
+
+  .nav-cta:hover {
+    box-shadow: 0 4px 20px rgba(122, 175, 196, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .mobile-menu {
+    background: rgba(8, 9, 11, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(122, 175, 196, 0.15);
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  }
+
+  .mobile-menu.open {
+    max-height: 500px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Hamburger open state */
+  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(2) {
+    opacity: 0;
+  }
+  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(3) {
+    width: 20px;
+    transform: translateY(-8px) rotate(-45deg);
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  // Entrance animation
+  gsap.from('#nav-header', {
+    y: -20,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+    delay: 0.2,
+  });
+
+  // Mobile menu toggle
+  const toggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('nav-mobile');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    mobileMenu?.setAttribute('aria-hidden', String(isOpen));
+    mobileMenu?.classList.toggle('open');
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    const header = document.getElementById('nav-header');
+    if (!header?.contains(e.target as Node)) {
+      toggle?.setAttribute('aria-expanded', 'false');
+      mobileMenu?.setAttribute('aria-hidden', 'true');
+      mobileMenu?.classList.remove('open');
+    }
+  });
+</script>

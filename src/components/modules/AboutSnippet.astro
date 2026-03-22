@@ -1,0 +1,124 @@
+---
+interface Props {
+  imageSrc?: string;
+  imageAlt?: string;
+}
+const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props;
+---
+
+<section id="over-ons" class="about-section relative py-28 md:py-36 px-6 md:px-12 lg:px-16 overflow-hidden">
+
+  <!-- Separator -->
+  <div class="absolute top-0 left-0 right-0 h-px"
+    style="background: linear-gradient(90deg, transparent 0%, rgba(122,175,196,0.2) 40%, rgba(122,175,196,0.2) 60%, transparent 100%);"></div>
+
+  <div class="relative max-w-screen-xl mx-auto">
+
+    <!-- Section label — centred -->
+    <div class="flex flex-col items-center text-center mb-16" data-animate>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Over Ons</span>
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-black leading-[1.05] tracking-tight text-white">
+        Vakmanschap in iedere draai.
+      </h2>
+    </div>
+
+    <!-- Two-col layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Image -->
+      <div class="about-image-wrap" data-animate data-animate-from="left">
+        <div class="image-frame relative">
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              class="w-full aspect-[4/3] object-cover rounded-2xl"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div class="w-full aspect-[4/3] rounded-2xl image-placeholder flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+              <div class="placeholder-grid absolute inset-0"></div>
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="relative z-10 opacity-40">
+                <circle cx="20" cy="40" r="14" stroke="#7AAFC4" stroke-width="1.5"/>
+                <circle cx="20" cy="40" r="7"  stroke="#7AAFC4" stroke-width="1"/>
+                <rect x="34" y="34" width="32" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
+                <rect x="66" y="31" width="10" height="18" rx="4" stroke="#7AAFC4" stroke-width="1.5"/>
+              </svg>
+              <p class="relative z-10 text-xs tracking-[0.25em] uppercase font-medium" style="color:rgba(122,175,196,0.55);">
+                Foto volgt binnenkort
+              </p>
+            </div>
+          )}
+          <!-- Corner brackets -->
+          <div class="corner corner-tl absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 rounded-tl" style="border-color:rgba(122,175,196,0.55);"></div>
+          <div class="corner corner-tr absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 rounded-tr" style="border-color:rgba(122,175,196,0.55);"></div>
+          <div class="corner corner-bl absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 rounded-bl" style="border-color:rgba(122,175,196,0.55);"></div>
+          <div class="corner corner-br absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 rounded-br" style="border-color:rgba(122,175,196,0.55);"></div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="about-text" data-animate data-animate-from="right">
+        <p class="text-base md:text-lg leading-relaxed mb-6" style="color:#C4D0D8;">
+          Dutch Torque Service is gespecialiseerd in de professionele kalibratie en service van momentsleutels.
+          Of je nu een automonteur bent, een werkplaats runt of je gereedschap wil laten certificeren —
+          wij zorgen dat jouw momentsleutel altijd klopt.
+        </p>
+        <p class="text-base leading-relaxed mb-10" style="color:#A8B8C4;">
+          Onze werkwijze is transparant: je ontvangt altijd een gedetailleerd kalibratieprotocol
+          met de gemeten afwijkingen voor én na de service.
+        </p>
+
+        <!-- Trust tags -->
+        <div class="flex flex-wrap gap-3 mb-10">
+          {['ISO 6789:2017', 'Type I & II', 'Snelle levering', 'Gecertificeerd'].map(tag => (
+            <span class="trust-tag px-3 py-1.5 rounded-lg text-sm font-medium" style="color:#7AAFC4;">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href="/over-ons"
+          class="inline-flex items-center gap-2 text-base font-semibold tracking-wide transition-all duration-200"
+          style="color:#7AAFC4;"
+          onmouseover="this.style.color='#9BC5D8'"
+          onmouseout="this.style.color='#7AAFC4'"
+        >
+          Meer over ons
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+  }
+
+  .image-placeholder {
+    background: transparent;
+    border: 1px solid rgba(122, 175, 196, 0.2);
+  }
+  .placeholder-grid {
+    background-image:
+      linear-gradient(rgba(122,175,196,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,175,196,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .trust-tag {
+    background: rgba(122, 175, 196, 0.1);
+    border: 1px solid rgba(122, 175, 196, 0.22);
+  }
+</style>

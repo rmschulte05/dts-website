@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Dutch Torque Service — Professionele kalibratie en service van momentsleutels',
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Global scroll-reveal for any [data-animate] element
+      document.querySelectorAll('[data-animate]').forEach((el) => {
+        const delay  = parseFloat((el as HTMLElement).dataset.animateDelay ?? '0');
+        const from   = (el as HTMLElement).dataset.animateFrom ?? 'bottom';
+        const fromVars: Record<string, unknown> = { opacity: 0, duration: 0.9, delay, ease: 'power3.out' };
+        if (from === 'bottom') fromVars.y = 48;
+        if (from === 'left')   fromVars.x = -48;
+        if (from === 'right')  fromVars.x = 48;
+        if (from === 'scale')  fromVars.scale = 0.92;
+
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+          ...fromVars,
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+---
+/**
+ * Gallery — responsive image grid.
+ *
+ * Props:
+ *  id      — section HTML id for anchor links
+ *  images  — array of { src, alt } objects. Leave empty for placeholders.
+ *  columns — 2 | 3 | 4 (default 3)
+ *  gap     — tailwind gap class (default 'gap-3')
+ *  dark    — background color (default true = black)
+ *  aspectRatio — tailwind aspect- class (default 'aspect-square')
+ */
+interface Props {
+  id?: string;
+  images?: { src: string; alt: string }[];
+  columns?: 2 | 3 | 4;
+  gap?: string;
+  dark?: boolean;
+  aspectRatio?: string;
+}
+
+const {
+  id,
+  images = [],
+  columns = 3,
+  gap = 'gap-3',
+  dark = true,
+  aspectRatio = 'aspect-square',
+} = Astro.props;
+
+const colClass = {
+  2: 'grid-cols-1 sm:grid-cols-2',
+  3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+  4: 'grid-cols-2 lg:grid-cols-4',
+}[columns];
+
+const placeholderCount = columns * 2;
+---
+
+<section id={id} class={`py-3 px-3 ${dark ? 'bg-black' : 'bg-white'}`}>
+  <div class={`grid ${colClass} ${gap}`}>
+    {images.length > 0
+      ? images.map((img, i) => (
+          <div
+            class={`${aspectRatio} overflow-hidden bg-neutral-900`}
+            data-animate
+            data-animate-delay={String((i % columns) * 0.1)}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ))
+      : Array.from({ length: placeholderCount }).map((_, i) => (
+          <div
+            class={`${aspectRatio} bg-neutral-900 flex items-center justify-center text-neutral-700 text-sm font-mono`}
+            data-animate
+            data-animate-delay={String((i % columns) * 0.1)}
+          >
+            image {i + 1}
+          </div>
+        ))
+    }
+  </div>
+</section>

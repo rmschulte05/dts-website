@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import WrenchBackground from '../components/modules/WrenchBackground.astro';
+import NavIsland from '../components/modules/NavIsland.astro';
+import HeroDTS from '../components/modules/HeroDTS.astro';
+import AboutSnippet from '../components/modules/AboutSnippet.astro';
+import CasesGrid from '../components/modules/CasesGrid.astro';
+import Services from '../components/modules/Services.astro';
+import CoreValues from '../components/modules/CoreValues.astro';
+import FooterDTS from '../components/modules/FooterDTS.astro';
+---
+
+<Base title="Dutch Torque Service — Kalibratie & Service van Momentsleutels">
+
+  <!-- Fixed background layer: wrench stays put while page scrolls -->
+  <WrenchBackground />
+
+  <NavIsland currentPage="home" />
+
+  <main>
+    <HeroDTS />
+    <AboutSnippet />
+    <CasesGrid />
+    <Services />
+    <CoreValues />
+  </main>
+
+  <FooterDTS />
+
+</Base>

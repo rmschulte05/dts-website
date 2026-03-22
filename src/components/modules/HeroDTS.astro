@@ -1,0 +1,190 @@
+---
+// Hero is now pure text — wrench lives in WrenchBackground.astro (fixed layer)
+---
+
+<section class="hero-section relative min-h-screen flex items-center overflow-hidden">
+
+  <!-- Dot-grid texture (partial) -->
+  <div class="hero-bg absolute inset-0 pointer-events-none"></div>
+
+  <!-- Directional overlay: solid on left (text legibility), fades to transparent right (wrench visible) -->
+  <div class="hero-overlay absolute inset-0 pointer-events-none"></div>
+
+  <!-- Scroll progress line (top) -->
+  <div class="scroll-line absolute top-0 left-0 h-px w-0 z-10"
+    style="background: linear-gradient(to right, transparent, #7AAFC4, transparent);"
+    id="hero-progress-line"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 w-full max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 pt-36 pb-24">
+    <div class="max-w-2xl">
+
+      <!-- Eyebrow -->
+      <div class="eyebrow-wrap overflow-hidden mb-8">
+        <div class="hero-eyebrow flex items-center gap-3">
+          <span class="block w-8 h-px opacity-80" style="background: #7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color: #7AAFC4;">
+            Dutch Torque Service
+          </span>
+        </div>
+      </div>
+
+      <!-- Headline: word-by-word clip reveal -->
+      <h1 class="hero-headline font-black leading-[0.9] tracking-[-0.025em] mb-9">
+        <span class="word-reveal block overflow-hidden">
+          <span class="hero-word block text-6xl sm:text-7xl md:text-8xl xl:text-9xl text-white">
+            PRECISIE
+          </span>
+        </span>
+        <span class="word-reveal block overflow-hidden">
+          <span class="hero-word block text-6xl sm:text-7xl md:text-8xl xl:text-9xl text-white">
+            IN ELKE
+          </span>
+        </span>
+        <span class="word-reveal block overflow-hidden">
+          <span class="hero-word block text-6xl sm:text-7xl md:text-8xl xl:text-9xl"
+            style="background: linear-gradient(90deg, #7AAFC4 0%, #9BC5D8 55%, #B8C4CC 100%);
+                   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            NEWTON METER.
+          </span>
+        </span>
+      </h1>
+
+      <!-- Tagline -->
+      <p class="hero-sub text-lg md:text-xl leading-relaxed mb-11 max-w-lg" style="color: #B8C8D4;">
+        Professionele kalibratie, service en reparatie van momentsleutels.
+        Snel, nauwkeurig en gecertificeerd conform ISO&nbsp;6789.
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas flex flex-wrap gap-4 mb-14">
+        <a
+          href="#diensten"
+          class="hero-cta-primary inline-flex items-center gap-2.5 px-7 py-4 text-sm font-semibold tracking-[0.08em] uppercase rounded-xl transition-all duration-300"
+        >
+          Onze Diensten
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a
+          href="#cases"
+          class="hero-cta-secondary inline-flex items-center gap-2.5 px-7 py-4 text-sm font-medium tracking-[0.06em] uppercase rounded-xl border transition-all duration-300"
+          style="border-color: rgba(122,175,196,0.4); color: #C4D4DC;"
+        >
+          Bekijk Ons Werk
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats flex flex-wrap gap-10 pt-8" style="border-top: 1px solid rgba(255,255,255,0.08);">
+        {[
+          { value: '±2%',  label: 'Nauwkeurigheid' },
+          { value: '48u',  label: 'Doorlooptijd' },
+          { value: 'ISO',  label: '6789 Gecertificeerd' },
+        ].map(stat => (
+          <div>
+            <div class="text-3xl font-black text-white leading-none">{stat.value}</div>
+            <div class="text-sm mt-1.5 tracking-wide" style="color: #8EAAB8;">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-[9px] tracking-[0.3em] uppercase font-medium" style="color: rgba(122,175,196,0.55);">Scroll</span>
+    <div class="scroll-arrow w-px h-8" style="background: linear-gradient(to bottom, #7AAFC4, transparent);"></div>
+  </div>
+
+</section>
+
+<style>
+  .hero-section {
+    /* Transparent — fixed wrench shows through */
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-bg {
+    background-image: radial-gradient(circle, rgba(122,175,196,0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .hero-overlay {
+    /* Dark only on the left where text sits — right half is essentially clear */
+    background: linear-gradient(
+      100deg,
+      rgba(8,9,11,0.82) 0%,
+      rgba(8,9,11,0.60) 28%,
+      rgba(8,9,11,0.15) 50%,
+      transparent 68%
+    );
+  }
+
+  .hero-cta-primary {
+    background: linear-gradient(135deg, #7AAFC4 0%, #5A95B0 100%);
+    color: #08090B;
+    box-shadow: 0 4px 20px rgba(122,175,196,0.3);
+  }
+  .hero-cta-primary:hover {
+    box-shadow: 0 6px 30px rgba(122,175,196,0.5);
+    transform: translateY(-2px);
+  }
+  .hero-cta-secondary:hover {
+    border-color: rgba(122,175,196,0.7) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+  }
+
+  .scroll-arrow {
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.7; transform: scaleY(1); }
+    50% { opacity: 0.25; transform: scaleY(0.65); }
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ── Word reveal ──
+  gsap.from('.hero-word', {
+    yPercent: 112,
+    duration: 1.2,
+    stagger: 0.14,
+    ease: 'power4.out',
+    delay: 0.1,
+  });
+
+  // ── Eyebrow, tagline, CTAs, stats ──
+  gsap.from('.hero-eyebrow', { y: 18, opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.08 });
+  gsap.from(['.hero-sub', '.hero-ctas', '.hero-stats'], {
+    y: 28, opacity: 0, duration: 0.95, stagger: 0.13, ease: 'power3.out', delay: 0.82,
+  });
+
+  // ── Text parallax on scroll ──
+  gsap.to('.hero-section .relative.z-10', {
+    scrollTrigger: {
+      trigger: '.hero-section',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.5,
+    },
+    y: -110,
+    opacity: 0.4,
+  });
+
+  // ── Scroll progress bar ──
+  const bar = document.getElementById('hero-progress-line');
+  if (bar) {
+    window.addEventListener('scroll', () => {
+      bar.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+    }, { passive: true });
+  }
+</script>
