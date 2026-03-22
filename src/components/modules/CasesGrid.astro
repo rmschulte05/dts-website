@@ -21,13 +21,13 @@ const serviceTextColors: Record<string, string> = {
   <div class="page-container">
 
     <!-- Section header — centred -->
-    <div class="flex flex-col items-center text-center mb-16 md:mb-20" data-animate>
-      <div class="flex items-center gap-3 mb-4">
+    <div class="type-stack flex flex-col items-center text-center mb-16 md:mb-20" data-animate>
+      <div class="flex items-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons Werk</span>
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white mb-3">
+      <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white">
         Elke sleutel vertelt een verhaal.
       </h2>
       <p class="text-base max-w-md leading-relaxed" style="color:#A8BAC2;">
@@ -93,10 +93,10 @@ const serviceTextColors: Record<string, string> = {
             </div>
 
             <!-- Service badges -->
-            <div class="flex flex-wrap gap-1.5">
+            <div class="flex flex-wrap gap-2">
               {c.services.map(s => (
                 <span
-                  class="px-2 py-0.5 rounded-md text-[10px] font-semibold tracking-wide"
+                  class="badge"
                   style={`background: ${serviceColors[s] ?? 'rgba(122,175,196,0.1)'}; color: ${serviceTextColors[s] ?? '#7AAFC4'};`}
                 >
                   {s}
@@ -112,10 +112,7 @@ const serviceTextColors: Record<string, string> = {
     <div class="flex justify-center mt-16" data-animate>
       <a
         href="/werk"
-        class="inline-flex items-center gap-2 px-9 py-4.5 rounded-xl border text-sm font-medium tracking-wide transition-all duration-300"
-        style="border-color: rgba(122,175,196,0.25); color: rgba(184,196,204,0.7);"
-        onmouseover="this.style.borderColor='rgba(122,175,196,0.5)'; this.style.color='rgba(184,196,204,1)';"
-        onmouseout="this.style.borderColor='rgba(122,175,196,0.25)'; this.style.color='rgba(184,196,204,0.7)';"
+        class="btn btn-outline"
       >
         Bekijk al ons werk
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

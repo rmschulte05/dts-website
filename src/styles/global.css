@@ -38,6 +38,105 @@ img, video, svg { max-width: 100%; display: block; }
 ::-webkit-scrollbar-thumb { background: #7AAFC4; border-radius: 2px; }
 
 /* ─────────────────────────────────────────
+   BUTTON SYSTEM  (Image 5 spec)
+   border-radius: 100px | height: 48px | padding: 0 24px | margin: auto
+───────────────────────────────────────── */
+
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             0.625rem;
+  height:          48px;
+  padding:         0 24px;
+  border-radius:   100px;           /* pill — from image 5 */
+  font-size:       0.8125rem;       /* 13px */
+  font-weight:     600;
+  letter-spacing:  0.08em;
+  text-transform:  uppercase;
+  white-space:     nowrap;
+  cursor:          pointer;
+  transition:      transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background:  linear-gradient(135deg, #7AAFC4 0%, #5A95B0 100%);
+  color:       #08090B;
+  box-shadow:  0 4px 20px rgba(122,175,196,0.30);
+  border:      none;
+}
+.btn-primary:hover {
+  box-shadow:  0 6px 30px rgba(122,175,196,0.50);
+  transform:   translateY(-2px);
+}
+
+.btn-outline {
+  background:   transparent;
+  color:        #C4D4DC;
+  border:       1px solid rgba(122,175,196,0.40);
+}
+.btn-outline:hover {
+  border-color: rgba(122,175,196,0.70);
+  color:        #ffffff;
+  transform:    translateY(-1px);
+}
+
+/* ── Badge / pill tags (ISO, Kalibratie, etc.) ── */
+.badge {
+  display:       inline-flex;
+  align-items:   center;
+  height:        30px;
+  padding:       0 14px;
+  border-radius: 100px;
+  font-size:     0.6875rem;   /* 11px */
+  font-weight:   600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────
+   IMAGE STYLES
+   border-radius: 24px | animation: slide-in 0.5s both
+───────────────────────────────────────── */
+
+.img-card {
+  border-radius: 24px;
+  display:       block;
+  max-width:     100%;
+  animation:     imgSlideIn 0.5s both;
+}
+
+@keyframes imgSlideIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* ─────────────────────────────────────────
+   SECTION SEPARATION
+   ~8rem between each section, clamp-scaled
+───────────────────────────────────────── */
+
+:root {
+  --section-sep: clamp(4rem, 8vw, 8rem);
+}
+
+main > section + section,
+main > section + footer,
+main + footer {
+  margin-top: var(--section-sep);
+}
+
+/* ─────────────────────────────────────────
+   TYPOGRAPHY HIERARCHY SPACING
+   2rem between: eyebrow → title → subtitle → body
+───────────────────────────────────────── */
+
+.type-stack > * + * {
+  margin-top: 2rem;
+}
+
+/* ─────────────────────────────────────────
    12-COLUMN PAGE GRID SYSTEM
    Inspired by Dutch Coding Company:
    • clamp() outer margins — never flush to edge

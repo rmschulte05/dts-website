@@ -15,8 +15,8 @@ const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props
   <div class="relative page-container">
 
     <!-- Section label — centred -->
-    <div class="flex flex-col items-center text-center mb-20" data-animate>
-      <div class="flex items-center gap-3 mb-4">
+    <div class="type-stack flex flex-col items-center text-center mb-20" data-animate>
+      <div class="flex items-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Over Ons</span>
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
@@ -36,12 +36,12 @@ const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props
             <img
               src={imageSrc}
               alt={imageAlt}
-              class="w-full aspect-[4/3] object-cover rounded-2xl"
+              class="img-card w-full aspect-[4/3] object-cover"
               loading="lazy"
               decoding="async"
             />
           ) : (
-            <div class="w-full aspect-[4/3] rounded-2xl image-placeholder flex flex-col items-center justify-center gap-4 relative overflow-hidden">
+            <div class="img-card w-full aspect-[4/3] image-placeholder flex flex-col items-center justify-center gap-4 relative overflow-hidden">
               <div class="placeholder-grid absolute inset-0"></div>
               <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="relative z-10 opacity-40">
                 <circle cx="20" cy="40" r="14" stroke="#7AAFC4" stroke-width="1.5"/>
@@ -77,7 +77,7 @@ const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props
         <!-- Trust tags -->
         <div class="flex flex-wrap gap-3 mb-12">
           {['ISO 6789:2017', 'Type I & II', 'Snelle levering', 'Gecertificeerd'].map(tag => (
-            <span class="trust-tag px-4 py-2 rounded-lg text-sm font-medium" style="color:#7AAFC4;">
+            <span class="badge" style="background: rgba(122,175,196,0.1); border: 1px solid rgba(122,175,196,0.22); color:#7AAFC4;">
               {tag}
             </span>
           ))}
