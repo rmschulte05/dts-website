@@ -44,16 +44,16 @@ const values = [
 ];
 ---
 
-<section class="values-section relative py-24 md:py-32 px-6 md:px-12 lg:px-16">
+<section class="values-section relative page-wrap">
 
   <!-- Separator -->
   <div class="absolute top-0 left-0 right-0 h-px"
     style="background: linear-gradient(90deg, transparent 0%, rgba(122,175,196,0.18) 30%, rgba(122,175,196,0.18) 70%, transparent 100%);"></div>
 
-  <div class="relative max-w-screen-xl mx-auto">
+  <div class="relative page-container">
 
     <!-- Header — centred -->
-    <div class="text-center mb-14" data-animate>
+    <div class="text-center mb-16 md:mb-20" data-animate>
       <div class="flex items-center justify-center gap-3 mb-5">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Onze Kernwaarden</span>
@@ -64,11 +64,11 @@ const values = [
       </h2>
     </div>
 
-    <!-- 3-column cards — matches reference layout -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- 3 cards — 12-col grid: full → 4/4/4 -->
+    <div class="page-grid">
       {values.map((v, i) => (
         <div
-          class="value-card group flex flex-col p-8 md:p-10"
+          class="value-card col-span-12 md:col-span-4 group flex flex-col p-10 md:p-12"
           data-animate
           data-animate-delay={String(i * 0.12)}
         >

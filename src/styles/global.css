@@ -36,3 +36,44 @@ img, video, svg { max-width: 100%; display: block; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #08090B; }
 ::-webkit-scrollbar-thumb { background: #7AAFC4; border-radius: 2px; }
+
+/* ─────────────────────────────────────────
+   12-COLUMN PAGE GRID SYSTEM
+   Inspired by Dutch Coding Company:
+   • clamp() outer margins — never flush to edge
+   • 12 equal columns with consistent gutters
+   • .page-wrap  — outer padding shell
+   • .page-grid  — 12-col grid
+   • col-span-* Tailwind utilities for items
+───────────────────────────────────────── */
+:root {
+  /* Outer horizontal margin: 24px → scales with viewport → 80px max */
+  --page-px:   clamp(1.5rem, 6vw, 5rem);
+  /* Column gap: 16px → 24px */
+  --grid-gap:  clamp(1rem, 1.5vw, 1.5rem);
+  /* Section vertical rhythm */
+  --section-py: clamp(4rem, 8vw, 7rem);
+}
+
+/* Outer padding shell — apply to every <section> / <footer> */
+.page-wrap {
+  padding-inline: var(--page-px);
+  padding-block:  var(--section-py);
+}
+.page-wrap-sm {
+  padding-inline: var(--page-px);
+}
+
+/* Centred container — max 1200px so content never stretches too wide */
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* 12-column grid with consistent gutters */
+.page-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+}

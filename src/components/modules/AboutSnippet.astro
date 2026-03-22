@@ -6,16 +6,16 @@ interface Props {
 const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props;
 ---
 
-<section id="over-ons" class="about-section relative py-28 md:py-36 px-6 md:px-12 lg:px-16 overflow-hidden">
+<section id="over-ons" class="about-section relative page-wrap overflow-hidden">
 
   <!-- Separator -->
   <div class="absolute top-0 left-0 right-0 h-px"
     style="background: linear-gradient(90deg, transparent 0%, rgba(122,175,196,0.2) 40%, rgba(122,175,196,0.2) 60%, transparent 100%);"></div>
 
-  <div class="relative max-w-screen-xl mx-auto">
+  <div class="relative page-container">
 
     <!-- Section label — centred -->
-    <div class="flex flex-col items-center text-center mb-16" data-animate>
+    <div class="flex flex-col items-center text-center mb-20" data-animate>
       <div class="flex items-center gap-3 mb-4">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Over Ons</span>
@@ -26,11 +26,11 @@ const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props
       </h2>
     </div>
 
-    <!-- Two-col layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <!-- 12-col grid: image = 5 cols, text = 6 cols, 1 col gap -->
+    <div class="page-grid items-center">
 
-      <!-- Image -->
-      <div class="about-image-wrap" data-animate data-animate-from="left">
+      <!-- Image — 5 cols on desktop -->
+      <div class="about-image-wrap col-span-12 lg:col-span-5" data-animate data-animate-from="left">
         <div class="image-frame relative">
           {imageSrc ? (
             <img
@@ -62,22 +62,22 @@ const { imageSrc, imageAlt = 'Het team van Dutch Torque Service' } = Astro.props
         </div>
       </div>
 
-      <!-- Text -->
-      <div class="about-text" data-animate data-animate-from="right">
-        <p class="text-base md:text-lg leading-relaxed mb-6" style="color:#C4D0D8;">
+      <!-- Text — 6 cols on desktop, starts at col 7 (1-col gap after image) -->
+      <div class="about-text col-span-12 lg:col-span-6 lg:col-start-7" data-animate data-animate-from="right">
+        <p class="text-base md:text-lg leading-relaxed mb-8" style="color:#C4D0D8;">
           Dutch Torque Service is gespecialiseerd in de professionele kalibratie en service van momentsleutels.
           Of je nu een automonteur bent, een werkplaats runt of je gereedschap wil laten certificeren —
           wij zorgen dat jouw momentsleutel altijd klopt.
         </p>
-        <p class="text-base leading-relaxed mb-10" style="color:#A8B8C4;">
+        <p class="text-base leading-relaxed mb-12" style="color:#A8B8C4;">
           Onze werkwijze is transparant: je ontvangt altijd een gedetailleerd kalibratieprotocol
           met de gemeten afwijkingen voor én na de service.
         </p>
 
         <!-- Trust tags -->
-        <div class="flex flex-wrap gap-3 mb-10">
+        <div class="flex flex-wrap gap-3 mb-12">
           {['ISO 6789:2017', 'Type I & II', 'Snelle levering', 'Gecertificeerd'].map(tag => (
-            <span class="trust-tag px-3 py-1.5 rounded-lg text-sm font-medium" style="color:#7AAFC4;">
+            <span class="trust-tag px-4 py-2 rounded-lg text-sm font-medium" style="color:#7AAFC4;">
               {tag}
             </span>
           ))}

@@ -16,8 +16,11 @@
     id="hero-progress-line"></div>
 
   <!-- Content -->
-  <div class="relative z-10 w-full max-w-screen-xl mx-auto px-6 md:px-12 lg:px-16 pt-36 pb-24">
-    <div class="max-w-2xl">
+  <div class="page-wrap-sm relative z-10 w-full" style="padding-top: clamp(7rem, 14vw, 11rem); padding-bottom: clamp(4rem, 8vw, 7rem);">
+    <div class="page-container">
+      <div class="page-grid">
+        <!-- Hero text spans 7 of 12 columns on desktop, full width on mobile -->
+        <div class="col-span-12 lg:col-span-7">
 
       <!-- Eyebrow -->
       <div class="eyebrow-wrap overflow-hidden mb-8">
@@ -57,10 +60,10 @@
       </p>
 
       <!-- CTAs -->
-      <div class="hero-ctas flex flex-wrap gap-4 mb-14">
+      <div class="hero-ctas flex flex-wrap gap-4 mb-16">
         <a
           href="#diensten"
-          class="hero-cta-primary inline-flex items-center gap-2.5 px-7 py-4 text-sm font-semibold tracking-[0.08em] uppercase rounded-xl transition-all duration-300"
+          class="hero-cta-primary inline-flex items-center gap-3 px-9 py-5 text-sm font-semibold tracking-[0.08em] uppercase rounded-xl transition-all duration-300"
         >
           Onze Diensten
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -69,7 +72,7 @@
         </a>
         <a
           href="#cases"
-          class="hero-cta-secondary inline-flex items-center gap-2.5 px-7 py-4 text-sm font-medium tracking-[0.06em] uppercase rounded-xl border transition-all duration-300"
+          class="hero-cta-secondary inline-flex items-center gap-3 px-9 py-5 text-sm font-medium tracking-[0.06em] uppercase rounded-xl border transition-all duration-300"
           style="border-color: rgba(122,175,196,0.4); color: #C4D4DC;"
         >
           Bekijk Ons Werk
@@ -77,7 +80,7 @@
       </div>
 
       <!-- Stats -->
-      <div class="hero-stats flex flex-wrap gap-10 pt-8" style="border-top: 1px solid rgba(255,255,255,0.08);">
+      <div class="hero-stats flex flex-wrap gap-14 pt-10" style="border-top: 1px solid rgba(255,255,255,0.08);">
         {[
           { value: '±2%',  label: 'Nauwkeurigheid' },
           { value: '48u',  label: 'Doorlooptijd' },
@@ -85,11 +88,12 @@
         ].map(stat => (
           <div>
             <div class="text-3xl font-black text-white leading-none">{stat.value}</div>
-            <div class="text-sm mt-1.5 tracking-wide" style="color: #8EAAB8;">{stat.label}</div>
+            <div class="text-sm mt-2 tracking-wide" style="color: #8EAAB8;">{stat.label}</div>
           </div>
         ))}
-      </div>
-    </div>
+        </div><!-- end col-span-7 -->
+      </div><!-- end page-grid -->
+    </div><!-- end page-container -->
   </div>
 
   <!-- Scroll indicator -->
