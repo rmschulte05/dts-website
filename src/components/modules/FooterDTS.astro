@@ -1,127 +1,487 @@
 ---
 const year = new Date().getFullYear();
 
-const footerLinks = {
-  Diensten: [
-    { label: 'Justeren',      href: '/diensten#justeren' },
-    { label: 'Kalibratie',    href: '/diensten#kalibratie' },
-    { label: 'Reparatie',     href: '/diensten#reparatie' },
-    { label: 'Certificering', href: '/diensten#certificering' },
-  ],
-  Navigatie: [
-    { label: 'Home',     href: '/' },
-    { label: 'Werk',     href: '/werk' },
-    { label: 'Over Ons', href: '/over-ons' },
-    { label: 'Contact',  href: '/contact' },
-  ],
-  Contact: [
-    { label: 'info@dutchtorqueservice.nl', href: 'mailto:info@dutchtorqueservice.nl' },
-    { label: '+31 (0)6 — — — —',           href: 'tel:+31600000000' },
-    { label: 'Nederland',                  href: '#' },
-  ],
-};
+const diensten = [
+  { label: 'Justeren',      href: '/diensten#justeren',      color: '#C4AF64' },
+  { label: 'Kalibratie',    href: '/diensten#kalibratie',    color: '#7AAFC4' },
+  { label: 'Reparatie',     href: '/diensten#reparatie',     color: '#C48A64' },
+  { label: 'Certificering', href: '/diensten#certificering', color: '#64C48A' },
+];
+
+const navigatie = [
+  { label: 'Home',     href: '/' },
+  { label: 'Werk',     href: '/werk' },
+  { label: 'Over Ons', href: '/over-ons' },
+  { label: 'Contact',  href: '/contact' },
+];
 ---
 
-<footer class="footer-section relative page-wrap-sm overflow-hidden" style="padding-top: clamp(4rem, 7vw, 6rem); padding-bottom: clamp(2rem, 3vw, 3rem);">
+<footer class="footer-root">
 
-  <!-- Top separator -->
-  <div class="absolute top-0 left-0 right-0 h-px"
-    style="background: linear-gradient(90deg, transparent 0%, rgba(122,175,196,0.2) 30%, rgba(122,175,196,0.2) 70%, transparent 100%);"></div>
+  <!-- ── BACKGROUND LAYER ── -->
+  <div class="footer-bg" aria-hidden="true">
+    <div class="footer-dots"></div>
 
-  <!-- Background glow -->
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full pointer-events-none"
-    style="background: radial-gradient(circle, rgba(122,175,196,0.05) 0%, transparent 70%);"></div>
+    <!-- Large precision gauge — bottom right -->
+    <svg class="footer-gauge" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="250" r="240" stroke="#7AAFC4" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="195" stroke="#7AAFC4" stroke-width="0.3"/>
+      <circle cx="250" cy="250" r="120" stroke="#7AAFC4" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="55"  stroke="#7AAFC4" stroke-width="1"/>
+      <line x1="250" y1="10"  x2="250" y2="490" stroke="#7AAFC4" stroke-width="0.4"/>
+      <line x1="10"  y1="250" x2="490" y2="250" stroke="#7AAFC4" stroke-width="0.4"/>
+      <line x1="70"  y1="70"  x2="430" y2="430" stroke="#7AAFC4" stroke-width="0.2"/>
+      <line x1="430" y1="70"  x2="70"  y2="430" stroke="#7AAFC4" stroke-width="0.2"/>
+      {Array.from({length: 24}, (_, i) => {
+        const angle = (i * 15 - 90) * Math.PI / 180;
+        const isMajor = i % 6 === 0;
+        const isMed   = i % 3 === 0;
+        const r1 = 240;
+        const r2 = isMajor ? 220 : isMed ? 228 : 234;
+        return <line
+          x1={250 + r1 * Math.cos(angle)}
+          y1={250 + r1 * Math.sin(angle)}
+          x2={250 + r2 * Math.cos(angle)}
+          y2={250 + r2 * Math.sin(angle)}
+          stroke="#7AAFC4"
+          stroke-width={isMajor ? "1.5" : isMed ? "0.8" : "0.4"}
+        />;
+      })}
+      <circle cx="250" cy="250" r="6" fill="#7AAFC4"/>
+      <circle cx="250" cy="250" r="3" fill="#06080A"/>
+      <!-- Measurement arc -->
+      <path d="M 250 55 A 195 195 0 0 1 445 250" stroke="#7AAFC4" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 250 55 A 195 195 0 0 1 445 250" stroke="#7AAFC4" stroke-width="6" stroke-linecap="round" stroke-opacity="0.15"/>
+    </svg>
 
-  <div class="relative page-container">
+    <!-- "DTS" watermark -->
+    <div class="footer-watermark">DTS</div>
 
-    <!-- Main footer grid — 12 cols: brand=5, diensten=2, nav=2, contact=3 -->
-    <div class="page-grid mb-16">
+    <!-- Top gradient fade -->
+    <div class="footer-top-fade"></div>
+  </div>
 
-      <!-- Brand column — 5 cols on desktop -->
-      <div class="col-span-12 md:col-span-5">
-        <!-- DTS Logo text -->
-        <div class="flex items-center gap-3 mb-5">
-          <span class="footer-logo-text text-3xl font-black tracking-[0.05em]">DTS</span>
-        </div>
-        <p class="text-sm leading-relaxed mb-6 max-w-xs" style="color: #7A8A94;">
-          Dutch Torque Service — Specialist in professionele kalibratie, service
-          en reparatie van momentsleutels. Gecertificeerd conform ISO 6789:2017.
-        </p>
+  <!-- ── CONTENT ── -->
+  <div class="footer-content">
 
-        <!-- ISO badge -->
-        <div class="badge" style="background: rgba(122,175,196,0.07); border: 1px solid rgba(122,175,196,0.15); gap: 0.625rem;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <rect x="1" y="1" width="14" height="14" rx="2" stroke="#7AAFC4" stroke-width="1"/>
-            <path d="M4 8l2.5 2.5L12 5" stroke="#7AAFC4" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="text-xs font-semibold tracking-wider" style="color: #7AAFC4;">ISO 6789:2017</span>
-        </div>
-      </div>
-
-      <!-- Link columns — 2 cols each (Diensten, Navigatie), 3 for Contact -->
-      {Object.entries(footerLinks).map(([section, links]) => (
-        <div class={`col-span-6 md:col-span-${section === 'Contact' ? '3' : '2'}`}>
-          <h4 class="text-xs font-bold tracking-[0.22em] uppercase mb-5" style="color: rgba(184,196,204,0.5);">{section}</h4>
-          <ul class="flex flex-col gap-3">
-            {links.map(link => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-sm transition-colors duration-200"
-                  style="color: #7A8A94;"
-                  onmouseover="this.style.color='rgba(184,196,204,0.9)'"
-                  onmouseout="this.style.color='#7A8A94'"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-
-    <!-- Bottom bar -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8"
-      style="border-top: 1px solid rgba(122,175,196,0.08);">
-
-      <p class="text-xs" style="color: rgba(122,175,196,0.35);">
-        © {year} Dutch Torque Service. Alle rechten voorbehouden.
+    <!-- Brand block — full row on mobile, left panel on desktop -->
+    <div class="footer-brand" data-animate>
+      <div class="footer-logo">DTS</div>
+      <p class="footer-tagline">Dutch Torque Service</p>
+      <p class="footer-desc">
+        Specialist in professionele kalibratie, service en reparatie van momentsleutels.
+        Gecertificeerd conform ISO&nbsp;6789:2017 — type I en type II.
       </p>
 
-      <div class="flex items-center gap-5">
-        <a href="/privacy" class="text-xs transition-colors duration-200"
-          style="color: rgba(122,175,196,0.35);"
-          onmouseover="this.style.color='rgba(122,175,196,0.7)'"
-          onmouseout="this.style.color='rgba(122,175,196,0.35)'"
-        >
-          Privacybeleid
+      <!-- Certification badges -->
+      <div class="footer-badges">
+        <div class="footer-badge">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <rect x="1" y="1" width="14" height="14" rx="2" stroke="#64C48A" stroke-width="1"/>
+            <path d="M4 8l2.5 2.5L12 5" stroke="#64C48A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span style="color:#64C48A;">ISO 6789:2017</span>
+        </div>
+        <div class="footer-badge">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="9" r="5.5" stroke="#7AAFC4" stroke-width="1"/>
+            <path d="M8 6v3l2 1.2" stroke="#7AAFC4" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M5 2h6" stroke="#7AAFC4" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <span style="color:#7AAFC4;">48u Doorlooptijd</span>
+        </div>
+        <div class="footer-badge">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="6.5" stroke="#C4AF64" stroke-width="1"/>
+            <circle cx="8" cy="8" r="3"   stroke="#C4AF64" stroke-width="1"/>
+            <circle cx="8" cy="8" r="1"   fill="#C4AF64"/>
+          </svg>
+          <span style="color:#C4AF64;">±2% Nauwkeurig</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links grid -->
+    <div class="footer-links">
+
+      <!-- Diensten -->
+      <div class="footer-col" data-animate data-animate-delay="0.05">
+        <h4 class="footer-col-heading">Diensten</h4>
+        <ul>
+          {diensten.map(link => (
+            <li>
+              <a href={link.href} class="footer-link">
+                <span class="link-dot" style={`background:${link.color};`}></span>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Navigatie -->
+      <div class="footer-col" data-animate data-animate-delay="0.10">
+        <h4 class="footer-col-heading">Navigatie</h4>
+        <ul>
+          {navigatie.map(link => (
+            <li>
+              <a href={link.href} class="footer-link">
+                <span class="link-arrow">→</span>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col footer-col--contact" data-animate data-animate-delay="0.15">
+        <h4 class="footer-col-heading">Contact</h4>
+        <ul>
+          <li>
+            <a href="mailto:info@dutchtorqueservice.nl" class="footer-link">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.1"/>
+                <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.1"/>
+              </svg>
+              info@dutchtorqueservice.nl
+            </a>
+          </li>
+          <li>
+            <a href="tel:+31600000000" class="footer-link">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                <path d="M3 1h3l1.5 4-2 1.2a9.5 9.5 0 004.3 4.3L11 8.5l4 1.5v3a1 1 0 01-1 1C6.2 14 1 8.8 1 2a1 1 0 011-1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
+              </svg>
+              +31 (0)6 — — — —
+            </a>
+          </li>
+          <li>
+            <span class="footer-link footer-link--plain">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
+                <circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="1.1"/>
+                <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="currentColor" stroke-width="1.1"/>
+              </svg>
+              Nederland
+            </span>
+          </li>
+        </ul>
+
+        <!-- CTA button -->
+        <a href="/contact" class="footer-cta-btn">
+          Offerte aanvragen
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
-        <a href="/algemene-voorwaarden" class="text-xs transition-colors duration-200"
-          style="color: rgba(122,175,196,0.35);"
-          onmouseover="this.style.color='rgba(122,175,196,0.7)'"
-          onmouseout="this.style.color='rgba(122,175,196,0.35)'"
-        >
-          Algemene voorwaarden
-        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── BOTTOM BAR ── -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">© {year} Dutch Torque Service. Alle rechten voorbehouden.</p>
+      <div class="footer-legal">
+        <a href="/privacy" class="footer-legal-link">Privacybeleid</a>
+        <span class="footer-legal-dot">·</span>
+        <a href="/algemene-voorwaarden" class="footer-legal-link">Algemene voorwaarden</a>
       </div>
     </div>
   </div>
+
 </footer>
 
 <style>
-  .footer-section {
+  /* ── ROOT ── */
+  .footer-root {
     position: relative;
     z-index: 1;
-    background: transparent;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: #060709;
+    overflow: hidden;
   }
 
-  .footer-logo-text {
+  /* ── BACKGROUND ── */
+  .footer-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .footer-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(122,175,196,0.03) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+
+  .footer-gauge {
+    position: absolute;
+    bottom: -80px;
+    right: -100px;
+    width: clamp(300px, 40vw, 520px);
+    height: auto;
+    opacity: 0.060;
+  }
+
+  .footer-watermark {
+    position: absolute;
+    bottom: 3rem;
+    left: -1rem;
+    font-size: clamp(8rem, 18vw, 16rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1;
+    color: rgba(122,175,196,0.028);
+    user-select: none;
+    pointer-events: none;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer-top-fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(122,175,196,0.25) 25%,
+      rgba(122,175,196,0.25) 75%,
+      transparent 100%
+    );
+  }
+
+  /* ── CONTENT ── */
+  .footer-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--page-px);
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(3rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+  @media (min-width: 900px) {
+    .footer-content {
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+
+  /* ── BRAND ── */
+  .footer-brand { display: flex; flex-direction: column; gap: 0; }
+
+  .footer-logo {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 0.25rem;
     background: linear-gradient(135deg, #9BC5D8 0%, #7AAFC4 40%, #B8C4CC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .footer-tagline {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(122,175,196,0.55);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-desc {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: #6A7A84;
+    max-width: 36ch;
+    margin-bottom: 1.75rem;
+  }
+
+  .footer-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+
+  .footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(122,175,196,0.14);
+    background: rgba(122,175,196,0.04);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── LINKS ── */
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    .footer-links { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .footer-col-heading {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(122,175,196,0.10);
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.875rem;
+    color: #5A6A74;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.3;
+  }
+  .footer-link:hover { color: rgba(184,196,204,0.90); }
+  .footer-link--plain { cursor: default; }
+  .footer-link--plain:hover { color: #5A6A74; }
+
+  .link-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    opacity: 0.70;
+  }
+
+  .link-arrow {
+    font-size: 0.75rem;
+    color: rgba(122,175,196,0.35);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+  .footer-link:hover .link-arrow {
+    color: rgba(122,175,196,0.75);
+    transform: translateX(2px);
+  }
+
+  /* Contact column spans full width on 2-col layout */
+  .footer-col--contact {
+    grid-column: span 2;
+  }
+  @media (min-width: 640px) {
+    .footer-col--contact { grid-column: span 1; }
+  }
+
+  .footer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 100px;
+    background: rgba(122,175,196,0.12);
+    border: 1px solid rgba(122,175,196,0.30);
+    color: #9BC5D8;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .footer-cta-btn:hover {
+    background: rgba(122,175,196,0.20);
+    border-color: rgba(122,175,196,0.55);
+    color: #B8D4E0;
+  }
+
+  /* ── BOTTOM BAR ── */
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(122,175,196,0.08);
+  }
+
+  .footer-bottom-inner {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--page-px);
+    padding-block: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(122,175,196,0.28);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-legal-link {
+    font-size: 0.7rem;
+    color: rgba(122,175,196,0.28);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    letter-spacing: 0.06em;
+  }
+  .footer-legal-link:hover { color: rgba(122,175,196,0.65); }
+
+  .footer-legal-dot {
+    color: rgba(122,175,196,0.18);
+    font-size: 0.7rem;
+  }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate the gauge SVG rotating slowly on scroll
+  const gauge = document.querySelector<SVGElement>('.footer-gauge');
+  if (gauge) {
+    gsap.to(gauge, {
+      rotation: 12,
+      transformOrigin: '50% 50%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.footer-root',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      },
+    });
+  }
+</script>

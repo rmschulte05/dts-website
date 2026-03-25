@@ -36,10 +36,10 @@ const serviceTextColors: Record<string, string> = {
     </div>
 
     <!-- Cases grid — 12-col: full → 6/6 → 4/4/4 -->
-    <div class="page-grid">
+    <div class="cases-grid-layout">
       {cases.map((c, i) => (
         <article
-          class="case-card col-span-12 sm:col-span-6 lg:col-span-4 group cursor-pointer"
+          class="case-card group cursor-pointer relative"
           data-case-id={c.id}
           data-animate
           data-animate-delay={String((i % 3) * 0.1)}
@@ -48,7 +48,7 @@ const serviceTextColors: Record<string, string> = {
           aria-label={`Bekijk case: ${c.model}`}
         >
           <!-- Image area -->
-          <div class="case-image relative aspect-[4/3] overflow-hidden rounded-t-xl">
+          <div class="case-image relative aspect-[3/2] overflow-hidden rounded-t-2xl">
             {c.before ? (
               <img
                 src={c.before}
@@ -73,24 +73,20 @@ const serviceTextColors: Record<string, string> = {
               </div>
             )}
 
-            <!-- Hover overlay -->
-            <div class="case-overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="view-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-[0.12em] uppercase"
-                style="background: rgba(122,175,196,0.9); color: #08090B;">
-                Bekijk details
-              </span>
-            </div>
           </div>
 
           <!-- Card info -->
-          <div class="case-info rounded-b-xl p-5">
-            <div class="flex items-start justify-between gap-2 mb-3">
+          <div class="case-info rounded-b-2xl" style="padding: 1.75rem 2rem 2rem;">
+            <div class="flex items-start justify-between gap-3 mb-5">
               <div>
-                <h3 class="text-sm font-bold text-white leading-tight">{c.model}</h3>
-                <p class="text-xs mt-0.5" style="color:#9AAAB4;">{c.type} · {c.range}</p>
+                <h3 class="text-lg font-bold text-white leading-snug" style="margin-bottom: 0.35rem;">{c.model}</h3>
+                <p class="text-sm" style="color:#8A9AA8;">{c.type} · {c.range}</p>
               </div>
-              <span class="text-[10px] shrink-0 mt-0.5" style="color:rgba(122,175,196,0.65);">{c.date.split(' ').slice(-2).join(' ')}</span>
+              <span class="text-[11px] font-semibold shrink-0 mt-0.5 tracking-wide" style="color:rgba(122,175,196,0.60);">{c.date.split(' ').slice(-2).join(' ')}</span>
             </div>
+
+            <!-- Divider -->
+            <div style="height:1px; background:rgba(122,175,196,0.08); margin-bottom:1.25rem;"></div>
 
             <!-- Service badges -->
             <div class="flex flex-wrap gap-2">
@@ -104,9 +100,17 @@ const serviceTextColors: Record<string, string> = {
               ))}
             </div>
           </div>
+
+          <!-- Full-card hover overlay -->
+          <div class="case-overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="border-radius: 1.5rem;">
+            <span class="view-btn px-5 py-2.5 rounded-xl text-xs font-semibold tracking-[0.12em] uppercase"
+              style="background: rgba(122,175,196,0.92); color: #08090B; backdrop-filter: blur(4px);">
+              Bekijk details
+            </span>
+          </div>
         </article>
       ))}
-    </div>
+    </div><!-- end cases-grid-layout -->
 
     <!-- View all link -->
     <div class="flex justify-center mt-16" data-animate>
@@ -138,33 +142,34 @@ const serviceTextColors: Record<string, string> = {
   <div id="case-modal" class="modal-card relative w-full max-w-3xl rounded-2xl overflow-hidden flex flex-col max-h-[90vh]">
 
     <!-- Header -->
-    <div class="modal-header flex items-start justify-between p-6 pb-4" style="border-bottom: 1px solid rgba(122,175,196,0.1);">
+    <div class="modal-header flex items-start justify-between" style="padding: 2rem 2.5rem 1.75rem; border-bottom: 1px solid rgba(122,175,196,0.1);">
       <div>
-        <p class="text-dts-blue text-[10px] font-semibold tracking-[0.25em] uppercase mb-1.5" id="modal-type"></p>
-        <h3 class="text-xl font-black text-white" id="modal-model"></h3>
-        <p class="text-sm mt-1" style="color: #7A8A94;" id="modal-meta"></p>
+        <p class="text-[10px] font-semibold tracking-[0.28em] uppercase" style="color: #7AAFC4; margin-bottom: 0.5rem;" id="modal-type"></p>
+        <h3 class="text-2xl font-black text-white leading-tight" style="margin-bottom: 0.4rem;" id="modal-model"></h3>
+        <p class="text-sm" style="color: #7A8A94;" id="modal-meta"></p>
       </div>
       <button
         id="modal-close"
-        class="modal-close-btn shrink-0 ml-4 p-2 rounded-lg transition-colors duration-200"
+        class="modal-close-btn shrink-0 p-2.5 rounded-xl transition-colors duration-200"
+        style="margin-top: 0.25rem; margin-left: 1.5rem;"
         aria-label="Sluit modal"
       >
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
           <path d="M1 1l16 16M17 1L1 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
       </button>
     </div>
 
     <!-- Body -->
-    <div class="modal-body overflow-y-auto flex-1 p-6">
+    <div class="modal-body overflow-y-auto flex-1" style="padding: 2rem 2.5rem 2.5rem;">
 
       <!-- Before / After image tabs -->
-      <div class="ba-container mb-6">
-        <div class="flex gap-1 mb-3">
+      <div style="margin-bottom: 2.5rem;">
+        <div class="flex gap-1.5" style="margin-bottom: 1rem;">
           <button class="ba-tab-btn active" data-tab="before">Voor service</button>
           <button class="ba-tab-btn" data-tab="after">Na service</button>
         </div>
-        <div class="ba-image-wrap relative aspect-[16/9] rounded-xl overflow-hidden">
+        <div class="ba-image-wrap relative aspect-[16/9] rounded-2xl overflow-hidden">
           <div id="modal-before-img" class="ba-panel absolute inset-0 active">
             <div class="ba-placeholder w-full h-full flex flex-col items-center justify-center gap-3">
               <div class="ba-grid absolute inset-0"></div>
@@ -192,22 +197,28 @@ const serviceTextColors: Record<string, string> = {
         </div>
       </div>
 
+      <!-- Divider -->
+      <div style="height: 1px; background: rgba(122,175,196,0.08); margin-bottom: 2rem;"></div>
+
       <!-- Services -->
-      <div class="mb-5">
-        <p class="text-[10px] font-semibold tracking-[0.25em] uppercase mb-3" style="color: #7A8A94;">Uitgevoerde werkzaamheden</p>
-        <div id="modal-services" class="flex flex-wrap gap-2"></div>
+      <div style="margin-bottom: 2rem;">
+        <p class="text-[10px] font-semibold tracking-[0.28em] uppercase" style="color: #7A8A94; margin-bottom: 1rem;">Uitgevoerde werkzaamheden</p>
+        <div id="modal-services" class="flex flex-wrap gap-2.5"></div>
       </div>
 
+      <!-- Divider -->
+      <div style="height: 1px; background: rgba(122,175,196,0.08); margin-bottom: 2rem;"></div>
+
       <!-- Notes -->
-      <div class="modal-notes rounded-xl p-5">
-        <p class="text-[10px] font-semibold tracking-[0.25em] uppercase mb-3" style="color: #7A8A94;">Technische notities</p>
-        <p id="modal-notes-text" class="text-sm leading-relaxed" style="color: rgba(184,196,204,0.75);"></p>
+      <div class="modal-notes rounded-2xl" style="padding: 1.75rem;">
+        <p class="text-[10px] font-semibold tracking-[0.28em] uppercase" style="color: #7A8A94; margin-bottom: 1rem;">Technische notities</p>
+        <p id="modal-notes-text" class="text-sm leading-relaxed" style="color: rgba(184,196,204,0.80);"></p>
       </div>
 
       <!-- Footer: DTS cert mark -->
-      <div class="flex items-center justify-between mt-6 pt-5" style="border-top: 1px solid rgba(122,175,196,0.1);">
-        <span class="text-xs font-black tracking-wider" style="background: linear-gradient(135deg, #9BC5D8, #7AAFC4, #B8C4CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">DTS</span>
-        <span class="text-[10px]" style="color: rgba(122,175,196,0.45);">Dutch Torque Service — ISO 6789:2017 gecertificeerd</span>
+      <div class="flex items-center justify-between" style="margin-top: 2rem; padding-top: 1.75rem; border-top: 1px solid rgba(122,175,196,0.1);">
+        <span class="text-sm font-black tracking-widest" style="background: linear-gradient(135deg, #9BC5D8, #7AAFC4, #B8C4CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">DTS</span>
+        <span class="text-[11px]" style="color: rgba(122,175,196,0.50);">Dutch Torque Service — ISO 6789:2017 gecertificeerd</span>
       </div>
     </div>
   </div>
@@ -220,39 +231,49 @@ const serviceTextColors: Record<string, string> = {
     background: transparent;
   }
 
-  /* Case card — no CSS hover transform (prevents flicker; handled by GSAP) */
+  /* Custom grid — overrides page-grid for more generous gaps */
+  .cases-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 640px)  { .cases-grid-layout { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .cases-grid-layout { grid-template-columns: repeat(3, 1fr); } }
+
+  /* Case card */
   .case-card {
-    background: transparent;
-    border: 1px solid rgba(122, 175, 196, 0.1);
-    border-radius: 1rem;
-    overflow: visible; /* allow GSAP transform to escape */
+    background: #0D1017;
+    border: 1px solid rgba(122, 175, 196, 0.14);
+    border-radius: 1.5rem;
+    overflow: visible;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     will-change: transform;
   }
   .case-card.card-hovered {
-    border-color: rgba(122, 175, 196, 0.32);
-    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45), 0 0 24px rgba(122, 175, 196, 0.09);
+    border-color: rgba(122, 175, 196, 0.35);
+    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.60), 0 0 0 1px rgba(122, 175, 196, 0.08);
   }
   /* Clip inner content to card radius */
-  .case-card > .case-image { border-radius: 1rem 1rem 0 0; overflow: hidden; }
+  .case-card > .case-image { border-radius: 1.5rem 1.5rem 0 0; overflow: hidden; }
   .case-card:focus-visible {
     outline: 2px solid rgba(122, 175, 196, 0.6);
     outline-offset: 2px;
   }
 
   .case-placeholder {
-    background: #0E1118;
+    background: #090B0F;
   }
   .case-grid {
     background-image:
-      linear-gradient(rgba(122,175,196,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(122,175,196,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(122,175,196,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,175,196,0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   .case-info {
     background: transparent;
-    border-top: 1px solid rgba(122, 175, 196, 0.07);
+    border-top: 1px solid rgba(122, 175, 196, 0.08);
   }
 
   .case-overlay {

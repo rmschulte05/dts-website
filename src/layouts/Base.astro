@@ -29,21 +29,31 @@ const {
       import { ScrollTrigger } from 'gsap/ScrollTrigger';
       gsap.registerPlugin(ScrollTrigger);
 
-      // Global scroll-reveal for any [data-animate] element
+      // Global scroll-reveal — fromTo so GSAP owns both states explicitly
       document.querySelectorAll('[data-animate]').forEach((el) => {
-        const delay  = parseFloat((el as HTMLElement).dataset.animateDelay ?? '0');
-        const from   = (el as HTMLElement).dataset.animateFrom ?? 'bottom';
-        const fromVars: Record<string, unknown> = { opacity: 0, duration: 0.9, delay, ease: 'power3.out' };
-        if (from === 'bottom') fromVars.y = 48;
-        if (from === 'left')   fromVars.x = -48;
-        if (from === 'right')  fromVars.x = 48;
-        if (from === 'scale')  fromVars.scale = 0.92;
+        const delay = parseFloat((el as HTMLElement).dataset.animateDelay ?? '0');
+        const dir   = (el as HTMLElement).dataset.animateFrom ?? 'bottom';
 
-        gsap.from(el, {
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
-          ...fromVars,
-        });
+        const fromVars: Record<string, unknown> = { opacity: 0 };
+        const toVars:   Record<string, unknown> = { opacity: 1, duration: 0.85, delay, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 96%',
+            toggleActions: 'play none none none',
+            once: true,
+          }
+        };
+
+        if (dir === 'bottom') { fromVars.y = 40; toVars.y = 0; }
+        if (dir === 'left')   { fromVars.x = -40; toVars.x = 0; }
+        if (dir === 'right')  { fromVars.x = 40;  toVars.x = 0; }
+        if (dir === 'scale')  { fromVars.scale = 0.94; toVars.scale = 1; }
+
+        gsap.fromTo(el, fromVars, toVars);
       });
+
+      // Fire triggers for elements already in view on load
+      ScrollTrigger.refresh();
     </script>
   </body>
 </html>
