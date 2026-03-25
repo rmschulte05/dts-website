@@ -4,23 +4,95 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  canonicalPath?: string;  // e.g. "/" or "/werk"
 }
 const {
   title,
   description = 'Dutch Torque Service — Professionele kalibratie en service van momentsleutels',
+  canonicalPath,
 } = Astro.props;
+
+const siteBase = 'https://www.dutchtorqueservice.nl';
+const canonicalURL = siteBase + (canonicalPath ?? '/');
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.dutchtorqueservice.nl/#business",
+  "name": "Dutch Torque Service",
+  "description": "Professionele momentsleutel kalibratie, reparatie en certificering conform ISO 6789. Geautoriseerd Snap-On dealer.",
+  "url": "https://www.dutchtorqueservice.nl",
+  "telephone": "+31613172774",
+  "email": "info@dutchtorqueservice.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tonterstraat 42",
+    "addressLocality": "Riethoven",
+    "postalCode": "5561 AN",
+    "addressCountry": "NL",
+    "addressRegion": "Noord-Brabant"
+  },
+  "areaServed": ["Nederland", "België", "Duitsland"],
+  "serviceType": ["Momentsleutel kalibratie", "Momentsleutel reparatie", "ISO 6789 certificering", "Momentsleutel justeren"],
+  "openingHours": "Mo-Fr 08:00-17:00",
+  "priceRange": "€€",
+  "sameAs": []
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.dutchtorqueservice.nl/#website",
+  "url": "https://www.dutchtorqueservice.nl",
+  "name": "Dutch Torque Service",
+  "description": "Specialist in momentsleutel kalibratie, reparatie en certificering conform ISO 6789",
+  "inLanguage": "nl-NL"
+};
 ---
 <!DOCTYPE html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08090B" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Dutch Torque Service" />
+    <meta name="geo.region" content="NL-NB" />
+    <meta name="geo.placename" content="Riethoven, Noord-Brabant" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:site_name" content="Dutch Torque Service" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Structured data — LocalBusiness + WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify([localBusinessSchema, websiteSchema])} />
+
+    <!-- Per-page structured data slot -->
+    <slot name="head" />
   </head>
   <body>
     <slot />

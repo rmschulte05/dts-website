@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "ISO 6789 Type I en Type II: wat is het verschil?",
+  "description": "Heldere uitleg over ISO 6789 Type I (indicerend) en Type II (instellend) momentsleutels. Wanneer gebruik je welk type? Wat zijn de kalibratie-eisen?",
+  "author": { "@type": "Organization", "name": "Dutch Torque Service", "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "publisher": { "@type": "Organization", "name": "Dutch Torque Service", "url": "https://www.dutchtorqueservice.nl" },
+  "datePublished": "2026-03-25",
+  "url": "https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd",
+  "inLanguage": "nl-NL"
+};
+---
+
+<BlogLayout
+  title="ISO 6789 Type I en Type II: wat is het verschil? | DTS"
+  description="Heldere uitleg over ISO 6789 Type I (indicerend) en Type II (instellend) momentsleutels. Wanneer gebruik je welk type? Wat zijn de kalibratie-eisen? Door Dutch Torque Service."
+  canonicalPath="/blog/iso-6789-type-1-type-2-uitgelegd"
+  headline="ISO 6789 Type I en Type II: wat is het verschil?"
+  category="Norm & Certificering"
+  readTime="6 min"
+  publishDate="25 maart 2026"
+  excerpt="Als je gereedschap laat kalibreren kom je altijd Type I en Type II tegen. Het onderscheid bepaalt hoe je sleutel gecalibreerd wordt. Hier is de heldere uitleg."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <div class="prose">
+    <p>Als je gereedschap laat kalibreren conform ISO 6789, kom je altijd het onderscheid tussen Type I en Type II tegen. Het onderscheid bepaalt hoe jouw sleutel gecalibreerd wordt — en wat er in het certificaat staat. Hieronder leggen we het helder uit.</p>
+
+    <h2>De twee hoofdcategorieën</h2>
+    <p><a href="https://www.iso.org/standard/66335.html" target="_blank" rel="noopener noreferrer">ISO 6789:2017</a> verdeelt momentsleutels in twee hoofdtypen op basis van hun functie:</p>
+    <table>
+      <thead><tr><th></th><th>Type I — Indicerend</th><th>Type II — Instellend</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Functie</strong></td><td>Toont het toegepaste koppel terwijl je draait</td><td>Geeft een signaal als het ingestelde koppel bereikt is</td></tr>
+        <tr><td><strong>Voorbeelden</strong></td><td>Balkmonteur, digitale koppelmeter</td><td>Kliksleutel, voorinstelbare sleutel</td></tr>
+        <tr><td><strong>Aflezing</strong></td><td>Schaal, wijzer of display</td><td>Klik, piep of digitaal signaal</td></tr>
+        <tr><td><strong>Gebruik</strong></td><td>Controleren, monitoren, reverse engineering</td><td>Productie, assemblage, eindafstelling</td></tr>
+        <tr><td><strong>Nauwkeurigheidseis</strong></td><td>±4% van de nominale waarde</td><td>±4% van de ingestelde waarde</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Type I — Indicerende momentsleutels</h2>
+    <p>Type I instrumenten tonen het koppel continu tijdens gebruik. Er zijn drie subcategorieën:</p>
+    <ul>
+      <li><strong>Type IA — balksleutel:</strong> De klassieke staafveer. Meest directe en minst slijtgevoelige uitvoering — geen mechanisch klikmechanisme dat slijt.</li>
+      <li><strong>Type IB — wijzerplaatsleutel:</strong> Analoge weergave via wijzerplaat. Goed leesbaar, geschikt voor controlemetingen en kwaliteitscontrole.</li>
+      <li><strong>Type IC — digitale indicerende sleutel:</strong> Digitaal display, vaak met geheugen en data-outputfunctie voor traceerbaarheid en rapportage.</li>
+    </ul>
+    <div class="callout"><p><strong>Type IA balksleutels</strong> zijn de minst onderhoudsgevoelige variant — er is geen mechanisch klikmechanisme dat op termijn vermoeid. Ideaal voor bedrijven die willen minimaliseren op onderhoud.</p></div>
+
+    <h2>Type II — Instellende momentsleutels</h2>
+    <p>Type II instrumenten worden vooraf ingesteld op een doelkoppel en geven een signaal wanneer dat bereikt is. Dit is verreweg het meest gebruikte type in werkplaatsen. Subcategorieën:</p>
+    <ul>
+      <li><strong>Type IIA — enkelvoudig instelbaar:</strong> Vaste fabrieksinstelling, niet door de gebruiker aanpasbaar.</li>
+      <li><strong>Type IIB — kliksleutel met micrometer-instelling:</strong> De meest gebruikte werkplaatssleutel. Verstelbaar over het volledige bereik via een micrometer.</li>
+      <li><strong>Type IIC — kliksleutel met schaalinstelling:</strong> Vergelijkbaar met IIB; instelling via een schaal op de behuizing.</li>
+      <li><strong>Type IID — elektronische kliksleutel:</strong> Digitale instelling, vaak met signaalgeheugen en datalogging voor traceerbaarheid.</li>
+    </ul>
+
+    <h2>Wat betekent dit voor kalibratie?</h2>
+    <table>
+      <thead><tr><th></th><th>Type I</th><th>Type II</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Meetpunten</strong></td><td>Min. 5 over het volledige bereik</td><td>Min. 5 bij het ingestelde punt</td></tr>
+        <tr><td><strong>Herhalingen per punt</strong></td><td>Min. 3</td><td>Min. 5</td></tr>
+        <tr><td><strong>Draairichting</strong></td><td>Alleen actieve richting</td><td>Alleen actieve richting</td></tr>
+        <tr><td><strong>Certificaat</strong></td><td>Protocol met alle meetpunten over bereik</td><td>Protocol per ingesteld meetpunt</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Video — het verschil in de praktijk</h2>
+    <div class="video-embed">
+      <div class="video-embed-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="opacity:0.35;"><circle cx="12" cy="12" r="10" stroke="#7AAFC4" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="#7AAFC4" opacity="0.6"/></svg>
+        <p style="color:rgba(122,175,196,0.5); font-size:0.8rem; text-align:center; margin:0;">Video: Type I vs Type II momentsleutels uitgelegd<br/><span style="font-size:0.7rem; opacity:0.7;">Voeg YouTube embed-ID toe</span></p>
+      </div>
+    </div>
+
+    <h2>Welk type heeft jouw werkplaats?</h2>
+    <ul>
+      <li>Klikt jouw sleutel bij een bepaald koppel? → <strong>Type II</strong></li>
+      <li>Kun je de koppelwaarde aflezen terwijl je draait? → <strong>Type I</strong></li>
+      <li>Is de instelling vast en niet aanpasbaar? → <strong>Type IIA</strong></li>
+      <li>Heeft jouw sleutel een micrometer-instelling? → <strong>Type IIB</strong></li>
+    </ul>
+
+    <h2>Veelgestelde vragen</h2>
+    <details>
+      <summary>Is Type I nauwkeuriger dan Type II?</summary>
+      <div class="details-body"><p>In theorie zijn de nauwkeurigheidseisen gelijk (±4%). In de praktijk zijn balksleutels (Type IA) minder gevoelig voor slijtage omdat er geen klikmechanisme is dat op termijn vermoeid raakt.</p></div>
+    </details>
+    <details>
+      <summary>Mijn kliksleutel — is dat Type IIB of IIC?</summary>
+      <div class="details-body"><p>Als je hem kunt instellen met een draaiknop die lijkt op een micrometer (met mm-markering), is het IIB. Als er een cilinder met schaalmarkering is, is het IIC. Beide werken hetzelfde kalibratieschema.</p></div>
+    </details>
+    <details>
+      <summary>Kalibreren jullie alle subcategorieën?</summary>
+      <div class="details-body"><p>Ja. Wij kalibreren alle Type I en Type II subcategorieën conform ISO 6789:2017, voor alle gangbare merken.</p></div>
+    </details>
+    <details>
+      <summary>Mijn sleutel heeft zowel een klik als een display — welk type is dat?</summary>
+      <div class="details-body"><p>Waarschijnlijk Type IID — een elektronische kliksleutel. Het display toont het doelkoppel en de sleutel klikt bij bereik. Wij kalibreren ook dit type.</p></div>
+    </details>
+    <details>
+      <summary>Staat het type op mijn kalibratiecertificaat?</summary>
+      <div class="details-body"><p>Ja. Ons DTS-certificaat vermeldt het instrumenttype (I of II) en de subcategorie, naast alle meetwaarden en de referentieapparatuur.</p></div>
+    </details>
+
+    <div class="article-cta">
+      <h3>Wil je weten welk type jouw momentsleutel is — of wanneer hij voor het laatst gekalibreerd is?</h3>
+      <p>Bekijk onze <a href="/diensten/momentsleutel-kalibratie">kalibratie service</a> of <a href="/diensten/iso-6789-certificering">ISO 6789 certificering</a> — of bel ons direct.</p>
+      <a href="tel:+31613172774" class="btn btn-primary">+31(0)6-131 72 774</a>
+    </div>
+  </div>
+</BlogLayout>

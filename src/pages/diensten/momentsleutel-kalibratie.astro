@@ -1,0 +1,559 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavIsland from '../../components/modules/NavIsland.astro';
+import FooterDTS from '../../components/modules/FooterDTS.astro';
+
+const accent = '#7AAFC4';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Momentsleutel Kalibratie",
+  "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "description": "Professionele momentsleutel kalibratie op 5 meetpunten conform ISO 6789:2017. Volledig protocol, binnen 48 uur.",
+  "areaServed": "NL",
+  "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie"
+};
+
+const steps = [
+  {
+    n: '01',
+    title: 'Ontvangst & registratie',
+    body: 'We registreren jouw sleutel met merk, type, serienummer en het te kalibreren bereik.',
+  },
+  {
+    n: '02',
+    title: 'Visuele inspectie',
+    body: 'Controle op mechanische schade, slijtage of corrosie vóór de meting.',
+  },
+  {
+    n: '03',
+    title: 'As-found meting',
+    body: 'Kalibratie op 5 meetpunten (≥20%, 40%, 60%, 80%, 100% van het bereik) voor de ingreep. Drie herhalingen per punt.',
+  },
+  {
+    n: '04',
+    title: 'Justering indien nodig',
+    body: 'Als de afwijking buiten tolerantie valt, stellen wij de sleutel opnieuw in voordat de as-left meting plaatsvindt.',
+  },
+  {
+    n: '05',
+    title: 'Protocol & certificaat',
+    body: 'Volledig kalibratieprotocol met as-found, as-left, gebruikte referentieapparatuur en aanbevolen volgend kalibratieinterval.',
+  },
+];
+
+const included = [
+  { item: 'As-found meting',        detail: 'Meetwaarden vóór ingreep, 5 punten × 3 herhalingen' },
+  { item: 'As-left meting',         detail: 'Meetwaarden na ingreep' },
+  { item: 'Referentieapparatuur',   detail: 'Traceerbaar, eigen kalibratiestatus vermeld' },
+  { item: 'Kalibratiecertificaat',  detail: 'Conform ISO 6789:2017' },
+  { item: 'Volgende kalibratietermijn', detail: 'Aanbeveling op basis van gebruik' },
+  { item: 'E-mail bevestiging',     detail: 'Direct na afronding' },
+];
+
+const whyCards = [
+  {
+    accent: '#7AAFC4',
+    icon: '±2%',
+    title: '±2% Gegarandeerd',
+    body: 'Elk instrument wordt gekalibreerd binnen de ±2% tolerantie conform ISO 6789. Onze referentieapparatuur is volledig traceerbaar.',
+  },
+  {
+    accent: '#C4AF64',
+    icon: '✦',
+    title: 'Snap-On Dealer Expertise',
+    body: 'Als geautoriseerd Snap-On dealer beschikken we over de diepste tool-expertise en de juiste referentieapparatuur voor precisiewerk.',
+  },
+  {
+    accent: '#64C48A',
+    icon: '48u',
+    title: '48-uurs doorlooptijd',
+    body: 'Standaard binnen 48 uur na ontvangst terug — gecalibreerd, gecertificeerd en klaar voor gebruik.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Hoeveel meetpunten gebruikt u bij kalibratie?',
+    a: '5 punten: 20%, 40%, 60%, 80% en 100% van het nominale bereik, met minimaal 3 herhalingen per punt.',
+  },
+  {
+    q: 'Welke typen momentsleutels kalibreren jullie?',
+    a: 'Alle Type I (indicerend) en Type II (instellend) instrumenten, conform ISO 6789. Van balksleutels tot digitale kliksleutels.',
+  },
+  {
+    q: 'Moet ik mijn sleutel opsturen of kunnen jullie op locatie kalibreren?',
+    a: 'Opsturen is de standaardprocedure. Neem contact op voor locatieservice bij grotere hoeveelheden.',
+  },
+  {
+    q: 'Hoe snel ontvang ik mijn certificaat?',
+    a: 'Binnen 48 uur na ontvangst van je sleutel sturen wij je het certificaat per e-mail.',
+  },
+  {
+    q: 'Mijn kwaliteitshandboek vereist ISO-kalibratie — voldoen jullie hieraan?',
+    a: 'Ja. Wij kalibreren conform ISO 6789:2017 type I en II, met volledig traceerbare referentieapparatuur en een geldig certificaat.',
+  },
+];
+---
+
+<Base
+  title="Momentsleutel Kalibratie | Dutch Torque Service — ISO 6789 Gecertificeerd"
+  description="Professionele momentsleutel kalibratie op 5 meetpunten conform ISO 6789:2017. Binnen 48 uur klaar, volledig protocol inbegrepen. Snap-On dealer. Bel +31(0)6-13172774."
+  canonicalPath="/diensten/momentsleutel-kalibratie"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <NavIsland currentPage="diensten" />
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="page-wrap hero-section">
+      <div class="page-container">
+        <div class="hero-inner">
+          <!-- Eyebrow -->
+          <div class="eyebrow-row" data-animate>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Diensten</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+
+          <h1 class="hero-h1" data-animate data-animate-delay="0.08">
+            Momentsleutel Kalibratie.
+          </h1>
+
+          <p class="hero-subtitle" data-animate data-animate-delay="0.16">
+            Professionele kalibratie op 5 meetpunten conform ISO 6789:2017.<br />
+            Volledig protocol inbegrepen — binnen 48 uur terug.
+          </p>
+
+          <div class="hero-ctas" data-animate data-animate-delay="0.22">
+            <a href="/contact" class="btn btn-primary">Plan kalibratie</a>
+            <a href="/werk" class="btn btn-outline">Bekijk werk</a>
+          </div>
+
+          <!-- Stats badges -->
+          <div class="hero-badges" data-animate data-animate-delay="0.30">
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">±2% Nauwkeurig</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">48u Doorlooptijd</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">ISO 6789:2017</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WHAT IS IT?
+    ══════════════════════════════════════ -->
+    <section class="page-wrap">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Wat is kalibratie?</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Kalibratie uitgelegd.</h2>
+        </div>
+
+        <div class="two-col-text" data-animate data-animate-delay="0.08">
+          <div class="def-card">
+            <p class="body-text">
+              Kalibratie is het vergelijken van de uitkomst van jouw meetinstrument met een traceerbare referentie. Bij momentsleutels betekent dit: meten wat je sleutel werkelijk levert op meerdere punten over het volledige bereik, en dit documenteren in een protocol. Dit is iets anders dan justeren (corrigeren) of ijken (officieel vaststellen).
+            </p>
+            <p class="body-text" style="margin-top:1.25rem;">
+              ISO 6789:2017 schrijft voor hoe momentsleutels gekalibreerd moeten worden — hoeveel meetpunten, hoeveel herhalingen per punt, welke toleranties gelden, en hoe het certificaat er uit moet zien. Wij werken volledig conform deze norm.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         PROCESS
+    ══════════════════════════════════════ -->
+    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons proces</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Van ontvangst tot certificaat.</h2>
+        </div>
+
+        <div class="steps-grid">
+          {steps.map((step, i) => (
+            <div class="step-card" data-animate data-animate-delay={String(i * 0.08)}>
+              <div class="step-number" style={`color:${accent};`}>{step.n}</div>
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-body">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WHAT'S INCLUDED
+    ══════════════════════════════════════ -->
+    <section class="page-wrap">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Inbegrepen</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Wat zit er standaard bij?</h2>
+        </div>
+
+        <div class="table-wrap" data-animate data-animate-delay="0.08">
+          <table class="incl-table">
+            <thead>
+              <tr>
+                <th>Inbegrepen</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {included.map(row => (
+                <tr>
+                  <td>
+                    <span class="incl-check" style={`color:${accent};`}>✓</span>
+                    {row.item}
+                  </td>
+                  <td class="incl-detail">{row.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WHY DTS
+    ══════════════════════════════════════ -->
+    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Waarom DTS?</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Drie redenen om voor DTS te kiezen.</h2>
+        </div>
+
+        <div class="why-grid">
+          {whyCards.map((card, i) => (
+            <div class="why-card" data-animate data-animate-delay={String(i * 0.10)} style={`border-color:rgba(${card.accent === '#7AAFC4' ? '122,175,196' : card.accent === '#C4AF64' ? '196,175,100' : '100,196,138'},0.14);`}>
+              <div class="why-icon" style={`color:${card.accent};`}>{card.icon}</div>
+              <h3 class="why-title" style={`color:${card.accent};`}>{card.title}</h3>
+              <p class="why-body">{card.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════ -->
+    <section class="page-wrap">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Veelgestelde vragen.</h2>
+        </div>
+
+        <div class="faq-list" data-animate data-animate-delay="0.08">
+          {faq.map(item => (
+            <details>
+              <summary>{item.q}</summary>
+              <div class="faq-body">{item.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CTA
+    ══════════════════════════════════════ -->
+    <section class="page-wrap cta-section">
+      <div class="page-container">
+        <div class="cta-inner" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Direct starten</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Klaar om te beginnen?</h2>
+          <p class="body-text cta-body">
+            Bel ons direct of stuur een e-mail. Wij plannen jouw kalibratie binnen 48 uur in.
+          </p>
+          <div class="cta-btns">
+            <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
+            <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">Stuur een e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <FooterDTS />
+
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .hero-section {
+    padding-top: clamp(7rem, 14vw, 11rem);
+  }
+  .hero-inner {
+    max-width: 780px;
+  }
+  .eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.25rem;
+  }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: #8EAAB8;
+    margin-bottom: 2rem;
+    max-width: 60ch;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+
+  /* ── Section common ── */
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  .section-h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #E8F0F4;
+    margin-top: 0.75rem;
+  }
+  .body-text {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+
+  /* ── What is it ── */
+  .def-card {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 820px;
+  }
+
+  /* ── Steps ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .step-card {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+  }
+  .step-number {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #E8F0F4;
+    margin-bottom: 0.625rem;
+  }
+  .step-body {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: #8EAAB8;
+  }
+
+  /* ── Included table ── */
+  .table-wrap {
+    overflow-x: auto;
+  }
+  .incl-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .incl-table thead th {
+    text-align: left;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    padding: 0 1rem 1rem 1rem;
+    border-bottom: 1px solid rgba(122,175,196,0.12);
+  }
+  .incl-table tbody tr {
+    border-bottom: 1px solid rgba(122,175,196,0.07);
+    transition: background 0.15s;
+  }
+  .incl-table tbody tr:hover {
+    background: rgba(122,175,196,0.04);
+  }
+  .incl-table tbody td {
+    padding: 1rem;
+    color: #C8D8E0;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+  .incl-check {
+    margin-right: 0.625rem;
+    font-weight: 700;
+  }
+  .incl-detail {
+    color: #6A8A98 !important;
+    font-weight: 400 !important;
+    font-size: 0.85rem;
+  }
+
+  /* ── Why DTS ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .why-card {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .why-card:hover {
+    border-color: rgba(122,175,196,0.30);
+  }
+  .why-icon {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+  .why-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.625rem;
+  }
+  .why-body {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: #8EAAB8;
+  }
+
+  /* ── FAQ ── */
+  .faq-list {
+    max-width: 820px;
+  }
+  details {
+    border: 1px solid rgba(122,175,196,0.12);
+    border-radius: 1rem;
+    background: #0E1118;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  details[open] {
+    border-color: rgba(122,175,196,0.30);
+  }
+  summary {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: #E8F0F4;
+    font-size: 0.975rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    color: #7AAFC4;
+    font-size: 1.25rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  .faq-body {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+  .faq-body a { color: #7AAFC4; text-decoration: underline; }
+
+  /* ── CTA ── */
+  .cta-section {
+    border-top: 1px solid rgba(122,175,196,0.08);
+  }
+  .cta-inner {
+    max-width: 680px;
+    text-align: center;
+    margin-inline: auto;
+  }
+  .cta-inner .eyebrow-row {
+    justify-content: center;
+  }
+  .cta-body {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  .cta-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    justify-content: center;
+  }
+</style>

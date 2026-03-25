@@ -1,0 +1,502 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavIsland from '../../components/modules/NavIsland.astro';
+import FooterDTS from '../../components/modules/FooterDTS.astro';
+
+const accent = '#7AAFC4';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Momentsleutel Justeren",
+  "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "description": "Professioneel momentsleutel justeren op de juiste Newton-meterwaarden conform ISO 6789. Snel en gecertificeerd.",
+  "areaServed": "NL",
+  "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren"
+};
+
+const steps = [
+  {
+    n: '01',
+    title: 'Inspectie',
+    body: 'Visuele en mechanische inspectie van de sleutel. Schade, slijtage of interne beschadigingen worden in kaart gebracht.',
+  },
+  {
+    n: '02',
+    title: 'Justering',
+    body: 'Herinstelling van de sleutel op de correcte Newton-meterwaarden conform de fabrieksspecificatie.',
+  },
+  {
+    n: '03',
+    title: 'Kalibratie & certificaat',
+    body: 'Meting na justering op 5 meetpunten conform ISO 6789:2017. Volledig protocol met as-left waarden en geldig certificaat.',
+  },
+];
+
+const adviesTable = [
+  { situatie: 'Kleine afwijking (< 6%), geen mechanische schade', aanpak: 'Justeren + hercalibratie' },
+  { situatie: 'Grote afwijking of click voelt anders', aanpak: 'Reparatie + justering + kalibratie' },
+  { situatie: 'Sleutel is gevallen zonder zichtbare schade', aanpak: 'Justeren + kalibreren (interne schade mogelijk)' },
+];
+
+const faq = [
+  {
+    q: 'Is justeren hetzelfde als kalibreren?',
+    a: 'Nee. Kalibreren = meten en documenteren. Justeren = corrigeren. Na het justeren voeren wij altijd een kalibratie uit om de nieuwe waarden te documenteren.',
+  },
+  {
+    q: 'Hoe weet ik of mijn sleutel ge-justeerd moet worden?',
+    a: 'Als de kalibratie een afwijking buiten de ISO-tolerantie aantoont, is justering nodig. Signalen zijn ook: klik te vroeg/laat, val, of overbelasting.',
+  },
+  {
+    q: 'Hoeveel kost justeren?',
+    a: 'Afhankelijk van type en merk. Neem contact op voor een snelle prijsindicatie.',
+  },
+];
+---
+
+<Base
+  title="Momentsleutel Justeren | Dutch Torque Service — Snel & Gecertificeerd"
+  description="Momentsleutel buiten tolerantie? Wij stellen hem opnieuw in op de juiste Newton-meterwaarden. Snel justeren conform ISO 6789. Bel +31(0)6-13172774."
+  canonicalPath="/diensten/momentsleutel-justeren"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <NavIsland currentPage="diensten" />
+
+  <main>
+
+    <!-- ══════════════════════════════════════
+         HERO
+    ══════════════════════════════════════ -->
+    <section class="page-wrap hero-section">
+      <div class="page-container">
+        <div class="hero-inner">
+          <!-- Eyebrow -->
+          <div class="eyebrow-row" data-animate>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Justeren</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+
+          <h1 class="hero-h1" data-animate data-animate-delay="0.08">
+            Momentsleutel Justeren.
+          </h1>
+
+          <p class="hero-subtitle" data-animate data-animate-delay="0.16">
+            Sleutel buiten tolerantie door slijtage of een incident? Wij stellen hem opnieuw in op de juiste Newton-meterwaarden — snel, conform ISO 6789.
+          </p>
+
+          <div class="hero-ctas" data-animate data-animate-delay="0.22">
+            <a href="/contact" class="btn btn-primary">Plan justering</a>
+            <a href="/diensten/momentsleutel-kalibratie" class="btn btn-outline">Meer over kalibratie</a>
+          </div>
+
+          <!-- Stats badges -->
+          <div class="hero-badges" data-animate data-animate-delay="0.30">
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">±2% Nauwkeurig</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Binnen 48u</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Conform ISO 6789</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WHAT IS JUSTEREN?
+    ══════════════════════════════════════ -->
+    <section class="page-wrap">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Wat is justeren?</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Justeren versus kalibreren.</h2>
+        </div>
+
+        <div class="two-col-text" data-animate data-animate-delay="0.08">
+          <div class="def-card">
+            <p class="body-text">
+              <strong style="color:#C8D8E0;">Justeren</strong> betekent het corrigeren van de afwijking — het bijstellen van de sleutel zodat hij weer nauwkeurig de ingestelde kracht levert. <strong style="color:#C8D8E0;">Kalibreren</strong> is het meten en documenteren van de werkelijke waarden, zonder per se een correctie uit te voeren. Meer over het verschil: <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">wat is kalibratie?</a>
+            </p>
+            <p class="body-text" style="margin-top:1.25rem;">
+              Na elke justering voeren wij altijd een volledige kalibratie uit conform ISO 6789:2017 en leveren wij een certificaat met de as-left meetwaarden. Zo weet u zeker dat de sleutel na de ingreep binnen de voorgeschreven tolerantie valt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         WHEN DO YOU NEED IT?
+    ══════════════════════════════════════ -->
+    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Wanneer nodig?</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Wanneer is justeren nodig?</h2>
+        </div>
+
+        <div class="def-card" data-animate data-animate-delay="0.08">
+          <p class="body-text" style="margin-bottom:1.25rem;">
+            Justering is aangewezen in de volgende situaties:
+          </p>
+          <ul class="needs-list">
+            <li>Na een <strong style="color:#C8D8E0;">val</strong> — ook zonder zichtbare schade kan de interne mechaniek verschoven zijn</li>
+            <li>Na <strong style="color:#C8D8E0;">overbelasting</strong> — het aanzetten boven de maximale torquewaarde</li>
+            <li>Als kalibratie een <strong style="color:#C8D8E0;">afwijking buiten ISO-tolerantie</strong> aantoont</li>
+            <li>Als de klik <strong style="color:#C8D8E0;">te vroeg of te laat</strong> voelt bij gebruik</li>
+            <li>Na langdurige opslag of intensief gebruik zonder onderhoud</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         PROCESS
+    ══════════════════════════════════════ -->
+    <section class="page-wrap">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons proces</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">In 3 stappen terug op norm.</h2>
+        </div>
+
+        <div class="steps-grid">
+          {steps.map((step, i) => (
+            <div class="step-card" data-animate data-animate-delay={String(i * 0.08)}>
+              <div class="step-number" style={`color:${accent};`}>{step.n}</div>
+              <h3 class="step-title">{step.title}</h3>
+              <p class="step-body">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         JUSTEREN OR REPAREREN TABLE
+    ══════════════════════════════════════ -->
+    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Advies</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Alleen justeren of ook repareren?</h2>
+        </div>
+
+        <div class="table-wrap" data-animate data-animate-delay="0.08">
+          <table class="incl-table">
+            <thead>
+              <tr>
+                <th>Situatie</th>
+                <th>Aanpak</th>
+              </tr>
+            </thead>
+            <tbody>
+              {adviesTable.map(row => (
+                <tr>
+                  <td>{row.situatie}</td>
+                  <td class="incl-detail">{row.aanpak}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════ -->
+    <section class="page-wrap">
+      <div class="page-container">
+        <div class="section-header" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Veelgestelde vragen.</h2>
+        </div>
+
+        <div class="faq-list" data-animate data-animate-delay="0.08">
+          {faq.map(item => (
+            <details>
+              <summary>{item.q}</summary>
+              <div class="faq-body">{item.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CTA
+    ══════════════════════════════════════ -->
+    <section class="page-wrap cta-section">
+      <div class="page-container">
+        <div class="cta-inner" data-animate>
+          <div class="eyebrow-row">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Direct starten</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
+          </div>
+          <h2 class="section-h2">Klaar om te beginnen?</h2>
+          <p class="body-text cta-body">
+            Stuur ons jouw sleutel op of bel direct. Wij plannen jouw justering binnen 48 uur in en leveren een geldig ISO 6789 certificaat.
+          </p>
+          <div class="cta-btns">
+            <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
+            <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">Stuur een e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <FooterDTS />
+
+</Base>
+
+<style>
+  /* ── Hero ── */
+  .hero-section {
+    padding-top: clamp(7rem, 14vw, 11rem);
+  }
+  .hero-inner {
+    max-width: 780px;
+  }
+  .eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.25rem;
+  }
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.7;
+    color: #8EAAB8;
+    margin-bottom: 2rem;
+    max-width: 60ch;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-bottom: 2.5rem;
+  }
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+
+  /* ── Section common ── */
+  .section-header {
+    margin-bottom: 3rem;
+  }
+  .section-h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #E8F0F4;
+    margin-top: 0.75rem;
+  }
+  .body-text {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+
+  /* ── Cards ── */
+  .def-card {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1.5rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    max-width: 820px;
+  }
+
+  /* ── Needs list ── */
+  .needs-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .needs-list li {
+    font-size: 0.925rem;
+    line-height: 1.7;
+    color: #8EAAB8;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  .needs-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #7AAFC4;
+    font-weight: 600;
+  }
+
+  /* ── Steps ── */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .step-card {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+  }
+  .step-number {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .step-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #E8F0F4;
+    margin-bottom: 0.625rem;
+  }
+  .step-body {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: #8EAAB8;
+  }
+
+  /* ── Table ── */
+  .table-wrap {
+    overflow-x: auto;
+  }
+  .incl-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .incl-table thead th {
+    text-align: left;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    padding: 0 1rem 1rem 1rem;
+    border-bottom: 1px solid rgba(122,175,196,0.12);
+  }
+  .incl-table tbody tr {
+    border-bottom: 1px solid rgba(122,175,196,0.07);
+    transition: background 0.15s;
+  }
+  .incl-table tbody tr:hover {
+    background: rgba(122,175,196,0.04);
+  }
+  .incl-table tbody td {
+    padding: 1rem;
+    color: #C8D8E0;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+  .incl-detail {
+    color: #6A8A98 !important;
+    font-weight: 400 !important;
+    font-size: 0.85rem;
+  }
+
+  /* ── FAQ ── */
+  .faq-list {
+    max-width: 820px;
+  }
+  details {
+    border: 1px solid rgba(122,175,196,0.12);
+    border-radius: 1rem;
+    background: #0E1118;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  details[open] {
+    border-color: rgba(122,175,196,0.30);
+  }
+  summary {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: #E8F0F4;
+    font-size: 0.975rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: '+';
+    color: #7AAFC4;
+    font-size: 1.25rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  .faq-body {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+  .faq-body a { color: #7AAFC4; text-decoration: underline; }
+
+  /* ── CTA ── */
+  .cta-section {
+    border-top: 1px solid rgba(122,175,196,0.08);
+  }
+  .cta-inner {
+    max-width: 680px;
+    text-align: center;
+    margin-inline: auto;
+  }
+  .cta-inner .eyebrow-row {
+    justify-content: center;
+  }
+  .cta-body {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  .cta-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    justify-content: center;
+  }
+</style>

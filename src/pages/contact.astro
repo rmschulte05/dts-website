@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import NavIsland from '../components/modules/NavIsland.astro';
+import FooterDTS from '../components/modules/FooterDTS.astro';
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Dutch Torque Service",
+  "url": "https://www.dutchtorqueservice.nl/contact",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.dutchtorqueservice.nl/#business",
+    "name": "Dutch Torque Service",
+    "telephone": "+31613172774",
+    "email": "info@dutchtorqueservice.nl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tonterstraat 42",
+      "addressLocality": "Riethoven",
+      "postalCode": "5561 AN",
+      "addressCountry": "NL"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      }
+    ]
+  }
+};
+---
+
+<Base
+  title="Contact | Dutch Torque Service — Momentsleutel Kalibratie Riethoven"
+  description="Neem contact op met Dutch Torque Service voor momentsleutel kalibratie, reparatie of certificering. Bel +31(0)6-13172774 of stuur een e-mail. Binnen 48 uur geholpen."
+  canonicalPath="/contact"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
+
+  <NavIsland currentPage="contact" />
+
+  <main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(4rem, 6vw, 6rem); padding-inline: var(--page-px);">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div class="page-container text-center" data-animate>
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Contact</span>
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        </div>
+        <h1 class="font-black tracking-tight text-white mb-5" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
+          Neem contact op.
+        </h1>
+        <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.1rem); line-height: 1.75; color: #9AAEB8; max-width: 46ch;">
+          Vragen over kalibratie, reparatie of certificering? Bel ons direct — we zijn snel te bereiken en geven altijd een eerlijk advies.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT CONTENT -->
+    <section class="relative page-wrap overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div class="page-container">
+        <div class="page-grid gap-y-12">
+
+          <!-- Left: contact details -->
+          <div class="col-span-12 lg:col-span-5" data-animate data-animate-from="left">
+            <h2 class="text-2xl font-black text-white mb-8" style="letter-spacing:-0.02em;">Gegevens</h2>
+
+            {[
+              {
+                icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="#7AAFC4" stroke-width="1.5"/><path d="M3 9h18" stroke="#7AAFC4" stroke-width="1.5"/><path d="M9 21V9" stroke="#7AAFC4" stroke-width="1.5"/></svg>`,
+                label: 'Adres',
+                value: 'Tonterstraat 42\n5561 AN Riethoven\nNoord-Brabant, Nederland',
+              },
+              {
+                icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="#7AAFC4" stroke-width="1.5"/></svg>`,
+                label: 'Telefoon',
+                value: '+31(0)6-131 72 774',
+                href: 'tel:+31613172774',
+              },
+              {
+                icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#7AAFC4" stroke-width="1.5"/><path d="M22 6l-10 7L2 6" stroke="#7AAFC4" stroke-width="1.5"/></svg>`,
+                label: 'E-mail',
+                value: 'info@dutchtorqueservice.nl',
+                href: 'mailto:info@dutchtorqueservice.nl',
+              },
+              {
+                icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#7AAFC4" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#7AAFC4" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+                label: 'Openingstijden',
+                value: 'Ma\u2013Vr: 08:00 \u2013 17:00\nZa\u2013Zo: Gesloten',
+              },
+              {
+                icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#7AAFC4" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="#7AAFC4" stroke-width="1.5"/></svg>`,
+                label: 'KvK-nummer',
+                value: '67183360',
+              },
+            ].map(item => (
+              <div class="flex gap-4 mb-7">
+                <div class="flex-shrink-0 mt-0.5 w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(122,175,196,0.1); border: 1px solid rgba(122,175,196,0.18);">
+                  <Fragment set:html={item.icon} />
+                </div>
+                <div>
+                  <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-1" style="color: rgba(122,175,196,0.65);">{item.label}</p>
+                  {item.href ? (
+                    <a href={item.href} class="text-sm leading-relaxed transition-colors hover:text-white" style="color: #C4D0D8; white-space: pre-line;">{item.value}</a>
+                  ) : (
+                    <p class="text-sm leading-relaxed" style="color: #C4D0D8; white-space: pre-line;">{item.value}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Right: CTA card + map placeholder -->
+          <div class="col-span-12 lg:col-span-6 lg:col-start-7 flex flex-col gap-6" data-animate data-animate-from="right">
+
+            <!-- Call CTA card -->
+            <div class="relative overflow-hidden" style="padding: 2.5rem; border-radius: 1.5rem; background: linear-gradient(140deg, rgba(122,175,196,0.08) 0%, transparent 55%), #0E1118; border: 1px solid rgba(122,175,196,0.18); box-shadow: 0 4px 32px rgba(0,0,0,0.35);">
+              <div class="absolute top-0 right-0 w-48 h-48 rounded-full" style="background: radial-gradient(circle, rgba(122,175,196,0.06) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+              <p class="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style="color: rgba(122,175,196,0.65);">Snelste weg</p>
+              <h3 class="text-2xl font-black text-white mb-2">Bel direct.</h3>
+              <p class="mb-6 text-sm leading-relaxed" style="color: #8EAAB8;">Geen wachttijden, geen formulieren. Bel ons en plan jouw kalibratie of reparatie direct in. We reageren snel en eerlijk.</p>
+              <a href="tel:+31613172774" class="btn btn-primary w-full justify-center">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
+                +31(0)6-131 72 774
+              </a>
+              <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline w-full justify-center mt-3">
+                info@dutchtorqueservice.nl
+              </a>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="relative overflow-hidden" style="border-radius: 1.5rem; aspect-ratio: 16/9; background: #0E1118; border: 1px solid rgba(122,175,196,0.12);">
+              <div class="absolute inset-0" style="background-image: linear-gradient(rgba(122,175,196,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(122,175,196,0.03) 1px, transparent 1px); background-size: 32px 32px;"></div>
+              <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#7AAFC4" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="#7AAFC4" stroke-width="1.5"/></svg>
+                <p class="text-xs tracking-[0.2em] uppercase font-medium" style="color:rgba(122,175,196,0.4);">Tonterstraat 42, Riethoven</p>
+                <a href="https://maps.google.com/?q=Tonterstraat+42+Riethoven" target="_blank" rel="noopener noreferrer" class="text-xs underline" style="color:rgba(122,175,196,0.5);">Bekijk op Google Maps</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <FooterDTS />
+</Base>

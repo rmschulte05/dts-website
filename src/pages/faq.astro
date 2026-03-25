@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import NavIsland from '../components/modules/NavIsland.astro';
+import FooterDTS from '../components/modules/FooterDTS.astro';
+
+const faqs = [
+  {
+    question: 'Hoe lang duurt een kalibratie?',
+    answer: 'In de meeste gevallen kalibreren wij jouw momentsleutel binnen <strong>48 uur na ontvangst</strong>. Heb je spoed? Neem dan even contact op — bij beschikbaarheid is een <a href="/contact">kalibratie op dezelfde dag</a> mogelijk na overleg. Na afronding ontvang je direct het kalibratiecertificaat per e-mail.',
+  },
+  {
+    question: 'Welke merken kalibreren jullie?',
+    answer: 'Wij kalibreren alle gangbare merken, waaronder <strong>Snap-On, Stahlwille, Gedore, Facom, Hazet, Würth</strong> en vele andere fabrikanten. Als <a href="/merken/snap-on-kalibratie">geautoriseerd Snap-On dealer</a> beschikken wij over de originele testapparatuur en documentatie die Snap-On voorschrijft. Het merk doet er dus niet toe — de precisie altijd.',
+  },
+  {
+    question: 'Hoe moet ik mijn momentsleutel opsturen?',
+    answer: 'Pak je momentsleutel stevig in — bij voorkeur in de originele doos of goed omwikkeld met bubbeltjesplastic. Voeg een briefje toe met jouw naam en contactgegevens zodat wij je onmiddellijk kunnen bereiken. Stuur het pakket naar:<br><br><strong>Dutch Torque Service</strong><br>Tonterstraat 42<br>5561 AN Riethoven<br><br>Na ontvangst bevestigen wij dit per e-mail en houden wij je op de hoogte van de voortgang.',
+  },
+  {
+    question: 'Wat kost een kalibratie?',
+    answer: 'De prijs is afhankelijk van het type momentsleutel, het merk en het aantal meetpunten. We werken transparant en zonder verborgen kosten. <a href="/contact">Neem contact op</a> voor een snelle, vrijblijvende offerte — we reageren binnen één werkdag.',
+  },
+  {
+    question: 'Wat is het verschil tussen justeren en kalibreren?',
+    answer: '<strong>Kalibreren</strong> is het meten en documenteren van de werkelijke waarden van jouw momentsleutel ten opzichte van de nominale waarde — zonder de sleutel aan te passen. Je krijgt een certificaat met de gemeten afwijkingen.<br><br><strong>Justeren</strong> is het daadwerkelijk corrigeren van de sleutel zodat die weer binnen de toegestane tolerantie valt. Wij doen beide en geven na een kalibratie + justering altijd een nieuw certificaat af, inclusief de waarden vóór en na de ingreep (as-found en as-left).',
+  },
+  {
+    question: 'Hoe lang is een kalibratiecertificaat geldig?',
+    answer: 'ISO 6789 schrijft formeel geen vaste geldigheidsduur voor — dat is afhankelijk van het kwaliteitshandboek van jouw eigen organisatie of dat van jouw klant. Als richtlijn hanteren de meeste bedrijven een <strong>jaarlijkse kalibratie</strong>. Onze aanbeveling: kalibreer altijd opnieuw na een val, een incident of bij twijfel over de nauwkeurigheid. Zekerheid kost minder dan een foutieve verbinding.',
+  },
+  {
+    question: 'Kalibreren jullie ook op locatie?',
+    answer: 'Neem <a href="/contact">contact op</a> om de mogelijkheden te bespreken. Voor grotere hoeveelheden gereedschap of bedrijven met een uitgebreid machinepark kunnen wij op locatie kalibreren bespreken. Bel ons direct voor een passende oplossing.',
+  },
+  {
+    question: 'Wat als mijn sleutel niet te herstellen is?',
+    answer: 'We geven je altijd een <strong>eerlijk en onafhankelijk advies</strong> — ook als dat betekent dat reparatie niet meer zinvol is. Je ontvangt een beknopt rapport van onze bevindingen zodat je het kunt archiveren. Als geautoriseerd <a href="/merken/snap-on-kalibratie">Snap-On dealer</a> kunnen wij je ook direct voorzien van een vervangend gereedschap van topkwaliteit.',
+  },
+  {
+    question: 'Wat staat er in een kalibratiecertificaat?',
+    answer: 'Ons kalibratiecertificaat voldoet aan de eisen van ISO 6789:2017 en bevat minimaal:<ul style="margin-top:0.75rem; padding-left:1.25rem; list-style:disc;"><li>Meetwaarden <strong>vóór</strong> kalibratie (as-found)</li><li>Meetwaarden <strong>na</strong> kalibratie / justering (as-left)</li><li>Gebruikte referentieapparatuur en traceerbaarheid</li><li>Meetpunten en nauwkeurigheidsklasse</li><li>Naam en handtekening van de uitvoerende technicus</li><li>Aanbevolen volgend kalibratieinterval</li></ul><br>Het certificaat is direct bruikbaar voor audits en kwaliteitssystemen.',
+  },
+  {
+    question: 'Ik ben geen groot bedrijf — kalibreren jullie ook voor kleine werkplaatsen?',
+    answer: 'Absoluut. Wij kalibreren voor <strong>eenmanszaken, kleine werkplaatsen en grote productiebedrijven</strong> — zonder onderscheid in service of kwaliteit. Eén momentsleutel is al genoeg om te beginnen. Kalibratie is niet alleen voor grote namen; het gaat om vakmanschap, of je nu drie sleutels hebt of driehonderd.',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.answer.replace(/<[^>]+>/g, ''),
+    },
+  })),
+};
+---
+
+<Base
+  title="Veelgestelde Vragen | Dutch Torque Service — Kalibratie FAQ"
+  description="Antwoorden op veelgestelde vragen over momentsleutel kalibratie, reparatie, ISO 6789 certificering en de doorlooptijden van Dutch Torque Service in Riethoven."
+  canonicalPath="/faq"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <NavIsland currentPage="faq" />
+
+  <main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(4rem, 6vw, 6rem); padding-inline: var(--page-px);">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div class="page-container text-center" data-animate>
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        </div>
+        <h1 class="font-black tracking-tight text-white mb-5" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
+          Veelgestelde vragen.
+        </h1>
+        <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.1rem); line-height: 1.75; color: #9AAEB8; max-width: 50ch;">
+          Alles wat je wilt weten over momentsleutel kalibratie, reparatie en certificering bij Dutch Torque Service.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="relative page-wrap overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div class="page-container">
+        <div class="mx-auto" style="max-width: 800px;">
+          {faqs.map((faq, i) => (
+            <details data-animate data-animate-delay={String(Math.min(i * 0.05, 0.4))}>
+              <summary>{faq.question}</summary>
+              <div class="faq-body" set:html={faq.answer} />
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative page-wrap overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div class="page-container text-center" data-animate>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Staat jouw vraag er niet bij?</h2>
+        <p class="mb-8 mx-auto" style="color: #9AAEB8; max-width: 40ch; font-size: 1.05rem; line-height: 1.75;">
+          Bel ons direct. We nemen de tijd voor je vraag.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="tel:+31613172774" class="btn btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
+            +31(0)6-131 72 774
+          </a>
+          <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">
+            info@dutchtorqueservice.nl
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  details {
+    border: 1px solid rgba(122,175,196,0.12);
+    border-radius: 1rem;
+    background: #0E1118;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  details[open] {
+    border-color: rgba(122,175,196,0.30);
+  }
+  summary {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: #E8F0F4;
+    font-size: 0.975rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    color: #7AAFC4;
+    font-size: 1.25rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    transition: transform 0.25s;
+  }
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+  .faq-body {
+    padding: 0 1.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+  .faq-body a {
+    color: #7AAFC4;
+    text-decoration: underline;
+  }
+</style>

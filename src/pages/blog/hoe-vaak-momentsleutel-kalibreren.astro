@@ -1,0 +1,126 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Hoe vaak moet je een momentsleutel laten kalibreren?",
+  "description": "Ontdek wanneer jouw momentsleutel kalibratie nodig heeft. ISO 6789-richtlijnen en gebruiksintervallen per toepassing.",
+  "author": { "@type": "Organization", "name": "Dutch Torque Service", "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "publisher": { "@type": "Organization", "name": "Dutch Torque Service", "url": "https://www.dutchtorqueservice.nl" },
+  "datePublished": "2026-03-25",
+  "url": "https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren",
+  "inLanguage": "nl-NL"
+};
+---
+
+<BlogLayout
+  title="Hoe vaak moet je een momentsleutel laten kalibreren? | DTS"
+  description="Ontdek wanneer jouw momentsleutel kalibratie nodig heeft. ISO 6789-richtlijnen, gebruiksintervallen per toepassing en een praktische checklist. Door Dutch Torque Service."
+  canonicalPath="/blog/hoe-vaak-momentsleutel-kalibreren"
+  headline="Hoe vaak moet je een momentsleutel laten kalibreren?"
+  category="Kalibratie"
+  readTime="5 min"
+  publishDate="25 maart 2026"
+  excerpt="ISO 6789 stelt geen vaste kalibratieperiode vast. Toch is er een duidelijk antwoord — afhankelijk van gebruik, omgeving en incident. Dit artikel geeft je de feiten."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <div class="prose">
+    <p>Een momentsleutel die niet meer klopt is geen gereedschap — het is een aansprakelijkheidsrisico. Toch weet de meerderheid van de werkplaatsen niet precies wanneer kalibratie verplicht is. Dit artikel geeft je de feiten, de norm, en een praktisch beslisschema.</p>
+
+    <h2>Wat zegt ISO 6789?</h2>
+    <p>De internationale norm <a href="https://www.iso.org/standard/66335.html" target="_blank" rel="noopener noreferrer">ISO 6789:2017</a> schrijft voor dat momentsleutels periodiek gekalibreerd moeten worden. De norm stelt geen vaste kalibratieperiode vast — dat is afhankelijk van gebruik en toepassing. Wel stelt de norm eisen aan de nauwkeurigheid (±4% voor Type I en Type II instrumenten) en de documentatie.</p>
+    <p>De vuistregel die de meeste kwaliteitshandboeken hanteren: <strong>minimaal één keer per jaar, of eerder als er een incident is geweest.</strong></p>
+    <blockquote><p>"Een onbekalibreerd meetinstrument in een ISO-gecertificeerde omgeving is een directe nonconformiteit bij audit."</p></blockquote>
+
+    <h2>Kalibratieintervallen per gebruik</h2>
+    <table>
+      <thead><tr><th>Toepassing</th><th>Aanbevolen kalibratieinterval</th></tr></thead>
+      <tbody>
+        <tr><td>Dagelijks gebruik in productie of assemblage</td><td>Elke 3–6 maanden of na 5.000 gebruikscycli</td></tr>
+        <tr><td>Wekelijks gebruik in werkplaats of onderhoud</td><td>Jaarlijks</td></tr>
+        <tr><td>Maandelijks of incidenteel gebruik</td><td>Jaarlijks</td></tr>
+        <tr><td>ISO-gecertificeerde omgeving (ISO 9001 / IATF)</td><td>Conform kwaliteitshandboek (minimaal jaarlijks)</td></tr>
+        <tr><td>Na een val, stoot of overbelasting</td><td><strong>Directe herkeuring vereist</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Wanneer is directe kalibratie verplicht?</h2>
+    <p>Buiten de reguliere intervallen zijn er situaties waarbij je een momentsleutel onmiddellijk uit gebruik moet nemen en moet laten keuren:</p>
+    <ul>
+      <li>De sleutel is gevallen — ook als er extern niets gebroken lijkt</li>
+      <li>De sleutel is overbelast (méér koppel dan de maximumcapaciteit)</li>
+      <li>De mechanische click voelt anders aan dan normaal</li>
+      <li>Het kalibratiecertificaat is verlopen en er staat een audit gepland</li>
+      <li>Het gereedschap is betrokken bij een incident of productklacht</li>
+    </ul>
+    <div class="callout"><p><strong>Tip:</strong> Hang een kalibratietag aan jouw sleutel met de datum van de laatste kalibratie en de uiterste kalibratietermijn. Zo is de status altijd direct zichtbaar voor de gebruiker.</p></div>
+
+    <h2>Video — hoe werkt een professionele kalibratie?</h2>
+    <div class="video-embed">
+      <div class="video-embed-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="opacity:0.35;"><circle cx="12" cy="12" r="10" stroke="#7AAFC4" stroke-width="1.5"/><path d="M10 8l6 4-6 4V8z" fill="#7AAFC4" opacity="0.6"/></svg>
+        <p style="color:rgba(122,175,196,0.5); font-size:0.8rem; text-align:center; margin:0;">Video: professionele momentsleutel kalibratie demonstratie<br/><span style="font-size:0.7rem; opacity:0.7;">Voeg YouTube embed-ID toe</span></p>
+      </div>
+    </div>
+
+    <h2>Kalibratie vs. ijken vs. justeren</h2>
+    <table>
+      <thead><tr><th>Term</th><th>Betekenis</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kalibreren</strong></td><td>Meten van de werkelijke waarden ten opzichte van een traceerbare referentie, vastgelegd in een protocol</td></tr>
+        <tr><td><strong>IJken</strong></td><td>Officieel vaststellen van de meting door een geaccrediteerde instantie (wettelijk ijken)</td></tr>
+        <tr><td><strong>Justeren</strong></td><td>Het corrigeren van de sleutel zodat hij weer binnen de toegestane tolerantie valt</td></tr>
+      </tbody>
+    </table>
+    <p>Bij Dutch Torque Service voeren wij <a href="/diensten/momentsleutel-kalibratie">kalibratie</a> en <a href="/diensten/momentsleutel-justeren">justering</a> uit conform ISO 6789:2017, en geven wij een officieel <a href="/diensten/iso-6789-certificering">kalibratiecertificaat</a> af.</p>
+
+    <h2>Wat staat er in een kalibratiecertificaat?</h2>
+    <ul>
+      <li>De meetwaarden vóór kalibratie (as-found) — op minimaal 5 meetpunten</li>
+      <li>De meetwaarden na kalibratie (as-left) — na eventuele justering</li>
+      <li>De gebruikte referentieapparatuur met eigen kalibratiestatus</li>
+      <li>De nauwkeurigheidsklasse en toegestane tolerantie</li>
+      <li>De volgende aanbevolen kalibratietermijn</li>
+      <li>Naam en handtekening van de uitvoerende technicus</li>
+    </ul>
+    <p>Meer over NEN-normen: <a href="https://www.nen.nl" target="_blank" rel="noopener noreferrer">NEN — Nederlands Normalisatie-instituut</a></p>
+
+    <h2>De echte kosten van een ongekalibreerde sleutel</h2>
+    <table>
+      <thead><tr><th>Gevolg</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td>Productieverlies door falende verbinding</td><td>€500 – €5.000+ afhankelijk van situatie</td></tr>
+        <tr><td>Garantieclaim of productaansprakelijkheid</td><td>Juridische kosten + reputatieschade</td></tr>
+        <tr><td>Letsel door falende verbinding</td><td>Aansprakelijkheid + boetes</td></tr>
+        <tr><td>Nonconformiteit bij ISO-audit</td><td>Certificaatverlies</td></tr>
+      </tbody>
+    </table>
+    <p>De kosten van een professionele kalibratie zijn een fractie van deze risico's.</p>
+
+    <h2>Veelgestelde vragen</h2>
+    <details>
+      <summary>Geldt er een wettelijke verplichting om momentsleutels te kalibreren?</summary>
+      <div class="details-body"><p>Een algemene wettelijke verplichting bestaat niet — maar voor bedrijven met een ISO-kwaliteitssysteem (9001, IATF 16949, VCA) is kalibratie van meetmiddelen een directe normeis. Bovendien maakt kalibratie aansprakelijkheidsclaims bij mechanisch falen vrijwel kansloos.</p></div>
+    </details>
+    <details>
+      <summary>Kan ik zelf controleren of mijn momentsleutel nog klopt?</summary>
+      <div class="details-body"><p>Zonder traceerbare referentieapparatuur niet betrouwbaar. Je kunt signalen herkennen (klik te vroeg/laat, val, overbelasting), maar een professionele kalibratie is de enige manier om de werkelijke afwijking te documenteren.</p></div>
+    </details>
+    <details>
+      <summary>Hoe lang duurt een kalibratie bij Dutch Torque Service?</summary>
+      <div class="details-body"><p>Standaard doorlooptijd is maximaal 48 uur na ontvangst. In overleg is dezelfde dag mogelijk. Je ontvangt het certificaat per e-mail.</p></div>
+    </details>
+    <details>
+      <summary>Kalibreren jullie ook meerdere sleutels tegelijk?</summary>
+      <div class="details-body"><p>Ja, wij verwerken ook grotere hoeveelheden. Neem <a href="/contact">contact op</a> voor afspraken over ophaling of inlevering op locatie.</p></div>
+    </details>
+
+    <div class="article-cta">
+      <h3>Weet je niet zeker wanneer jouw sleutel voor het laatst gekalibreerd is?</h3>
+      <p>Bel ons direct — we plannen jouw kalibratie binnen 48 uur in.</p>
+      <a href="tel:+31613172774" class="btn btn-primary">+31(0)6-131 72 774</a>
+    </div>
+  </div>
+</BlogLayout>

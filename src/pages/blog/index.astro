@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavIsland from '../../components/modules/NavIsland.astro';
+import FooterDTS from '../../components/modules/FooterDTS.astro';
+
+const posts = [
+  {
+    slug: 'hoe-vaak-momentsleutel-kalibreren',
+    title: 'Hoe vaak moet je een momentsleutel laten kalibreren?',
+    excerpt: 'ISO 6789 stelt geen vaste kalibratieperiode vast. Toch is er een duidelijk antwoord — afhankelijk van gebruik, omgeving en incident. Dit artikel geeft je de feiten.',
+    category: 'Kalibratie',
+    readTime: '5 min',
+    date: '25 maart 2026',
+    accent: '#7AAFC4',
+  },
+  {
+    slug: 'iso-6789-type-1-type-2-uitgelegd',
+    title: 'ISO 6789 Type I en Type II: wat is het verschil?',
+    excerpt: 'Als je gereedschap laat kalibreren kom je altijd Type I en Type II tegen. Het onderscheid bepaalt hoe je sleutel gecalibreerd wordt. Hier is de heldere uitleg.',
+    category: 'Norm & Certificering',
+    readTime: '6 min',
+    date: '25 maart 2026',
+    accent: '#64C48A',
+  },
+  {
+    slug: 'mijn-momentsleutel-klopt-niet-meer',
+    title: 'Mijn momentsleutel klopt niet meer — wat nu?',
+    excerpt: 'Je kliksleutel klikt te vroeg. Of te laat. Of helemaal niet meer. Stop direct met gebruik. Dit artikel legt uit waarom — en wat de juiste vervolgstap is.',
+    category: 'Reparatie',
+    readTime: '4 min',
+    date: '25 maart 2026',
+    accent: '#C48A64',
+  },
+];
+---
+
+<Base
+  title="Blog | Dutch Torque Service — Momentsleutel Kennisbank"
+  description="Praktische artikelen over momentsleutel kalibratie, ISO 6789, reparatie en certificering. Kennisbank van Dutch Torque Service."
+  canonicalPath="/blog"
+>
+  <NavIsland currentPage="blog" />
+
+  <main>
+    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(4rem, 6vw, 6rem); padding-inline: var(--page-px);">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div class="page-container">
+        <div class="text-center mb-16" data-animate>
+          <div class="flex items-center justify-center gap-3 mb-5">
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+            <span style="font-size:0.7rem; font-weight:600; letter-spacing:0.32em; text-transform:uppercase; color:#7AAFC4;">Kennisbank</span>
+            <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          </div>
+          <h1 class="font-black tracking-tight text-white mb-4" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height:1.05;">Momentsleutel Kennisbank.</h1>
+          <p class="mx-auto" style="font-size:1.05rem; line-height:1.75; color:#9AAEB8; max-width:44ch;">Praktische artikelen over kalibratie, reparatie, ISO 6789 en alles rondom jouw momentsleutel — geschreven door vakspecialisten.</p>
+        </div>
+
+        <div class="grid gap-6" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">
+          {posts.map((post, i) => (
+            <article
+              class="blog-card relative flex flex-col"
+              data-animate
+              data-animate-delay={String(i * 0.1)}
+              style={`border-radius: 1.5rem; overflow: hidden; background: #0E1118; border: 1px solid rgba(122,175,196,0.13); box-shadow: 0 2px 16px rgba(0,0,0,0.28); transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;`}
+            >
+              <!-- Card image placeholder -->
+              <div style={`aspect-ratio: 16/9; background: linear-gradient(135deg, color-mix(in srgb, ${post.accent} 10%, transparent) 0%, transparent 60%), #0D1017; border-bottom: 1px solid rgba(122,175,196,0.08); display:flex; align-items:center; justify-content:center; position:relative;`}>
+                <div style="position:absolute; inset:0; background-image: linear-gradient(rgba(122,175,196,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(122,175,196,0.025) 1px, transparent 1px); background-size: 28px 28px;"></div>
+                <span style={`font-size:0.65rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:${post.accent}; opacity:0.55; position:relative;`}>{post.category}</span>
+              </div>
+              <!-- Card body -->
+              <div class="flex flex-col flex-1" style="padding: 1.75rem 2rem 2rem;">
+                <div class="flex items-center gap-2 mb-3">
+                  <span style={`font-size:0.65rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:${post.accent};`}>{post.category}</span>
+                  <span style="font-size:0.65rem; color:rgba(154,174,184,0.35);">·</span>
+                  <span style="font-size:0.65rem; color:rgba(154,174,184,0.45); letter-spacing:0.1em;">{post.readTime} leestijd</span>
+                </div>
+                <h2 class="font-black text-white mb-3" style="font-size:1.1rem; line-height:1.3; letter-spacing:-0.01em; flex-grow:1;">
+                  <a href={`/blog/${post.slug}`} style="color:inherit; text-decoration:none;" onmouseover="this.style.color='#9BC5D8'" onmouseout="this.style.color='inherit'">{post.title}</a>
+                </h2>
+                <p class="mb-4" style="font-size:0.875rem; line-height:1.7; color:#8EAAB8;">{post.excerpt}</p>
+                <div class="flex items-center justify-between mt-auto">
+                  <span style="font-size:0.72rem; color:rgba(154,174,184,0.4);">{post.date}</span>
+                  <a href={`/blog/${post.slug}`} style={`font-size:0.75rem; font-weight:600; letter-spacing:0.1em; color:${post.accent}; text-decoration:none;`}>Lees meer →</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  .blog-card:hover { border-color: rgba(122,175,196,0.30); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+</style>

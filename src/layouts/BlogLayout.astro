@@ -1,0 +1,165 @@
+---
+import Base from './Base.astro';
+import NavIsland from '../components/modules/NavIsland.astro';
+import FooterDTS from '../components/modules/FooterDTS.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+  headline: string;
+  category: string;
+  readTime: string;
+  publishDate: string;
+  excerpt: string;
+}
+const { title, description, canonicalPath, headline, category, readTime, publishDate, excerpt } = Astro.props;
+---
+
+<Base title={title} description={description} canonicalPath={canonicalPath}>
+  <slot name="head" slot="head" />
+
+  <NavIsland currentPage="blog" />
+
+  <main>
+    <!-- ARTICLE HERO -->
+    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(3rem, 5vw, 5rem); padding-inline: var(--page-px);">
+      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
+      <div style="max-width: 780px; margin-inline: auto;">
+        <!-- Breadcrumb -->
+        <nav class="flex items-center gap-2 mb-8" aria-label="Breadcrumb" style="font-size:0.75rem; color: rgba(154,174,184,0.6);">
+          <a href="/" style="color: rgba(122,175,196,0.6); text-decoration:none;" onmouseover="this.style.color='#7AAFC4'" onmouseout="this.style.color='rgba(122,175,196,0.6)'">Home</a>
+          <span style="opacity:0.4;">→</span>
+          <a href="/blog" style="color: rgba(122,175,196,0.6); text-decoration:none;" onmouseover="this.style.color='#7AAFC4'" onmouseout="this.style.color='rgba(122,175,196,0.6)'">Blog</a>
+          <span style="opacity:0.4;">→</span>
+          <span style="color: rgba(154,174,184,0.8);">{category}</span>
+        </nav>
+
+        <!-- Eyebrow -->
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-6 h-px" style="background:#7AAFC4; opacity:0.8;"></span>
+          <span style="font-size:0.7rem; font-weight:600; letter-spacing:0.28em; text-transform:uppercase; color:#7AAFC4;">{category}</span>
+          <span style="font-size:0.7rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:rgba(154,174,184,0.45);">· {readTime} leestijd</span>
+        </div>
+
+        <!-- H1 -->
+        <h1 style="font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.025em; color: #ffffff; margin-bottom: 1.25rem;">{headline}</h1>
+
+        <!-- Excerpt -->
+        <p style="font-size: 1.075rem; line-height: 1.75; color: #9AAEB8; margin-bottom: 1.75rem; max-width: 58ch;">{excerpt}</p>
+
+        <!-- Meta row -->
+        <div class="flex items-center gap-4 flex-wrap" style="font-size: 0.8rem; color: rgba(154,174,184,0.55);">
+          <div class="flex items-center gap-2">
+            <div style="width:28px; height:28px; border-radius:50%; background: linear-gradient(135deg, rgba(122,175,196,0.25), rgba(122,175,196,0.1)); border:1px solid rgba(122,175,196,0.25); display:flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:800; color:#7AAFC4;">DTS</div>
+            <span>Dutch Torque Service</span>
+          </div>
+          <span style="opacity:0.4;">·</span>
+          <span>{publishDate}</span>
+          <span style="opacity:0.4;">·</span>
+          <span>{readTime} leestijd</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED IMAGE -->
+    <section style="padding-inline: var(--page-px); margin-bottom: 0;">
+      <div style="max-width: 780px; margin-inline: auto;">
+        <div style="aspect-ratio: 16/9; border-radius: 1.25rem; overflow: hidden; background: #0E1118; border: 1px solid rgba(122,175,196,0.12); position: relative; margin-bottom: 2.5rem;">
+          <slot name="featured-image">
+            <div style="position:absolute; inset:0; background-image: linear-gradient(rgba(122,175,196,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(122,175,196,0.03) 1px, transparent 1px); background-size: 32px 32px;"></div>
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem;">
+              <svg width="52" height="52" viewBox="0 0 80 80" fill="none" style="opacity:0.3;">
+                <circle cx="20" cy="40" r="14" stroke="#7AAFC4" stroke-width="1.5"/>
+                <circle cx="20" cy="40" r="7" stroke="#7AAFC4" stroke-width="1"/>
+                <rect x="34" y="34" width="32" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
+                <rect x="66" y="31" width="10" height="18" rx="4" stroke="#7AAFC4" stroke-width="1.5"/>
+              </svg>
+              <p style="color:rgba(122,175,196,0.4); font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; font-weight:500;">Uitgelichte afbeelding</p>
+            </div>
+          </slot>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE CONTENT -->
+    <section style="padding-inline: var(--page-px); padding-bottom: clamp(4rem, 6vw, 7rem);">
+      <div class="prose" style="max-width: 780px; margin-inline: auto;">
+        <slot />
+      </div>
+    </section>
+
+    <!-- POST-ARTICLE CTA -->
+    <section class="relative" style="padding-inline: var(--page-px); padding-bottom: clamp(4rem, 7vw, 7rem);">
+      <div style="max-width: 780px; margin-inline: auto;">
+        <div style="padding: 2.5rem; border-radius: 1.5rem; background: linear-gradient(135deg, rgba(122,175,196,0.09) 0%, transparent 55%), #0E1118; border: 1px solid rgba(122,175,196,0.22); text-align: center; position: relative; overflow: hidden;">
+          <div style="position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background: radial-gradient(circle, rgba(122,175,196,0.07) 0%, transparent 70%);"></div>
+          <p style="font-size:0.7rem; font-weight:600; letter-spacing:0.26em; text-transform:uppercase; color:#7AAFC4; margin-bottom:0.75rem;">Dutch Torque Service</p>
+          <h2 style="font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight:900; color:#fff; letter-spacing:-0.02em; margin-bottom:0.75rem; line-height:1.15;">Klaar om jouw momentsleutel<br/>te laten kalibreren?</h2>
+          <p style="font-size:0.95rem; line-height:1.7; color:#8EAAB8; margin-bottom:1.75rem;">Binnen 48 uur gecertificeerd. Bel ons direct — geen wachttijden, geen formulieren.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.875rem; justify-content:center;">
+            <a href="tel:+31613172774" class="btn btn-primary">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
+              +31(0)6-131 72 774
+            </a>
+            <a href="/diensten/momentsleutel-kalibratie" class="btn btn-outline">Bekijk kalibratie service</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  /* ── PROSE STYLES ── */
+  .prose h2 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin-top: 3rem; margin-bottom: 1rem; line-height: 1.2; padding-top: 0.5rem; border-top: 1px solid rgba(122,175,196,0.08); }
+  .prose h3 { font-size: 1.1rem; font-weight: 700; color: #E8F0F4; margin-top: 2rem; margin-bottom: 0.6rem; }
+  .prose p { font-size: 1rem; line-height: 1.88; color: #9AAEB8; margin-bottom: 1.25rem; }
+  .prose strong { color: #E8F0F4; font-weight: 600; }
+  .prose em { color: #C4D0D8; font-style: italic; }
+  .prose a { color: #7AAFC4; text-decoration: underline; text-underline-offset: 3px; }
+  .prose a:hover { color: #9BC5D8; }
+  .prose ul { margin-bottom: 1.25rem; padding-left: 1.25rem; }
+  .prose ul li { font-size: 1rem; line-height: 1.8; color: #9AAEB8; margin-bottom: 0.45rem; }
+  .prose ul li::marker { color: #7AAFC4; }
+  .prose ol { margin-bottom: 1.25rem; padding-left: 1.25rem; }
+  .prose ol li { font-size: 1rem; line-height: 1.8; color: #9AAEB8; margin-bottom: 0.45rem; }
+  .prose ol li::marker { color: rgba(122,175,196,0.6); font-weight: 600; }
+
+  /* Tables */
+  .prose table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem; border-radius: 0.75rem; overflow: hidden; }
+  .prose th { padding: 0.75rem 1rem; background: rgba(122,175,196,0.10); color: #7AAFC4; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(122,175,196,0.18); text-align: left; }
+  .prose td { padding: 0.75rem 1rem; color: #9AAEB8; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  .prose tr:last-child td { border-bottom: none; }
+  .prose tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+
+  /* Blockquote */
+  .prose blockquote { border-left: 3px solid #7AAFC4; padding: 0.875rem 1.25rem; margin: 1.75rem 0; background: rgba(122,175,196,0.06); border-radius: 0 0.75rem 0.75rem 0; }
+  .prose blockquote p { color: #C4D0D8; margin-bottom: 0; font-style: italic; font-size: 1.025rem; }
+
+  /* Callout box */
+  .prose .callout { background: rgba(122,175,196,0.08); border: 1px solid rgba(122,175,196,0.22); border-radius: 1rem; padding: 1.25rem 1.5rem; margin: 1.75rem 0; }
+  .prose .callout p { margin-bottom: 0; color: #C4D0D8; }
+
+  /* FAQ Accordion */
+  .prose details { border: 1px solid rgba(122,175,196,0.12); border-radius: 1rem; background: #0E1118; margin-bottom: 0.75rem; overflow: hidden; transition: border-color 0.2s; }
+  .prose details[open] { border-color: rgba(122,175,196,0.30); }
+  .prose summary { padding: 1.1rem 1.5rem; cursor: pointer; font-weight: 700; color: #E8F0F4; font-size: 0.95rem; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .prose summary::-webkit-details-marker { display: none; }
+  .prose summary::after { content: '+'; color: #7AAFC4; font-size: 1.2rem; font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
+  .prose details[open] summary::after { transform: rotate(45deg); }
+  .prose .details-body { padding: 0 1.5rem 1.25rem; font-size: 0.9rem; line-height: 1.82; color: #8EAAB8; }
+  .prose .details-body a { color: #7AAFC4; }
+
+  /* Video embed */
+  .prose .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; margin: 1.75rem 0; background: #0E1118; border: 1px solid rgba(122,175,196,0.14); }
+  .prose .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  .prose .video-embed-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem; }
+
+  /* In-article CTA card */
+  .prose .article-cta { padding: 2rem 2.5rem; border-radius: 1.25rem; background: linear-gradient(135deg, rgba(122,175,196,0.1) 0%, transparent 60%), #0E1118; border: 1px solid rgba(122,175,196,0.22); text-align: center; margin: 2.5rem 0; }
+  .prose .article-cta h3 { border-top: none; margin-top: 0; padding-top: 0; font-size: 1.3rem; }
+  .prose .article-cta p { margin-bottom: 1.25rem; }
+</style>
