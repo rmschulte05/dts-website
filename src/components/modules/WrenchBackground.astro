@@ -242,10 +242,18 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
   const drawPaths   = [...document.querySelectorAll<SVGGeometryElement>('.draw-path')];
 
   // Set up stroke-dashoffset on every structural element
-  drawPaths.forEach(el => {
-    const len = el.getTotalLength();
-    gsap.set(el, { strokeDasharray: len, strokeDashoffset: len, opacity: 1 });
-  });
+  // rAF ensures the SVG has been laid out before we measure path lengths
+  requestAnimationFrame(() => {
+    drawPaths.forEach(el => {
+      let len = 0;
+      try { len = el.getTotalLength(); } catch (_) {}
+      if (len > 0) {
+        gsap.set(el, { strokeDasharray: len, strokeDashoffset: len, opacity: 1 });
+      } else {
+        // element can't be measured — just leave it visible
+        gsap.set(el, { opacity: 1 });
+      }
+    });
 
   // Hide detail elements — exclude the display clip wrapper (ticker managed separately)
   const detailEls = [...rotateGroup.children].filter(el =>
@@ -326,6 +334,8 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
 
   // Register scroll triggers only after the full entrance completes
   tl.eventCallback('onComplete', setupScrollTriggers);
+
+  }); // end requestAnimationFrame
 
   // ── Continuous scrolling display ticker ──
   function startTicker() {

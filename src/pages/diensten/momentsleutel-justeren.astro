@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
 
 const accent = '#7AAFC4';
 
@@ -69,8 +70,7 @@ const faq = [
     <!-- ══════════════════════════════════════
          HERO
     ══════════════════════════════════════ -->
-    <section class="page-wrap hero-section">
-      <div class="page-container">
+    <PageSection class="hero-section">
         <div class="hero-inner">
           <!-- Eyebrow -->
           <div class="eyebrow-row" data-animate>
@@ -99,14 +99,12 @@ const faq = [
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Conform ISO 6789</span>
           </div>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          WHAT IS JUSTEREN?
     ══════════════════════════════════════ -->
-    <section class="page-wrap">
-      <div class="page-container">
+    <PageSection>
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -126,14 +124,12 @@ const faq = [
             </p>
           </div>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          WHEN DO YOU NEED IT?
     ══════════════════════════════════════ -->
-    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
-      <div class="page-container">
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -155,14 +151,12 @@ const faq = [
             <li>Na langdurige opslag of intensief gebruik zonder onderhoud</li>
           </ul>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          PROCESS
     ══════════════════════════════════════ -->
-    <section class="page-wrap">
-      <div class="page-container">
+    <PageSection>
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -181,14 +175,12 @@ const faq = [
             </div>
           ))}
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          JUSTEREN OR REPAREREN TABLE
     ══════════════════════════════════════ -->
-    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
-      <div class="page-container">
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -216,14 +208,12 @@ const faq = [
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          FAQ
     ══════════════════════════════════════ -->
-    <section class="page-wrap">
-      <div class="page-container">
+    <PageSection>
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -241,14 +231,12 @@ const faq = [
             </details>
           ))}
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          CTA
     ══════════════════════════════════════ -->
-    <section class="page-wrap cta-section">
-      <div class="page-container">
+    <PageSection class="cta-section">
         <div class="cta-inner" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -264,8 +252,7 @@ const faq = [
             <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">Stuur een e-mail</a>
           </div>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
   </main>
 

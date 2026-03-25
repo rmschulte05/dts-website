@@ -1,0 +1,89 @@
+---
+/**
+ * PageSection — the single source of truth for inner-page sections.
+ *
+ * Usage:
+ *   <PageSection>               → separator + page-wrap + page-container
+ *   <PageSection center>        → centres the container content
+ *   <PageSection hero>          → nav-offset padding (for page-hero slots)
+ *   <PageSection tight>         → smaller block padding
+ *   <PageSection separator={false}> → no top rule
+ */
+interface Props {
+  id?:        string;
+  separator?: boolean;   // default true — teal rule at top
+  center?:    boolean;   // text-center on the container
+  hero?:      boolean;   // extra top padding to clear fixed nav
+  tight?:     boolean;   // half padding-block
+  noWrap?:    boolean;   // skip page-container (content owns its own width)
+  class?:     string;
+  animate?:   boolean;   // add data-animate to the container
+  animateFrom?: 'bottom' | 'left' | 'right' | 'scale';
+  animateDelay?: string;
+}
+
+const {
+  id,
+  separator = true,
+  center    = false,
+  hero      = false,
+  tight     = false,
+  noWrap    = false,
+  class: cls = '',
+  animate    = false,
+  animateFrom = 'bottom',
+  animateDelay,
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    'page-section relative overflow-hidden',
+    hero  ? 'page-section--hero' : (tight ? 'page-section--tight' : 'page-wrap'),
+    cls,
+  ]}
+  id={id}
+>
+  {separator && (
+    <div
+      class="page-section__sep absolute top-0 left-0 right-0 h-px"
+      aria-hidden="true"
+    ></div>
+  )}
+
+  {noWrap ? (
+    <slot />
+  ) : (
+    <div
+      class:list={['page-container', center && 'text-center']}
+      data-animate={animate ? '' : undefined}
+      data-animate-from={animate ? animateFrom : undefined}
+      data-animate-delay={animate && animateDelay ? animateDelay : undefined}
+    >
+      <slot />
+    </div>
+  )}
+</section>
+
+<style>
+  .page-section--hero {
+    padding-top:    clamp(8rem, 14vw, 11rem);
+    padding-bottom: clamp(4rem, 6vw, 6rem);
+    padding-inline: var(--page-px);
+  }
+
+  .page-section--tight {
+    padding-inline: var(--page-px);
+    padding-block:  clamp(2rem, 4vw, 4rem);
+  }
+
+  .page-section__sep {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(122, 175, 196, 0.18) 35%,
+      rgba(122, 175, 196, 0.18) 65%,
+      transparent 100%
+    );
+  }
+</style>

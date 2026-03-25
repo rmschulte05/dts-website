@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
 
 const posts = [
   {
@@ -42,9 +43,7 @@ const posts = [
   <NavIsland currentPage="blog" />
 
   <main>
-    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(4rem, 6vw, 6rem); padding-inline: var(--page-px);">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container">
+    <PageSection hero>
         <div class="text-center mb-16" data-animate>
           <div class="flex items-center justify-center gap-3 mb-5">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
@@ -87,8 +86,7 @@ const posts = [
             </article>
           ))}
         </div>
-      </div>
-    </section>
+    </PageSection>
   </main>
 
   <FooterDTS />

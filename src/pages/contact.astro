@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import NavIsland from '../components/modules/NavIsland.astro';
 import FooterDTS from '../components/modules/FooterDTS.astro';
+import PageSection from '../components/ui/PageSection.astro';
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -44,9 +45,7 @@ const contactSchema = {
 
   <main>
     <!-- HERO -->
-    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(4rem, 6vw, 6rem); padding-inline: var(--page-px);">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container text-center" data-animate>
+    <PageSection hero center animate>
         <div class="flex items-center justify-center gap-3 mb-6">
           <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
           <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Contact</span>
@@ -58,13 +57,10 @@ const contactSchema = {
         <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.1rem); line-height: 1.75; color: #9AAEB8; max-width: 46ch;">
           Vragen over kalibratie, reparatie of certificering? Bel ons direct — we zijn snel te bereiken en geven altijd een eerlijk advies.
         </p>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- CONTACT CONTENT -->
-    <section class="relative page-wrap overflow-hidden">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container">
+    <PageSection>
         <div class="page-grid gap-y-12">
 
           <!-- Left: contact details -->
@@ -146,8 +142,7 @@ const contactSchema = {
           </div>
 
         </div>
-      </div>
-    </section>
+    </PageSection>
   </main>
 
   <FooterDTS />

@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
 
 const accent = '#7AAFC4';
 
@@ -71,8 +72,7 @@ const faq = [
     <!-- ══════════════════════════════════════
          HERO
     ══════════════════════════════════════ -->
-    <section class="page-wrap hero-section">
-      <div class="page-container">
+    <PageSection class="hero-section">
         <div class="hero-inner">
           <!-- Eyebrow -->
           <div class="eyebrow-row" data-animate>
@@ -101,14 +101,12 @@ const faq = [
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">ISO 6789:2017</span>
           </div>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          WHY SNAP-ON SPECIALIST?
     ══════════════════════════════════════ -->
-    <section class="page-wrap">
-      <div class="page-container">
+    <PageSection>
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -128,14 +126,12 @@ const faq = [
             </p>
           </div>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          OUR SNAP-ON SERVICES
     ══════════════════════════════════════ -->
-    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
-      <div class="page-container">
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -158,14 +154,12 @@ const faq = [
         <p class="body-text" style="margin-top:2rem;" data-animate data-animate-delay="0.32">
           Meer over <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">kalibratie</a> en <a href="/diensten/momentsleutel-reparatie" style="color:#7AAFC4; text-decoration:underline;">reparatie</a>.
         </p>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          MODELS WE CALIBRATE
     ══════════════════════════════════════ -->
-    <section class="page-wrap">
-      <div class="page-container">
+    <PageSection>
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -183,14 +177,12 @@ const faq = [
             Staat jouw model er niet bij? <a href="/contact" style="color:#7AAFC4; text-decoration:underline;">Neem contact op</a> — we kijken altijd mee.
           </p>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          OTHER BRANDS
     ══════════════════════════════════════ -->
-    <section class="page-wrap" style="background:rgba(14,17,24,0.5);">
-      <div class="page-container">
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -208,14 +200,12 @@ const faq = [
             <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Bekijk alle kalibratiemogelijkheden →</a>
           </p>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          FAQ
     ══════════════════════════════════════ -->
-    <section class="page-wrap">
-      <div class="page-container">
+    <PageSection>
         <div class="section-header" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -233,14 +223,12 @@ const faq = [
             </details>
           ))}
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- ══════════════════════════════════════
          CTA
     ══════════════════════════════════════ -->
-    <section class="page-wrap cta-section">
-      <div class="page-container">
+    <PageSection class="cta-section">
         <div class="cta-inner" data-animate>
           <div class="eyebrow-row">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
@@ -256,8 +244,7 @@ const faq = [
             <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">info@dutchtorqueservice.nl</a>
           </div>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
   </main>
 

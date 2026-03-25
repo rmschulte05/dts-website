@@ -14,25 +14,46 @@ const links = [
 ];
 ---
 
-<header id="nav-header" class="fixed top-5 left-0 right-0 z-50 flex justify-center" style="padding-inline: var(--page-px);">
+<header id="nav-header" class="fixed top-0 left-0 right-0 z-50 flex justify-center" style="padding-inline: var(--page-px); padding-top: 1.25rem;">
   <nav
-    class="nav-island flex items-center gap-6 md:gap-8 px-5 md:px-8 py-3.5 rounded-2xl w-full max-w-[1200px]"
+    class="nav-island relative flex items-center gap-5 md:gap-7 px-5 md:px-7 rounded-2xl w-full max-w-[1200px]"
     aria-label="Hoofdnavigatie"
+    style="height: 52px;"
   >
+
+    <!-- ── Scroll progress bar (teal, bottom edge of nav) ── -->
+    <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+
+    <!-- ── Sliding active-link indicator ── -->
+    <div class="nav-indicator" id="nav-indicator" aria-hidden="true"></div>
+
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2.5 shrink-0 group">
-      <span class="dts-logo-text font-black text-base tracking-[0.06em]">DTS</span>
+    <a href="/" class="nav-logo flex items-center gap-2 shrink-0" aria-label="Dutch Torque Service — home">
+      <!-- Mini precision-gauge icon -->
+      <svg width="20" height="20" viewBox="0 0 28 28" fill="none" class="nav-logo-icon" aria-hidden="true">
+        <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.4"/>
+        <circle cx="14" cy="14" r="6"  stroke="currentColor" stroke-width="1"/>
+        <line x1="14" y1="14" x2="14" y2="5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="14" cy="14" r="1.5" fill="currentColor"/>
+        <!-- Tick marks -->
+        <line x1="14" y1="3"  x2="14" y2="5.5"  stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <line x1="25" y1="14" x2="22.5" y2="14" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <line x1="3"  y1="14" x2="5.5"  y2="14" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+        <line x1="14" y1="25" x2="14"  y2="22.5" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+      </svg>
+      <span class="dts-logo-text font-black tracking-[0.05em]" style="font-size:0.9rem;">DTS</span>
     </a>
 
     <!-- Divider -->
-    <div class="nav-divider hidden md:block w-px h-4"></div>
+    <div class="nav-divider hidden md:block w-px" style="height:1rem; flex-shrink:0;"></div>
 
     <!-- Links -->
-    <div class="hidden md:flex items-center gap-6">
+    <div class="hidden md:flex items-center gap-1" id="nav-links">
       {links.map(link => (
         <a
           href={link.href}
-          class={['nav-link text-xs font-medium tracking-[0.14em] uppercase', currentPage === link.key ? 'nav-link--active' : ''].join(' ')}
+          class={['nav-link relative px-3 py-1.5 text-[0.68rem] font-semibold tracking-[0.16em] uppercase rounded-lg transition-colors', currentPage === link.key ? 'nav-link--active' : ''].join(' ')}
+          data-key={link.key}
         >
           {link.label}
         </a>
@@ -42,15 +63,24 @@ const links = [
     <!-- Spacer -->
     <div class="flex-1"></div>
 
+    <!-- Status chip (shows when scrolled) -->
+    <div class="nav-status hidden md:flex items-center gap-1.5" id="nav-status" aria-hidden="true">
+      <span class="nav-status-dot"></span>
+      <span class="nav-status-label" id="nav-status-label">LIVE</span>
+    </div>
+
     <!-- CTA -->
-    <a href="/contact" class="btn btn-primary nav-cta-btn hidden md:inline-flex">
-      Offerte
+    <a href="tel:+31613172774" class="btn btn-primary nav-cta-btn hidden md:inline-flex">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      Bel Ons
     </a>
 
     <!-- Mobile hamburger -->
     <button
       id="nav-toggle"
-      class="md:hidden flex flex-col gap-1.5 p-1"
+      class="md:hidden flex flex-col gap-1.5 p-1.5 rounded-lg"
       aria-label="Menu openen"
       aria-expanded="false"
     >
@@ -66,149 +96,319 @@ const links = [
     class="mobile-menu absolute top-full left-4 right-4 mt-2 rounded-2xl overflow-hidden"
     aria-hidden="true"
   >
-    <div class="flex flex-col p-5 gap-4">
+    <div class="flex flex-col p-5 gap-1">
       {links.map(link => (
         <a
           href={link.href}
-          class="text-sm font-medium tracking-wide transition-colors py-1 border-b border-white/5 last:border-0 nav-mobile-link"
+          class={['nav-mobile-link text-sm font-medium tracking-wide transition-all py-3 px-3 rounded-xl border-b nav-mobile-border last:border-0', currentPage === link.key ? 'nav-mobile-link--active' : ''].join(' ')}
         >
-          {link.label}
+          <span class="flex items-center gap-3">
+            <span class="nav-mobile-dot w-1 h-1 rounded-full flex-shrink-0"></span>
+            {link.label}
+          </span>
         </a>
       ))}
-      <a href="/contact" class="btn btn-primary w-full justify-center mt-1">
-        Offerte Aanvragen
+      <a href="tel:+31613172774" class="btn btn-primary w-full justify-center mt-3">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
+        +31(0)6-131 72 774
       </a>
     </div>
   </div>
 </header>
 
 <style>
-  /* ── Base: transparent — integrated into hero ── */
+  /* ═══════════════════════════════════════
+     BASE — transparent, blends into hero
+  ═══════════════════════════════════════ */
   .nav-island {
-    background:             transparent;
-    backdrop-filter:        none;
+    background:              transparent;
+    backdrop-filter:         none;
     -webkit-backdrop-filter: none;
-    border:                 1px solid transparent;
-    box-shadow:             none;
+    border:                  1px solid transparent;
+    box-shadow:              none;
     transition:
-      background      0.45s ease,
-      border-color    0.45s ease,
-      box-shadow      0.45s ease,
-      backdrop-filter 0.45s ease;
+      background       0.5s cubic-bezier(0.4,0,0.2,1),
+      border-color     0.5s cubic-bezier(0.4,0,0.2,1),
+      box-shadow       0.5s cubic-bezier(0.4,0,0.2,1);
   }
 
-  /* Nav links — white on dark hero */
-  .nav-link {
-    color:      rgba(255, 255, 255, 0.72);
-    transition: color 0.3s ease;
-  }
-  .nav-link:hover,
-  .nav-link--active { color: rgba(255, 255, 255, 1); }
-
-  /* Divider */
-  .nav-divider { background: rgba(255, 255, 255, 0.12); }
-
-  /* Hamburger lines */
-  .ham-line { background: rgba(255, 255, 255, 0.65); }
-
-  /* Nav CTA — smaller than global .btn so it sits inside the nav with breathing room */
-  .nav-cta-btn {
-    height:    36px;
-    padding:   0 18px;
-    font-size: 0.6875rem; /* 11px */
-    margin:    4px 0;     /* 4px vertical gap from nav border */
+  /* ── Scroll progress bar ── */
+  .nav-progress {
+    position:   absolute;
+    bottom:     0;
+    left:       1.5rem;
+    right:      1.5rem;
+    height:     1.5px;
+    width:      0%;          /* JS sets this on scroll */
+    background: linear-gradient(to right, transparent, #7AAFC4 20%, #9BC5D8 80%, transparent);
+    border-radius: 1px;
+    opacity:    0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
-  /* Logo */
+  /* ── Sliding indicator under active link ── */
+  .nav-indicator {
+    position:     absolute;
+    bottom:       6px;
+    height:       2px;
+    width:        0;
+    background:   linear-gradient(to right, transparent, #7AAFC4, transparent);
+    border-radius: 1px;
+    pointer-events: none;
+    transition:   left 0.35s cubic-bezier(0.4,0,0.2,1),
+                  width 0.35s cubic-bezier(0.4,0,0.2,1),
+                  opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  /* ── Logo ── */
+  .nav-logo-icon {
+    color: rgba(122,175,196,0.65);
+    transition: color 0.35s ease;
+  }
+  .nav-logo:hover .nav-logo-icon { color: #7AAFC4; }
+
   .dts-logo-text {
-    background: linear-gradient(135deg, #9BC5D8 0%, #7AAFC4 40%, #B8C4CC 100%);
+    background: linear-gradient(135deg, #9BC5D8 0%, #7AAFC4 45%, #B8C4CC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    transition: filter 0.45s ease;
+    transition: filter 0.4s ease;
   }
 
-  /* ── Scrolled: white frosted glass ── */
+  /* ── Divider ── */
+  .nav-divider { background: rgba(255,255,255,0.10); }
+
+  /* ── Links ── */
+  .nav-link {
+    color:      rgba(255,255,255,0.55);
+    position:   relative;
+    transition: color 0.25s ease, background 0.25s ease;
+  }
+  .nav-link:hover    { color: rgba(255,255,255,0.90); background: rgba(255,255,255,0.05); }
+  .nav-link--active  { color: #ffffff; }
+
+  /* ── Status chip ── */
+  .nav-status {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .nav-status-dot {
+    width:  6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7AAFC4;
+    box-shadow: 0 0 6px rgba(122,175,196,0.8);
+    animation: statusPulse 2.5s ease-in-out infinite;
+  }
+  .nav-status-label {
+    font-size:      0.55rem;
+    font-weight:    700;
+    letter-spacing: 0.22em;
+    color:          rgba(122,175,196,0.65);
+    text-transform: uppercase;
+  }
+  @keyframes statusPulse {
+    0%,100% { opacity: 1; box-shadow: 0 0 4px rgba(122,175,196,0.6); }
+    50%      { opacity: 0.5; box-shadow: 0 0 10px rgba(122,175,196,0.9); }
+  }
+
+  /* ── CTA button in nav ── */
+  .nav-cta-btn {
+    height:    34px;
+    padding:   0 16px;
+    font-size: 0.65rem;
+    gap:       0.4rem;
+  }
+
+  /* ── Hamburger ── */
+  .ham-line { background: rgba(255,255,255,0.60); }
+
+  /* ═══════════════════════════════════════
+     SCROLLED — dark precision glass
+  ═══════════════════════════════════════ */
   .nav-island.scrolled {
-    background:              rgba(255, 255, 255, 0.75);
-    backdrop-filter:         blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
-    border-color:            rgba(0, 0, 0, 0.07);
+    background:              rgba(8, 9, 11, 0.88);
+    backdrop-filter:         blur(24px) saturate(1.6);
+    -webkit-backdrop-filter: blur(24px) saturate(1.6);
+    border-color:            rgba(122,175,196,0.18);
     box-shadow:
-      0 4px 24px rgba(0, 0, 0, 0.08),
-      0 1px 0   rgba(255, 255, 255, 0.9) inset;
+      0 1px 0   rgba(122,175,196,0.12) inset,   /* top inner glow */
+      0 0  0 1px rgba(122,175,196,0.06),          /* outer ring */
+      0 8px 32px rgba(0,0,0,0.55),
+      0 2px 8px  rgba(0,0,0,0.35);
   }
 
-  /* Links — dark on light background */
-  .nav-island.scrolled .nav-link          { color: rgba(8, 9, 11, 0.60); }
-  .nav-island.scrolled .nav-link:hover,
-  .nav-island.scrolled .nav-link--active  { color: rgba(8, 9, 11, 0.95); }
+  .nav-island.scrolled .nav-progress { opacity: 1; }
+  .nav-island.scrolled .nav-indicator { opacity: 1; }
+  .nav-island.scrolled .nav-status   { opacity: 1; }
+
+  /* Links stay white/teal on dark background */
+  .nav-island.scrolled .nav-link         { color: rgba(184,196,204,0.55); }
+  .nav-island.scrolled .nav-link:hover   { color: rgba(255,255,255,0.85); background: rgba(122,175,196,0.08); }
+  .nav-island.scrolled .nav-link--active { color: #7AAFC4; }
+
+  /* Logo gets brighter teal */
+  .nav-island.scrolled .dts-logo-text {
+    filter: drop-shadow(0 0 8px rgba(122,175,196,0.35));
+  }
+  .nav-island.scrolled .nav-logo-icon { color: rgba(122,175,196,0.80); }
 
   /* Divider */
-  .nav-island.scrolled .nav-divider { background: rgba(8, 9, 11, 0.10); }
+  .nav-island.scrolled .nav-divider { background: rgba(122,175,196,0.14); }
 
   /* Hamburger */
-  .nav-island.scrolled .ham-line { background: rgba(8, 9, 11, 0.55); }
+  .nav-island.scrolled .ham-line { background: rgba(184,196,204,0.70); }
 
-  /* ── Mobile menu ── */
+  /* ═══════════════════════════════════════
+     MOBILE MENU
+  ═══════════════════════════════════════ */
   .mobile-menu {
-    background:              rgba(8, 9, 11, 0.92);
-    backdrop-filter:         blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border:                  1px solid rgba(122, 175, 196, 0.15);
+    background:              rgba(8, 9, 11, 0.96);
+    backdrop-filter:         blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border:                  1px solid rgba(122,175,196,0.16);
+    box-shadow:              0 16px 48px rgba(0,0,0,0.65);
     max-height:              0;
     opacity:                 0;
     pointer-events:          none;
-    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+    transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
   }
   .mobile-menu.open {
-    max-height:     500px;
+    max-height:     520px;
     opacity:        1;
     pointer-events: auto;
   }
 
-  .nav-mobile-link { color: rgba(255,255,255,0.60); }
-  .nav-mobile-link:hover { color: #fff; }
+  .nav-mobile-link        { color: rgba(184,196,204,0.55); }
+  .nav-mobile-link:hover  { color: #fff; background: rgba(122,175,196,0.06); }
+  .nav-mobile-link--active { color: #7AAFC4; }
+  .nav-mobile-border { border-color: rgba(122,175,196,0.07); }
 
-  /* Hamburger open state */
-  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  .nav-mobile-dot {
+    background: rgba(122,175,196,0.3);
+    transition: background 0.2s ease;
   }
-  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(2) { opacity: 0; }
-  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(3) {
-    width: 20px;
-    transform: translateY(-8px) rotate(-45deg);
-  }
+  .nav-mobile-link--active .nav-mobile-dot { background: #7AAFC4; box-shadow: 0 0 6px rgba(122,175,196,0.7); }
+  .nav-mobile-link:hover    .nav-mobile-dot { background: rgba(122,175,196,0.6); }
+
+  /* ── Hamburger open state ── */
+  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  #nav-toggle[aria-expanded="true"] .ham-line:nth-child(3) { width: 20px; transform: translateY(-8px) rotate(-45deg); }
 </style>
 
 <script>
   import gsap from 'gsap';
 
-  const nav = document.querySelector<HTMLElement>('.nav-island')!;
+  const nav       = document.querySelector<HTMLElement>('.nav-island')!;
+  const progress  = document.getElementById('nav-progress') as HTMLElement;
+  const indicator = document.getElementById('nav-indicator') as HTMLElement;
+  const statusLbl = document.getElementById('nav-status-label') as HTMLElement;
+  const navLinks  = document.querySelectorAll<HTMLAnchorElement>('#nav-links .nav-link');
 
-  // ── Scroll-driven style switch ──
+  // ─────────────────────────────────────
+  //  1. Scroll state + progress bar
+  // ─────────────────────────────────────
   function updateNav() {
-    if (window.scrollY > 60) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
+    const scrolled = window.scrollY > 60;
+    nav.classList.toggle('scrolled', scrolled);
+
+    // Progress bar width
+    const docH   = document.body.scrollHeight - window.innerHeight;
+    const pct    = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    progress.style.width = `${pct}%`;
   }
 
-  // Apply immediately on load (handles page refresh mid-scroll)
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
 
-  // ── Entrance animation ──
-  gsap.from('#nav-header', {
-    y: -20,
-    opacity: 0,
-    duration: 0.8,
-    ease: 'power3.out',
-    delay: 0.2,
+  // ─────────────────────────────────────
+  //  2. Sliding indicator under active link
+  // ─────────────────────────────────────
+  function moveIndicator(el: HTMLElement) {
+    const navRect = nav.getBoundingClientRect();
+    const elRect  = el.getBoundingClientRect();
+    const left    = elRect.left - navRect.left + (elRect.width * 0.2);
+    const width   = elRect.width * 0.6;
+    indicator.style.left  = `${left}px`;
+    indicator.style.width = `${width}px`;
+  }
+
+  // Set indicator on the active link immediately
+  const activeLink = document.querySelector<HTMLElement>('#nav-links .nav-link--active');
+  if (activeLink) moveIndicator(activeLink);
+
+  // Hover: move indicator to hovered link
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => moveIndicator(link));
+    link.addEventListener('mouseleave', () => {
+      if (activeLink) moveIndicator(activeLink);
+    });
   });
 
-  // ── Mobile menu toggle ──
+  // ─────────────────────────────────────
+  //  3. Section scanner — status chip
+  //     shows the section heading name
+  // ─────────────────────────────────────
+  const sectionMap: Record<string, string> = {
+    'hero-section':  'HOME',
+    'over-ons':      'OVER ONS',
+    'diensten':      'DIENSTEN',
+    'cases':         'WERK',
+    'werk':          'WERK',
+    'blog':          'BLOG',
+    'contact':       'CONTACT',
+  };
+
+  if (typeof IntersectionObserver !== 'undefined') {
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const id = (entry.target as HTMLElement).id || (entry.target as HTMLElement).className.split(' ')[0];
+          const match = Object.entries(sectionMap).find(([key]) => id.includes(key));
+          if (match && statusLbl) statusLbl.textContent = match[1];
+        }
+      }
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('section[id], section.hero-section').forEach(s => io.observe(s));
+  }
+
+  // ─────────────────────────────────────
+  //  4. Entrance animation
+  // ─────────────────────────────────────
+  gsap.from('#nav-header', {
+    y: -28,
+    opacity: 0,
+    duration: 0.9,
+    ease: 'power3.out',
+    delay: 0.15,
+  });
+
+  // Logo icon draws in
+  gsap.from('.nav-logo-icon', {
+    rotation: -90,
+    opacity: 0,
+    duration: 0.7,
+    ease: 'back.out(1.5)',
+    delay: 0.55,
+  });
+
+  // Links stagger in
+  gsap.from('#nav-links .nav-link', {
+    y: -8,
+    opacity: 0,
+    duration: 0.45,
+    stagger: 0.06,
+    ease: 'power2.out',
+    delay: 0.5,
+  });
+
+  // ─────────────────────────────────────
+  //  5. Mobile menu
+  // ─────────────────────────────────────
   const toggle     = document.getElementById('nav-toggle');
   const mobileMenu = document.getElementById('nav-mobile');
 
@@ -220,8 +420,7 @@ const links = [
   });
 
   document.addEventListener('click', (e) => {
-    const header = document.getElementById('nav-header');
-    if (!header?.contains(e.target as Node)) {
+    if (!document.getElementById('nav-header')?.contains(e.target as Node)) {
       toggle?.setAttribute('aria-expanded', 'false');
       mobileMenu?.setAttribute('aria-hidden', 'true');
       mobileMenu?.classList.remove('open');

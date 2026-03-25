@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -108,9 +109,7 @@ const services = [
 
   <main>
     <!-- HERO -->
-    <section class="relative overflow-hidden" style="padding-top: clamp(8rem, 14vw, 11rem); padding-bottom: clamp(4rem, 6vw, 6rem); padding-inline: var(--page-px);">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container text-center" data-animate>
+    <PageSection hero center animate>
         <div class="flex items-center justify-center gap-3 mb-6">
           <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
           <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Diensten</span>
@@ -122,13 +121,10 @@ const services = [
         <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.75; color: #9AAEB8; max-width: 56ch;">
           Alles voor jouw momentsleutel — van kalibratie en certificering tot volledige reparatie.
         </p>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- SERVICE CARDS 2x2 GRID -->
-    <section class="relative page-wrap overflow-hidden">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container">
+    <PageSection>
         <div class="grid gap-5" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
           {services.map((svc, i) => (
             <a
@@ -163,13 +159,10 @@ const services = [
             </a>
           ))}
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- MERKEN / SNAP-ON -->
-    <section class="relative page-wrap overflow-hidden">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container">
+    <PageSection>
         <div class="text-center mb-10" data-animate>
           <div class="flex items-center justify-center gap-3 mb-5">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
@@ -185,13 +178,10 @@ const services = [
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
-      </div>
-    </section>
+    </PageSection>
 
     <!-- CTA -->
-    <section class="relative page-wrap overflow-hidden">
-      <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);"></div>
-      <div class="page-container text-center" data-animate>
+    <PageSection center animate>
         <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Klaar om te beginnen?</h2>
         <p class="mb-8 mx-auto" style="color: #9AAEB8; max-width: 44ch; font-size: 1.05rem; line-height: 1.75;">
           Stuur ons een bericht of bel direct. We reageren snel en geven altijd een eerlijk advies.
@@ -203,8 +193,7 @@ const services = [
           </a>
           <a href="tel:+31613172774" class="btn btn-outline">+31(0)6-131 72 774</a>
         </div>
-      </div>
-    </section>
+    </PageSection>
   </main>
 
   <FooterDTS />
