@@ -65,7 +65,12 @@ const contactSchema = {
 
           <!-- Left: contact details -->
           <div class="col-span-12 lg:col-span-5" data-animate data-animate-from="left">
-            <h2 class="text-2xl font-black text-white mb-8" style="letter-spacing:-0.02em;">Gegevens</h2>
+
+            <!-- Section label -->
+            <div class="flex items-center gap-3 mb-7">
+              <span class="w-6 h-px" style="background:#7AAFC4; opacity:0.8;"></span>
+              <span class="text-[10px] font-semibold tracking-[0.3em] uppercase" style="color:#7AAFC4;">Contactgegevens</span>
+            </div>
 
             {[
               {
@@ -96,16 +101,16 @@ const contactSchema = {
                 value: '67183360',
               },
             ].map(item => (
-              <div class="flex gap-4 mb-7">
-                <div class="flex-shrink-0 mt-0.5 w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(122,175,196,0.1); border: 1px solid rgba(122,175,196,0.18);">
+              <div class="contact-item">
+                <div class="contact-icon-wrap">
                   <Fragment set:html={item.icon} />
                 </div>
-                <div>
-                  <p class="text-xs font-semibold tracking-[0.18em] uppercase mb-1" style="color: rgba(122,175,196,0.65);">{item.label}</p>
+                <div class="contact-item-body">
+                  <p class="contact-label">{item.label}</p>
                   {item.href ? (
-                    <a href={item.href} class="text-sm leading-relaxed transition-colors hover:text-white" style="color: #C4D0D8; white-space: pre-line;">{item.value}</a>
+                    <a href={item.href} class="contact-value contact-link">{item.value}</a>
                   ) : (
-                    <p class="text-sm leading-relaxed" style="color: #C4D0D8; white-space: pre-line;">{item.value}</p>
+                    <p class="contact-value">{item.value}</p>
                   )}
                 </div>
               </div>
@@ -147,3 +152,63 @@ const contactSchema = {
 
   <FooterDTS />
 </Base>
+
+<style>
+  /* ── Contact detail cards ── */
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(122,175,196,0.03);
+    border: 1px solid rgba(122,175,196,0.09);
+    border-radius: 1.1rem;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .contact-item:hover {
+    border-color: rgba(122,175,196,0.22);
+    background: rgba(122,175,196,0.06);
+  }
+
+  .contact-icon-wrap {
+    flex-shrink: 0;
+    width:  48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(122,175,196,0.1);
+    border: 1px solid rgba(122,175,196,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-item-body {
+    flex: 1;
+    min-width: 0;
+    padding-top: 2px;
+  }
+
+  .contact-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(122,175,196,0.55);
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-value {
+    font-size: 0.975rem;
+    line-height: 1.6;
+    color: #C4D0D8;
+    white-space: pre-line;
+    display: block;
+  }
+
+  .contact-link {
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+  .contact-link:hover { color: #fff; }
+</style>

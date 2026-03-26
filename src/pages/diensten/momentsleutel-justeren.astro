@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
 import PageSection from '../../components/ui/PageSection.astro';
+import ChatExplainer from '../../components/modules/ChatExplainer.astro';
 
 const accent = '#7AAFC4';
 
@@ -101,29 +102,18 @@ const faq = [
         </div>
     </PageSection>
 
-    <!-- ══════════════════════════════════════
-         WHAT IS JUSTEREN?
-    ══════════════════════════════════════ -->
+    <!-- WHAT IS X — CHAT UI -->
     <PageSection>
-        <div class="section-header" data-animate>
-          <div class="eyebrow-row">
-            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
-            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Wat is justeren?</span>
-            <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
-          </div>
-          <h2 class="section-h2">Justeren versus kalibreren.</h2>
-        </div>
-
-        <div class="two-col-text" data-animate data-animate-delay="0.08">
-          <div class="def-card">
-            <p class="body-text">
-              <strong style="color:#C8D8E0;">Justeren</strong> betekent het corrigeren van de afwijking — het bijstellen van de sleutel zodat hij weer nauwkeurig de ingestelde kracht levert. <strong style="color:#C8D8E0;">Kalibreren</strong> is het meten en documenteren van de werkelijke waarden, zonder per se een correctie uit te voeren. Meer over het verschil: <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">wat is kalibratie?</a>
-            </p>
-            <p class="body-text" style="margin-top:1.25rem;">
-              Na elke justering voeren wij altijd een volledige kalibratie uit conform ISO 6789:2017 en leveren wij een certificaat met de as-left meetwaarden. Zo weet u zeker dat de sleutel na de ingreep binnen de voorgeschreven tolerantie valt.
-            </p>
-          </div>
-        </div>
+      <ChatExplainer
+        question="Wanneer moet ik mijn sleutel laten justeren?"
+        answer="Als de gemeten waarden buiten de toegestane tolerantie vallen. Dit kan na intensief gebruik, een val of gewoon door veroudering. Na justering kalibreren we opnieuw en ontvang je een nieuw certificaat."
+        accent="#C4AF64"
+        reactions={[
+          { emoji: '🎯', count: 13 },
+          { emoji: '✅', count: 17 },
+          { emoji: '👍', count: 8 },
+        ]}
+      />
     </PageSection>
 
     <!-- ══════════════════════════════════════

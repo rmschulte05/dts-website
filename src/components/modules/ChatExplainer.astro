@@ -1,0 +1,322 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+  accent?: string;
+  reactions?: Array<{ emoji: string; count: number }>;
+}
+const {
+  question,
+  answer,
+  accent = '#7AAFC4',
+  reactions = [
+    { emoji: '👍', count: 14 },
+    { emoji: '🔧', count: 9 },
+    { emoji: '✅', count: 21 },
+  ],
+} = Astro.props;
+---
+
+<div
+  class="chat-explainer"
+  data-question={question}
+  style={`--chat-accent: ${accent};`}
+>
+  <!-- Window chrome -->
+  <div class="chat-chrome">
+    <div class="chrome-dots" aria-hidden="true">
+      <span class="chrome-dot dot-red"></span>
+      <span class="chrome-dot dot-yellow"></span>
+      <span class="chrome-dot dot-green"></span>
+    </div>
+    <span class="chrome-title">DTS &middot; Vraag &amp; Antwoord</span>
+    <span class="chrome-live" aria-hidden="true">
+      <span class="live-dot"></span>
+      <span class="live-label">LIVE</span>
+    </span>
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-body">
+    <!-- User question — types in on scroll entry -->
+    <div class="chat-row user-row">
+      <div class="bubble user-bubble" aria-label={question}>
+        <span class="user-text" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">|</span>
+      </div>
+    </div>
+
+    <!-- DTS typing indicator -->
+    <div class="chat-row dts-row typing-row" aria-hidden="true" style="display:none;">
+      <div class="dts-avatar" aria-hidden="true">DTS</div>
+      <div class="bubble dts-bubble typing-bubble">
+        <span class="t-dot"></span>
+        <span class="t-dot"></span>
+        <span class="t-dot"></span>
+      </div>
+    </div>
+
+    <!-- DTS reply -->
+    <div class="chat-row dts-row reply-row" role="status" aria-atomic="true" style="display:none;">
+      <div class="dts-avatar" aria-hidden="true">DTS</div>
+      <div class="bubble dts-bubble reply-bubble">{answer}</div>
+    </div>
+  </div>
+
+  <!-- Emoji reactions -->
+  <div class="chat-reactions" aria-label="Reageer op dit antwoord" style="display:none;">
+    {reactions.map(r => (
+      <button class="reaction-btn" type="button" aria-label={`Reageer ${r.emoji}`}>
+        <span class="reaction-emoji">{r.emoji}</span>
+        <span class="reaction-count">{r.count}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .chat-explainer {
+    --chat-accent: #7AAFC4;
+    border-radius: 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--chat-accent) 20%, transparent);
+    background: #080A0E;
+    overflow: hidden;
+    max-width: 680px;
+    margin: 0 auto;
+    box-shadow:
+      0 4px 40px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(255,255,255,0.03) inset;
+  }
+
+  /* ── Chrome bar ── */
+  .chat-chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--chat-accent) 10%, transparent);
+    background: rgba(255,255,255,0.02);
+  }
+  .chrome-dots { display: flex; gap: 5px; }
+  .chrome-dot  { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red     { background: #FF5F57; }
+  .dot-yellow  { background: #FEBC2E; }
+  .dot-green   { background: #28C840; }
+
+  .chrome-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(184,196,204,0.35);
+  }
+  .chrome-live {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--chat-accent);
+    box-shadow: 0 0 6px color-mix(in srgb, var(--chat-accent) 80%, transparent);
+    animation: livePulse 2.2s ease-in-out infinite;
+  }
+  .live-label {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: color-mix(in srgb, var(--chat-accent) 60%, transparent);
+  }
+  @keyframes livePulse {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+  }
+
+  /* ── Messages area ── */
+  .chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .chat-row { display: flex; align-items: flex-end; gap: 0.6rem; }
+  .user-row { justify-content: flex-end; }
+  .dts-row  { justify-content: flex-start; }
+
+  .bubble {
+    max-width: 78%;
+    padding: 0.85rem 1.1rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .user-bubble {
+    background: color-mix(in srgb, var(--chat-accent) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--chat-accent) 28%, transparent);
+    border-bottom-right-radius: 4px;
+    color: #E8F0F4;
+  }
+  .dts-bubble {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-bottom-left-radius: 4px;
+    color: #A8B8C4;
+  }
+
+  /* Typing cursor blink */
+  .typing-cursor {
+    display: inline-block;
+    margin-left: 1px;
+    color: var(--chat-accent);
+    animation: cursorBlink 0.75s step-end infinite;
+  }
+  @keyframes cursorBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* DTS typing indicator dots */
+  .typing-bubble { display: flex; align-items: center; gap: 5px; padding: 0.9rem 1.1rem; }
+  .t-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(122,175,196,0.35);
+    animation: typingBounce 1.2s ease-in-out infinite;
+  }
+  .t-dot:nth-child(2) { animation-delay: 0.18s; }
+  .t-dot:nth-child(3) { animation-delay: 0.36s; }
+  @keyframes typingBounce {
+    0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+    30%         { transform: translateY(-5px); opacity: 1; }
+  }
+
+  /* DTS avatar chip */
+  .dts-avatar {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--chat-accent) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--chat-accent) 28%, transparent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.45rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--chat-accent);
+  }
+
+  /* Reply bubble fade-in */
+  .reply-row { opacity: 0; transform: translateY(8px); }
+  .reply-row.reply-visible {
+    animation: replyIn 0.45s cubic-bezier(0.4,0,0.2,1) forwards;
+  }
+  @keyframes replyIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Reactions ── */
+  .chat-reactions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.01);
+    opacity: 0;
+  }
+  .chat-reactions.reactions-visible {
+    animation: fadeUp 0.4s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; }
+  }
+
+  .reaction-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    user-select: none;
+  }
+  .reaction-btn:hover:not(.reacted) {
+    border-color: color-mix(in srgb, var(--chat-accent) 35%, transparent);
+    background: color-mix(in srgb, var(--chat-accent) 8%, transparent);
+    transform: scale(1.06);
+  }
+  .reaction-btn.reacted {
+    border-color: color-mix(in srgb, var(--chat-accent) 45%, transparent);
+    background: color-mix(in srgb, var(--chat-accent) 12%, transparent);
+  }
+  .reaction-btn.pop {
+    animation: reactionPop 0.28s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes reactionPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.22); }
+    100% { transform: scale(1); }
+  }
+
+  .reaction-emoji { font-size: 0.95rem; }
+  .reaction-count { font-size: 0.7rem; font-weight: 600; color: rgba(184,196,204,0.5); }
+  .reaction-btn.reacted .reaction-count { color: var(--chat-accent); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.chat-explainer').forEach(chat => {
+    const question   = chat.dataset.question ?? '';
+    const userText   = chat.querySelector<HTMLElement>('.user-text')!;
+    const cursor     = chat.querySelector<HTMLElement>('.typing-cursor')!;
+    const typingRow  = chat.querySelector<HTMLElement>('.typing-row')!;
+    const replyRow   = chat.querySelector<HTMLElement>('.reply-row')!;
+    const reactionsEl= chat.querySelector<HTMLElement>('.chat-reactions')!;
+    let started = false;
+
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        io.disconnect();
+        startChat();
+      }
+    }, { threshold: 0.25 });
+    io.observe(chat);
+
+    function startChat() {
+      let i = 0;
+      function typeChar() {
+        if (i < question.length) {
+          userText.textContent += question[i++];
+          setTimeout(typeChar, 38);
+        } else {
+          // Typing done
+          cursor.style.display = 'none';
+          setTimeout(() => {
+            typingRow.style.display = 'flex';
+            setTimeout(() => {
+              typingRow.style.display = 'none';
+              replyRow.style.display = 'flex';
+              replyRow.classList.add('reply-visible');
+              setTimeout(() => {
+                reactionsEl.style.display = 'flex';
+                reactionsEl.classList.add('reactions-visible');
+              }, 350);
+            }, 1400);
+          }, 380);
+        }
+      }
+      setTimeout(typeChar, 550);
+    }
+
+    // Emoji reactions — one click per emoji per visit
+    chat.querySelectorAll<HTMLButtonElement>('.reaction-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('reacted')) return;
+        btn.classList.add('reacted', 'pop');
+        const countEl = btn.querySelector<HTMLElement>('.reaction-count')!;
+        countEl.textContent = String(parseInt(countEl.textContent ?? '0') + 1);
+        btn.addEventListener('animationend', () => btn.classList.remove('pop'), { once: true });
+      });
+    });
+  });
+</script>

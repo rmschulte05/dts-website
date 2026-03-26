@@ -1,0 +1,250 @@
+---
+export const meta = {
+  title: 'Kalibreren, Justeren of IJken — Wat is het Verschil?',
+  excerpt: 'Drie woorden die door elkaar worden gebruikt alsof ze hetzelfde betekenen. Dat doen ze niet — en het verschil maakt uit bij elke audit.',
+  category: 'Kennisbank',
+  readTime: '9 min',
+  date: '2026-03-26',
+  dateDisplay: '26 maart 2026',
+  accent: '#A89FD4',
+};
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Kalibreren, Justeren of IJken — Wat is het Verschil?",
+  "description": "Kalibreren is meten, justeren is bijstellen, ijken bestaat wettelijk niet voor momentsleutels. Het correcte proces en wat ISO 6789:2017 vereist.",
+  "author": { "@type": "Person", "name": "Jan-Piet Schulte", "worksFor": { "@type": "Organization", "name": "Dutch Torque Service", "@id": "https://www.dutchtorqueservice.nl/#business" } },
+  "publisher": { "@type": "Organization", "name": "Dutch Torque Service", "url": "https://www.dutchtorqueservice.nl" },
+  "datePublished": "2026-03-26",
+  "url": "https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken",
+  "inLanguage": "nl-NL"
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wat is het verschil tussen kalibreren en justeren?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Kalibreren is meten en documenteren van de afwijking — er wordt niets aan de sleutel veranderd. Justeren is het fysiek bijstellen van de sleutel zodat hij weer binnen tolerantie valt. Justeren volgt altijd op kalibratie, nooit andersom." }
+    },
+    {
+      "@type": "Question",
+      "name": "Moet ik mijn momentsleutel laten ijken?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nee. Momentsleutels vallen niet onder de Metrologiewet en kunnen wettelijk niet worden geijkt. Voor een kwaliteitssysteem (ISO 9001, VCA, IATF 16949) heb je een ISO 6789:2017 kalibratiecertificaat nodig — geen ijkbewijs." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik mijn sleutel laten kalibreren zonder hem te laten justeren?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Kalibratie en justeren zijn twee losse stappen. Als jouw sleutel binnen tolerantie zit, hoef je niets bij te stellen — je krijgt gewoon het certificaat." }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat staat er op een ISO 6789:2017 kalibratiecertificaat?",
+      "acceptedAnswer": { "@type": "Answer", "text": "De gemeten waarden per meetpunt (as-found en as-left indien bijgesteld), de meetonzekerheid, de referentieapparatuur waarmee gemeten is, datum, naam van het lab en handtekening van de verantwoordelijke." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe lang duurt kalibratie bij Dutch Torque Service?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Binnen 48 uur na ontvangst is jouw sleutel gekalibreerd en het certificaat opgesteld." }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dutchtorqueservice.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.dutchtorqueservice.nl/blog" },
+    { "@type": "ListItem", "position": 3, "name": "Kalibreren, Justeren of IJken — Wat is het Verschil?", "item": "https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken" }
+  ]
+};
+---
+
+<BlogLayout
+  title="Kalibreren, Justeren of IJken — Wat is het Verschil? | DTS"
+  description="Kalibreren is meten, justeren is bijstellen — en ijken bestaat wettelijk niet voor momentsleutels. Jan-Piet legt het correcte proces uit per ISO 6789:2017."
+  canonicalPath="/blog/verschil-kalibreren-justeren-ijken"
+  headline="Kalibreren, Justeren of IJken — Wat is het Verschil?"
+  category="Kennisbank"
+  readTime="9 min"
+  publishDate="26 maart 2026"
+  excerpt="Drie woorden die door elkaar worden gebruikt alsof ze hetzelfde betekenen. Dat doen ze niet — en het verschil maakt uit bij elke audit."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class="prose">
+
+    <p><em>Door Jan-Piet Schulte · Dutch Torque Service · momentsleutel kalibratie specialist</em></p>
+
+    <p>"Die sleutel moet gewoon geijkt worden." Je collega zegt het met een vertrouwen dat geen ruimte laat voor discussie. Hij heeft het van iemand gehoord, of gelezen op een forum, of misschien staat het zelfs ergens in een kwaliteitshandboek. En toch klopt het niet. Niet helemaal. Eigenlijk niet eens een beetje.</p>
+
+    <p>Kalibreren, justeren en ijken. Drie woorden die door elkaar worden gebruikt alsof ze hetzelfde betekenen. Dat doen ze niet. Het verschil lijkt misschien technisch geneuzel, maar als je verantwoordelijk bent voor gereedschap dat veilig en traceerbaar moet zijn, maakt het echt uit. Een monteur die denkt dat zijn sleutel "geijkt" is terwijl dat wettelijk gezien helemaal niet bestaat voor momentsleutels — die heeft een probleem bij de volgende audit.</p>
+
+    <p>Ik leg je uit wat elk begrip precies betekent, wanneer je welk woord gebruikt, en wat het correcte proces is van begin tot eind.</p>
+
+    <h2>Kalibreren — Meten en Documenteren</h2>
+
+    <p class="aeo-definition">Momentsleutel kalibratie is het nauwkeurig meten en documenteren van de werkelijke koppelkracht die een sleutel afgeeft ten opzichte van de ingestelde waarde, conform ISO 6789:2017 — uitgevoerd door Dutch Torque Service in Riethoven, Noord-Brabant.</p>
+
+    <p>Kalibreren is het meten van de afwijking van een instrument ten opzichte van een bekende referentie. Meer niet. Het betekent expliciet niet dat je iets bijstelt of repareert — je stelt alleen vast wat er is. Dat klinkt simpel, dat ís ook simpel. Maar het is precies het onderscheid dat mensen consequent missen.</p>
+
+    <p>Volgens de internationale definitie uit <a href="https://www.iso.org/obp/ui/#iso:std:jcgm:200:ed-3:v1:en" target="_blank" rel="noopener noreferrer">VIM JCGM 200:2012</a> is kalibratie "het vaststellen van de relatie tussen de aanwijzingen van een meetinstrument en de overeenkomstige waarden van een meetstandaard." Diezelfde publicatie voegt er nadrukkelijk aan toe: kalibratie mag niet worden verward met het bijstellen van een meetsysteem, wat vaak ten onrechte kalibratie wordt genoemd.</p>
+
+    <p>Dat is geen kleine kanttekening. Dat is de kern van het misverstand.</p>
+
+    <p>In de praktijk: de sleutel wordt gemeten op meerdere koppelmomentwaarden — conform ISO 6789-2:2017 worden meerdere meetpunten in meerdere series afgenomen — en de afwijkingen worden nauwkeurig gedocumenteerd. Het resultaat is een <strong>as-found waarde</strong>: wat deed jouw sleutel op het moment dat hij binnenkwam?</p>
+
+    <p>Dat getal kan goed zijn. Slecht zijn. Maar het is altijd eerlijk.</p>
+
+    <p><a href="/diensten/momentsleutel-kalibratie">Momentsleutel kalibratie bij DTS</a> werkt precies zo: meten, documenteren, rapporteren. De uitkomst bepaalt wat er daarna moet gebeuren. De kalibratie zelf stelt niets bij — die meet alleen.</p>
+
+    <h2>Justeren — Het Fysieke Bijstellen</h2>
+
+    <p>Justeren is wat veel mensen bedoelen als ze "kalibreren" zeggen. Het is het daadwerkelijk bijstellen van een instrument zodat het weer binnen de gewenste tolerantie valt.</p>
+
+    <p>Bij een momentsleutel kan dat betekenen: de veer aanpassen, het klikmechanisme bijstellen, of een schaalverdeling corrigeren. Handwerk. Vakwerk. En het heeft alleen zin als je eerst weet hóé ver de sleutel afwijkt — dus pas ná kalibratie.</p>
+
+    <p>Wanneer heb jij je sleutels voor het laatst laten nakijken? Als je even moet nadenken over het antwoord, is dat antwoord eigenlijk al gegeven.</p>
+
+    <p>Dit is een punt dat veel werkplaatsen missen. Ze sturen een sleutel op met het verzoek "gewoon even justeren." Maar blindeling bijstellen zonder te weten waar je begint is als een motor afstellen zonder hem eerst te meten. Misschien zat de sleutel al binnen tolerantie. Misschien zit hij daarna verder buiten tolerantie dan ervoor. Je weet het simpelweg niet.</p>
+
+    <p>Kan jouw sleutel worden bijgesteld? Dat hangt af van het type, het merk en de mate van afwijking. Snap-On, Stahlwille, Hazet, Facom — ze worden allemaal anders gebouwd en hebben allemaal andere justeringsmogelijkheden. <a href="/diensten/momentsleutel-justeren">Momentsleutel justeren</a> heeft dan ook altijd een kalibratiemeting als basis — nooit blind.</p>
+
+    <p>Na het justeren volgt een <strong>herkalibratie</strong>: opnieuw meten om vast te stellen dat de sleutel nu binnen de gewenste ±2% tolerantie zit — onze eigen garantie. Die as-left waarde — de eindtoestand — staat op het certificaat, naast de as-found waarde. Zo zie je precies wat er is veranderd.</p>
+
+    <h2>IJken — De Wettelijke Term Die Niet Voor Momentsleutels Geldt</h2>
+
+    <p>Nu het woord dat voor de meeste verwarring zorgt: ijken.</p>
+
+    <p>IJken is een juridische handeling. Geregeld in de Nederlandse Metrologiewet en de Europese richtlijn MID 2014/32/EU. Een erkende instantie — een zogeheten aangewezen instantie of notified body — stelt formeel vast of een meetinstrument voldoet aan wettelijke eisen. Denk aan weegschalen bij een slagerij, een benzinepomp bij een tankstation, een taxameter in een taxi.</p>
+
+    <p>Momentsleutels staan niet op die lijst. Dat is geen leemte in de wet — dat is een bewuste keuze. Een momentsleutel is toch gereedschap, geen handelsmeetmiddel. Jij als monteur gebruikt hem om een bout vast te draaien, niet om een klant te factureren voor een gemeten hoeveelheid van iets.</p>
+
+    <p>Het onderscheid is helder: kalibreren is het bepalen van de relatie tussen de aanwijzingen van een meetinstrument en de ware waarde. IJken is een wettelijke handeling waarbij een bevoegde instantie vaststelt of een meetinstrument voldoet aan de wettelijke eisen. Twee verschillende dingen. Met twee verschillende rechtsgevolgen.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Kalibreren</th>
+          <th>Justeren</th>
+          <th>IJken</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Wat is het?</strong></td>
+          <td>Meten van afwijking</td>
+          <td>Fysiek bijstellen</td>
+          <td>Wettelijke goedkeuring</td>
+        </tr>
+        <tr>
+          <td><strong>Wie doet het?</strong></td>
+          <td>Kalibratielab</td>
+          <td>Kalibratielab / technicus</td>
+          <td>Aangewezen instantie (NMi/Kiwa)</td>
+        </tr>
+        <tr>
+          <td><strong>Resultaat</strong></td>
+          <td>Certificaat met as-found waarden</td>
+          <td>Bijgesteld instrument + as-left waarden</td>
+          <td>Wettelijk ijk­merk</td>
+        </tr>
+        <tr>
+          <td><strong>Van toepassing op momentsleutels?</strong></td>
+          <td><strong>Ja</strong> — verplicht in kwaliteitssystemen</td>
+          <td>Indien buiten tolerantie</td>
+          <td><strong>Nee</strong> — niet van toepassing</td>
+        </tr>
+        <tr>
+          <td><strong>Wettelijke basis</strong></td>
+          <td>ISO 6789:2017</td>
+          <td>ISO 6789:2017</td>
+          <td>Metrologiewet / MID 2014/32/EU</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Dus wanneer iemand zegt dat zijn momentsleutel "geijkt" moet worden: technisch gezien bestaat dat niet. Wat hij bedoelt — en wat hij nodig heeft — is kalibratie, mogelijk gevolgd door justeren.</p>
+
+    <h2>Het Correcte Proces — Vier Stappen</h2>
+
+    <p>Hoe ziet het er in de praktijk uit als een sleutel binnenkomt die "gecheckt moet worden"? Dit is het proces:</p>
+
+    <ol>
+      <li>
+        <strong>Kalibratie (as-found)</strong><br/>
+        De sleutel wordt gemeten in de toestand waarin hij binnenkomt, conform ISO 6789-2:2017. De afwijking per meetpunt wordt gedocumenteerd. Dit is de eerlijke begintoestand — wat deed jouw sleutel vóórdat wij er iets aan deden.
+      </li>
+      <li>
+        <strong>Beoordeling</strong><br/>
+        Op basis van de as-found waarden beoordelen wij of de sleutel binnen tolerantie zit. ISO 6789:2017 schrijft afhankelijk van type en klasse een maximale afwijking voor, maar wij hanteren ±2% als eigen garantie. Zit de sleutel erbinnen? Dan is kalibratie voltooid en wordt het <a href="/diensten/iso-6789-certificering">ISO 6789 certificaat</a> opgemaakt. Zit hij erbuiten? Dan volgt stap 3.
+      </li>
+      <li>
+        <strong>Justeren</strong><br/>
+        De sleutel wordt fysiek bijgesteld. Veer, klikmechanisme, schaalverdeling — afhankelijk van type en merk. Niet elke sleutel is justeerbaar. Een Gedore die mechanisch versleten is, kan net zo goed naar <a href="/diensten/momentsleutel-reparatie">reparatie</a>. Dat zeggen we je vooraf, altijd.
+      </li>
+      <li>
+        <strong>Herkalibratie (as-left)</strong><br/>
+        Na het justeren meten we opnieuw. De as-left waarden worden gedocumenteerd. Pas als de sleutel nu binnen tolerantie zit, wordt het certificaat opgemaakt — met beide waarden: wat hij was, en wat hij nu is.
+      </li>
+    </ol>
+
+    <p>Meer over de frequentie: <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak moet je een momentsleutel kalibreren?</a> — want de juiste interval is minstens zo belangrijk als het correcte proces.</p>
+
+    <h2>Wanneer Is Een Kalibratiecertificaat Verplicht?</h2>
+
+    <p><strong>ISO 9001</strong> — Paragraaf 7.1.5 vereist dat meetmiddelen worden geïdentificeerd, gekalibreerd of geverifieerd, en dat de kalibratiestatus aantoonbaar is. Een kalibratiecertificaat is de standaardmanier om dat te documenteren. Geen stickertje. Geen handgeschreven notitie. Een traceerbaar document.</p>
+
+    <p><strong>VCA</strong> — voor aannemers in de petrochemie en industrie. Gereedschap dat invloed heeft op veiligheid moet aantoonbaar in goede staat zijn en worden beheerd. Momentsleutels vallen daar gewoon onder. Een auditor die een kast vol ongekalibreerde sleutels aantreft, maakt aantekeningen — en niet de prettige soort.</p>
+
+    <p><strong>IATF 16949</strong> — de automotive kwaliteitsstandaard. Hier is de eis strenger. Niet alleen een certificaat, maar ook volledige traceerbaarheid naar nationale of internationale meetstandaarden. Wie Tier-1 of Tier-2 leverancier is voor een OEM, weet dit al — dan is een as-found/as-left certificaat conform ISO 6789:2017 geen optie maar een keiharde eis.</p>
+
+    <p>In alle drie gevallen geldt: een kalibratiecertificaat met as-found én as-left waarden, conform ISO 6789:2017, is wat de auditor wil zien.</p>
+
+    <h2>Veelgestelde Vragen</h2>
+
+    <details>
+      <summary>Kan ik mijn sleutel laten kalibreren zonder hem te laten justeren?</summary>
+      <p>Ja. Kalibratie en justeren zijn twee losse stappen. Als jouw sleutel binnen tolerantie zit, hoef je niets bij te stellen — je krijgt gewoon het certificaat. Zit hij erbuiten, dan bespreken we of justeren zinvol is.</p>
+    </details>
+
+    <details>
+      <summary>Wat staat er precies op een ISO 6789:2017 kalibratiecertificaat?</summary>
+      <p>De gemeten waarden per meetpunt — as-found en as-left als er is bijgesteld. De meetonzekerheid. De referentieapparatuur waarmee gemeten is. Datum, naam, handtekening. Alles wat jij nodig hebt voor je kwaliteitssysteem, en niets wat er niet bij hoort.</p>
+    </details>
+
+    <details>
+      <summary>Mijn kwaliteitshandboek zegt dat ik mijn gereedschap moet "ijken". Wat doe ik?</summary>
+      <p>Waarschijnlijk staat dat er al jaren in en heeft iemand het ooit fout overgeschreven. In de context van momentsleutels betekent het gewoon kalibratie. Laat eventueel je kwaliteitsmanager de tekst aanpassen naar "kalibreren conform ISO 6789:2017" — je auditor zal het waarderen.</p>
+    </details>
+
+    <details>
+      <summary>Hoe lang duurt kalibratie bij Dutch Torque Service?</summary>
+      <p>Binnen 48 uur na ontvangst is jouw sleutel gekalibreerd en het certificaat opgesteld. Voor batches nemen we even contact op over de planning. Geen verrassingen achteraf.</p>
+    </details>
+
+    <details>
+      <summary>Mijn sleutel klopt niet meer — kalibratie of reparatie?</summary>
+      <p>Klikmechanisme werkt niet meer, veer defect, schaalverdeling beschadigd? Dan is het <a href="/diensten/momentsleutel-reparatie">reparatie</a>. Werkt alles mechanisch goed maar klopt het koppelmoment niet? Dan is kalibratie gevolgd door eventueel justeren de juiste route. Twijfel je? Stuur hem gewoon op — wij kijken er even naar.</p>
+    </details>
+
+    <p>Zie ook: <a href="/blog/iso-6789-type-1-type-2-uitgelegd">ISO 6789 Type I en Type II uitgelegd</a> — het verschil tussen aanwijssleutels en instelsleutels en wat dat betekent voor jouw certificaat.</p>
+
+    <h2>Kalibreren, Justeren, IJken — de Korte Samenvatting</h2>
+
+    <p>Kalibreren is meten. Justeren is bijstellen. IJken is een wettelijke term die niet van toepassing is op momentsleutels.</p>
+
+    <p>Dat is het. Niet ingewikkeld, maar wel belangrijk. Want als jij in een audit zit en de auditor vraagt of jouw gereedschap op orde is, wil je weten wat je antwoordt. En als jouw collega zijn Snap-On opstuurt met het verzoek hem "even te ijken" — nou, dan weet je nu wat hij bedoelt en wat er daadwerkelijk moet gebeuren.</p>
+
+    <p>Vragen over jouw specifieke sleutel of wat er op het certificaat moet staan voor jouw kwaliteitssysteem? Bel gewoon: <a href="tel:+31613172774">+31(0)6-131 72 774</a>. Ma–Vr 08:00–17:00.</p>
+
+  </div>
+</BlogLayout>

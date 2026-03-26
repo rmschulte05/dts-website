@@ -16,9 +16,9 @@ const links = [
 
 <header id="nav-header" class="fixed top-0 left-0 right-0 z-50 flex justify-center" style="padding-inline: var(--page-px); padding-top: 1.25rem;">
   <nav
-    class="nav-island relative flex items-center gap-5 md:gap-7 px-5 md:px-7 rounded-2xl w-full max-w-[1200px]"
+    class="nav-island relative flex items-center gap-4 md:gap-6 px-7 md:px-12 rounded-2xl w-full max-w-[1200px]"
     aria-label="Hoofdnavigatie"
-    style="height: 52px;"
+    style="height: 56px;"
   >
 
     <!-- ── Scroll progress bar (teal, bottom edge of nav) ── -->
@@ -48,11 +48,11 @@ const links = [
     <div class="nav-divider hidden md:block w-px" style="height:1rem; flex-shrink:0;"></div>
 
     <!-- Links -->
-    <div class="hidden md:flex items-center gap-1" id="nav-links">
+    <div class="hidden md:flex items-center gap-2" id="nav-links">
       {links.map(link => (
         <a
           href={link.href}
-          class={['nav-link relative px-3 py-1.5 text-[0.68rem] font-semibold tracking-[0.16em] uppercase rounded-lg transition-colors', currentPage === link.key ? 'nav-link--active' : ''].join(' ')}
+          class={['nav-link relative px-4 py-2 text-[0.68rem] font-semibold tracking-[0.16em] uppercase rounded-lg transition-colors', currentPage === link.key ? 'nav-link--active' : ''].join(' ')}
           data-key={link.key}
         >
           {link.label}
@@ -90,29 +90,43 @@ const links = [
     </button>
   </nav>
 
-  <!-- Mobile dropdown -->
+  <!-- Mobile fullscreen overlay -->
   <div
     id="nav-mobile"
-    class="mobile-menu absolute top-full left-4 right-4 mt-2 rounded-2xl overflow-hidden"
+    class="mobile-overlay"
     aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigatiemenu"
   >
-    <div class="flex flex-col p-5 gap-1">
-      {links.map(link => (
+    <!-- Close button -->
+    <button id="nav-close" class="mobile-close" aria-label="Menu sluiten">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Nav links -->
+    <nav class="mobile-nav-list">
+      {links.map((link, i) => (
         <a
           href={link.href}
-          class={['nav-mobile-link text-sm font-medium tracking-wide transition-all py-3 px-3 rounded-xl border-b nav-mobile-border last:border-0', currentPage === link.key ? 'nav-mobile-link--active' : ''].join(' ')}
+          class={['mobile-nav-link', currentPage === link.key ? 'mobile-nav-link--active' : ''].join(' ')}
+          tabindex="-1"
         >
-          <span class="flex items-center gap-3">
-            <span class="nav-mobile-dot w-1 h-1 rounded-full flex-shrink-0"></span>
-            {link.label}
-          </span>
+          <span class="mobile-link-num" aria-hidden="true">0{i + 1}</span>
+          {link.label}
         </a>
       ))}
-      <a href="tel:+31613172774" class="btn btn-primary w-full justify-center mt-3">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
-        +31(0)6-131 72 774
-      </a>
-    </div>
+    </nav>
+
+    <!-- Phone CTA -->
+    <a href="tel:+31613172774" class="mobile-phone-cta" tabindex="-1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      +31(0)6-131 72 774
+    </a>
   </div>
 </header>
 
@@ -262,38 +276,110 @@ const links = [
   .nav-island.scrolled .ham-line { background: rgba(184,196,204,0.70); }
 
   /* ═══════════════════════════════════════
-     MOBILE MENU
+     MOBILE FULLSCREEN OVERLAY
   ═══════════════════════════════════════ */
-  .mobile-menu {
-    background:              rgba(8, 9, 11, 0.96);
-    backdrop-filter:         blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    border:                  1px solid rgba(122,175,196,0.16);
-    box-shadow:              0 16px 48px rgba(0,0,0,0.65);
-    max-height:              0;
-    opacity:                 0;
-    pointer-events:          none;
-    transition: max-height 0.38s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
+  .mobile-overlay {
+    position:              fixed;
+    inset:                 0;
+    z-index:               200;
+    background:            rgba(4, 5, 7, 0.97);
+    backdrop-filter:       blur(32px) saturate(1.4);
+    -webkit-backdrop-filter: blur(32px) saturate(1.4);
+    display:               flex;
+    flex-direction:        column;
+    align-items:           center;
+    justify-content:       center;
+    gap:                   0.25rem;
+    padding:               2rem;
+    opacity:               0;
+    pointer-events:        none;
+    transition:            opacity 0.25s ease;
   }
-  .mobile-menu.open {
-    max-height:     520px;
+  .mobile-overlay.open {
     opacity:        1;
     pointer-events: auto;
   }
 
-  .nav-mobile-link        { color: rgba(184,196,204,0.55); }
-  .nav-mobile-link:hover  { color: #fff; background: rgba(122,175,196,0.06); }
-  .nav-mobile-link--active { color: #7AAFC4; }
-  .nav-mobile-border { border-color: rgba(122,175,196,0.07); }
-
-  .nav-mobile-dot {
-    background: rgba(122,175,196,0.3);
-    transition: background 0.2s ease;
+  /* Close × button */
+  .mobile-close {
+    position:   absolute;
+    top:        1.5rem;
+    right:      1.5rem;
+    padding:    0.6rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border:     1px solid rgba(255,255,255,0.08);
+    color:      rgba(255,255,255,0.5);
+    cursor:     pointer;
+    transition: background 0.2s, color 0.2s;
+    display:    flex;
+    align-items: center;
+    justify-content: center;
   }
-  .nav-mobile-link--active .nav-mobile-dot { background: #7AAFC4; box-shadow: 0 0 6px rgba(122,175,196,0.7); }
-  .nav-mobile-link:hover    .nav-mobile-dot { background: rgba(122,175,196,0.6); }
+  .mobile-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
-  /* ── Hamburger open state ── */
+  /* Nav list */
+  .mobile-nav-list {
+    display:        flex;
+    flex-direction: column;
+    align-items:    center;
+    gap:            0.15rem;
+  }
+
+  .mobile-nav-link {
+    display:        flex;
+    align-items:    center;
+    gap:            1rem;
+    padding:        0.55rem 1.5rem;
+    border-radius:  0.75rem;
+    font-size:      clamp(2rem, 10vw, 3.25rem);
+    font-weight:    900;
+    letter-spacing: -0.03em;
+    color:          rgba(255,255,255,0.22);
+    text-decoration: none;
+    transition:     color 0.2s ease, background 0.2s ease;
+    width:          100%;
+    justify-content: center;
+  }
+  .mobile-nav-link:hover          { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.04); }
+  .mobile-nav-link--active        { color: #7AAFC4; }
+
+  .mobile-link-num {
+    font-size:      0.7rem;
+    font-weight:    600;
+    letter-spacing: 0.12em;
+    color:          rgba(122,175,196,0.35);
+    width:          1.5rem;
+    text-align:     right;
+    flex-shrink:    0;
+    align-self:     center;
+    padding-bottom: 2px;
+  }
+  .mobile-nav-link--active .mobile-link-num { color: rgba(122,175,196,0.6); }
+
+  /* Phone CTA */
+  .mobile-phone-cta {
+    display:        inline-flex;
+    align-items:    center;
+    gap:            0.6rem;
+    margin-top:     2rem;
+    padding:        0.85rem 2rem;
+    border-radius:  9999px;
+    border:         1px solid rgba(122,175,196,0.28);
+    background:     rgba(122,175,196,0.08);
+    color:          #7AAFC4;
+    font-size:      1.05rem;
+    font-weight:    700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition:     background 0.2s, border-color 0.2s;
+  }
+  .mobile-phone-cta:hover {
+    background:    rgba(122,175,196,0.15);
+    border-color:  rgba(122,175,196,0.45);
+  }
+
+  /* ── Hamburger open state — hides lines when overlay is open ── */
   #nav-toggle[aria-expanded="true"] .ham-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   #nav-toggle[aria-expanded="true"] .ham-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
   #nav-toggle[aria-expanded="true"] .ham-line:nth-child(3) { width: 20px; transform: translateY(-8px) rotate(-45deg); }
@@ -407,23 +493,48 @@ const links = [
   });
 
   // ─────────────────────────────────────
-  //  5. Mobile menu
+  //  5. Mobile fullscreen menu
   // ─────────────────────────────────────
-  const toggle     = document.getElementById('nav-toggle');
-  const mobileMenu = document.getElementById('nav-mobile');
+  const toggle      = document.getElementById('nav-toggle');
+  const closeBtn    = document.getElementById('nav-close');
+  const mobileMenu  = document.getElementById('nav-mobile');
+  const mobileLinks = document.querySelectorAll<HTMLElement>('.mobile-nav-link');
+  const mobileCta   = document.querySelector<HTMLElement>('.mobile-phone-cta');
+
+  function openMenu() {
+    toggle?.setAttribute('aria-expanded', 'true');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+    mobileMenu?.classList.add('open');
+    // Make links focusable
+    mobileLinks.forEach(l => l.setAttribute('tabindex', '0'));
+    mobileCta?.setAttribute('tabindex', '0');
+    // GSAP stagger
+    gsap.fromTo(mobileLinks,
+      { opacity: 0, y: 28 },
+      { opacity: 1, y: 0, duration: 0.42, stagger: 0.07, ease: 'power3.out', delay: 0.05 }
+    );
+    gsap.fromTo(mobileCta ?? [],
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.38, ease: 'power2.out', delay: 0.42 }
+    );
+  }
+
+  function closeMenu() {
+    toggle?.setAttribute('aria-expanded', 'false');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+    mobileMenu?.classList.remove('open');
+    mobileLinks.forEach(l => l.setAttribute('tabindex', '-1'));
+    mobileCta?.setAttribute('tabindex', '-1');
+  }
 
   toggle?.addEventListener('click', () => {
     const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    mobileMenu?.setAttribute('aria-hidden', String(isOpen));
-    mobileMenu?.classList.toggle('open');
+    isOpen ? closeMenu() : openMenu();
   });
+  closeBtn?.addEventListener('click', closeMenu);
 
-  document.addEventListener('click', (e) => {
-    if (!document.getElementById('nav-header')?.contains(e.target as Node)) {
-      toggle?.setAttribute('aria-expanded', 'false');
-      mobileMenu?.setAttribute('aria-hidden', 'true');
-      mobileMenu?.classList.remove('open');
-    }
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
   });
 </script>

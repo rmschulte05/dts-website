@@ -128,7 +128,7 @@ img, video, svg { max-width: 100%; display: block; }
 ───────────────────────────────────────── */
 
 :root {
-  --section-sep: clamp(4rem, 8vw, 8rem);
+  --section-sep: 0; /* sections already carry their own padding-block */
 }
 
 main > section + section,
@@ -161,7 +161,7 @@ main + footer {
   /* Column gap: 16px → 24px */
   --grid-gap:  clamp(1rem, 1.5vw, 1.5rem);
   /* Section vertical rhythm */
-  --section-py: clamp(4rem, 8vw, 7rem);
+  --section-py: clamp(2.5rem, 4.5vw, 5rem);
 }
 
 /* Outer padding shell — apply to every <section> / <footer> */

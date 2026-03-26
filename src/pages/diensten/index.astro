@@ -125,45 +125,56 @@ const services = [
 
     <!-- SERVICE CARDS 2x2 GRID -->
     <PageSection>
-        <div class="grid gap-5" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <!-- Section intro — centred above grid -->
+        <div class="text-center mb-10" data-animate>
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+            <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Kies jouw dienst</span>
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+          </div>
+          <p class="mx-auto" style="color:#9AAEB8; max-width:50ch; font-size:0.95rem; line-height:1.7;">
+            Twijfel je welke dienst je nodig hebt? Bel ons — we adviseren je gratis en eerlijk.
+          </p>
+        </div>
+
+        <div class="service-grid">
           {services.map((svc, i) => (
             <a
               href={svc.href}
-              class="service-card group relative block"
-              data-animate
-              data-animate-delay={String(i * 0.1)}
-              style={`padding: 2.5rem; border-radius: 1.5rem; background: linear-gradient(140deg, color-mix(in srgb, ${svc.accent} 7%, transparent) 0%, transparent 55%), #0E1118; border: 1px solid color-mix(in srgb, ${svc.accent} 15%, transparent); box-shadow: 0 2px 16px rgba(0,0,0,0.28); transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; text-decoration: none;`}
+              class="service-card group relative flex flex-col items-center text-center"
+              data-card-pop
+              data-card-index={String(i)}
+              style={`padding: 2.5rem 2rem; border-radius: 1.5rem; background: linear-gradient(140deg, color-mix(in srgb, ${svc.accent} 7%, transparent) 0%, transparent 55%), #0E1118; border: 1px solid color-mix(in srgb, ${svc.accent} 15%, transparent); box-shadow: 0 2px 16px rgba(0,0,0,0.28); transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; text-decoration: none;`}
             >
               <!-- Icon -->
-              <div class="mb-6 w-14 h-14 rounded-2xl flex items-center justify-center" style={`background: color-mix(in srgb, ${svc.accent} 12%, transparent); border: 1px solid color-mix(in srgb, ${svc.accent} 20%, transparent); color: ${svc.accent};`}>
+              <div class="mb-5 w-16 h-16 rounded-2xl flex items-center justify-center" style={`background: color-mix(in srgb, ${svc.accent} 12%, transparent); border: 1px solid color-mix(in srgb, ${svc.accent} 20%, transparent); color: ${svc.accent};`}>
                 <Fragment set:html={svc.icon} />
               </div>
 
               <!-- Eyebrow -->
-              <p class="text-[10px] font-semibold tracking-[0.28em] uppercase mb-3" style={`color: ${svc.accent}; opacity: 0.8;`}>{svc.eyebrow}</p>
+              <p class="text-[10px] font-semibold tracking-[0.28em] uppercase mb-2" style={`color: ${svc.accent}; opacity: 0.8;`}>{svc.eyebrow}</p>
 
               <!-- Title -->
               <h2 class="text-xl font-black text-white mb-3" style="letter-spacing: -0.01em; line-height: 1.2;">{svc.title}</h2>
 
               <!-- Description -->
-              <p class="mb-6" style="font-size: 0.9rem; line-height: 1.75; color: #8EAAB8;">{svc.desc}</p>
+              <p class="mb-6 flex-1" style="font-size: 0.875rem; line-height: 1.75; color: #8EAAB8; max-width: 32ch; margin-inline: auto;">{svc.desc}</p>
 
               <!-- CTA link -->
-              <span class="inline-flex items-center gap-2 text-sm font-semibold" style={`color: ${svc.accent};`}>
+              <span class="inline-flex items-center gap-2 text-sm font-semibold mt-auto" style={`color: ${svc.accent};`}>
                 Meer over {svc.label}
                 <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
 
-              <!-- Corner bracket decoration -->
-              <div class="absolute bottom-5 right-5 w-4 h-4" style={`border-right: 1.5px solid ${svc.accent}; border-bottom: 1.5px solid ${svc.accent}; border-radius: 0 0 4px 0; opacity: 0.25;`}></div>
+              <!-- Corner bracket -->
+              <div class="absolute bottom-4 right-4 w-4 h-4" style={`border-right: 1.5px solid ${svc.accent}; border-bottom: 1.5px solid ${svc.accent}; border-radius: 0 0 4px 0; opacity: 0.2;`}></div>
             </a>
           ))}
         </div>
     </PageSection>
 
     <!-- MERKEN / SNAP-ON -->
-    <PageSection>
-        <div class="text-center mb-10" data-animate>
+    <PageSection center animate>
           <div class="flex items-center justify-center gap-3 mb-5">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Merken</span>
@@ -177,7 +188,6 @@ const services = [
             Snap-On kalibratie &amp; dealer
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-        </div>
     </PageSection>
 
     <!-- CTA -->
@@ -200,8 +210,44 @@ const services = [
 </Base>
 
 <style>
+  .service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .service-grid { grid-template-columns: 1fr; }
+  }
+
+  .service-card {
+    opacity: 0;
+    transform: translateY(48px) scale(0.94);
+  }
   .service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transform: translateY(-3px) scale(1) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
   }
 </style>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.querySelectorAll<HTMLElement>('[data-card-pop]').forEach((card) => {
+    const i = parseInt(card.dataset.cardIndex ?? '0', 10);
+    gsap.to(card, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.65,
+      delay: i * 0.12,
+      ease: 'back.out(1.1)',
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 88%',
+        toggleActions: 'play none none none',
+      },
+    });
+  });
+</script>
