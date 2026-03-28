@@ -10,10 +10,11 @@ const accent = '#7AAFC4';
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "serviceType": "Momentsleutel Reparatie",
   "name": "Momentsleutel Reparatie",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Professionele momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789 gecertificeerd resultaat.",
-  "areaServed": "NL",
+  "description": "Professionele momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 gecertificeerd resultaat.",
+  "areaServed": { "@type": "Country", "name": "Netherlands" },
   "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie"
 };
 
@@ -26,7 +27,7 @@ const steps = [
   {
     n: '02',
     title: 'Gratis diagnose',
-    body: 'Visuele en mechanische inspectie. We brengen de schade in kaart en bepalen de beste aanpak.',
+    body: 'Visuele en mechanische inspectie. We brengen de schade in kaart: klik-mechanisme, veer, ratel of kalibratie-drift.',
   },
   {
     n: '03',
@@ -41,14 +42,14 @@ const steps = [
   {
     n: '05',
     title: 'Kalibratie & certificaat',
-    body: 'Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en leveren een volledig protocol.',
+    body: 'Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en leveren een volledig <a href="/diensten/iso-6789-certificering" style="color:#7AAFC4; text-decoration:underline;">ISO 6789:2017 protocol</a>.',
   },
 ];
 
 const repairTable = [
-  { situatie: 'Afwijking < 6%, geen mechanische schade', advies: 'Justeren + kalibreren — goedkoopst' },
+  { situatie: 'Afwijking < 6%, geen mechanische schade', advies: '<a href="/diensten/momentsleutel-justeren" style="color:#7AAFC4; text-decoration:underline;">Justeren</a> + <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">kalibreren</a> — goedkoopst' },
   { situatie: 'Afwijking > 6% of klik voelt anders', advies: 'Reparatie: vervanging slijtdelen' },
-  { situatie: 'Reparatiekosten > 70% van de nieuwprijs', advies: 'Vervangingsadvies (wij leveren als Snap-On dealer ook nieuw)' },
+  { situatie: 'Reparatiekosten > 70% van de nieuwprijs', advies: 'Vervangingsadvies (wij leveren als <a href="/merken/snap-on-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Snap-On dealer</a> ook nieuw)' },
   { situatie: 'Premium merk (Snap-On, Stahlwille)', advies: 'Reparatie loont vrijwel altijd — kwaliteitsbasis is degelijk' },
 ];
 
@@ -69,7 +70,7 @@ const whyCards = [
     accent: '#64C48A',
     icon: '◎',
     title: 'Kalibratie na elke reparatie',
-    body: 'Na elke reparatie ontvangt u altijd een ISO 6789 conform certificaat met volledig meetprotocol.',
+    body: 'Na elke reparatie krijg je altijd een ISO 6789:2017 conform certificaat met volledig meetprotocol.',
   },
 ];
 
@@ -80,26 +81,26 @@ const faq = [
   },
   {
     q: 'Kan ik mijn Snap-On sleutel bij jullie laten repareren met originele onderdelen?',
-    a: 'Ja — als geautoriseerd Snap-On dealer hebben wij toegang tot originele Snap-On onderdelen en reparatiemethoden conform fabrieksnorm.',
+    a: 'Ja — als geautoriseerd Snap-On dealer hebben wij toegang tot originele Snap-On onderdelen en reparatiemethoden conform fabrieksnorm en ISO 6789:2017.',
   },
   {
     q: 'Hoe lang duurt een reparatie?',
-    a: 'Eenvoudige reparaties + kalibratie: 48 uur. Meer uitgebreide revisies: 2–5 werkdagen. We communiceren de doorlooptijd altijd vooraf.',
+    a: 'Eenvoudige reparaties + <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">kalibratie</a>: 48 uur. Meer uitgebreide revisies: 2–5 werkdagen. We communiceren de doorlooptijd altijd vooraf.',
   },
   {
     q: 'Wordt na reparatie ook een kalibratiecertificaat afgegeven?',
-    a: 'Altijd. Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en leveren een volledig protocol met as-found en as-left waarden.',
+    a: 'Altijd. Na elke reparatie kalibreren wij de sleutel conform <a href="/diensten/iso-6789-certificering" style="color:#7AAFC4; text-decoration:underline;">ISO 6789:2017</a> en leveren een volledig protocol met as-found en as-left waarden.',
   },
   {
     q: 'Wat als mijn sleutel niet meer te repareren is?',
-    a: 'Dan ontvang je een diagnoserapport en eerlijk advies over vervanging. Als Snap-On dealer kunnen wij ook nieuw gecertificeerd gereedschap leveren.',
+    a: 'Dan ontvang je een diagnoserapport en eerlijk advies over vervanging. Als <a href="/merken/snap-on-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Snap-On dealer</a> kunnen wij ook nieuw gecertificeerd Snap-On gereedschap leveren.',
   },
 ];
 ---
 
 <Base
-  title="Momentsleutel Reparatie | Dutch Torque Service — Alle Merken"
-  description="Professionele momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, gecertificeerd resultaat. Snap-On, Stahlwille, Gedore. Bel +31(0)6-13172774."
+  title="Momentsleutel Reparatie — Alle Merken | Dutch Torque Service"
+  description="Professionele momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 gecertificeerd. Snap-On, Stahlwille. Stuur op →"
   canonicalPath="/diensten/momentsleutel-reparatie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -125,8 +126,8 @@ const faq = [
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
-            Volledige revisie van alle merken. Gratis diagnose, raming vooraf —<br />
-            geen verrassingen achteraf.
+            Reparatie van alle gangbare merken. Gratis diagnose, raming vooraf.<br />
+            Kalibratie conform ISO 6789:2017 erna. Stuur hem gewoon op — wij kijken er even naar.
           </p>
 
           <div class="hero-ctas" data-animate data-animate-delay="0.22">
@@ -147,7 +148,7 @@ const faq = [
     <PageSection>
       <ChatExplainer
         question="Wat als mijn momentsleutel niet meer klopt?"
-        answer="Dan repareren wij hem. We inspecteren gratis, geven je een heldere raming vóór we beginnen, vervangen de slijtdelen en kalibreren na afloop opnieuw conform ISO 6789. Geen verrassingen."
+        answer="Dan repareren wij hem. We inspecteren gratis, geven je een heldere raming vóór we beginnen, vervangen de slijtdelen en kalibreren na afloop opnieuw conform <a href='/diensten/iso-6789-certificering' style='color:#7AAFC4; text-decoration:underline;'>ISO 6789:2017</a>. Geen verrassingen."
         accent="#C48A64"
         reactions={[
           { emoji: '🔧', count: 16 },
@@ -167,7 +168,7 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons proces</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Ons reparatieproces.</h2>
+          <h2 class="section-h2">Hoe verloopt een momentsleutel reparatie?</h2>
         </div>
 
         <div class="steps-grid">
@@ -175,7 +176,7 @@ const faq = [
             <div class="step-card" data-animate data-animate-delay={String(i * 0.08)}>
               <div class="step-number" style={`color:${accent};`}>{step.n}</div>
               <h3 class="step-title">{step.title}</h3>
-              <p class="step-body">{step.body}</p>
+              <p class="step-body" set:html={step.body} />
             </div>
           ))}
         </div>
@@ -206,7 +207,7 @@ const faq = [
               {repairTable.map(row => (
                 <tr>
                   <td>{row.situatie}</td>
-                  <td class="incl-detail">{row.advies}</td>
+                  <td class="incl-detail" set:html={row.advies} />
                 </tr>
               ))}
             </tbody>
@@ -229,10 +230,10 @@ const faq = [
 
         <div class="def-card" data-animate data-animate-delay="0.08">
           <p class="body-text">
-            Wij repareren alle gangbare kwaliteitsmerken: <strong style="color:#C8D8E0;">Snap-On</strong> (originele onderdelen beschikbaar als geautoriseerd dealer), <strong style="color:#C8D8E0;">Stahlwille</strong>, <strong style="color:#C8D8E0;">Gedore</strong>, <strong style="color:#C8D8E0;">Facom</strong>, <strong style="color:#C8D8E0;">Hazet</strong>, <strong style="color:#C8D8E0;">Würth</strong>, <strong style="color:#C8D8E0;">Proto</strong>, en andere kwaliteitsmerken. Niet zeker of wij jouw merk repareren? <a href="/contact" style="color:#7AAFC4; text-decoration:underline;">Neem contact op</a>.
+            Wij repareren alle gangbare kwaliteitsmerken: <strong style="color:#C8D8E0;">Snap-On</strong> (originele onderdelen beschikbaar als geautoriseerd dealer), <strong style="color:#C8D8E0;">Stahlwille</strong>, <strong style="color:#C8D8E0;">Gedore</strong>, <strong style="color:#C8D8E0;">Facom</strong>, <strong style="color:#C8D8E0;">Hazet</strong>, <strong style="color:#C8D8E0;">Würth</strong>, <strong style="color:#C8D8E0;">Proto</strong>, en andere kwaliteitsmerken. Niet zeker of wij jouw merk repareren? <a href="/contact" style="color:#7AAFC4; text-decoration:underline;">Vraag het even — wij vertellen je of het kan</a>.
           </p>
           <p class="body-text" style="margin-top:1.25rem;">
-            <a href="/merken/snap-on-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Meer over Snap-On kalibratie en reparatie →</a>
+            <a href="/merken/snap-on-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Snap-On kalibratie Noord-Brabant</a>
           </p>
         </div>
     </PageSection>
@@ -247,7 +248,7 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Waarom DTS?</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Drie redenen om voor DTS te kiezen.</h2>
+          <h2 class="section-h2">Waarom monteurs voor DTS kiezen.</h2>
         </div>
 
         <div class="why-grid">
@@ -278,7 +279,7 @@ const faq = [
           {faq.map(item => (
             <details>
               <summary>{item.q}</summary>
-              <div class="faq-body">{item.a}</div>
+              <div class="faq-body" set:html={item.a} />
             </details>
           ))}
         </div>
@@ -294,9 +295,9 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Direct starten</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Klaar om te beginnen?</h2>
+          <h2 class="section-h2">Sleutel kapot? Stuur hem op.</h2>
           <p class="body-text cta-body">
-            Stuur ons jouw sleutel op of bel direct voor een afspraak. Wij plannen jouw reparatie binnen 48 uur in.
+            Stuur ons jouw sleutel op of bel direct voor een afspraak. Eenvoudige reparaties zijn binnen 48 uur klaar. Bij grotere revisies hoor je vooraf de doorlooptijd. Wij zijn gevestigd in Riethoven (Noord-Brabant) — opsturen kan landelijk.
           </p>
           <div class="cta-btns">
             <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
@@ -409,6 +410,7 @@ const faq = [
     line-height: 1.75;
     color: #8EAAB8;
   }
+  .step-body a { color: #7AAFC4; text-decoration: underline; }
 
   /* ── Table ── */
   .table-wrap {
@@ -447,6 +449,7 @@ const faq = [
     font-weight: 400 !important;
     font-size: 0.85rem;
   }
+  .incl-detail a { color: #7AAFC4; text-decoration: underline; }
 
   /* ── Why DTS ── */
   .why-grid {

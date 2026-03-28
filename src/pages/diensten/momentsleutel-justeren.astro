@@ -12,7 +12,7 @@ const schema = {
   "@type": "Service",
   "name": "Momentsleutel Justeren",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Professioneel momentsleutel justeren op de juiste Newton-meterwaarden conform ISO 6789. Snel en gecertificeerd.",
+  "description": "Professioneel momentsleutel justeren op de juiste Newton-meterwaarden conform ISO 6789:2017. Binnen 48 uur en ISO 6789:2017-gecertificeerd.",
   "areaServed": "NL",
   "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren"
 };
@@ -21,12 +21,12 @@ const steps = [
   {
     n: '01',
     title: 'Inspectie',
-    body: 'Visuele en mechanische inspectie van de sleutel. Schade, slijtage of interne beschadigingen worden in kaart gebracht.',
+    body: 'Visuele en mechanische inspectie van de sleutel. Wij brengen schade, slijtage en interne beschadigingen in kaart.',
   },
   {
     n: '02',
     title: 'Justering',
-    body: 'Herinstelling van de sleutel op de correcte Newton-meterwaarden conform de fabrieksspecificatie.',
+    body: 'Wij stellen de sleutel opnieuw in op de juiste Newton-meterwaarden — conform de fabrieksspecificatie. Is er meer aan de hand? Dan adviseren wij <a href="/diensten/momentsleutel-reparatie">momentsleutel reparatie</a> voordat we verder gaan.',
   },
   {
     n: '03',
@@ -36,30 +36,30 @@ const steps = [
 ];
 
 const adviesTable = [
-  { situatie: 'Kleine afwijking (< 6%), geen mechanische schade', aanpak: 'Justeren + hercalibratie' },
-  { situatie: 'Grote afwijking of click voelt anders', aanpak: 'Reparatie + justering + kalibratie' },
-  { situatie: 'Sleutel is gevallen zonder zichtbare schade', aanpak: 'Justeren + kalibreren (interne schade mogelijk)' },
+  { situatie: 'Kleine afwijking (< 6%), geen mechanische schade', aanpak: 'Justeren + <a href="/diensten/momentsleutel-kalibratie">hercalibratie</a>' },
+  { situatie: 'Grote afwijking of click voelt anders', aanpak: '<a href="/diensten/momentsleutel-reparatie">Reparatie</a> + justering + kalibratie' },
+  { situatie: 'Sleutel is gevallen zonder zichtbare schade', aanpak: 'Justeren + <a href="/diensten/momentsleutel-kalibratie">kalibreren</a> (interne schade mogelijk)' },
 ];
 
 const faq = [
   {
     q: 'Is justeren hetzelfde als kalibreren?',
-    a: 'Nee. Kalibreren = meten en documenteren. Justeren = corrigeren. Na het justeren voeren wij altijd een kalibratie uit om de nieuwe waarden te documenteren.',
+    a: 'Nee. Kalibreren = meten en documenteren. Justeren = corrigeren. Na het justeren meten we altijd opnieuw — zo documenteren we de nieuwe waarden in een <a href="/diensten/momentsleutel-kalibratie">kalibratierapport</a>.',
   },
   {
-    q: 'Hoe weet ik of mijn sleutel ge-justeerd moet worden?',
-    a: 'Als de kalibratie een afwijking buiten de ISO-tolerantie aantoont, is justering nodig. Signalen zijn ook: klik te vroeg/laat, val, of overbelasting.',
+    q: 'Hoe weet ik of mijn sleutel gejusteerd moet worden?',
+    a: 'Als de kalibratie een afwijking buiten de ISO 6789:2017-tolerantie aantoont, is justering nodig. Signalen zijn ook: klik te vroeg/laat, val, of overbelasting. Twijfel je? Stuur je sleutel op — wij kijken er even naar. Is er meer kapot, dan adviseren wij <a href="/diensten/momentsleutel-reparatie">reparatie</a> eerst.',
   },
   {
     q: 'Hoeveel kost justeren?',
-    a: 'Afhankelijk van type en merk. Neem contact op voor een snelle prijsindicatie.',
+    a: 'Afhankelijk van type en merk. Neem contact op voor een prijsindicatie.',
   },
 ];
 ---
 
 <Base
-  title="Momentsleutel Justeren | Dutch Torque Service — Snel & Gecertificeerd"
-  description="Momentsleutel buiten tolerantie? Wij stellen hem opnieuw in op de juiste Newton-meterwaarden. Snel justeren conform ISO 6789. Bel +31(0)6-13172774."
+  title="Momentsleutel Justeren | Dutch Torque Service — Binnen 48 uur & ISO 6789:2017"
+  description="Momentsleutel buiten tolerantie? Wij stellen hem opnieuw in op de juiste Nm-waarden. Justeren binnen 48 uur conform ISO 6789:2017. Bel +31(0)6-131 72 774."
   canonicalPath="/diensten/momentsleutel-justeren"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -85,19 +85,19 @@ const faq = [
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
-            Sleutel buiten tolerantie door slijtage of een incident? Wij stellen hem opnieuw in op de juiste Newton-meterwaarden — snel, conform ISO 6789.
+            Sleutel buiten tolerantie door slijtage of een incident? Wij stellen hem gewoon opnieuw in op de juiste Newton-meterwaarden — binnen 48 uur, conform ISO 6789:2017.
           </p>
 
           <div class="hero-ctas" data-animate data-animate-delay="0.22">
             <a href="/contact" class="btn btn-primary">Plan justering</a>
-            <a href="/diensten/momentsleutel-kalibratie" class="btn btn-outline">Meer over kalibratie</a>
+            <a href="/diensten/momentsleutel-kalibratie" class="btn btn-outline">Hoe kalibratie werkt</a>
           </div>
 
           <!-- Stats badges -->
           <div class="hero-badges" data-animate data-animate-delay="0.30">
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">±2% Nauwkeurig</span>
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Binnen 48u</span>
-            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Conform ISO 6789</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">ISO 6789:2017</span>
           </div>
         </div>
     </PageSection>
@@ -106,7 +106,7 @@ const faq = [
     <PageSection>
       <ChatExplainer
         question="Wanneer moet ik mijn sleutel laten justeren?"
-        answer="Als de gemeten waarden buiten de toegestane tolerantie vallen. Dit kan na intensief gebruik, een val of gewoon door veroudering. Na justering kalibreren we opnieuw en ontvang je een nieuw certificaat."
+        answer='Als de gemeten waarden buiten de toegestane tolerantie vallen. Dit kan na intensief gebruik, een val of gewoon door veroudering. Na justering <a href="/diensten/momentsleutel-kalibratie">kalibreren we opnieuw</a> en ontvang je een nieuw <a href="/diensten/iso-6789-certificering">ISO 6789:2017 certificaat</a>.'
         accent="#C4AF64"
         reactions={[
           { emoji: '🎯', count: 13 },
@@ -131,14 +131,14 @@ const faq = [
 
         <div class="def-card" data-animate data-animate-delay="0.08">
           <p class="body-text" style="margin-bottom:1.25rem;">
-            Justering is aangewezen in de volgende situaties:
+            Dit zijn de situaties waarbij je sleutel gejusteerd moet worden:
           </p>
           <ul class="needs-list">
             <li>Na een <strong style="color:#C8D8E0;">val</strong> — ook zonder zichtbare schade kan de interne mechaniek verschoven zijn</li>
             <li>Na <strong style="color:#C8D8E0;">overbelasting</strong> — het aanzetten boven de maximale torquewaarde</li>
             <li>Als kalibratie een <strong style="color:#C8D8E0;">afwijking buiten ISO-tolerantie</strong> aantoont</li>
             <li>Als de klik <strong style="color:#C8D8E0;">te vroeg of te laat</strong> voelt bij gebruik</li>
-            <li>Na langdurige opslag of intensief gebruik zonder onderhoud</li>
+            <li>Als je sleutel lang heeft gestaan of ook zwaar gebruikt is zonder onderhoud</li>
           </ul>
         </div>
     </PageSection>
@@ -153,7 +153,7 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons proces</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">In 3 stappen terug op norm.</h2>
+          <h2 class="section-h2">In 3 stappen je sleutel afstellen op norm.</h2>
         </div>
 
         <div class="steps-grid">
@@ -161,7 +161,7 @@ const faq = [
             <div class="step-card" data-animate data-animate-delay={String(i * 0.08)}>
               <div class="step-number" style={`color:${accent};`}>{step.n}</div>
               <h3 class="step-title">{step.title}</h3>
-              <p class="step-body">{step.body}</p>
+              <p class="step-body" set:html={step.body} />
             </div>
           ))}
         </div>
@@ -192,7 +192,7 @@ const faq = [
               {adviesTable.map(row => (
                 <tr>
                   <td>{row.situatie}</td>
-                  <td class="incl-detail">{row.aanpak}</td>
+                  <td class="incl-detail" set:html={row.aanpak} />
                 </tr>
               ))}
             </tbody>
@@ -210,14 +210,14 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Veelgestelde vragen.</h2>
+          <h2 class="section-h2">Veelgestelde vragen over het justeren.</h2>
         </div>
 
         <div class="faq-list" data-animate data-animate-delay="0.08">
           {faq.map(item => (
             <details>
               <summary>{item.q}</summary>
-              <div class="faq-body">{item.a}</div>
+              <div class="faq-body" set:html={item.a} />
             </details>
           ))}
         </div>
@@ -233,13 +233,13 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Direct starten</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Klaar om te beginnen?</h2>
+          <h2 class="section-h2">Gewoon opsturen — wij regelen de rest.</h2>
           <p class="body-text cta-body">
-            Stuur ons jouw sleutel op of bel direct. Wij plannen jouw justering binnen 48 uur in en leveren een geldig ISO 6789 certificaat.
+            Stuur ons jouw sleutel op of bel direct. Justering binnen 48 uur na ontvangst — inclusief een geldig <a href="/diensten/iso-6789-certificering">ISO 6789:2017 certificaat</a>. Gevestigd in Riethoven (Noord-Brabant), maar wij ontvangen sleutels vanuit heel Nederland.
           </p>
           <div class="cta-btns">
             <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
-            <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">Stuur een e-mail</a>
+            <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">Mail ons een vraag</a>
           </div>
         </div>
     </PageSection>
@@ -370,6 +370,7 @@ const faq = [
     line-height: 1.75;
     color: #8EAAB8;
   }
+  .step-body a { color: #7AAFC4; text-decoration: underline; }
 
   /* ── Table ── */
   .table-wrap {
@@ -408,6 +409,7 @@ const faq = [
     font-weight: 400 !important;
     font-size: 0.85rem;
   }
+  .incl-detail a { color: #7AAFC4; text-decoration: underline; }
 
   /* ── FAQ ── */
   .faq-list {
@@ -470,6 +472,7 @@ const faq = [
     margin-bottom: 2rem;
     margin-top: 1rem;
   }
+  .cta-body a { color: #7AAFC4; text-decoration: underline; }
   .cta-btns {
     display: flex;
     flex-wrap: wrap;

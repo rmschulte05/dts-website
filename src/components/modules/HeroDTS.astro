@@ -48,17 +48,20 @@
         <span class="word-reveal block overflow-hidden">
           <span class="hero-word block hero-word-gradient">NEWTON METER.</span>
         </span>
+        <span class="word-reveal block overflow-hidden">
+          <span class="hero-word hero-word-sub block text-white">Momentsleutel kalibratie, reparatie &amp; certificering.</span>
+        </span>
       </h1>
 
       <!-- Subtitle + CTAs — side by side on desktop -->
       <div class="hero-mid">
         <p class="hero-sub">
-          Professionele momentsleutel kalibratie, reparatie en certificering conform ISO&nbsp;6789.
+          Professionele momentsleutel kalibratie, reparatie en certificering conform ISO&nbsp;6789:2017.
           Binnen 48&nbsp;uur gecertificeerd — voor werkplaatsen door heel Nederland.
         </p>
         <div class="hero-ctas">
           <a href="#diensten" class="btn btn-primary">
-            Onze Diensten
+            Kalibratie &amp; Reparatie
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
               <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -74,7 +77,7 @@
   <div class="hero-stats-bar">
     <div class="hero-stats-inner">
       {[
-        { value: '±2%',  label: 'Nauwkeurigheid',     color: '#7AAFC4' },
+        { value: '±2%',  label: 'Koppelmoment',         color: '#7AAFC4' },
         { value: '48u',  label: 'Doorlooptijd',        color: '#C4AF64' },
         { value: 'ISO',  label: '6789 Gecertificeerd', color: '#64C48A' },
       ].map((stat, i) => (
@@ -202,6 +205,14 @@
     letter-spacing: -0.025em;
     font-size: clamp(3rem, 7.5vw, 6.25rem);
     max-width: 10ch;
+  }
+
+  .hero-word-sub {
+    font-size: 0.35em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    opacity: 0.75;
+    margin-top: 0.5em;
   }
 
   .hero-word-gradient {

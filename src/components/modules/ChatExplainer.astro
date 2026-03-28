@@ -58,7 +58,7 @@ const {
     <!-- DTS reply -->
     <div class="chat-row dts-row reply-row" role="status" aria-atomic="true" style="display:none;">
       <div class="dts-avatar" aria-hidden="true">DTS</div>
-      <div class="bubble dts-bubble reply-bubble">{answer}</div>
+      <div class="bubble dts-bubble reply-bubble" set:html={answer}></div>
     </div>
   </div>
 

@@ -13,12 +13,15 @@ const contactSchema = {
     "@type": "LocalBusiness",
     "@id": "https://www.dutchtorqueservice.nl/#business",
     "name": "Dutch Torque Service",
+    "description": "Momentsleutel kalibratie, reparatie en ISO 6789:2017 certificering in Riethoven, Noord-Brabant.",
+    "url": "https://www.dutchtorqueservice.nl",
     "telephone": "+31613172774",
     "email": "info@dutchtorqueservice.nl",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Tonterstraat 42",
       "addressLocality": "Riethoven",
+      "addressRegion": "Noord-Brabant",
       "postalCode": "5561 AN",
       "addressCountry": "NL"
     },
@@ -35,8 +38,8 @@ const contactSchema = {
 ---
 
 <Base
-  title="Contact | Dutch Torque Service — Momentsleutel Kalibratie Riethoven"
-  description="Neem contact op met Dutch Torque Service voor momentsleutel kalibratie, reparatie of certificering. Bel +31(0)6-13172774 of stuur een e-mail. Binnen 48 uur geholpen."
+  title="Momentsleutel Kalibratie Riethoven | Dutch Torque Service"
+  description="Vragen over momentsleutel kalibratie, reparatie of certificering in Riethoven? Bel +31(0)6-131 72 774 — Ma–Vr 08:00–17:00. Binnen 48 uur geholpen."
   canonicalPath="/contact"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
@@ -52,10 +55,10 @@ const contactSchema = {
           <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         </div>
         <h1 class="font-black tracking-tight text-white mb-5" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
-          Neem contact op.
+          Kalibratie of reparatie? Bel ons.
         </h1>
         <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.1rem); line-height: 1.75; color: #9AAEB8; max-width: 46ch;">
-          Vragen over kalibratie, reparatie of certificering? Bel ons direct — we zijn snel te bereiken en geven altijd een eerlijk advies.
+          Vragen over <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">kalibratie</a>, <a href="/diensten/momentsleutel-reparatie" style="color:#7AAFC4; text-decoration:underline;">reparatie</a> of certificering? Bel ons direct — bereikbaar Ma–Vr 08:00–17:00. Je weet binnen één gesprek waar je aan toe bent.
         </p>
     </PageSection>
 
@@ -115,6 +118,10 @@ const contactSchema = {
                 </div>
               </div>
             ))}
+
+            <p class="mt-4 text-xs" style="color: rgba(122,175,196,0.5); line-height: 1.6;">
+              Erkend opvolger van Van Rootselaar Technic bv. per 1 januari 2026.
+            </p>
           </div>
 
           <!-- Right: CTA card + map placeholder -->
@@ -125,13 +132,13 @@ const contactSchema = {
               <div class="absolute top-0 right-0 w-48 h-48 rounded-full" style="background: radial-gradient(circle, rgba(122,175,196,0.06) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
               <p class="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style="color: rgba(122,175,196,0.65);">Snelste weg</p>
               <h3 class="text-2xl font-black text-white mb-2">Bel direct.</h3>
-              <p class="mb-6 text-sm leading-relaxed" style="color: #8EAAB8;">Geen wachttijden, geen formulieren. Bel ons en plan jouw kalibratie of reparatie direct in. We reageren snel en eerlijk.</p>
+              <p class="mb-6 text-sm leading-relaxed" style="color: #8EAAB8;">Geen wachttijden, geen formulieren. Bel ons en plan jouw kalibratie of reparatie direct in. Bel voor 17:00 — wij plannen jouw kalibratie binnen 48 uur na ontvangst in.</p>
               <a href="tel:+31613172774" class="btn btn-primary w-full justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
-                +31(0)6-131 72 774
+                Bel ons: +31(0)6-131 72 774
               </a>
               <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline w-full justify-center mt-3">
-                info@dutchtorqueservice.nl
+                Stuur een e-mail
               </a>
             </div>
 
@@ -141,7 +148,7 @@ const contactSchema = {
               <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
                 <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:0.4;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#7AAFC4" stroke-width="1.5"/><circle cx="12" cy="9" r="2.5" stroke="#7AAFC4" stroke-width="1.5"/></svg>
                 <p class="text-xs tracking-[0.2em] uppercase font-medium" style="color:rgba(122,175,196,0.4);">Tonterstraat 42, Riethoven</p>
-                <a href="https://maps.google.com/?q=Tonterstraat+42+Riethoven" target="_blank" rel="noopener noreferrer" class="text-xs underline" style="color:rgba(122,175,196,0.5);">Bekijk op Google Maps</a>
+                <a href="https://maps.google.com/?q=Tonterstraat+42+Riethoven" target="_blank" rel="noopener noreferrer" class="text-xs underline" style="color:rgba(122,175,196,0.5);">Route naar Riethoven (Google Maps)</a>
               </div>
             </div>
           </div>

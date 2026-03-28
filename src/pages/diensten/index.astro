@@ -8,7 +8,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Diensten Dutch Torque Service",
-  "description": "Overzicht van alle momentsleutel diensten van Dutch Torque Service: kalibratie, reparatie, justeren en ISO 6789 certificering.",
+  "description": "Overzicht van alle momentsleutel diensten van Dutch Torque Service: kalibratie, reparatie, justeren en ISO 6789:2017 certificering.",
   "url": "https://www.dutchtorqueservice.nl/diensten",
   "itemListElement": [
     {
@@ -19,7 +19,11 @@ const serviceSchema = {
         "name": "Momentsleutel Kalibratie",
         "description": "Professionele kalibratie van momentsleutels conform ISO 6789:2017 met ±2% nauwkeurigheidsgarantie en volledig gedocumenteerd certificaat.",
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie",
-        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" }
+        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+        "areaServed": [
+          { "@type": "Country", "name": "Nederland" },
+          { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+        ]
       }
     },
     {
@@ -28,9 +32,13 @@ const serviceSchema = {
       "item": {
         "@type": "Service",
         "name": "Momentsleutel Reparatie",
-        "description": "Vakkundige reparatie van alle merken momentsleutels. Van mechanische slijtage tot interne beschadigingen — wij stellen uw gereedschap weer volledig in orde.",
+        "description": "Reparatie van alle merken momentsleutels. Van mechanische slijtage tot interne beschadigingen — wij stellen jouw gereedschap weer volledig in orde.",
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie",
-        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" }
+        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+        "areaServed": [
+          { "@type": "Country", "name": "Nederland" },
+          { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+        ]
       }
     },
     {
@@ -41,7 +49,11 @@ const serviceSchema = {
         "name": "Momentsleutel Justeren",
         "description": "Nauwkeurig bijstellen van momentsleutels die buiten tolerantie zijn geraakt, inclusief her-kalibratie en certificering na de ingreep.",
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren",
-        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" }
+        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+        "areaServed": [
+          { "@type": "Country", "name": "Nederland" },
+          { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+        ]
       }
     },
     {
@@ -49,10 +61,14 @@ const serviceSchema = {
       "position": 4,
       "item": {
         "@type": "Service",
-        "name": "ISO 6789 Certificering",
+        "name": "ISO 6789:2017 Certificering",
         "description": "Officiële ISO 6789:2017 certificering van momentsleutels voor kwaliteitssystemen, audits en inspecties. Volledig traceerbaar en audit-proof.",
         "url": "https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering",
-        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" }
+        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+        "areaServed": [
+          { "@type": "Country", "name": "Nederland" },
+          { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+        ]
       }
     }
   ]
@@ -62,6 +78,7 @@ const services = [
   {
     href: '/diensten/momentsleutel-kalibratie',
     label: 'Kalibratie',
+    cta: 'Hoe kalibratie werkt',
     accent: '#7AAFC4',
     eyebrow: 'ISO 6789:2017',
     title: 'Momentsleutel Kalibratie',
@@ -71,27 +88,30 @@ const services = [
   {
     href: '/diensten/momentsleutel-reparatie',
     label: 'Reparatie',
+    cta: 'Reparatie bekijken',
     accent: '#C48A64',
     eyebrow: 'Alle merken',
     title: 'Momentsleutel Reparatie',
-    desc: 'Van mechanische slijtage tot interne beschadigingen — wij repareren momentsleutels van alle merken vakkundig en snel. Na reparatie altijd opnieuw gecertificeerd.',
+    desc: 'Van mechanische slijtage tot interne beschadigingen — wij repareren momentsleutels van alle merken. Diagnose altijd gratis, reparatie pas na jouw akkoord. Na reparatie altijd opnieuw gecertificeerd.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   },
   {
     href: '/diensten/momentsleutel-justeren',
     label: 'Justeren',
+    cta: 'Hoe justeren werkt',
     accent: '#C4AF64',
     eyebrow: 'Nauwkeurig bijstellen',
     title: 'Momentsleutel Justeren',
-    desc: 'Is jouw momentsleutel buiten tolerantie geraakt? Wij stellen hem nauwkeurig bij tot binnen de opgegeven specificaties. Inclusief her-kalibratie en nieuw certificaat.',
+    desc: 'Is jouw momentsleutel buiten tolerantie geraakt? Wij stellen hem nauwkeurig bij tot binnen ±2% van de opgegeven waarde. Inclusief her-kalibratie en nieuw certificaat.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
   },
   {
     href: '/diensten/iso-6789-certificering',
     label: 'Certificering',
+    cta: 'Certificaat bekijken',
     accent: '#64C48A',
     eyebrow: 'Audit-proof',
-    title: 'ISO 6789 Certificering',
+    title: 'ISO 6789:2017 Certificering',
     desc: 'Officiële certificering conform ISO 6789:2017 voor kwaliteitssystemen, audits en inspecties. Volledig gedocumenteerd met meetwaarden voor en na — transparant en traceerbaar.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
   },
@@ -99,8 +119,8 @@ const services = [
 ---
 
 <Base
-  title="Diensten | Dutch Torque Service — Kalibratie, Reparatie & Certificering"
-  description="Alle diensten van Dutch Torque Service: momentsleutel kalibratie, reparatie, justeren en ISO 6789 certificering. Geautoriseerd Snap-On dealer in Riethoven, Noord-Brabant."
+  title="Momentsleutel Diensten | Dutch Torque Service"
+  description="Momentsleutel kalibreren, repareren of certificeren? Dutch Torque Service: ±2% nauwkeurig, klaar binnen 48 uur. ISO 6789:2017 conform, Noord-Brabant. Stuur op."
   canonicalPath="/diensten"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
@@ -116,10 +136,10 @@ const services = [
           <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         </div>
         <h1 class="font-black tracking-tight text-white mb-5" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
-          Onze Diensten.
+          Momentsleutel Diensten.
         </h1>
         <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.75; color: #9AAEB8; max-width: 56ch;">
-          Alles voor jouw momentsleutel — van kalibratie en certificering tot volledige reparatie.
+          Alles voor jouw momentsleutel — van kalibratie en certificering tot volledige reparatie. Klaar binnen 48 uur, gecertificeerd conform ISO 6789:2017.
         </p>
     </PageSection>
 
@@ -133,7 +153,7 @@ const services = [
             <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
           </div>
           <p class="mx-auto" style="color:#9AAEB8; max-width:50ch; font-size:0.95rem; line-height:1.7;">
-            Twijfel je welke dienst je nodig hebt? Bel ons — we adviseren je gratis en eerlijk.
+            Twijfel je welke dienst je eigenlijk nodig hebt? Bel even — we adviseren je gratis en eerlijk.
           </p>
         </div>
 
@@ -162,7 +182,7 @@ const services = [
 
               <!-- CTA link -->
               <span class="inline-flex items-center gap-2 text-sm font-semibold mt-auto" style={`color: ${svc.accent};`}>
-                Meer over {svc.label}
+                {svc.cta}
                 <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
 
@@ -182,7 +202,7 @@ const services = [
           </div>
           <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Geautoriseerd Snap-On Dealer.</h2>
           <p class="mx-auto mb-8" style="color: #9AAEB8; max-width: 52ch; font-size: 1rem; line-height: 1.75;">
-            Dutch Torque Service is geautoriseerd Snap-On dealer voor de regio Zuid-Noord-Brabant. Wij combineren de beste gereedschapskennis met gecertificeerde precisiediensten.
+            Dutch Torque Service is geautoriseerd Snap-On dealer voor de regio Zuid-Noord-Brabant. Wij kalibreren en repareren Snap-On momentsleutels — met hetzelfde ISO 6789:2017 protocol als al onze andere sleutels.
           </p>
           <a href="/merken/snap-on-kalibratie" class="btn btn-outline">
             Snap-On kalibratie &amp; dealer
@@ -192,9 +212,9 @@ const services = [
 
     <!-- CTA -->
     <PageSection center animate>
-        <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Klaar om te beginnen?</h2>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Sleutel moet gecheckt? Stuur hem op.</h2>
         <p class="mb-8 mx-auto" style="color: #9AAEB8; max-width: 44ch; font-size: 1.05rem; line-height: 1.75;">
-          Stuur ons een bericht of bel direct. We reageren snel en geven altijd een eerlijk advies.
+          Wij werken landelijk — stuur je sleutel gewoon op of kom langs in Riethoven. Eerlijk advies, altijd gratis.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="/contact" class="btn btn-primary">

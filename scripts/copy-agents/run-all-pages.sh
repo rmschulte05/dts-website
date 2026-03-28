@@ -27,7 +27,10 @@ for arg in "$@"; do
 done
 
 # ── Collect all non-blog pages ────────────────────────────────────────────────
-mapfile -t PAGES < <(
+PAGES=()
+while IFS= read -r line; do
+  PAGES+=("$line")
+done < <(
   find "$PROJECT_ROOT/src/pages" -name "*.astro" \
     ! -path "*/blog/*" \
     | sed "s|$PROJECT_ROOT/||" \
