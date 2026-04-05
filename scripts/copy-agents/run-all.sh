@@ -113,11 +113,14 @@ $AGENT_PROMPT"
     echo ""
     echo -e "${GREEN}   ✓ $NAME complete${RESET} — ${ELAPSED}s"
     PASSED=$(( PASSED + 1 ))
-    # Accumulate output for next agent
-    PIPELINE_OUTPUT="$PIPELINE_OUTPUT
-
---- $NAME output ---
-$AGENT_OUTPUT"
+    # Sliding window: each agent only receives the previous agent's output.
+    # For the SEO agent, extract only the final copy block — that is all Implement needs.
+    if [[ "$NAME" == "SEO" ]]; then
+      FINAL_BLOCK=$(echo "$AGENT_OUTPUT" | awk '/^FINAL COPY WITH SEO APPLIED:/{found=1} found{print}')
+      PIPELINE_OUTPUT="${FINAL_BLOCK:-$AGENT_OUTPUT}"
+    else
+      PIPELINE_OUTPUT="$AGENT_OUTPUT"
+    fi
   else
     END=$(date +%s)
     echo "$AGENT_OUTPUT"
