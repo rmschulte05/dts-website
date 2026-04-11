@@ -379,6 +379,76 @@
 
   /* Progress line */
   .scroll-line { pointer-events: none; }
+
+  /* ─────────────────────────────────────────
+     ENTRANCE ANIMATIONS — CSS keyframes only.
+     Never use gsap.from() for these: GSAP sets
+     opacity:0 as an inline style immediately,
+     and iOS Safari can freeze the element there
+     if the animation frame is dropped or the
+     module script is throttled.
+     CSS animations run on the compositor thread
+     and are guaranteed to reach their end state.
+  ───────────────────────────────────────── */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroFadeUpSm {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Eyebrow */
+  .hero-eyebrow {
+    animation: heroFadeUpSm 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.08s;
+  }
+
+  /* Headline words — each child gets a slightly longer delay */
+  .word-reveal:nth-child(1) .hero-word {
+    animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.12s;
+  }
+  .word-reveal:nth-child(2) .hero-word {
+    animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.24s;
+  }
+  .word-reveal:nth-child(3) .hero-word {
+    animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.36s;
+  }
+  .word-reveal:nth-child(4) .hero-word {
+    animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.48s;
+  }
+
+  /* Sub-copy, CTAs, stats bar */
+  .hero-sub {
+    animation: heroFadeUpSm 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.72s;
+  }
+  .hero-ctas {
+    animation: heroFadeUpSm 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.84s;
+  }
+  .hero-stats-bar {
+    animation: heroFadeUpSm 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.96s;
+  }
+
+  /* Respect user motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow,
+    .word-reveal .hero-word,
+    .hero-sub,
+    .hero-ctas,
+    .hero-stats-bar {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
 </style>
 
 <script>
@@ -386,42 +456,31 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── Word reveal — opacity + y so elements are never permanently invisible ──
-  gsap.from('.hero-word', {
-    y: 28,
-    opacity: 0,
-    duration: 1.0,
-    stagger: 0.12,
-    ease: 'power4.out',
-    delay: 0.10,
-  });
-
-  // ── Eyebrow ──
-  gsap.from('.hero-eyebrow', {
-    y: 16, opacity: 0, duration: 0.75, ease: 'power3.out', delay: 0.10,
-  });
-
-  // ── Subtitle, CTAs, stats bar — staggered in ──
-  gsap.from(['.hero-sub', '.hero-ctas', '.hero-stats-bar'], {
-    y: 22, opacity: 0, duration: 0.85, stagger: 0.12, ease: 'power3.out', delay: 0.75,
-  });
-
-  // ── Accent bar grows in ──
+  // ── Accent bar grows in (not a visibility-critical element) ──
   gsap.from('.hero-accent-bar', {
     scaleY: 0, transformOrigin: 'top center', duration: 1.2, ease: 'power3.out', delay: 0.5,
   });
 
-  // ── Subtle parallax on scroll ──
-  gsap.to('.hero-body', {
-    scrollTrigger: {
-      trigger: '.hero-section',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: 1.8,
-    },
-    y: -80,
-    opacity: 0.3,
-  });
+  // ── Parallax on scroll — desktop only, NO opacity.
+  //    On mobile Safari, ScrollTrigger.refresh() (called in Base.astro) can
+  //    run while window.scrollY > 0 (URL-bar collapse effect), which would
+  //    immediately apply a fractional opacity and make the hero invisible.
+  //    Solution: only animate transform on desktop, never opacity.
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktop = window.innerWidth >= 768;
+
+  if (isDesktop && !prefersReduced) {
+    gsap.to('.hero-body', {
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.8,
+      },
+      y: -80,
+      // opacity intentionally removed — see comment above
+    });
+  }
 
   // ── Progress bar ──
   const bar = document.getElementById('hero-progress-line');
