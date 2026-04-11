@@ -130,29 +130,35 @@ const services = [
   <main>
     <!-- HERO -->
     <PageSection hero center animate>
-        <div class="flex items-center justify-center gap-3 mb-6">
+        <div class="sec-eyebrow">
           <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
           <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Diensten</span>
           <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         </div>
-        <h1 class="font-black tracking-tight text-white mb-5" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
+        <h1 class="font-black tracking-tight text-white" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
           Momentsleutel Diensten.
         </h1>
-        <p class="mx-auto" style="font-size: clamp(1rem, 1.6vw, 1.15rem); line-height: 1.75; color: #9AAEB8; max-width: 56ch;">
+        <p class="sec-sub" style="font-size: clamp(1rem, 1.6vw, 1.15rem);">
           Alles voor jouw momentsleutel — van kalibratie en certificering tot volledige reparatie. Klaar binnen 48 uur, gecertificeerd conform ISO 6789:2017.
         </p>
+        <!-- Scroll hint -->
+        <div class="scroll-hint" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4 7l5 5 5-5" stroke="#7AAFC4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
     </PageSection>
 
     <!-- SERVICE CARDS 2x2 GRID -->
     <PageSection>
-        <!-- Section intro — centred above grid -->
-        <div class="text-center mb-10" data-animate>
-          <div class="flex items-center justify-center gap-3 mb-4">
+        <!-- Section intro — sec-head drives all spacing + centering -->
+        <div class="sec-head" data-animate>
+          <div class="sec-eyebrow">
             <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
             <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Kies jouw dienst</span>
             <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
           </div>
-          <p class="mx-auto" style="color:#9AAEB8; max-width:50ch; font-size:0.95rem; line-height:1.7;">
+          <p class="sec-sub">
             Twijfel je welke dienst je eigenlijk nodig hebt? Bel even — we adviseren je gratis en eerlijk.
           </p>
         </div>
@@ -195,28 +201,30 @@ const services = [
 
     <!-- MERKEN / SNAP-ON -->
     <PageSection center animate>
-          <div class="flex items-center justify-center gap-3 mb-5">
+          <div class="sec-eyebrow">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Merken</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Geautoriseerd Snap-On Dealer.</h2>
-          <p class="mx-auto mb-8" style="color: #9AAEB8; max-width: 52ch; font-size: 1rem; line-height: 1.75;">
+          <h2 class="sec-title">Geautoriseerd Snap-On Dealer.</h2>
+          <p class="sec-sub">
             Dutch Torque Service is geautoriseerd Snap-On dealer voor de regio Zuid-Noord-Brabant. Wij kalibreren en repareren Snap-On momentsleutels — met hetzelfde ISO 6789:2017 protocol als al onze andere sleutels.
           </p>
-          <a href="/merken/snap-on-kalibratie" class="btn btn-outline">
-            Snap-On kalibratie &amp; dealer
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <div class="sec-ctas">
+            <a href="/merken/snap-on-kalibratie" class="btn btn-outline">
+              Snap-On kalibratie &amp; dealer
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
     </PageSection>
 
     <!-- CTA -->
     <PageSection center animate>
-        <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white mb-4">Sleutel moet gecheckt? Stuur hem op.</h2>
-        <p class="mb-8 mx-auto" style="color: #9AAEB8; max-width: 44ch; font-size: 1.05rem; line-height: 1.75;">
+        <h2 class="sec-title">Sleutel moet gecheckt? Stuur hem op.</h2>
+        <p class="sec-sub">
           Wij werken landelijk — stuur je sleutel gewoon op of kom langs in Riethoven. Eerlijk advies, altijd gratis.
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
+        <div class="sec-ctas">
           <a href="/contact" class="btn btn-primary">
             Neem contact op
             <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -230,6 +238,22 @@ const services = [
 </Base>
 
 <style>
+  .scroll-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 1px solid rgba(122, 175, 196, 0.25);
+    margin-top: 0.5rem;
+    animation: bounceY 2.2s ease-in-out infinite;
+  }
+  @keyframes bounceY {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50%       { transform: translateY(6px); opacity: 1; }
+  }
+
   .service-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -241,33 +265,40 @@ const services = [
 
   .service-card {
     opacity: 0;
-    transform: translateY(48px) scale(0.94);
+    transform: translateY(36px) scale(0.96);
+    will-change: opacity, transform;
+  }
+  .service-card.is-visible {
+    opacity: 1;
+    transform: none;
   }
   .service-card:hover {
-    transform: translateY(-3px) scale(1) !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
   }
 </style>
 
 <script>
   import gsap from 'gsap';
-  import ScrollTrigger from 'gsap/ScrollTrigger';
-  gsap.registerPlugin(ScrollTrigger);
 
-  document.querySelectorAll<HTMLElement>('[data-card-pop]').forEach((card) => {
-    const i = parseInt(card.dataset.cardIndex ?? '0', 10);
-    gsap.to(card, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.65,
-      delay: i * 0.12,
-      ease: 'back.out(1.1)',
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 88%',
-        toggleActions: 'play none none none',
-      },
-    });
-  });
+  const grid = document.querySelector<HTMLElement>('.service-grid');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.service-card'));
+
+  function animateCards() {
+    gsap.timeline({ defaults: { ease: 'power3.out' } })
+      .to(cards[0], { opacity: 1, y: 0, scale: 1, duration: 0.55, delay: 0.05 })
+      .to(cards[1], { opacity: 1, y: 0, scale: 1, duration: 0.55 }, '-=0.42')
+      .to(cards[2], { opacity: 1, y: 0, scale: 1, duration: 0.55 }, '-=0.38')
+      .to(cards[3], { opacity: 1, y: 0, scale: 1, duration: 0.55 }, '-=0.38');
+  }
+
+  if (grid && cards.length) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        observer.disconnect();
+        animateCards();
+      }
+    }, { threshold: 0.05 });
+    observer.observe(grid);
+  }
 </script>

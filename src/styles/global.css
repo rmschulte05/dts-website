@@ -193,51 +193,81 @@ main + footer {
 }
 
 /* ─────────────────────────────────────────
-   INNER-PAGE SHARED LAYOUT
-   Centering for service/brand page heroes
-   and section headers. These are additive —
-   local scoped styles handle sizing/color.
+   INNER-PAGE HERO SHARED LAYOUT
+   Applies to detail-page hero columns only.
 ───────────────────────────────────────── */
 
-/* Hero inner column: centred on all inner pages */
+/* Hero inner: flex-col centred column */
 .hero-inner {
-  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-}
-
-/* Eyebrow pill row: always centred */
-.eyebrow-row {
-  justify-content: center;
-}
-
-/* Subtitle: centred under the heading */
-.hero-subtitle {
   margin-inline: auto;
 }
+.eyebrow-row      { justify-content: center; }
+.hero-subtitle    { margin-inline: auto; text-align: center; }
+.hero-ctas        { justify-content: center; }
+.hero-badges      { justify-content: center; }
+.def-card         { margin-inline: auto; }
+.faq-list         { margin-inline: auto; }
 
-/* CTA button row: centred */
-.hero-ctas {
-  justify-content: center;
-}
+/* ─────────────────────────────────────────
+   SECTION INTRO SYSTEM  (sec-*)
+   Reusable centred header pattern used on
+   every page.  Drop a .sec-head anywhere
+   and children auto-space + centre.
 
-/* Badge row: centred */
-.hero-badges {
-  justify-content: center;
-}
+   Pattern:
+     .sec-head
+       .sec-eyebrow   ← teal line · label · teal line
+       h2.sec-title   ← section heading
+       p.sec-sub      ← subtitle / body copy
+       .sec-ctas      ← button row
+───────────────────────────────────────── */
 
-/* Section headers: centred title block */
-.section-header {
+/* Wrapper — flex column, centred, breathing room below before content */
+.sec-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  gap: 1.5rem;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+/* Use when sec-head IS the only section content (no grid below) */
+.sec-head--flush { margin-bottom: 0; }
+
+/* Eyebrow: teal line · label · teal line */
+.sec-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Constrained content cards: centred */
-.def-card {
-  margin-inline: auto;
+/* Section heading */
+.sec-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #E8F0F4;
 }
 
-/* FAQ accordion: centred */
-.faq-list {
-  margin-inline: auto;
+/* Subtitle paragraph */
+.sec-sub {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.75;
+  color: #9AAEB8;
+  max-width: 52ch;
+}
+
+/* CTA / button row */
+.sec-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  justify-content: center;
 }
 
 /* ─────────────────────────────────────────

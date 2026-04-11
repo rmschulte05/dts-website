@@ -55,7 +55,7 @@ const {
     <slot />
   ) : (
     <div
-      class:list={['page-container', center && 'text-center']}
+      class:list={['page-container', center && 'page-container--center']}
       data-animate={animate ? '' : undefined}
       data-animate-from={animate ? animateFrom : undefined}
       data-animate-delay={animate && animateDelay ? animateDelay : undefined}
@@ -75,6 +75,15 @@ const {
   .page-section--tight {
     padding-inline: var(--page-px);
     padding-block:  clamp(2rem, 4vw, 4rem);
+  }
+
+  /* Centred content column — flex-column, gap drives all child spacing */
+  :global(.page-container--center) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .page-section__sep {
