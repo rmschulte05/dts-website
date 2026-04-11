@@ -10,6 +10,7 @@ const accent = '#7AAFC4';
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "serviceType": "Kalibratie momentsleutel",
   "name": "Momentsleutel Kalibratie",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
   "description": "Momentsleutel kalibratie op 5 meetpunten conform ISO 6789:2017. Volledig protocol inbegrepen, binnen 48 uur terug. Snap-On dealer.",
@@ -50,7 +51,7 @@ const faqSchema = {
       "name": "Hoe snel ontvang ik mijn certificaat?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Binnen 48 uur na ontvangst van je sleutel sturen wij je het certificaat per e-mail."
+        "text": "Binnen 48 uur na ontvangst van je sleutel sturen we je het certificaat per e-mail."
       }
     },
     {
@@ -74,8 +75,8 @@ const steps = [
   {
     n: '02',
     title: 'Visuele inspectie',
-    body: 'Controle op mechanische schade, slijtage of corrosie vóór de meting.',
-    html: false,
+    body: 'Controle op mechanische schade, slijtage of corrosie vóór de meting. Ernstige schade? Dan verwijzen we door naar <a href="/diensten/momentsleutel-reparatie">momentsleutel reparatie</a>.',
+    html: true,
   },
   {
     n: '03',
@@ -86,7 +87,7 @@ const steps = [
   {
     n: '04',
     title: 'Justering indien nodig',
-    body: 'Als de afwijking buiten tolerantie valt, <a href="/diensten/momentsleutel-justeren">stellen wij de sleutel opnieuw in</a> voordat de as-left meting plaatsvindt.',
+    body: 'Als de afwijking buiten tolerantie valt, <a href="/diensten/momentsleutel-justeren">laten we de sleutel justeren</a> voordat de as-left meting plaatsvindt.',
     html: true,
   },
   {
@@ -102,7 +103,7 @@ const included = [
   { item: 'As-left meting',         detail: 'Meetwaarden na ingreep', html: false },
   { item: 'Referentieapparatuur',   detail: 'Traceerbaar, eigen kalibratiestatus vermeld', html: false },
   { item: '<a href="/diensten/iso-6789-certificering">Kalibratiecertificaat</a>', detail: 'Conform ISO 6789:2017', html: true },
-  { item: 'Volgende kalibratietermijn', detail: 'Aanbeveling op basis van gebruik', html: false },
+  { item: 'Volgende kalibratietermijn', detail: 'Aanbeveling op basis van gebruik en belasting', html: false },
   { item: 'E-mailbevestiging',      detail: 'Direct na afronding', html: false },
 ];
 
@@ -110,22 +111,25 @@ const whyCards = [
   {
     accent: '#7AAFC4',
     icon: '±2%',
+    iconHtml: false,
     title: '±2% Gegarandeerd',
     body: 'Elk instrument wordt gekalibreerd binnen de ±2% tolerantie conform ISO 6789:2017. Onze referentieapparatuur is traceerbaar naar nationale ijknormen.',
     html: false,
   },
   {
     accent: '#C4AF64',
-    icon: '✦',
-    title: 'Snap-On Dealer Expertise',
-    body: 'Als <a href="/merken/snap-on-kalibratie">geautoriseerd Snap-On dealer</a> hebben we de juiste referentieapparatuur en toolkennis voor alle Snap-On momentsleutels in huis.',
+    icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+    iconHtml: true,
+    title: 'Snap-On Dealer',
+    body: 'Als geautoriseerde <a href="/merken/snap-on-kalibratie">Snap-On kalibratie Noord-Brabant</a> dealer kalibreren we Snap-On momentsleutels met de juiste merkspecifieke referentieapparatuur — direct, zonder tussenschakel.',
     html: true,
   },
   {
     accent: '#64C48A',
     icon: '48u',
+    iconHtml: false,
     title: '48-uurs doorlooptijd',
-    body: 'Standaard binnen 48 uur na ontvangst terug — gecalibreerd, gecertificeerd en klaar voor gebruik.',
+    body: 'Standaard binnen 48 uur na ontvangst terug — gekalibreerd, gecertificeerd en klaar voor gebruik.',
     html: false,
   },
 ];
@@ -148,7 +152,7 @@ const faq = [
   },
   {
     q: 'Hoe snel ontvang ik mijn certificaat?',
-    a: 'Binnen 48 uur na ontvangst van je sleutel sturen wij je het certificaat per e-mail.',
+    a: 'Binnen 48 uur na ontvangst van je sleutel sturen we je het certificaat per e-mail.',
     html: false,
   },
   {
@@ -161,7 +165,7 @@ const faq = [
 
 <Base
   title="Momentsleutel Laten Kalibreren | Dutch Torque Service"
-  description="Momentsleutel kalibratie op 5 meetpunten conform ISO 6789:2017. Volledig protocol inbegrepen, binnen 48 uur terug. Snap-On dealer. Bel +31(0)6-131 72 774."
+  description="Laat je momentsleutel kalibreren op 5 meetpunten conform ISO 6789:2017. Protocol + certificaat inbegrepen, binnen 48 uur terug. Bel +31(0)6-131 72 774."
   canonicalPath="/diensten/momentsleutel-kalibratie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -184,7 +188,7 @@ const faq = [
           </div>
 
           <h1 class="hero-h1" data-animate data-animate-delay="0.08">
-            Momentsleutel Kalibratie.
+            Momentsleutel Laten Kalibreren.
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
@@ -193,7 +197,7 @@ const faq = [
           </p>
 
           <div class="hero-ctas" data-animate data-animate-delay="0.22">
-            <a href="/contact" class="btn btn-primary">Plan kalibratie</a>
+            <a href="#proces" class="btn btn-primary">Plan kalibratie</a>
             <a href="/werk" class="btn btn-outline">Bekijk werk</a>
           </div>
 
@@ -210,7 +214,7 @@ const faq = [
     <PageSection>
       <ChatExplainer
         question="Wat is momentsleutel kalibratie eigenlijk?"
-        answer="Kalibratie is het meten van de werkelijke koppelwaarden van jouw sleutel versus de ingestelde waarden. We leggen elk meetpunt vast in een protocol conform ISO 6789:2017 — zodat je exact weet of jouw sleutel binnen de ±2% tolerantie zit. Het resultaat is een <a href='/diensten/iso-6789-certificering'>ISO 6789:2017 certificaat</a> dat je gewoon in je kwaliteitssysteem legt."
+        answer="Momentsleutel kalibratie is het meten van de werkelijke koppelwaarden van jouw sleutel versus de ingestelde waarden. We leggen elk meetpunt vast in een protocol conform ISO 6789:2017 — zodat je exact weet of jouw sleutel binnen de ±2% tolerantie zit. Het resultaat is een <a href='/diensten/iso-6789-certificering'>ISO 6789:2017 certificaat</a> dat je gewoon in je kwaliteitssysteem legt."
         accent="#7AAFC4"
         reactions={[
           { emoji: '🎯', count: 18 },
@@ -230,7 +234,7 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons proces</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Van ontvangst tot certificaat.</h2>
+          <h2 id="proces" class="section-h2">Hoe wij een momentsleutel kalibreren — stap voor stap.</h2>
         </div>
 
         <div class="steps-grid">
@@ -302,7 +306,10 @@ const faq = [
         <div class="why-grid">
           {whyCards.map((card, i) => (
             <div class="why-card" data-animate data-animate-delay={String(i * 0.10)} style={`border-color:rgba(${card.accent === '#7AAFC4' ? '122,175,196' : card.accent === '#C4AF64' ? '196,175,100' : '100,196,138'},0.14);`}>
-              <div class="why-icon" style={`color:${card.accent};`}>{card.icon}</div>
+              {card.iconHtml
+                ? <div class="why-icon" style={`color:${card.accent};`} set:html={card.icon} />
+                : <div class="why-icon" style={`color:${card.accent};`}>{card.icon}</div>
+              }
               <h3 class="why-title" style={`color:${card.accent};`}>{card.title}</h3>
               {card.html
                 ? <p class="why-body" set:html={card.body} />
@@ -349,9 +356,9 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Direct starten</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="section-h2">Sleutel opsturen?</h2>
+          <h2 class="section-h2">Momentsleutel laten kalibreren? Stuur hem op.</h2>
           <p class="body-text cta-body">
-            Bel of mail. Stuur je sleutel op naar ons lab in Riethoven (Noord-Brabant) — binnen 48 uur na ontvangst gecalibreerd en onderweg terug.
+            Bel of mail. Stuur je sleutel op naar ons lab in Riethoven (Noord-Brabant) — landelijk op te sturen, binnen 48 uur na ontvangst gekalibreerd en onderweg terug.
           </p>
           <div class="cta-btns">
             <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
@@ -386,20 +393,20 @@ const faq = [
     letter-spacing: -0.03em;
     line-height: 1.05;
     color: #fff;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.75rem;
   }
   .hero-subtitle {
     font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 1.7;
     color: #8EAAB8;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     max-width: 60ch;
   }
   .hero-ctas {
     display: flex;
     flex-wrap: wrap;
     gap: 0.875rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
   }
   .hero-badges {
     display: flex;
@@ -409,7 +416,7 @@ const faq = [
 
   /* ── Section common ── */
   .section-header {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
   }
   .section-h2 {
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
@@ -417,7 +424,7 @@ const faq = [
     letter-spacing: -0.02em;
     line-height: 1.15;
     color: #E8F0F4;
-    margin-top: 0.75rem;
+    margin-top: 1rem;
   }
   .body-text {
     font-size: 0.975rem;

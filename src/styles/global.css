@@ -92,6 +92,11 @@ img, video, svg { max-width: 100%; display: block; }
   transform:    translateY(-1px);
 }
 
+.btn:focus-visible {
+  outline:        2px solid rgba(122,175,196,0.85);
+  outline-offset: 3px;
+}
+
 /* ── Badge / pill tags (ISO, Kalibratie, etc.) ── */
 .badge {
   display:       inline-flex;
@@ -185,4 +190,66 @@ main + footer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--grid-gap);
+}
+
+/* ─────────────────────────────────────────
+   INNER-PAGE SHARED LAYOUT
+   Centering for service/brand page heroes
+   and section headers. These are additive —
+   local scoped styles handle sizing/color.
+───────────────────────────────────────── */
+
+/* Hero inner column: centred on all inner pages */
+.hero-inner {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Eyebrow pill row: always centred */
+.eyebrow-row {
+  justify-content: center;
+}
+
+/* Subtitle: centred under the heading */
+.hero-subtitle {
+  margin-inline: auto;
+}
+
+/* CTA button row: centred */
+.hero-ctas {
+  justify-content: center;
+}
+
+/* Badge row: centred */
+.hero-badges {
+  justify-content: center;
+}
+
+/* Section headers: centred title block */
+.section-header {
+  text-align: center;
+}
+
+/* Constrained content cards: centred */
+.def-card {
+  margin-inline: auto;
+}
+
+/* FAQ accordion: centred */
+.faq-list {
+  margin-inline: auto;
+}
+
+/* ─────────────────────────────────────────
+   REDUCED MOTION
+   All animations/transitions disabled for
+   users with vestibular/motion sensitivity.
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:      0.01ms !important;
+    scroll-behavior:          auto   !important;
+  }
 }

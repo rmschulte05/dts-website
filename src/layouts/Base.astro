@@ -95,37 +95,63 @@ const websiteSchema = {
     <slot name="head" />
   </head>
   <body>
+    <!-- Skip link — allows keyboard users to jump past nav directly to content -->
+    <a href="#main-content" class="skip-link">Ga naar inhoud</a>
+    <!-- Skip-link target: invisible anchor placed before page content -->
+    <div id="main-content" tabindex="-1" style="outline:none;"></div>
     <slot />
+    <style>
+      .skip-link {
+        position:    absolute;
+        left:        1rem;
+        top:         -3rem;
+        z-index:     9999;
+        padding:     0.5rem 1.25rem;
+        border-radius: 0 0 8px 8px;
+        background:  #7AAFC4;
+        color:       #08090B;
+        font-size:   0.8125rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition:  top 0.2s ease;
+      }
+      .skip-link:focus { top: 0; }
+    </style>
+
     <script>
       import gsap from 'gsap';
       import { ScrollTrigger } from 'gsap/ScrollTrigger';
       gsap.registerPlugin(ScrollTrigger);
 
-      // Global scroll-reveal — fromTo so GSAP owns both states explicitly
-      document.querySelectorAll('[data-animate]').forEach((el) => {
-        const delay = parseFloat((el as HTMLElement).dataset.animateDelay ?? '0');
-        const dir   = (el as HTMLElement).dataset.animateFrom ?? 'bottom';
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        const fromVars: Record<string, unknown> = { opacity: 0 };
-        const toVars:   Record<string, unknown> = { opacity: 1, duration: 0.85, delay, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 96%',
-            toggleActions: 'play none none none',
-            once: true,
-          }
-        };
+      if (!prefersReduced) {
+        // Global scroll-reveal — fromTo so GSAP owns both states explicitly
+        document.querySelectorAll('[data-animate]').forEach((el) => {
+          const delay = parseFloat((el as HTMLElement).dataset.animateDelay ?? '0');
+          const dir   = (el as HTMLElement).dataset.animateFrom ?? 'bottom';
 
-        if (dir === 'bottom') { fromVars.y = 40; toVars.y = 0; }
-        if (dir === 'left')   { fromVars.x = -40; toVars.x = 0; }
-        if (dir === 'right')  { fromVars.x = 40;  toVars.x = 0; }
-        if (dir === 'scale')  { fromVars.scale = 0.94; toVars.scale = 1; }
+          const fromVars: Record<string, unknown> = { opacity: 0 };
+          const toVars:   Record<string, unknown> = { opacity: 1, duration: 0.85, delay, ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 96%',
+              toggleActions: 'play none none none',
+              once: true,
+            }
+          };
 
-        gsap.fromTo(el, fromVars, toVars);
-      });
+          if (dir === 'bottom') { fromVars.y = 40; toVars.y = 0; }
+          if (dir === 'left')   { fromVars.x = -40; toVars.x = 0; }
+          if (dir === 'right')  { fromVars.x = 40;  toVars.x = 0; }
+          if (dir === 'scale')  { fromVars.scale = 0.94; toVars.scale = 1; }
 
-      // Fire triggers for elements already in view on load
-      ScrollTrigger.refresh();
+          gsap.fromTo(el, fromVars, toVars);
+        });
+
+        // Fire triggers for elements already in view on load
+        ScrollTrigger.refresh();
+      }
     </script>
   </body>
 </html>

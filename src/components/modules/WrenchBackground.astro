@@ -189,6 +189,9 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
     z-index: 0;
     overflow: visible;
     opacity: 0; /* GSAP animates from 0 → 1 on load */
+    /* Blur driven by --wrench-blur CSS custom property — updated by scroll listener */
+    filter: blur(var(--wrench-blur, 0px));
+    transition: filter 0.18s ease-out;
   }
 
   .bg-wrench-svg {
@@ -240,6 +243,21 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
   const svg         = document.querySelector<SVGSVGElement>('.bg-wrench-svg')!;
   const rotateGroup = document.querySelector<SVGGElement>('.wrench-rotate-group')!;
   const drawPaths   = [...document.querySelectorAll<SVGGeometryElement>('.draw-path')];
+
+  // ── Scroll blur via CSS custom property (works even during entrance animation) ──
+  // Setting --wrench-blur on <html> is immune to any GSAP inline style on the element.
+  // The CSS `filter: blur(var(--wrench-blur))` on .wrench-bg-wrap reads it.
+  let blurRaf = 0;
+  window.addEventListener('scroll', () => {
+    if (blurRaf) return;
+    blurRaf = requestAnimationFrame(() => {
+      blurRaf = 0;
+      const hero = document.querySelector<HTMLElement>('.hero-section');
+      const heroHeight = hero?.offsetHeight ?? window.innerHeight;
+      const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+      document.documentElement.style.setProperty('--wrench-blur', `${(progress * 10).toFixed(2)}px`);
+    });
+  }, { passive: true });
 
   // Set up stroke-dashoffset on every structural element
   // rAF ensures the SVG has been laid out before we measure path lengths
@@ -332,7 +350,7 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
     // ⑦ Start scrolling ticker
     .add(() => startTicker());
 
-  // Register scroll triggers only after the full entrance completes
+  // Register opacity scroll trigger only after the full entrance completes
   tl.eventCallback('onComplete', setupScrollTriggers);
 
   }); // end requestAnimationFrame
@@ -366,19 +384,6 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
           scrollTrigger: {
             trigger: heroSection,
             start: 'bottom 80%', end: 'bottom top', scrub: 1.5,
-          },
-        }
-      );
-    }
-    const aboutSection = document.getElementById('over-ons');
-    if (aboutSection) {
-      gsap.fromTo(wrap,
-        { filter: 'blur(0px)' },
-        {
-          filter: 'blur(5px)', immediateRender: false,
-          scrollTrigger: {
-            trigger: aboutSection,
-            start: 'top 92%', end: 'top 10%', scrub: 2,
           },
         }
       );

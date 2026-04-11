@@ -15,7 +15,7 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
   <div class="relative page-container">
 
     <!-- Section label — centred -->
-    <div class="type-stack flex flex-col items-center text-center mb-20" data-animate>
+    <div class="about-header type-stack flex flex-col items-center text-center" data-animate>
       <div class="flex items-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Over Ons</span>
@@ -24,6 +24,13 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
       <h2 class="text-4xl md:text-5xl font-black leading-[1.05] tracking-tight text-white">
         Vakmanschap in elke Newton&nbsp;meter.
       </h2>
+    </div>
+
+    <!-- Visual divider between header and content -->
+    <div class="about-divider" aria-hidden="true">
+      <span class="about-divider-line"></span>
+      <span class="about-divider-dot"></span>
+      <span class="about-divider-line"></span>
     </div>
 
     <!-- 12-col grid: image = 5 cols, text = 6 cols, 1 col gap -->
@@ -77,7 +84,7 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
         </p>
 
         <!-- Trust tags -->
-        <div class="flex flex-wrap gap-3 mb-12">
+        <div class="about-tags flex flex-wrap gap-3">
           {['ISO 6789:2017', 'Type I & II', 'Snap-On Dealer', 'Gecertificeerd'].map(tag => (
             <span class="badge" style="background: rgba(122,175,196,0.1); border: 1px solid rgba(122,175,196,0.22); color:#7AAFC4;">
               {tag}
@@ -85,18 +92,15 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
           ))}
         </div>
 
-        <a
-          href="/over-ons"
-          class="inline-flex items-center gap-2 text-base font-semibold tracking-wide transition-all duration-200"
-          style="color:#7AAFC4;"
-          onmouseover="this.style.color='#9BC5D8'"
-          onmouseout="this.style.color='#7AAFC4'"
-        >
-          Over Jan-Piet Schulte en DTS
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <!-- Button — wrapped in its own row for clear separation -->
+        <div class="about-btn-row">
+          <a href="/over-ons" class="btn btn-outline">
+            Over Jan-Pieter Schulte en DTS
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -109,6 +113,43 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
     background: transparent;
   }
 
+  /* ── Title block: generous breathing room below the heading ── */
+  .about-header {
+    margin-bottom: 4rem;
+  }
+
+  /* ── Visual divider: sits between the heading and the image/text grid ── */
+  .about-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  .about-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);
+  }
+  .about-divider-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(122,175,196,0.45);
+    flex-shrink: 0;
+  }
+
+  /* ── Trust tags: clear gap before the button ── */
+  .about-tags {
+    margin-bottom: 0;
+  }
+
+  /* ── Button row: sits in its own block with strong top margin ── */
+  .about-btn-row {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(122,175,196,0.1);
+  }
+
   .image-placeholder {
     background: transparent;
     border: 1px solid rgba(122, 175, 196, 0.2);
@@ -118,9 +159,5 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
       linear-gradient(rgba(122,175,196,0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(122,175,196,0.05) 1px, transparent 1px);
     background-size: 28px 28px;
-  }
-  .trust-tag {
-    background: rgba(122, 175, 196, 0.1);
-    border: 1px solid rgba(122, 175, 196, 0.22);
   }
 </style>

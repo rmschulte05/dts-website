@@ -21,7 +21,7 @@ const serviceTextColors: Record<string, string> = {
   <div class="page-container">
 
     <!-- Section header — centred -->
-    <div class="type-stack flex flex-col items-center text-center mb-16 md:mb-20" data-animate>
+    <div class="cases-header type-stack flex flex-col items-center text-center" data-animate>
       <div class="flex items-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
         <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons Werk</span>
@@ -112,12 +112,14 @@ const serviceTextColors: Record<string, string> = {
       ))}
     </div><!-- end cases-grid-layout -->
 
-    <!-- View all link -->
-    <div class="flex justify-center mt-16" data-animate>
-      <a
-        href="/werk"
-        class="btn btn-outline"
-      >
+    <!-- View all — separated from card grid with a visual break -->
+    <div class="cases-cta" data-animate>
+      <div class="cases-cta-divider" aria-hidden="true">
+        <span class="cases-cta-line"></span>
+        <span class="cases-cta-dot"></span>
+        <span class="cases-cta-line"></span>
+      </div>
+      <a href="/werk" class="btn btn-outline">
         Naar de werkpagina
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -229,6 +231,41 @@ const serviceTextColors: Record<string, string> = {
     position: relative;
     z-index: 1;
     background: transparent;
+  }
+
+  /* ── Section header: space below the subtitle before cards ── */
+  .cases-header {
+    margin-bottom: 5rem;
+  }
+
+  /* ── CTA block: lives in its own island below the grid ── */
+  .cases-cta {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  /* Decorative divider between grid and button */
+  .cases-cta-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 480px;
+  }
+  .cases-cta-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(122,175,196,0.18), transparent);
+  }
+  .cases-cta-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(122,175,196,0.45);
+    flex-shrink: 0;
   }
 
   /* Custom grid — overrides page-grid for more generous gaps */

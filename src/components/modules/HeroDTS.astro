@@ -266,11 +266,12 @@
   .hero-stats-inner {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: var(--page-px);
     padding-block: 1.25rem;
-    gap: 0;
+    gap: 1.25rem 0;
   }
 
   .hero-stat {
@@ -298,11 +299,16 @@
   }
 
   .hero-stat-divider {
+    display: none;
     width: 1px;
     height: 2rem;
     background: rgba(122,175,196,0.14);
     margin-inline: 2rem;
     flex-shrink: 0;
+  }
+  @media (min-width: 540px) {
+    .hero-stat-divider { display: block; }
+    .hero-stats-inner  { flex-wrap: nowrap; gap: 0; }
   }
 
   /* Scroll hint — right side of stats bar */

@@ -200,8 +200,11 @@ const links = [
     position:   relative;
     transition: color 0.25s ease, background 0.25s ease;
   }
-  .nav-link:hover    { color: rgba(255,255,255,0.90); background: rgba(255,255,255,0.05); }
-  .nav-link--active  { color: #ffffff; }
+  .nav-link:hover              { color: rgba(255,255,255,0.90); background: rgba(255,255,255,0.05); }
+  .nav-link--active            { color: #ffffff; }
+  .nav-link:focus-visible      { outline: 2px solid rgba(122,175,196,0.80); outline-offset: 2px; border-radius: 6px; }
+  .nav-logo:focus-visible      { outline: 2px solid rgba(122,175,196,0.80); outline-offset: 4px; border-radius: 8px; }
+  #nav-toggle:focus-visible    { outline: 2px solid rgba(122,175,196,0.80); outline-offset: 2px; }
 
   /* ── Status chip ── */
   .nav-status {
@@ -316,7 +319,8 @@ const links = [
     align-items: center;
     justify-content: center;
   }
-  .mobile-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+  .mobile-close:hover          { background: rgba(255,255,255,0.1); color: #fff; }
+  .mobile-close:focus-visible  { outline: 2px solid rgba(122,175,196,0.80); outline-offset: 2px; }
 
   /* Nav list */
   .mobile-nav-list {
@@ -343,6 +347,7 @@ const links = [
   }
   .mobile-nav-link:hover          { color: rgba(255,255,255,0.75); background: rgba(255,255,255,0.04); }
   .mobile-nav-link--active        { color: #7AAFC4; }
+  .mobile-nav-link:focus-visible  { outline: 2px solid rgba(122,175,196,0.70); outline-offset: 2px; border-radius: 0.75rem; }
 
   .mobile-link-num {
     font-size:      0.7rem;
