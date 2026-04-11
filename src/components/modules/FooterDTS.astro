@@ -66,8 +66,16 @@ const navigatie = [
 
     <!-- Brand block — full row on mobile, left panel on desktop -->
     <div class="footer-brand" data-animate>
-      <div class="footer-logo">DTS</div>
-      <p class="footer-tagline">Dutch Torque Service</p>
+      <img
+        src="/logo/dts-logo-1x.webp"
+        srcset="/logo/dts-logo-1x.webp 1x, /logo/dts-logo-2x.webp 2x"
+        alt="Dutch Torque Service"
+        width="161"
+        height="90"
+        class="footer-logo-img"
+        loading="lazy"
+        decoding="async"
+      />
       <p class="footer-desc">
         Specialist in professionele kalibratie, service en reparatie van momentsleutels.
         Gecertificeerd conform ISO&nbsp;6789:2017 — type I en type II.
@@ -276,25 +284,14 @@ const navigatie = [
   /* ── BRAND ── */
   .footer-brand { display: flex; flex-direction: column; gap: 0; }
 
-  .footer-logo {
-    font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: 0.04em;
-    line-height: 1;
-    margin-bottom: 0.25rem;
-    background: linear-gradient(135deg, #9BC5D8 0%, #7AAFC4 40%, #B8C4CC 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .footer-tagline {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: rgba(122,175,196,0.55);
-    margin-bottom: 1.25rem;
+  .footer-logo-img {
+    height: 90px;
+    width: auto;
+    display: block;
+    align-self: flex-start;
+    margin-bottom: 1.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 16px rgba(122,175,196,0.22));
   }
 
   .footer-desc {

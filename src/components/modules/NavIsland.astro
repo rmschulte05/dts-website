@@ -28,20 +28,17 @@ const links = [
     <div class="nav-indicator" id="nav-indicator" aria-hidden="true"></div>
 
     <!-- Logo -->
-    <a href="/" class="nav-logo flex items-center gap-2 shrink-0" aria-label="Dutch Torque Service — home">
-      <!-- Mini precision-gauge icon -->
-      <svg width="20" height="20" viewBox="0 0 28 28" fill="none" class="nav-logo-icon" aria-hidden="true">
-        <circle cx="14" cy="14" r="12" stroke="currentColor" stroke-width="1.4"/>
-        <circle cx="14" cy="14" r="6"  stroke="currentColor" stroke-width="1"/>
-        <line x1="14" y1="14" x2="14" y2="5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="14" cy="14" r="1.5" fill="currentColor"/>
-        <!-- Tick marks -->
-        <line x1="14" y1="3"  x2="14" y2="5.5"  stroke="currentColor" stroke-width="1" opacity="0.6"/>
-        <line x1="25" y1="14" x2="22.5" y2="14" stroke="currentColor" stroke-width="1" opacity="0.6"/>
-        <line x1="3"  y1="14" x2="5.5"  y2="14" stroke="currentColor" stroke-width="1" opacity="0.6"/>
-        <line x1="14" y1="25" x2="14"  y2="22.5" stroke="currentColor" stroke-width="1" opacity="0.6"/>
-      </svg>
-      <span class="dts-logo-text font-black tracking-[0.05em]" style="font-size:0.9rem;">DTS</span>
+    <a href="/" class="nav-logo shrink-0" aria-label="Dutch Torque Service — home">
+      <img
+        src="/logo/dts-logo-1x.webp"
+        srcset="/logo/dts-logo-1x.webp 1x, /logo/dts-logo-2x.webp 2x"
+        alt="Dutch Torque Service"
+        width="79"
+        height="44"
+        class="nav-logo-img"
+        loading="eager"
+        decoding="async"
+      />
     </a>
 
     <!-- Divider -->
@@ -177,18 +174,20 @@ const links = [
   }
 
   /* ── Logo ── */
-  .nav-logo-icon {
-    color: rgba(122,175,196,0.65);
-    transition: color 0.35s ease;
+  .nav-logo {
+    display: flex;
+    align-items: center;
   }
-  .nav-logo:hover .nav-logo-icon { color: #7AAFC4; }
-
-  .dts-logo-text {
-    background: linear-gradient(135deg, #9BC5D8 0%, #7AAFC4 45%, #B8C4CC 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    transition: filter 0.4s ease;
+  .nav-logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: filter 0.35s ease;
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+  }
+  .nav-logo:hover .nav-logo-img {
+    filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5)) drop-shadow(0 0 10px rgba(122,175,196,0.4));
   }
 
   /* ── Divider ── */
@@ -266,11 +265,10 @@ const links = [
   .nav-island.scrolled .nav-link:hover   { color: rgba(255,255,255,0.85); background: rgba(122,175,196,0.08); }
   .nav-island.scrolled .nav-link--active { color: #7AAFC4; }
 
-  /* Logo gets brighter teal */
-  .nav-island.scrolled .dts-logo-text {
-    filter: drop-shadow(0 0 8px rgba(122,175,196,0.35));
+  /* Logo gets a subtle glow when scrolled */
+  .nav-island.scrolled .nav-logo-img {
+    filter: drop-shadow(0 0 8px rgba(122,175,196,0.30));
   }
-  .nav-island.scrolled .nav-logo-icon { color: rgba(122,175,196,0.80); }
 
   /* Divider */
   .nav-island.scrolled .nav-divider { background: rgba(122,175,196,0.14); }
@@ -478,13 +476,12 @@ const links = [
     delay: 0.15,
   });
 
-  // Logo icon draws in
-  gsap.from('.nav-logo-icon', {
-    rotation: -90,
-    opacity: 0,
-    duration: 0.7,
-    ease: 'back.out(1.5)',
-    delay: 0.55,
+  // Logo scales in subtly (no opacity — header entrance already covers that)
+  gsap.from('.nav-logo-img', {
+    scale: 0.88,
+    duration: 0.6,
+    ease: 'back.out(1.4)',
+    delay: 0.5,
   });
 
   // Links stagger in

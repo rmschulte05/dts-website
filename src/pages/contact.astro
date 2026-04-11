@@ -70,9 +70,11 @@ const contactSchema = {
           <div class="col-span-12 lg:col-span-5" data-animate data-animate-from="left">
 
             <!-- Section label -->
-            <div class="flex items-center gap-3 mb-7">
-              <span class="w-6 h-px" style="background:#7AAFC4; opacity:0.8;"></span>
-              <span class="text-[10px] font-semibold tracking-[0.3em] uppercase" style="color:#7AAFC4;">Contactgegevens</span>
+            <div class="sec-head" style="align-items: flex-start; text-align: left; margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem);">
+              <div class="sec-eyebrow">
+                <span class="w-6 h-px" style="background:#7AAFC4; opacity:0.8;"></span>
+                <span class="text-[10px] font-semibold tracking-[0.3em] uppercase" style="color:#7AAFC4;">Contactgegevens</span>
+              </div>
             </div>
 
             {[
@@ -128,16 +130,19 @@ const contactSchema = {
           <div class="col-span-12 lg:col-span-6 lg:col-start-7 flex flex-col gap-6" data-animate data-animate-from="right">
 
             <!-- Call CTA card -->
-            <div class="relative overflow-hidden" style="padding: 2.5rem; border-radius: 1.5rem; background: linear-gradient(140deg, rgba(122,175,196,0.08) 0%, transparent 55%), #0E1118; border: 1px solid rgba(122,175,196,0.18); box-shadow: 0 4px 32px rgba(0,0,0,0.35);">
+            <div class="relative overflow-hidden" style="padding: 1.75rem 2rem; border-radius: 1.5rem; background: linear-gradient(140deg, rgba(122,175,196,0.08) 0%, transparent 55%), #0E1118; border: 1px solid rgba(122,175,196,0.18); box-shadow: 0 4px 32px rgba(0,0,0,0.35);">
               <div class="absolute top-0 right-0 w-48 h-48 rounded-full" style="background: radial-gradient(circle, rgba(122,175,196,0.06) 0%, transparent 70%); transform: translate(30%, -30%);"></div>
-              <p class="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style="color: rgba(122,175,196,0.65);">Snelste weg</p>
-              <h3 class="text-2xl font-black text-white mb-2">Bel direct.</h3>
-              <p class="mb-6 text-sm leading-relaxed" style="color: #8EAAB8;">Geen wachttijden, geen formulieren. Bel ons en plan jouw kalibratie of reparatie direct in. Bel voor 17:00 — wij plannen jouw kalibratie binnen 48 uur na ontvangst in.</p>
+              <div class="sec-eyebrow" style="margin-bottom: 0.75rem;">
+                <span class="w-6 h-px" style="background:#7AAFC4; opacity:0.8;"></span>
+                <span class="text-[10px] font-semibold tracking-[0.3em] uppercase" style="color: rgba(122,175,196,0.65);">Snelste weg</span>
+              </div>
+              <h3 class="text-2xl font-black text-white" style="margin-bottom: 0.75rem;">Bel direct.</h3>
+              <p class="text-sm leading-relaxed" style="color: #8EAAB8; margin-bottom: clamp(1rem, 2vw, 1.5rem);">Geen wachttijden, geen formulieren. Bel ons en plan jouw kalibratie of reparatie direct in. Bel voor 17:00 — wij plannen jouw kalibratie binnen 48 uur na ontvangst in.</p>
               <a href="tel:+31613172774" class="btn btn-primary w-full justify-center">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/></svg>
                 Bel ons: +31(0)6-131 72 774
               </a>
-              <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline w-full justify-center mt-3">
+              <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline w-full justify-center" style="margin-top: 0.625rem;">
                 Stuur een e-mail
               </a>
             </div>
@@ -164,13 +169,13 @@ const contactSchema = {
   /* ── Contact detail cards ── */
   .contact-item {
     display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.25rem 1.5rem;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1rem;
     background: rgba(122,175,196,0.03);
     border: 1px solid rgba(122,175,196,0.09);
-    border-radius: 1.1rem;
-    margin-bottom: 0.75rem;
+    border-radius: 0.875rem;
+    margin-bottom: 0.375rem;
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .contact-item:hover {
@@ -180,9 +185,9 @@ const contactSchema = {
 
   .contact-icon-wrap {
     flex-shrink: 0;
-    width:  48px;
-    height: 48px;
-    border-radius: 14px;
+    width:  36px;
+    height: 36px;
+    border-radius: 9px;
     background: rgba(122,175,196,0.1);
     border: 1px solid rgba(122,175,196,0.18);
     display: flex;
@@ -193,7 +198,6 @@ const contactSchema = {
   .contact-item-body {
     flex: 1;
     min-width: 0;
-    padding-top: 2px;
   }
 
   .contact-label {

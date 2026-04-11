@@ -81,11 +81,13 @@
         { value: '48u',  label: 'Doorlooptijd',        color: '#C4AF64' },
         { value: 'ISO',  label: '6789 Gecertificeerd', color: '#64C48A' },
       ].map((stat, i) => (
-        <div class="hero-stat">
-          <span class="hero-stat-val" style={`color:${stat.color};`}>{stat.value}</span>
-          <span class="hero-stat-label">{stat.label}</span>
+        <Fragment>
+          <div class="hero-stat">
+            <span class="hero-stat-val" style={`color:${stat.color};`}>{stat.value}</span>
+            <span class="hero-stat-label">{stat.label}</span>
+          </div>
           {i < 2 && <div class="hero-stat-divider" aria-hidden="true"></div>}
-        </div>
+        </Fragment>
       ))}
 
       <!-- Scroll indicator -->
@@ -270,7 +272,8 @@
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: var(--page-px);
-    padding-block: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.75rem;
     gap: 1.25rem 0;
   }
 
@@ -300,11 +303,15 @@
 
   .hero-stat-divider {
     display: none;
+    flex-shrink: 0;
     width: 1px;
     height: 2rem;
     background: rgba(122,175,196,0.14);
-    margin-inline: 2rem;
-    flex-shrink: 0;
+    /* padding-inline instead of margin keeps spacing inside the outer
+       flex context — prevents Chrome vs Safari margin-collapse divergence */
+    padding-inline: 2rem;
+    box-sizing: content-box;
+    background-clip: content-box;
   }
   @media (min-width: 540px) {
     .hero-stat-divider { display: block; }

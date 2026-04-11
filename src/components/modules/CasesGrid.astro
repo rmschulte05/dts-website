@@ -39,10 +39,9 @@ const serviceTextColors: Record<string, string> = {
     <div class="cases-grid-layout">
       {cases.map((c, i) => (
         <article
-          class="case-card group cursor-pointer relative"
+          class="case-card cursor-pointer relative"
           data-case-id={c.id}
-          data-animate
-          data-animate-delay={String((i % 3) * 0.1)}
+          data-stagger-delay={String((i % 3) * 80)}
           role="button"
           tabindex="0"
           aria-label={`Bekijk case: ${c.model}`}
@@ -53,7 +52,7 @@ const serviceTextColors: Record<string, string> = {
               <img
                 src={c.before}
                 alt={`${c.model} — voor service`}
-                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                class="case-img w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
               />
@@ -101,8 +100,8 @@ const serviceTextColors: Record<string, string> = {
             </div>
           </div>
 
-          <!-- Full-card hover overlay -->
-          <div class="case-overlay absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="border-radius: 1.5rem;">
+          <!-- Full-card hover overlay — pure CSS, no GSAP -->
+          <div class="case-overlay absolute inset-0 flex items-center justify-center pointer-events-none" style="border-radius: 1.5rem;">
             <span class="view-btn px-5 py-2.5 rounded-xl text-xs font-semibold tracking-[0.12em] uppercase"
               style="background: rgba(122,175,196,0.92); color: #08090B; backdrop-filter: blur(4px);">
               Bekijk details
@@ -277,25 +276,47 @@ const serviceTextColors: Record<string, string> = {
   @media (min-width: 640px)  { .cases-grid-layout { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .cases-grid-layout { grid-template-columns: repeat(3, 1fr); } }
 
-  /* Case card */
+  /* Case card — GSAP never touches these elements; all hover is pure CSS */
   .case-card {
     background: #0D1017;
     border: 1px solid rgba(122, 175, 196, 0.14);
     border-radius: 1.5rem;
     overflow: visible;
     box-shadow: 0 4px 24px rgba(0,0,0,0.35);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    will-change: transform;
+    opacity: 0; /* starts hidden; JS adds .is-animated then .is-done */
   }
-  .case-card.card-hovered {
-    border-color: rgba(122, 175, 196, 0.35);
-    box-shadow: 0 20px 56px rgba(0, 0, 0, 0.60), 0 0 0 1px rgba(122, 175, 196, 0.08);
+
+  /* Scroll-in keyframe */
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(22px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
   }
+  .case-card.is-animated {
+    animation: cardIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* After animation: fully interactive with CSS hover */
+  .case-card.is-done {
+    opacity: 1;
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  }
+  .case-card.is-done:hover {
+    transform: translateY(-6px);
+    border-color: rgba(122, 175, 196, 0.38);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.58), 0 0 0 1px rgba(122,175,196,0.08);
+  }
+  .case-card.is-done:hover .case-overlay { opacity: 1; }
+  .case-card.is-done:hover .case-img    { transform: scale(1.05); }
+
   /* Clip inner content to card radius */
   .case-card > .case-image { border-radius: 1.5rem 1.5rem 0 0; overflow: hidden; }
   .case-card:focus-visible {
     outline: 2px solid rgba(122, 175, 196, 0.6);
     outline-offset: 2px;
+  }
+
+  .case-img {
+    transition: transform 0.7s ease;
   }
 
   .case-placeholder {
@@ -315,6 +336,9 @@ const serviceTextColors: Record<string, string> = {
 
   .case-overlay {
     background: rgba(8, 9, 11, 0.5);
+    opacity: 0;
+    transition: opacity 0.22s ease;
+    z-index: 2;
   }
 
   /* Modal */
@@ -451,21 +475,38 @@ const serviceTextColors: Record<string, string> = {
     });
   }
 
-  // GSAP hover — avoids CSS transform hover-flicker
+  // Click / keyboard — no GSAP hover, all hover is pure CSS
   document.querySelectorAll<HTMLElement>('.case-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.classList.add('card-hovered');
-      gsap.to(card, { y: -6, duration: 0.3, ease: 'power2.out' });
-    });
-    card.addEventListener('mouseleave', () => {
-      card.classList.remove('card-hovered');
-      gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
-    });
-
     const open = () => openModal(card.dataset.caseId!);
     card.addEventListener('click', open);
     card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
   });
+
+  // Scroll-in: IntersectionObserver fires immediately for cards already in viewport
+  const allCards = Array.from(document.querySelectorAll<HTMLElement>('.case-card'));
+
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      cardObserver.unobserve(entry.target);
+      const card = entry.target as HTMLElement;
+      const delay = parseInt(card.dataset.staggerDelay ?? '0');
+
+      setTimeout(() => {
+        card.classList.add('is-animated');
+
+        const finish = () => {
+          card.classList.remove('is-animated');
+          card.classList.add('is-done');
+        };
+        // animationend is the clean path; setTimeout is a safety fallback
+        card.addEventListener('animationend', finish, { once: true });
+        setTimeout(finish, 700);
+      }, delay);
+    });
+  }, { threshold: 0.05 });
+
+  allCards.forEach(c => cardObserver.observe(c));
 
   // Close
   closeBtn.addEventListener('click', closeModal);
