@@ -129,6 +129,28 @@ const links = [
 
 <style>
   /* ═══════════════════════════════════════
+     ENTRANCE — CSS animation, reliable on
+     all browsers including iOS Safari.
+     GSAP can't be trusted here: it sets
+     opacity:0 via inline style immediately,
+     and Safari sometimes skips the repaint.
+  ═══════════════════════════════════════ */
+  #nav-header {
+    animation: navHeaderIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.15s;
+  }
+  @keyframes navHeaderIn {
+    from {
+      opacity: 0;
+      transform: translateY(-28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ═══════════════════════════════════════
      BASE — transparent, blends into hero
   ═══════════════════════════════════════ */
   .nav-island {
@@ -467,16 +489,12 @@ const links = [
 
   // ─────────────────────────────────────
   //  4. Entrance animation
+  //  Note: #nav-header entrance is handled
+  //  by CSS @keyframes (navHeaderIn) for
+  //  iOS Safari reliability.
   // ─────────────────────────────────────
-  gsap.from('#nav-header', {
-    y: -28,
-    opacity: 0,
-    duration: 0.9,
-    ease: 'power3.out',
-    delay: 0.15,
-  });
 
-  // Logo scales in subtly (no opacity — header entrance already covers that)
+  // Logo scales in subtly
   gsap.from('.nav-logo-img', {
     scale: 0.88,
     duration: 0.6,

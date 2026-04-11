@@ -39,16 +39,16 @@
 
       <!-- Headline -->
       <h1 class="hero-headline" style="margin-bottom: 1.75rem;">
-        <span class="word-reveal block overflow-hidden">
+        <span class="word-reveal block">
           <span class="hero-word block text-white">PRECISIE</span>
         </span>
-        <span class="word-reveal block overflow-hidden">
+        <span class="word-reveal block">
           <span class="hero-word block text-white">IN ELKE</span>
         </span>
-        <span class="word-reveal block overflow-hidden">
+        <span class="word-reveal block">
           <span class="hero-word block hero-word-gradient">NEWTON METER.</span>
         </span>
-        <span class="word-reveal block overflow-hidden">
+        <span class="word-reveal block">
           <span class="hero-word hero-word-sub block text-white">Momentsleutel kalibratie, reparatie &amp; certificering.</span>
         </span>
       </h1>
@@ -104,8 +104,9 @@
   /* ── SECTION ── */
   .hero-section {
     position: relative;
-    height: 100dvh;
-    min-height: 640px;
+    height: 100vh;       /* fallback for older Safari / unsupported browsers */
+    height: 100dvh;      /* dynamic viewport — excludes mobile browser chrome */
+    min-height: 580px;
     background: transparent;
     z-index: 1;
     overflow: hidden;
@@ -138,6 +139,17 @@
         transparent 72%
       );
   }
+  /* On mobile the wrench fills ~64vw from right, so make overlay fully opaque */
+  @media (max-width: 767px) {
+    .hero-overlay {
+      background:
+        linear-gradient(to bottom,
+          rgba(8,9,11,0.92) 0%,
+          rgba(8,9,11,0.88) 60%,
+          rgba(8,9,11,0.75) 100%
+        );
+    }
+  }
 
   .hero-glow {
     position: absolute;
@@ -167,8 +179,15 @@
     flex: 1;
     display: flex;
     align-items: center;
-    padding-top: clamp(5rem, 10vw, 7.5rem);
-    padding-bottom: 2rem;
+    padding-top: clamp(4.5rem, 10vw, 7.5rem);
+    padding-bottom: 1.5rem;
+  }
+  @media (max-width: 480px) {
+    .hero-body {
+      align-items: flex-start;
+      padding-top: 5.5rem; /* below nav (56px + 20px padding + buffer) */
+      padding-bottom: 1rem;
+    }
   }
 
   .hero-container {
@@ -272,9 +291,22 @@
     max-width: 1200px;
     margin-inline: auto;
     padding-inline: var(--page-px);
-    padding-top: 1.25rem;
-    padding-bottom: 1.75rem;
-    gap: 1.25rem 0;
+    padding-top: 1rem;
+    padding-bottom: 1.25rem;
+    gap: 1rem 0;
+  }
+  @media (max-width: 480px) {
+    .hero-stats-inner {
+      justify-content: space-between;
+      gap: 0.5rem 0;
+      padding-top: 0.875rem;
+      padding-bottom: 1rem;
+    }
+    .hero-stat {
+      flex: 1;
+      justify-content: center;
+      gap: 0.5rem;
+    }
   }
 
   .hero-stat {
@@ -354,13 +386,14 @@
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── Word reveal ──
+  // ── Word reveal — opacity + y so elements are never permanently invisible ──
   gsap.from('.hero-word', {
-    yPercent: 115,
-    duration: 1.1,
-    stagger: 0.13,
+    y: 28,
+    opacity: 0,
+    duration: 1.0,
+    stagger: 0.12,
     ease: 'power4.out',
-    delay: 0.15,
+    delay: 0.10,
   });
 
   // ── Eyebrow ──

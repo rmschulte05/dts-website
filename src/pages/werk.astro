@@ -506,7 +506,7 @@ const features = [
     border-right: 1px solid rgba(122,175,196,0.14);
   }
 
-  .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; width: 100%; }
 
   .filter-pill {
     display: inline-flex;
@@ -561,6 +561,43 @@ const features = [
     padding: 5px 12px;
     border-radius: 100px;
     transition: color 0.2s ease;
+  }
+
+  /* ── FILTER BAR — MOBILE ── */
+  @media (max-width: 639px) {
+    .filter-bar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.875rem;
+    }
+    .filter-left {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+    }
+    .filter-label {
+      white-space: normal;
+      border-right: none;
+      padding-right: 0;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(122,175,196,0.14);
+    }
+    /* 2-column pill grid on mobile */
+    .filter-pills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+    .filter-pill {
+      justify-content: center;
+    }
+    .filter-count {
+      align-self: flex-end;
+    }
+    /* Reduce stat block padding on small screens */
+    .stat-block {
+      padding: 1rem 1.25rem;
+    }
   }
 
   /* Hidden card state */

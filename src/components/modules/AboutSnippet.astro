@@ -71,20 +71,20 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
 
       <!-- Text — 6 cols on desktop, starts at col 7 (1-col gap after image) -->
       <div class="about-text col-span-12 lg:col-span-6 lg:col-start-7" data-animate data-animate-from="right">
-        <p class="text-base md:text-lg leading-relaxed mb-8" style="color:#C4D0D8;">
+        <p class="text-base md:text-lg leading-relaxed mb-6 md:mb-8" style="color:#C4D0D8;">
           Dutch Torque Service is dé specialist voor professionele momentsleutel kalibratie, reparatie
           en officiële certificering conform ISO&nbsp;6789:2017. Als geautoriseerd Snap-On dealer en erkende
           opvolger van Van Rootselaar Technic bv. brengen wij een reputatie van tientallen jaren
           naar werkplaatsen in Nederland.
         </p>
-        <p class="text-base leading-relaxed mb-12" style="color:#A8B8C4;">
+        <p class="text-base leading-relaxed mb-8 md:mb-12" style="color:#A8B8C4;">
           Je ontvangt altijd een volledig kalibratieprotocol met meetresultaten voor én na de service —
           inclusief de gebruikte referentieapparatuur en je volgende kalibratietermijn.
           Audit-proof documentatie, geen verrassingen.
         </p>
 
-        <!-- Trust tags -->
-        <div class="about-tags flex flex-wrap gap-3">
+        <!-- Trust tags — 2×2 grid on mobile, wrapping row on desktop -->
+        <div class="about-tags">
           {['ISO 6789:2017', 'Type I & II', 'Snap-On Dealer', 'Gecertificeerd'].map(tag => (
             <span class="badge" style="background: rgba(122,175,196,0.1); border: 1px solid rgba(122,175,196,0.22); color:#7AAFC4;">
               {tag}
@@ -116,7 +116,7 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
 
   /* ── Title block: generous breathing room below the heading ── */
   .about-header {
-    margin-bottom: 4rem;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
   }
 
   /* ── Visual divider: sits between the heading and the image/text grid ── */
@@ -124,7 +124,7 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
   }
   .about-divider-line {
     flex: 1;
@@ -139,15 +139,34 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
     flex-shrink: 0;
   }
 
-  /* ── Trust tags: clear gap before the button ── */
+  /* ── Trust tags: 2×2 grid on mobile, flex row on desktop ── */
   .about-tags {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
     margin-bottom: 0;
+  }
+  .about-tags .badge {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+  @media (min-width: 640px) {
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .about-tags .badge {
+      width: auto;
+      justify-content: flex-start;
+    }
   }
 
   /* ── Button row: sits in its own block with strong top margin ── */
   .about-btn-row {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    padding-top: clamp(1.25rem, 2.5vw, 2rem);
     border-top: 1px solid rgba(122,175,196,0.1);
   }
 
