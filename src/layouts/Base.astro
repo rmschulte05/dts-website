@@ -141,10 +141,10 @@ const websiteSchema = {
             }
           };
 
-          if (dir === 'bottom') { fromVars.y = 40; toVars.y = 0; }
-          if (dir === 'left')   { fromVars.x = -40; toVars.x = 0; }
-          if (dir === 'right')  { fromVars.x = 40;  toVars.x = 0; }
-          if (dir === 'scale')  { fromVars.scale = 0.94; toVars.scale = 1; }
+          if (dir === 'bottom') { fromVars.y = 40; toVars.y = 0; toVars.clearProps = 'transform'; }
+          if (dir === 'left')   { fromVars.x = -40; toVars.x = 0; toVars.clearProps = 'transform'; }
+          if (dir === 'right')  { fromVars.x = 40;  toVars.x = 0; toVars.clearProps = 'transform'; }
+          if (dir === 'scale')  { fromVars.scale = 0.94; toVars.scale = 1; toVars.clearProps = 'transform'; }
 
           gsap.fromTo(el, fromVars, toVars);
         });
