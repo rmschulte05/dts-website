@@ -1,0 +1,226 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776959380639,
+  "projectRoot": "/Users/rms/Desktop/DTS/website",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "astro",
+        "version": "6.1.8",
+        "category": "fullstack"
+      }
+    ],
+    "packageManager": "npm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "npm run build",
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": "npm run dev",
+    "scripts": {
+      "dev": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview",
+      "astro": "astro",
+      "seo": "bash scripts/seo-agents/run-all.sh",
+      "seo:research": "bash scripts/seo-agents/run-all.sh 1",
+      "seo:write": "bash scripts/seo-agents/run-all.sh 2",
+      "seo:facts": "bash scripts/seo-agents/run-all.sh 3",
+      "seo:eeat": "bash scripts/seo-agents/run-all.sh 4",
+      "seo:humanize": "bash scripts/seo-agents/run-all.sh 5",
+      "seo:optimize": "bash scripts/seo-agents/run-all.sh 6",
+      "seo:aeo": "bash scripts/seo-agents/run-all.sh 7",
+      "copy": "bash scripts/copy-agents/run-all.sh",
+      "copy:audit": "bash scripts/copy-agents/run-all.sh \"$1\" 1",
+      "copy:rewrite": "bash scripts/copy-agents/run-all.sh \"$1\" 2",
+      "copy:facts": "bash scripts/copy-agents/run-all.sh \"$1\" 3",
+      "copy:seo": "bash scripts/copy-agents/run-all.sh \"$1\" 4",
+      "copy:apply": "bash scripts/copy-agents/run-all.sh \"$1\" 5",
+      "copy:all": "bash scripts/copy-agents/run-all-pages.sh"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": "type-based"
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "scripts",
+      "src"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "awesome-claude-agents": {
+      "path": "awesome-claude-agents",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1776959380609,
+      "keyFiles": [
+        "CLAUDE.md",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "README.md"
+      ]
+    },
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 6,
+      "lastAccessed": 1776959380610,
+      "keyFiles": [
+        "dts-logo.png",
+        "favicon.svg",
+        "index.html",
+        "robots.txt",
+        "sitemap-0.xml"
+      ]
+    },
+    "everything-claude-code": {
+      "path": "everything-claude-code",
+      "purpose": null,
+      "fileCount": 40,
+      "lastAccessed": 1776959380623,
+      "keyFiles": [
+        "AGENTS.md",
+        "CHANGELOG.md",
+        "CLAUDE.md",
+        "CODE_OF_CONDUCT.md",
+        "COMMANDS-QUICK-REF.md"
+      ]
+    },
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 3,
+      "lastAccessed": 1776959380624,
+      "keyFiles": [
+        "dts-logo.png",
+        "favicon.svg",
+        "robots.txt"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 0,
+      "lastAccessed": 1776959380624,
+      "keyFiles": []
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1776959380625,
+      "keyFiles": []
+    },
+    "awesome-claude-agents/docs": {
+      "path": "awesome-claude-agents/docs",
+      "purpose": "Documentation",
+      "fileCount": 3,
+      "lastAccessed": 1776959380625,
+      "keyFiles": [
+        "best-practices.md",
+        "creating-agents.md",
+        "dependencies.md"
+      ]
+    },
+    "src/components": {
+      "path": "src/components",
+      "purpose": "UI components",
+      "fileCount": 0,
+      "lastAccessed": 1776959380627,
+      "keyFiles": []
+    },
+    "src/data": {
+      "path": "src/data",
+      "purpose": "Data files",
+      "fileCount": 1,
+      "lastAccessed": 1776959380628,
+      "keyFiles": [
+        "cases.ts"
+      ]
+    },
+    "src/pages": {
+      "path": "src/pages",
+      "purpose": "Page components",
+      "fileCount": 5,
+      "lastAccessed": 1776959380628,
+      "keyFiles": [
+        "contact.astro",
+        "faq.astro",
+        "index.astro"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "GEO-AUDIT-REPORT-anubix.md",
+      "accessCount": 12,
+      "lastAccessed": 1776887501528,
+      "type": "file"
+    },
+    {
+      "path": "geo-report-anubix/index.html",
+      "accessCount": 7,
+      "lastAccessed": 1776887818397,
+      "type": "file"
+    },
+    {
+      "path": "GEO-AUDIT-REPORT.md",
+      "accessCount": 3,
+      "lastAccessed": 1776870431022,
+      "type": "file"
+    },
+    {
+      "path": "geo-report-deploy/index.html",
+      "accessCount": 3,
+      "lastAccessed": 1776885366764,
+      "type": "file"
+    },
+    {
+      "path": "GEO-AUDIT-REPORT-geo-videobase.md",
+      "accessCount": 1,
+      "lastAccessed": 1776870591295,
+      "type": "file"
+    },
+    {
+      "path": "GEO-AUDIT-REPORT-learnmexicanslang.md",
+      "accessCount": 1,
+      "lastAccessed": 1776885315674,
+      "type": "file"
+    },
+    {
+      "path": "geo-report-learnmexicanslang/index.html",
+      "accessCount": 1,
+      "lastAccessed": 1776885739452,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

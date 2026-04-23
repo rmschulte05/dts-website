@@ -1,0 +1,141 @@
+{
+  "updatedAt": "2026-04-22T20:09:47.932Z",
+  "missions": [
+    {
+      "id": "session:bb924af4-905d-417b-9e97-419aa2b36160:none",
+      "source": "session",
+      "name": "none",
+      "objective": "Session mission",
+      "createdAt": "2026-04-22T14:04:49.564Z",
+      "updatedAt": "2026-04-22T14:10:28.106Z",
+      "status": "done",
+      "workerCount": 5,
+      "taskCounts": {
+        "total": 5,
+        "pending": 0,
+        "blocked": 0,
+        "inProgress": 0,
+        "completed": 5,
+        "failed": 0
+      },
+      "agents": [
+        {
+          "name": "geo-ai-visibility:a85f4a6",
+          "role": "geo-ai-visibility",
+          "ownership": "a85f4a6062a35c2c0",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-22T14:07:50.459Z"
+        },
+        {
+          "name": "geo-platform-analysis:a3d5651",
+          "role": "geo-platform-analysis",
+          "ownership": "a3d5651671749fa89",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-22T14:10:28.106Z"
+        },
+        {
+          "name": "geo-technical:afd1cc1",
+          "role": "geo-technical",
+          "ownership": "afd1cc1e38004094c",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-22T14:08:29.110Z"
+        },
+        {
+          "name": "geo-content:ac3aa2e",
+          "role": "geo-content",
+          "ownership": "ac3aa2e8532ddadf1",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-22T14:08:45.645Z"
+        },
+        {
+          "name": "geo-schema:a2c4721",
+          "role": "geo-schema",
+          "ownership": "a2c4721cca94d07fd",
+          "status": "done",
+          "currentStep": null,
+          "latestUpdate": "completed",
+          "completedSummary": null,
+          "updatedAt": "2026-04-22T14:07:52.465Z"
+        }
+      ],
+      "timeline": [
+        {
+          "id": "session-start:afd1cc1e38004094c:2026-04-22T14:05:08.294Z",
+          "at": "2026-04-22T14:05:08.294Z",
+          "kind": "update",
+          "agent": "geo-technical:afd1cc1",
+          "detail": "started geo-technical:afd1cc1",
+          "sourceKey": "session-start:afd1cc1e38004094c"
+        },
+        {
+          "id": "session-start:ac3aa2e8532ddadf1:2026-04-22T14:05:23.362Z",
+          "at": "2026-04-22T14:05:23.362Z",
+          "kind": "update",
+          "agent": "geo-content:ac3aa2e",
+          "detail": "started geo-content:ac3aa2e",
+          "sourceKey": "session-start:ac3aa2e8532ddadf1"
+        },
+        {
+          "id": "session-start:a2c4721cca94d07fd:2026-04-22T14:05:33.076Z",
+          "at": "2026-04-22T14:05:33.076Z",
+          "kind": "update",
+          "agent": "geo-schema:a2c4721",
+          "detail": "started geo-schema:a2c4721",
+          "sourceKey": "session-start:a2c4721cca94d07fd"
+        },
+        {
+          "id": "session-stop:a85f4a6062a35c2c0:2026-04-22T14:07:50.459Z",
+          "at": "2026-04-22T14:07:50.459Z",
+          "kind": "completion",
+          "agent": "geo-ai-visibility:a85f4a6",
+          "detail": "completed",
+          "sourceKey": "session-stop:a85f4a6062a35c2c0"
+        },
+        {
+          "id": "session-stop:a2c4721cca94d07fd:2026-04-22T14:07:52.465Z",
+          "at": "2026-04-22T14:07:52.465Z",
+          "kind": "completion",
+          "agent": "geo-schema:a2c4721",
+          "detail": "completed",
+          "sourceKey": "session-stop:a2c4721cca94d07fd"
+        },
+        {
+          "id": "session-stop:afd1cc1e38004094c:2026-04-22T14:08:29.110Z",
+          "at": "2026-04-22T14:08:29.110Z",
+          "kind": "completion",
+          "agent": "geo-technical:afd1cc1",
+          "detail": "completed",
+          "sourceKey": "session-stop:afd1cc1e38004094c"
+        },
+        {
+          "id": "session-stop:ac3aa2e8532ddadf1:2026-04-22T14:08:45.645Z",
+          "at": "2026-04-22T14:08:45.645Z",
+          "kind": "completion",
+          "agent": "geo-content:ac3aa2e",
+          "detail": "completed",
+          "sourceKey": "session-stop:ac3aa2e8532ddadf1"
+        },
+        {
+          "id": "session-stop:a3d5651671749fa89:2026-04-22T14:10:28.106Z",
+          "at": "2026-04-22T14:10:28.106Z",
+          "kind": "completion",
+          "agent": "geo-platform-analysis:a3d5651",
+          "detail": "completed",
+          "sourceKey": "session-stop:a3d5651671749fa89"
+        }
+      ]
+    }
+  ]
+}
