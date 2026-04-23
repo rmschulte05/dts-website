@@ -180,9 +180,75 @@
   },
   "hotPaths": [
     {
+      "path": "src/components/modules/CasesGrid.astro",
+      "accessCount": 31,
+      "lastAccessed": 1776966113258,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/NavIsland.astro",
+      "accessCount": 24,
+      "lastAccessed": 1776965333478,
+      "type": "file"
+    },
+    {
+      "path": "src/layouts/Base.astro",
+      "accessCount": 20,
+      "lastAccessed": 1776962401508,
+      "type": "file"
+    },
+    {
+      "path": "src/styles/global.css",
+      "accessCount": 17,
+      "lastAccessed": 1776967383299,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/Services.astro",
+      "accessCount": 14,
+      "lastAccessed": 1776965341662,
+      "type": "file"
+    },
+    {
       "path": "GEO-AUDIT-REPORT-anubix.md",
       "accessCount": 12,
       "lastAccessed": 1776887501528,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/HeroDTS.astro",
+      "accessCount": 12,
+      "lastAccessed": 1776962395344,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/FooterDTS.astro",
+      "accessCount": 12,
+      "lastAccessed": 1776965272050,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/werk.astro",
+      "accessCount": 11,
+      "lastAccessed": 1776965306112,
+      "type": "file"
+    },
+    {
+      "path": "src/layouts/BlogLayout.astro",
+      "accessCount": 10,
+      "lastAccessed": 1776965138651,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "accessCount": 8,
+      "lastAccessed": 1776962378672,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/CoreValues.astro",
+      "accessCount": 8,
+      "lastAccessed": 1776965223627,
       "type": "file"
     },
     {
@@ -192,15 +258,153 @@
       "type": "file"
     },
     {
+      "path": "src/pages/diensten/momentsleutel-kalibratie.astro",
+      "accessCount": 7,
+      "lastAccessed": 1776965148732,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/momentsleutel-reparatie.astro",
+      "accessCount": 7,
+      "lastAccessed": 1776965217262,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/contact.astro",
+      "accessCount": 7,
+      "lastAccessed": 1776965225459,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/WrenchBackground.astro",
+      "accessCount": 6,
+      "lastAccessed": 1776962392361,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/ChatExplainer.astro",
+      "accessCount": 6,
+      "lastAccessed": 1776965027671,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/faq.astro",
+      "accessCount": 6,
+      "lastAccessed": 1776965184711,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/momentsleutel-justeren.astro",
+      "accessCount": 6,
+      "lastAccessed": 1776965275382,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/iso-6789-certificering.astro",
+      "accessCount": 6,
+      "lastAccessed": 1776965327534,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/over-ons.astro",
+      "accessCount": 6,
+      "lastAccessed": 1776967423768,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/verschil-kalibreren-justeren-ijken.astro",
+      "accessCount": 5,
+      "lastAccessed": 1776960970557,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/merken/snap-on-kalibratie.astro",
+      "accessCount": 5,
+      "lastAccessed": 1776965385268,
+      "type": "file"
+    },
+    {
       "path": "GEO-AUDIT-REPORT.md",
-      "accessCount": 3,
-      "lastAccessed": 1776870431022,
+      "accessCount": 4,
+      "lastAccessed": 1776959951603,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 4,
+      "lastAccessed": 1776960651687,
+      "type": "file"
+    },
+    {
+      "path": "astro.config.mjs",
+      "accessCount": 4,
+      "lastAccessed": 1776960651980,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/momentsleutel-gevallen-wat-nu.astro",
+      "accessCount": 4,
+      "lastAccessed": 1776960876365,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/AboutSnippet.astro",
+      "accessCount": 4,
+      "lastAccessed": 1776965035956,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/hoe-vaak-momentsleutel-kalibreren.astro",
+      "accessCount": 4,
+      "lastAccessed": 1776965056013,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/index.astro",
+      "accessCount": 4,
+      "lastAccessed": 1776965076928,
       "type": "file"
     },
     {
       "path": "geo-report-deploy/index.html",
       "accessCount": 3,
       "lastAccessed": 1776885366764,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/iso-6789-type-1-type-2-uitgelegd.astro",
+      "accessCount": 3,
+      "lastAccessed": 1776960766499,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/mijn-momentsleutel-klopt-niet-meer.astro",
+      "accessCount": 3,
+      "lastAccessed": 1776960815601,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "accessCount": 3,
+      "lastAccessed": 1776965339239,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/PageSection.astro",
+      "accessCount": 3,
+      "lastAccessed": 1776967376708,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/VideoShowcase.astro",
+      "accessCount": 2,
+      "lastAccessed": 1776959963681,
+      "type": "file"
+    },
+    {
+      "path": "public/robots.txt",
+      "accessCount": 2,
+      "lastAccessed": 1776960379807,
       "type": "file"
     },
     {
@@ -219,6 +423,36 @@
       "path": "geo-report-learnmexicanslang/index.html",
       "accessCount": 1,
       "lastAccessed": 1776885739452,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/index.astro",
+      "accessCount": 1,
+      "lastAccessed": 1776959597368,
+      "type": "file"
+    },
+    {
+      "path": "src/data/cases.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776960012326,
+      "type": "file"
+    },
+    {
+      "path": "public/llms.txt",
+      "accessCount": 1,
+      "lastAccessed": 1776960351598,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate-og-image.mjs",
+      "accessCount": 1,
+      "lastAccessed": 1776960405044,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 1,
+      "lastAccessed": 1776960651172,
       "type": "file"
     }
   ],

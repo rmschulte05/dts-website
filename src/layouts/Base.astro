@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/inter';
 import '../styles/global.css';
 
 interface Props {
@@ -20,10 +21,14 @@ const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": "https://www.dutchtorqueservice.nl/#business",
   "name": "Dutch Torque Service",
-  "description": "Professionele momentsleutel kalibratie, reparatie en certificering conform ISO 6789. Geautoriseerd Snap-On dealer.",
+  "legalName": "Dutch Torque Service",
+  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 certificering. ±2% servicegarantie, ruim binnen de ISO 6789 tolerantie van ±4%. Geautoriseerd Snap-On dealer.",
   "url": "https://www.dutchtorqueservice.nl",
+  "logo": "https://www.dutchtorqueservice.nl/logo/dts-logo-2x.webp",
+  "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
   "telephone": "+31613172774",
   "email": "info@dutchtorqueservice.nl",
+  "taxID": "67183360",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Tonterstraat 42",
@@ -32,11 +37,52 @@ const localBusinessSchema = {
     "addressCountry": "NL",
     "addressRegion": "Noord-Brabant"
   },
-  "areaServed": ["Nederland", "België", "Duitsland"],
-  "serviceType": ["Momentsleutel kalibratie", "Momentsleutel reparatie", "ISO 6789 certificering", "Momentsleutel justeren"],
-  "openingHours": "Mo-Fr 08:00-17:00",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.3397,
+    "longitude": 5.4119
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "Netherlands" },
+    { "@type": "Country", "name": "Belgium" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+  ],
+  "serviceType": [
+    "Momentsleutel kalibratie",
+    "Momentsleutel reparatie",
+    "ISO 6789 certificering",
+    "Momentsleutel justeren"
+  ],
+  "knowsAbout": [
+    "ISO 6789:2017",
+    "ISO 6789-1",
+    "ISO 6789-2",
+    "Momentsleutel kalibratie",
+    "Type I momentsleutels (indicerend)",
+    "Type II momentsleutels (instellend)",
+    "Snap-On momentsleutels",
+    "Traceerbare referentieapparatuur"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    }
+  ],
   "priceRange": "€€",
-  "sameAs": []
+  "inLanguage": "nl-NL",
+  "foundingDate": "2026-01-01",
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Van Rootselaar Technic bv.",
+    "description": "Voorganger; warme overdracht van momentsleutelwerkzaamheden per 1 januari 2026."
+  },
+  "sameAs": [
+    "https://www.kvk.nl/zoeken/?source=all&q=67183360"
+  ]
 };
 
 const websiteSchema = {
@@ -45,8 +91,30 @@ const websiteSchema = {
   "@id": "https://www.dutchtorqueservice.nl/#website",
   "url": "https://www.dutchtorqueservice.nl",
   "name": "Dutch Torque Service",
-  "description": "Specialist in momentsleutel kalibratie, reparatie en certificering conform ISO 6789",
-  "inLanguage": "nl-NL"
+  "description": "Specialist in momentsleutel kalibratie, reparatie en certificering conform ISO 6789:2017",
+  "inLanguage": "nl-NL",
+  "publisher": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".aeo-definition", ".def-card p", ".sec-sub", ".hero-subtitle"]
+  }
+};
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.dutchtorqueservice.nl/#jan-piet-schulte",
+  "name": "Jan-Piet Schulte",
+  "jobTitle": "Eigenaar & Kalibratietechnicus",
+  "worksFor": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "url": "https://www.dutchtorqueservice.nl/over-ons",
+  "knowsAbout": [
+    "ISO 6789:2017 kalibratie",
+    "Type I en Type II momentsleutels",
+    "Snap-On momentsleutel service",
+    "Traceerbare referentieapparatuur",
+    "Kalibratieprotocollen voor ISO 9001, IATF 16949 en VCA"
+  ]
 };
 ---
 <!DOCTYPE html>
@@ -55,6 +123,7 @@ const websiteSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08090B" />
+    <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Dutch Torque Service" />
@@ -80,16 +149,15 @@ const websiteSchema = {
     <meta name="twitter:image" content="/og-image.jpg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
     <title>{title}</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Fonts: Inter Variable is self-hosted via @fontsource-variable/inter (imported in the
+         layout frontmatter). One variable woff2 replaces seven separate weights, no third-party
+         request (GDPR-safe), no render-blocking external stylesheet, font-display: swap built in. -->
 
-    <!-- Structured data — LocalBusiness + WebSite -->
-    <script type="application/ld+json" set:html={JSON.stringify([localBusinessSchema, websiteSchema])} />
+    <!-- Structured data — LocalBusiness + WebSite + Person -->
+    <script type="application/ld+json" set:html={JSON.stringify([localBusinessSchema, websiteSchema, personSchema])} />
 
     <!-- Per-page structured data slot -->
     <slot name="head" />

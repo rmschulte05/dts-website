@@ -12,9 +12,28 @@ const schema = {
   "@type": "Service",
   "name": "Momentsleutel Justeren",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Professioneel momentsleutel justeren op de juiste Newton-meterwaarden conform ISO 6789:2017. Gecertificeerd.",
-  "areaServed": "NL",
+  "description": "Professioneel momentsleutel justeren op de juiste Newton-meterwaarden conform ISO 6789:2017. Altijd gevolgd door hercalibratie en certificaat. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie.",
+  "areaServed": [
+    { "@type": "Country", "name": "Netherlands" },
+    { "@type": "Country", "name": "Belgium" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+  ],
+  "inLanguage": "nl-NL",
   "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren"
+};
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Hoe wij een momentsleutel justeren — in 3 stappen",
+  "description": "Inspectie, justering op juiste Newton-meterwaarden, en hercalibratie met as-left waarden op het certificaat.",
+  "inLanguage": "nl-NL",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Inspectie", "text": "Visuele en mechanische inspectie van de sleutel. Wij brengen schade, slijtage en interne beschadigingen in kaart." },
+    { "@type": "HowToStep", "position": 2, "name": "Justering", "text": "Wij stellen de sleutel opnieuw in op de juiste Newton-meterwaarden conform de fabrieksspecificatie. Is er meer aan de hand, dan adviseren wij eerst reparatie." },
+    { "@type": "HowToStep", "position": 3, "name": "Kalibratie & certificaat", "text": "Meting na justering op 5 meetpunten conform ISO 6789:2017. Volledig protocol met as-left waarden en geldig certificaat." }
+  ]
 };
 
 const steps = [
@@ -63,6 +82,7 @@ const faq = [
   canonicalPath="/diensten/momentsleutel-justeren"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
 
   <NavIsland currentPage="diensten" />
 
@@ -338,7 +358,56 @@ const faq = [
     border: 1px solid rgba(122,175,196,0.14);
     border-radius: 1.5rem;
     padding: 1.75rem;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
+  .step-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 110%, rgba(122,175,196,0.10) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+  }
+  .step-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 45%,
+      rgba(255,255,255,0.09) 50%,
+      rgba(255,255,255,0.05) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .step-card > * { position: relative; z-index: 1; }
+  .step-card:hover,
+  .step-card:focus-visible {
+    border-color: rgba(122,175,196,0.32);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(122,175,196,0.14);
+  }
+  .step-card:hover::before,
+  .step-card:focus-visible::before { opacity: 1; }
+  .step-card:hover::after,
+  .step-card:focus-visible::after { left: 120%; }
+
   .step-number {
     font-size: 0.65rem;
     font-weight: 800;
@@ -357,7 +426,20 @@ const faq = [
     line-height: 1.75;
     color: #8EAAB8;
   }
-  .step-body a { color: #7AAFC4; text-decoration: underline; }
+  .step-body a {
+    color: #7AAFC4;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+  }
+  .step-body a:hover,
+  .step-body a:focus-visible {
+    color: #A0C8D8;
+    background-size: 100% 1px;
+  }
 
   /* ── Table ── */
   .table-wrap {
@@ -409,11 +491,33 @@ const faq = [
     background: #0E1118;
     margin-bottom: 0.75rem;
     overflow: hidden;
-    transition: border-color 0.2s;
+    position: relative;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  details[open] {
+  details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #7AAFC4 0%, #5A95B0 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 3px 0 0 3px;
+    z-index: 1;
+  }
+  details:hover,
+  details:focus-within {
     border-color: rgba(122,175,196,0.30);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.30), 0 0 0 1px rgba(122,175,196,0.10);
   }
+  details:hover::before,
+  details:focus-within::before { transform: scaleY(1); }
+  details[open] { border-color: rgba(122,175,196,0.30); }
+  details[open]::before { transform: scaleY(1); }
   summary {
     padding: 1.25rem 1.5rem;
     cursor: pointer;
@@ -425,7 +529,9 @@ const faq = [
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    transition: color 0.2s;
   }
+  details:hover summary { color: #fff; }
   summary::-webkit-details-marker { display: none; }
   summary::after {
     content: '+';
@@ -433,8 +539,9 @@ const faq = [
     font-size: 1.25rem;
     font-weight: 300;
     flex-shrink: 0;
-    transition: transform 0.25s;
+    transition: transform 0.25s, color 0.2s;
   }
+  details:hover summary::after { color: #A0C8D8; }
   details[open] summary::after { transform: rotate(45deg); }
   .faq-body {
     padding: 0 1.5rem 1.5rem;
@@ -442,4 +549,17 @@ const faq = [
     line-height: 1.8;
     color: #8EAAB8;
   }
-  .faq-body a { color: #7AAFC4; text-decoration: underline; }</style>
+  .faq-body a {
+    color: #7AAFC4;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+  }
+  .faq-body a:hover,
+  .faq-body a:focus-visible {
+    color: #A0C8D8;
+    background-size: 100% 1px;
+  }</style>

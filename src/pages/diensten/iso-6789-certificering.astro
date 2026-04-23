@@ -14,7 +14,13 @@ const schema = [
     "name": "ISO 6789 Certificaat Momentsleutel",
     "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
     "description": "Officieel ISO 6789:2017 kalibratiecertificaat voor momentsleutels. Audit-proof, volledig traceerbaar. Voor ISO 9001, IATF 16949 en VCA gecertificeerde bedrijven.",
-    "areaServed": "NL",
+    "areaServed": [
+      { "@type": "Country", "name": "Netherlands" },
+      { "@type": "Country", "name": "Belgium" },
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+    ],
+    "inLanguage": "nl-NL",
     "url": "https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering"
   },
   {
@@ -167,7 +173,7 @@ const faq = [
     <PageSection>
       <ChatExplainer
         question="Heb ik echt een ISO 6789 certificaat nodig?"
-        answer="Als je werkt in een gecertificeerde omgeving, met klanten die kwaliteitseisen stellen, of als je gereedschap inzet op kritische verbindingen: ja. Het certificaat bewijst traceerbaarheid en nauwkeurigheid (±2% koppelmoment), audit-proof. Twijfel? Laat je <a href='/diensten/momentsleutel-kalibratie'>momentsleutel kalibreren</a>."
+        answer="Als je werkt in een gecertificeerde omgeving, met klanten die kwaliteitseisen stellen, of als je gereedschap inzet op kritische verbindingen: ja. Het certificaat bewijst traceerbaarheid en nauwkeurigheid — DTS hanteert een eigen servicegarantie van ±2%, ruim binnen de ISO 6789:2017 tolerantie van ±4%. Audit-proof, volledig gedocumenteerd. Twijfel? Laat je <a href='/diensten/momentsleutel-kalibratie'>momentsleutel kalibreren</a>."
         accent="#64C48A"
         reactions={[
           { emoji: '📜', count: 22 },
@@ -498,11 +504,56 @@ const faq = [
     border: 1px solid rgba(122,175,196,0.14);
     border-radius: 1.5rem;
     padding: 2rem;
-    transition: border-color 0.2s;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .why-card:hover {
-    border-color: rgba(122,175,196,0.30);
+  .why-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 110%, rgba(122,175,196,0.10) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
   }
+  .why-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 45%,
+      rgba(255,255,255,0.09) 50%,
+      rgba(255,255,255,0.05) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .why-card > * { position: relative; z-index: 1; }
+  .why-card:hover,
+  .why-card:focus-visible {
+    border-color: rgba(122,175,196,0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(122,175,196,0.14);
+  }
+  .why-card:hover::before,
+  .why-card:focus-visible::before { opacity: 1; }
+  .why-card:hover::after,
+  .why-card:focus-visible::after { left: 120%; }
+
   .why-icon {
     font-size: 1.5rem;
     font-weight: 900;
@@ -530,11 +581,33 @@ const faq = [
     background: #0E1118;
     margin-bottom: 0.75rem;
     overflow: hidden;
-    transition: border-color 0.2s;
+    position: relative;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  details[open] {
+  details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, #7AAFC4 0%, #5A95B0 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 3px 0 0 3px;
+    z-index: 1;
+  }
+  details:hover,
+  details:focus-within {
     border-color: rgba(122,175,196,0.30);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.30), 0 0 0 1px rgba(122,175,196,0.10);
   }
+  details:hover::before,
+  details:focus-within::before { transform: scaleY(1); }
+  details[open] { border-color: rgba(122,175,196,0.30); }
+  details[open]::before { transform: scaleY(1); }
   summary {
     padding: 1.25rem 1.5rem;
     cursor: pointer;
@@ -546,7 +619,9 @@ const faq = [
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+    transition: color 0.2s;
   }
+  details:hover summary { color: #fff; }
   summary::-webkit-details-marker { display: none; }
   summary::after {
     content: '+';
@@ -554,8 +629,9 @@ const faq = [
     font-size: 1.25rem;
     font-weight: 300;
     flex-shrink: 0;
-    transition: transform 0.25s;
+    transition: transform 0.25s, color 0.2s;
   }
+  details:hover summary::after { color: #A0C8D8; }
   details[open] summary::after { transform: rotate(45deg); }
   .faq-body {
     padding: 0 1.5rem 1.5rem;
@@ -563,4 +639,17 @@ const faq = [
     line-height: 1.8;
     color: #8EAAB8;
   }
-  .faq-body a { color: #7AAFC4; text-decoration: underline; }</style>
+  .faq-body a {
+    color: #7AAFC4;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+  }
+  .faq-body a:hover,
+  .faq-body a:focus-visible {
+    color: #A0C8D8;
+    background-size: 100% 1px;
+  }</style>

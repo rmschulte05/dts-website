@@ -198,7 +198,14 @@ const TICKER_TEXT    = TICKER_SEGMENT.repeat(9);
     width: 100%;
     height: auto;
     overflow: visible;
-    animation: wrenchGlow 5s ease-in-out infinite;
+    /* Static glow by default — animated only when the user has not asked for reduced motion */
+    filter: drop-shadow(0 0 2px rgba(184, 216, 236, 0.70));
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .bg-wrench-svg {
+      animation: wrenchGlow 5s ease-in-out infinite;
+    }
   }
 
   @keyframes wrenchGlow {

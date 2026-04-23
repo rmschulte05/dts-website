@@ -177,7 +177,7 @@ const navigatie = [
         <!-- CTA button -->
         <a href="/contact" class="footer-cta-btn">
           Offerte aanvragen
-          <svg width="12" height="12" viewBox="0 0 14 14" fill="none">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
             <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
@@ -355,14 +355,39 @@ const navigatie = [
     align-items: center;
     gap: 7px;
     font-size: 0.875rem;
-    color: #5A6A74;
+    color: #94A8B2;
     text-decoration: none;
-    transition: color 0.2s ease;
+    position: relative;
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     line-height: 1.3;
   }
-  .footer-link:hover { color: rgba(184,196,204,0.90); }
+  /* Animated underline grows L→R on non-plain links */
+  .footer-link:not(.footer-link--plain)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: rgba(122,175,196,0.55);
+    border-radius: 1px;
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .footer-link:not(.footer-link--plain):hover,
+  .footer-link:not(.footer-link--plain):focus-visible {
+    color: rgba(232,240,244,0.95);
+  }
+  .footer-link:not(.footer-link--plain):hover::after,
+  .footer-link:not(.footer-link--plain):focus-visible::after {
+    width: 100%;
+  }
+  .footer-link:focus-visible {
+    outline: 2px solid rgba(122,175,196,0.70);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
   .footer-link--plain { cursor: default; }
-  .footer-link--plain:hover { color: #5A6A74; }
+  .footer-link--plain:hover { color: #94A8B2; }
 
   .link-dot {
     width: 5px;
@@ -370,17 +395,23 @@ const navigatie = [
     border-radius: 50%;
     flex-shrink: 0;
     opacity: 0.70;
+    transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
+  .footer-link:hover .link-dot,
+  .footer-link:focus-visible .link-dot { opacity: 1; }
 
   .link-arrow {
     font-size: 0.75rem;
     color: rgba(122,175,196,0.35);
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition:
+      color     0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     display: inline-block;
   }
-  .footer-link:hover .link-arrow {
-    color: rgba(122,175,196,0.75);
-    transform: translateX(2px);
+  .footer-link:hover .link-arrow,
+  .footer-link:focus-visible .link-arrow {
+    color: rgba(122,175,196,0.80);
+    transform: translateX(4px);
   }
 
   /* Contact column spans full width on 2-col layout */
@@ -396,8 +427,8 @@ const navigatie = [
     align-items: center;
     gap: 0.5rem;
     margin-top: 1.5rem;
-    height: 38px;
-    padding: 0 18px;
+    min-height: 44px;
+    padding: 0 22px;
     border-radius: 100px;
     background: rgba(122,175,196,0.12);
     border: 1px solid rgba(122,175,196,0.30);
@@ -407,12 +438,29 @@ const navigatie = [
     letter-spacing: 0.10em;
     text-transform: uppercase;
     text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    transition:
+      background    0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color  0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      color         0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform     0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow    0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .footer-cta-btn:hover {
-    background: rgba(122,175,196,0.20);
-    border-color: rgba(122,175,196,0.55);
-    color: #B8D4E0;
+  .footer-cta-btn:hover,
+  .footer-cta-btn:focus-visible {
+    background:   rgba(122,175,196,0.22);
+    border-color: rgba(122,175,196,0.65);
+    color:        #C8E0EC;
+    transform:    translateY(-2px);
+    box-shadow:   0 8px 24px rgba(122,175,196,0.18);
+  }
+  .footer-cta-btn:hover svg,
+  .footer-cta-btn:focus-visible svg { transform: translateX(3px); }
+  .footer-cta-btn svg {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .footer-cta-btn:focus-visible {
+    outline: 2px solid rgba(122,175,196,0.70);
+    outline-offset: 3px;
   }
 
   /* ── BOTTOM BAR ── */
@@ -436,7 +484,7 @@ const navigatie = [
 
   .footer-copy {
     font-size: 0.7rem;
-    color: rgba(122,175,196,0.28);
+    color: rgba(148,168,178,0.75);
     letter-spacing: 0.06em;
   }
 
@@ -448,15 +496,15 @@ const navigatie = [
 
   .footer-legal-link {
     font-size: 0.7rem;
-    color: rgba(122,175,196,0.28);
+    color: rgba(148,168,178,0.75);
     text-decoration: none;
     transition: color 0.2s ease;
     letter-spacing: 0.06em;
   }
-  .footer-legal-link:hover { color: rgba(122,175,196,0.65); }
+  .footer-legal-link:hover { color: #E8F0F4; }
 
   .footer-legal-dot {
-    color: rgba(122,175,196,0.18);
+    color: rgba(148,168,178,0.45);
     font-size: 0.7rem;
   }
 </style>

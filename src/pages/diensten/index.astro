@@ -21,9 +21,12 @@ const serviceSchema = {
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
-          { "@type": "Country", "name": "Nederland" },
+          { "@type": "Country", "name": "Netherlands" },
+          { "@type": "Country", "name": "Belgium" },
+          { "@type": "Country", "name": "Germany" },
           { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
-        ]
+        ],
+        "inLanguage": "nl-NL"
       }
     },
     {
@@ -36,9 +39,12 @@ const serviceSchema = {
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
-          { "@type": "Country", "name": "Nederland" },
+          { "@type": "Country", "name": "Netherlands" },
+          { "@type": "Country", "name": "Belgium" },
+          { "@type": "Country", "name": "Germany" },
           { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
-        ]
+        ],
+        "inLanguage": "nl-NL"
       }
     },
     {
@@ -51,9 +57,12 @@ const serviceSchema = {
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
-          { "@type": "Country", "name": "Nederland" },
+          { "@type": "Country", "name": "Netherlands" },
+          { "@type": "Country", "name": "Belgium" },
+          { "@type": "Country", "name": "Germany" },
           { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
-        ]
+        ],
+        "inLanguage": "nl-NL"
       }
     },
     {
@@ -66,9 +75,12 @@ const serviceSchema = {
         "url": "https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
-          { "@type": "Country", "name": "Nederland" },
+          { "@type": "Country", "name": "Netherlands" },
+          { "@type": "Country", "name": "Belgium" },
+          { "@type": "Country", "name": "Germany" },
           { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
-        ]
+        ],
+        "inLanguage": "nl-NL"
       }
     }
   ]
@@ -267,14 +279,76 @@ const services = [
     opacity: 0;
     transform: translateY(36px) scale(0.96);
     will-change: opacity, transform;
+    isolation: isolate;
+    overflow: hidden;
   }
   .service-card.is-visible {
     opacity: 1;
     transform: none;
   }
-  .service-card:hover {
-    transform: translateY(-3px) scale(1.01) !important;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
+
+  /* Radial glow halo — fades in from bottom on hover */
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 110%, rgba(122,175,196,0.12) 0%, transparent 68%);
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+  }
+
+  /* Shine sweep — diagonal highlight that crosses the card */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.06) 45%,
+      rgba(255,255,255,0.11) 50%,
+      rgba(255,255,255,0.06) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Keep all card children above pseudo layers */
+  .service-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card:hover,
+  .service-card:focus-visible {
+    transform: translateY(-4px) scale(1.01) !important;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.55) !important;
+  }
+  .service-card:hover::before,
+  .service-card:focus-visible::before {
+    opacity: 1;
+  }
+  .service-card:hover::after,
+  .service-card:focus-visible::after {
+    left: 120%;
+  }
+
+  /* Arrow nudge on the CTA chevron inside card */
+  .service-card svg {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .service-card:hover svg,
+  .service-card:focus-visible svg {
+    transform: translateX(4px);
   }
 </style>
 

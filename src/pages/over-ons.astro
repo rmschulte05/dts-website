@@ -79,15 +79,20 @@ import PageSection from '../components/ui/PageSection.astro';
 
     <!-- TEAM / VALUES -->
     <PageSection>
-        <div class="text-center mb-24" data-animate>
+        <div class="text-center" data-animate style="margin-bottom: clamp(4rem, 8vw, 7rem);">
           <div class="flex items-center justify-center gap-3 mb-5">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Het Team</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
           </div>
-          <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white">
+          <h2 class="text-4xl md:text-5xl font-black tracking-tight text-white" style="margin-bottom: 2rem;">
             Schulte &amp; Zonen.
           </h2>
+          <div class="flex items-center justify-center gap-2" aria-hidden="true" style="opacity: 0.55;">
+            <span style="width: 48px; height: 1px; background: linear-gradient(90deg, transparent, #7AAFC4);"></span>
+            <span style="width: 5px; height: 5px; border-radius: 50%; background: #7AAFC4; box-shadow: 0 0 12px rgba(122,175,196,0.6);"></span>
+            <span style="width: 48px; height: 1px; background: linear-gradient(90deg, #7AAFC4, transparent);"></span>
+          </div>
         </div>
 
         <!-- 3 value cards -->
@@ -131,7 +136,7 @@ import PageSection from '../components/ui/PageSection.astro';
     <PageSection>
         <div class="grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
           {[
-            { value: '±2%',   label: 'Nauwkeurigheidsgarantie', color: '#7AAFC4' },
+            { value: '±2%',   label: 'Servicegarantie (ISO-norm: ±4%)', color: '#7AAFC4' },
             { value: 'Snelle',  label: 'Doorlooptijd',               color: '#C4AF64' },
             { value: 'ISO',   label: '6789:2017 Gecertificeerd',  color: '#64C48A' },
             { value: '100%',  label: 'Gedocumenteerd protocol',   color: '#C48A64' },
@@ -162,3 +167,36 @@ import PageSection from '../components/ui/PageSection.astro';
 
   <FooterDTS />
 </Base>
+
+<style>
+  /* ── Team / value cards — lift + accent glow halo ── */
+  .team-card {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+  .team-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.40),
+                0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent),
+                0 0 32px color-mix(in srgb, var(--accent) 12%, transparent) !important;
+    border-color: color-mix(in srgb, var(--accent) 32%, transparent) !important;
+  }
+
+  /* ── Google Maps link — animated underline L→R ── */
+  a[href*="maps.google"] {
+    color: rgba(122,175,196,0.5);
+    text-decoration: none;
+    background-image: linear-gradient(#7AAFC4, #9BC8D9);
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    background-position: left bottom;
+    transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  a[href*="maps.google"]:hover,
+  a[href*="maps.google"]:focus-visible {
+    color: #7AAFC4;
+    background-size: 100% 1px;
+  }
+</style>

@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro';
+import NavIsland from '../components/modules/NavIsland.astro';
+import FooterDTS from '../components/modules/FooterDTS.astro';
+---
+
+<Base
+  title="Pagina niet gevonden (404) | Dutch Torque Service"
+  description="De pagina die je zoekt bestaat niet of is verplaatst. Keer terug naar de homepage of bel ons direct."
+  canonicalPath="/404"
+>
+  <NavIsland />
+
+  <main class="nf-main">
+    <section class="nf-wrap">
+      <div class="nf-container">
+
+        <div class="nf-eyebrow">
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Fout 404</span>
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        </div>
+
+        <p class="nf-code" aria-hidden="true">404</p>
+
+        <h1 class="nf-title">
+          Deze pagina is <span class="nf-title-accent">buiten tolerantie</span>.
+        </h1>
+
+        <p class="nf-sub">
+          De link die je volgde bestaat niet meer of is verplaatst.
+          Geen zorgen — hieronder vind je de snelste weg terug.
+        </p>
+
+        <div class="nf-ctas">
+          <a href="/" class="btn btn-primary">
+            Naar de homepage
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="tel:+31613172774" class="btn btn-outline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            Bel ons direct
+          </a>
+        </div>
+
+        <nav class="nf-shortcuts" aria-label="Veelbezochte pagina's">
+          <p class="nf-shortcuts-label">Of ga direct naar:</p>
+          <ul>
+            <li><a href="/diensten">Diensten</a></li>
+            <li><a href="/werk">Ons werk</a></li>
+            <li><a href="/faq">Veelgestelde vragen</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  .nf-main { min-height: 70vh; display: flex; align-items: center; }
+
+  .nf-wrap {
+    width: 100%;
+    padding-inline: var(--page-px);
+    padding-block: clamp(8rem, 14vw, 11rem) clamp(4rem, 8vw, 7rem);
+  }
+
+  .nf-container {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nf-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nf-code {
+    font-size: clamp(5rem, 18vw, 11rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    background: linear-gradient(180deg, #7AAFC4 0%, rgba(122,175,196,0.25) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.5rem;
+  }
+
+  .nf-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #E8F0F4;
+    max-width: 18ch;
+  }
+  .nf-title-accent {
+    background: linear-gradient(90deg, #7AAFC4 0%, #9BC5D8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nf-sub {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #A8BDC7;
+    max-width: 48ch;
+  }
+
+  .nf-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .nf-shortcuts {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(122,175,196,0.15);
+    width: 100%;
+    max-width: 520px;
+  }
+  .nf-shortcuts-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(148,168,178,0.7);
+    margin-bottom: 1rem;
+  }
+  .nf-shortcuts ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  .nf-shortcuts a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    padding: 0 0.25rem;
+    color: #7AAFC4;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    /* Animated underline via background-size trick */
+    background-image: linear-gradient(#9BC8D9, #7AAFC4);
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    background-position: left bottom;
+    transition: color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  /* Arrow slides in from left on hover */
+  .nf-shortcuts a::after {
+    content: '→';
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-6px);
+    font-size: 0.85em;
+    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nf-shortcuts a:hover,
+  .nf-shortcuts a:focus-visible {
+    color: #B8D4E0;
+    background-size: 100% 1px;
+  }
+  .nf-shortcuts a:hover::after,
+  .nf-shortcuts a:focus-visible::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .nf-shortcuts a:focus-visible {
+    outline: 2px solid rgba(122,175,196,0.8);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+</style>

@@ -39,12 +39,8 @@ const serviceTextColors: Record<string, string> = {
     <div class="cases-grid-layout">
       {cases.map((c, i) => (
         <article
-          class="case-card cursor-pointer relative"
-          data-case-id={c.id}
+          class="case-card relative"
           data-stagger-delay={String((i % 3) * 80)}
-          role="button"
-          tabindex="0"
-          aria-label={`Bekijk case: ${c.model}`}
         >
           <!-- Image area -->
           <div class="case-image relative aspect-[3/2] overflow-hidden rounded-t-2xl">
@@ -100,13 +96,18 @@ const serviceTextColors: Record<string, string> = {
             </div>
           </div>
 
-          <!-- Full-card hover overlay — pure CSS, no GSAP -->
-          <div class="case-overlay absolute inset-0 flex items-center justify-center pointer-events-none" style="border-radius: 1.5rem;">
-            <span class="view-btn px-6 py-3 rounded-xl text-[13px] font-semibold tracking-[0.10em] uppercase"
-              style="background: rgba(122,175,196,0.92); color: #08090B; backdrop-filter: blur(4px);">
-              Bekijk details
-            </span>
-          </div>
+          <!-- Full-card trigger — a real <button> covers the whole card so screen
+               readers announce a single labelled action per card instead of an
+               article-with-role=button. Clicks anywhere on the card still open
+               the modal; Enter/Space works natively. -->
+          <button
+            type="button"
+            class="case-open-btn"
+            aria-label={`Bekijk case: ${c.model}`}
+            data-case-id={c.id}
+          >
+            <span class="case-open-label" aria-hidden="true">Bekijk details</span>
+          </button>
         </article>
       ))}
     </div><!-- end cases-grid-layout -->
@@ -151,7 +152,7 @@ const serviceTextColors: Record<string, string> = {
       </div>
       <button
         id="modal-close"
-        class="modal-close-btn shrink-0 p-2.5 rounded-xl transition-colors duration-200"
+        class="modal-close-btn shrink-0 rounded-xl transition-colors duration-200"
         style="margin-top: 0.25rem; margin-left: 1.5rem;"
         aria-label="Sluit modal"
       >
@@ -276,7 +277,11 @@ const serviceTextColors: Record<string, string> = {
   @media (min-width: 640px)  { .cases-grid-layout { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .cases-grid-layout { grid-template-columns: repeat(3, 1fr); } }
 
-  /* Case card — GSAP never touches these elements; all hover is pure CSS */
+  /* Case card — GSAP never touches these elements. Hover is driven by both
+     :hover AND a JS-tracked .is-hover class (pointerenter/pointerleave),
+     so fast cursor passes across the grid reliably show "Bekijk details"
+     even when the translateY animation momentarily moves an edge pixel
+     out from under the cursor. Entrance animation only controls opacity. */
   .case-card {
     background: #0D1017;
     border: 1px solid rgba(122, 175, 196, 0.14);
@@ -284,9 +289,34 @@ const serviceTextColors: Record<string, string> = {
     overflow: visible;
     box-shadow: 0 4px 24px rgba(0,0,0,0.35);
     opacity: 0; /* starts hidden; JS adds .is-animated then .is-done */
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.22s ease,
+                box-shadow 0.22s ease;
+    isolation: isolate;
   }
 
-  /* Scroll-in keyframe */
+  /* Teal glow halo — appears on hover via pseudo-element.
+     Sits BEHIND card content, so image/info stay crisp. */
+  .case-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(
+      120% 80% at 50% 0%,
+      rgba(122,175,196,0.22) 0%,
+      rgba(122,175,196,0.08) 40%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .case-card:hover::before,
+  .case-card.is-hover::before { opacity: 1; }
+
+  /* Scroll-in keyframe — only animates opacity/transform, never blocks hover */
   @keyframes cardIn {
     from { opacity: 0; transform: translateY(22px) scale(0.97); }
     to   { opacity: 1; transform: none; }
@@ -295,24 +325,64 @@ const serviceTextColors: Record<string, string> = {
     animation: cardIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
-  /* After animation: fully interactive with CSS hover */
+  /* After animation: keep visible */
   .case-card.is-done {
     opacity: 1;
-    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
   }
-  .case-card.is-done:hover {
+
+  /* Safety net — if neither .is-animated nor .is-done gets added
+     (IO/animationend race, tab backgrounded during entrance, reduced-motion
+     quirks), force-show after 1.2s so the page NEVER renders as empty
+     or un-hoverable. Overridden the moment either class lands. */
+  @keyframes caseCardFallbackShow {
+    to { opacity: 1; }
+  }
+  .case-card:not(.is-animated):not(.is-done) {
+    animation: caseCardFallbackShow 0.01s linear 1.2s forwards;
+  }
+
+  /* HOVER — works unconditionally, no class prerequisite.
+     :hover AND .is-hover both trigger the state so fast cursor passes
+     that miss a :hover update (edge pixel / translate flicker) still
+     reveal the label via the JS pointer-event channel. */
+  .case-card:hover,
+  .case-card.is-hover {
     transform: translateY(-6px);
-    border-color: rgba(122, 175, 196, 0.38);
-    box-shadow: 0 20px 56px rgba(0,0,0,0.58), 0 0 0 1px rgba(122,175,196,0.08);
+    border-color: rgba(122, 175, 196, 0.55);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.62),
+                0 0 0 1px rgba(122,175,196,0.18),
+                0 0 48px rgba(122,175,196,0.12);
   }
-  .case-card.is-done:hover .case-overlay { opacity: 1; }
-  .case-card.is-done:hover .case-img    { transform: scale(1.05); }
+  .case-card:hover .case-open-label,
+  .case-card.is-hover .case-open-label,
+  .case-open-btn:focus-visible .case-open-label { opacity: 1; transform: scale(1); }
+  .case-card:hover .case-img,
+  .case-card.is-hover .case-img                 { transform: scale(1.06); }
+  .case-card:hover .badge,
+  .case-card.is-hover .badge                    { transform: translateY(-1px); filter: brightness(1.25) saturate(1.15); }
+
+  /* Keep visual children above the glow ::before (z-index: 0).
+     The .case-open-btn is deliberately EXCLUDED — it has its own
+     position: absolute + z-index: 3 so it stays as a full-card click
+     overlay. Overriding it here would collapse it into normal flow
+     and kill card clicks. */
+  .case-card > .case-image,
+  .case-card > .case-info {
+    position: relative;
+    z-index: 1;
+  }
 
   /* Clip inner content to card radius */
   .case-card > .case-image { border-radius: 1.5rem 1.5rem 0 0; overflow: hidden; }
   .case-card:focus-visible {
     outline: 2px solid rgba(122, 175, 196, 0.6);
     outline-offset: 2px;
+  }
+
+  /* Badge transition baseline — activated by .case-card:hover above */
+  .badge {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.35s ease;
   }
 
   .case-img {
@@ -334,11 +404,55 @@ const serviceTextColors: Record<string, string> = {
     border-top: 1px solid rgba(122, 175, 196, 0.08);
   }
 
-  .case-overlay {
-    background: rgba(8, 9, 11, 0.5);
+  /* Transparent button layered over the whole card — invisible unless focused.
+     The hover darkening is applied on the card itself (below) so pointer and
+     keyboard focus both reveal the label the same way. */
+  .case-open-btn {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.5rem;
+    touch-action: manipulation;
+    transition: background 0.18s ease;
+  }
+  .case-open-btn:focus-visible {
+    outline: 2px solid rgba(122, 175, 196, 0.7);
+    outline-offset: 4px;
+  }
+  /* Darken overlay matches the old .case-overlay behaviour on card hover.
+     Unconditional — no longer waits for .is-done. */
+  .case-card:hover .case-open-btn,
+  .case-card.is-hover .case-open-btn,
+  .case-open-btn:focus-visible {
+    background: rgba(8, 9, 11, 0.55);
+  }
+
+  .case-open-label {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    background: rgba(122, 175, 196, 0.92);
+    color: #08090B;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     opacity: 0;
-    transition: opacity 0.22s ease;
-    z-index: 2;
+    transform: scale(0.95);
+    /* Snappy reveal so even a brief hover (fast cursor sweep) shows the
+       label clearly instead of catching it mid-fade-in. */
+    transition: opacity 0.12s ease, transform 0.12s ease;
   }
 
   /* Modal */
@@ -354,27 +468,45 @@ const serviceTextColors: Record<string, string> = {
   .modal-header { background: #0E1118; }
 
   .modal-close-btn {
-    color: rgba(184, 196, 204, 0.5);
-    background: rgba(122, 175, 196, 0.06);
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(184, 196, 204, 0.7);
+    background: rgba(122, 175, 196, 0.08);
+    border: 1px solid transparent;
   }
   .modal-close-btn:hover {
-    background: rgba(122, 175, 196, 0.14);
-    color: rgba(184, 196, 204, 0.9);
+    background: rgba(122, 175, 196, 0.16);
+    color: rgba(232, 240, 244, 0.95);
+  }
+  .modal-close-btn:focus-visible {
+    outline: 2px solid rgba(122, 175, 196, 0.8);
+    outline-offset: 2px;
   }
 
   /* BA tabs */
   .ba-tab-btn {
-    padding: 6px 14px;
-    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 10px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(122, 175, 196, 0.5);
+    color: rgba(122, 175, 196, 0.7);
     background: transparent;
-    border: 1px solid rgba(122, 175, 196, 0.12);
+    border: 1px solid rgba(122, 175, 196, 0.18);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ba-tab-btn:focus-visible {
+    outline: 2px solid rgba(122, 175, 196, 0.7);
+    outline-offset: 2px;
   }
   .ba-tab-btn.active,
   .ba-tab-btn:hover {
@@ -435,9 +567,35 @@ const serviceTextColors: Record<string, string> = {
     'Reiniging': 'rgba(150,150,196,0.12)',
   };
 
-  function openModal(id: string) {
+  // ── Focus trap state ──
+  // Track which card triggered the modal so we can restore focus on close.
+  let lastTrigger: HTMLElement | null = null;
+  const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"]), input, select, textarea';
+
+  function trapFocus(e: KeyboardEvent) {
+    if (e.key !== 'Tab') return;
+    const focusables = Array.from(
+      modal.querySelectorAll<HTMLElement>(FOCUSABLE)
+    ).filter(el => el.offsetParent !== null);
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last  = focusables[focusables.length - 1];
+    const active = document.activeElement as HTMLElement | null;
+
+    if (e.shiftKey && active === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && active === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  function openModal(id: string, trigger?: HTMLElement) {
     const c = cases.find(x => x.id === id);
     if (!c) return;
+
+    lastTrigger = trigger ?? (document.activeElement as HTMLElement | null);
 
     // Populate fields
     fType.textContent     = c.type;
@@ -459,9 +617,18 @@ const serviceTextColors: Record<string, string> = {
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
 
+    // Keyboard: trap Tab inside the modal while open
+    document.addEventListener('keydown', trapFocus);
+
     gsap.fromTo(modal,
       { scale: 0.92, opacity: 0, y: 20 },
-      { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' }
+      {
+        scale: 1, opacity: 1, y: 0, duration: 0.4, ease: 'power3.out',
+        onComplete: () => {
+          // Move focus into the modal (close button is the first predictable target)
+          (document.getElementById('modal-close') as HTMLElement | null)?.focus();
+        },
+      }
     );
   }
 
@@ -471,19 +638,61 @@ const serviceTextColors: Record<string, string> = {
       onComplete: () => {
         overlay.classList.remove('open');
         document.body.style.overflow = '';
+        document.removeEventListener('keydown', trapFocus);
+        // Restore focus to the trigger so keyboard/SR users land where they were
+        lastTrigger?.focus?.();
+        lastTrigger = null;
       }
     });
   }
 
-  // Click / keyboard — no GSAP hover, all hover is pure CSS
-  document.querySelectorAll<HTMLElement>('.case-card').forEach(card => {
-    const open = () => openModal(card.dataset.caseId!);
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+  // Click — handled on the real <button> inside each card. Enter/Space are
+  // native to <button> so no keydown handler is needed.
+  document.querySelectorAll<HTMLButtonElement>('.case-open-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.caseId;
+      if (!id) return;
+      openModal(id, btn);
+    });
   });
 
   // Scroll-in: IntersectionObserver fires immediately for cards already in viewport
   const allCards = Array.from(document.querySelectorAll<HTMLElement>('.case-card'));
+
+  // Reliable hover state for fast cursor sweeps.
+  //
+  // CSS :hover alone is fragile here: the card lifts 6px on hover via
+  // translateY, and during fast horizontal movement the browser can drop a
+  // :hover update when an edge pixel briefly slips out from under the cursor
+  // as the card animates. Result: "Bekijk details" doesn't appear even
+  // though the mouse is visibly over a card.
+  //
+  // Solution: track hover via pointerenter/pointerleave and mirror the state
+  // with an .is-hover class. The CSS treats :hover and .is-hover as equal
+  // triggers, so whichever channel fires first reveals the label. A short
+  // leave-timeout prevents flicker when the translateY briefly steals the
+  // cursor off the card edge.
+  allCards.forEach(card => {
+    let leaveTimer: number | undefined;
+    const setHover = () => {
+      if (leaveTimer !== undefined) {
+        window.clearTimeout(leaveTimer);
+        leaveTimer = undefined;
+      }
+      card.classList.add('is-hover');
+    };
+    const clearHover = () => {
+      if (leaveTimer !== undefined) window.clearTimeout(leaveTimer);
+      leaveTimer = window.setTimeout(() => {
+        card.classList.remove('is-hover');
+        leaveTimer = undefined;
+      }, 40);
+    };
+    card.addEventListener('pointerenter', setHover);
+    card.addEventListener('pointerover',  setHover); // belt-and-suspenders: covers re-entries
+    card.addEventListener('pointerleave', clearHover);
+    card.addEventListener('pointercancel', clearHover);
+  });
 
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

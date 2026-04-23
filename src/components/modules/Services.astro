@@ -94,12 +94,12 @@ const services = [
         >
           <!-- Top: icon + number -->
           <div class="svc-top">
-            <div class="svc-icon-wrap">
+            <div class="svc-icon-wrap" aria-hidden="true">
               <div class="svc-icon">
                 <Fragment set:html={svc.icon} />
               </div>
             </div>
-            <span class="svc-number">{String(i + 1).padStart(2, '0')}</span>
+            <span class="svc-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
           </div>
 
           <!-- Flex spacer -->
@@ -113,7 +113,7 @@ const services = [
           <h3 class="svc-title">{svc.title}</h3>
           <p class="svc-body">{svc.description}</p>
           {svc.link && (
-            <a href={svc.link.href} class="svc-link">{svc.link.label} →</a>
+            <a href={svc.link.href} class="svc-link">{svc.link.label} <span class="svc-link-arrow" aria-hidden="true">→</span></a>
           )}
 
           <!-- Hover bottom bar -->
@@ -164,13 +164,75 @@ const services = [
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    isolation: isolate;
+    transition:
+      border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow   0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      transform    0.45s cubic-bezier(0.22, 1, 0.36, 1);
     cursor: default;
   }
-  .svc-card:hover {
-    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
-    box-shadow: 0 20px 56px rgba(0,0,0,0.45), 0 0 0 1px color-mix(in srgb, var(--accent) 12%, transparent);
-    transform: translateY(-4px);
+
+  /* Accent glow halo — radial behind card content */
+  .svc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Diagonal shine sweep */
+  .svc-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.06) 45%,
+      rgba(255,255,255,0.12) 50%,
+      rgba(255,255,255,0.06) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .svc-card:hover,
+  .svc-card:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+    box-shadow:
+      0 24px 64px rgba(0,0,0,0.55),
+      0 0 48px color-mix(in srgb, var(--accent) 18%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+    transform: translateY(-8px);
+  }
+  .svc-card:hover::before,
+  .svc-card:focus-visible::before { opacity: 1; }
+  .svc-card:hover::after,
+  .svc-card:focus-visible::after  { left: 120%; }
+
+  /* All direct children sit above the pseudo-elements */
+  .svc-card > * {
+    position: relative;
+    z-index: 1;
+  }
+  /* svc-corner is absolutely positioned — restore that */
+  .svc-corner {
+    position: absolute !important;
   }
 
   /* Top row */
@@ -188,11 +250,16 @@ const services = [
     border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
     background: color-mix(in srgb, var(--accent) 10%, transparent);
     color: var(--accent);
-    transition: background 0.3s, border-color 0.3s;
+    transition:
+      background   0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform    0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .svc-card:hover .svc-icon-wrap {
-    background: color-mix(in srgb, var(--accent) 18%, transparent);
-    border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  .svc-card:hover .svc-icon-wrap,
+  .svc-card:focus-visible .svc-icon-wrap {
+    background:   color-mix(in srgb, var(--accent) 22%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    transform:    scale(1.08);
   }
 
   .svc-icon { display: flex; align-items: center; justify-content: center; }
@@ -205,9 +272,10 @@ const services = [
     font-variant-numeric: tabular-nums;
     color: var(--accent);
     opacity: 0.18;
-    transition: opacity 0.3s;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .svc-card:hover .svc-number { opacity: 0.35; }
+  .svc-card:hover .svc-number,
+  .svc-card:focus-visible .svc-number { opacity: 0.50; }
 
   /* Rule */
   .svc-rule {
@@ -233,16 +301,16 @@ const services = [
     line-height: 1.2;
     letter-spacing: -0.01em;
     margin-bottom: 0.75rem;
-    tracking-tight: true;
   }
 
   .svc-body {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     line-height: 1.7;
-    color: #8EAAB8;
+    color: #A8BDC7;
     margin-bottom: 0.75rem;
   }
 
+  /* Animated underline grows L→R; arrow slides +4px */
   .svc-link {
     font-size: 0.75rem;
     font-weight: 600;
@@ -251,10 +319,40 @@ const services = [
     text-decoration: none;
     letter-spacing: 0.02em;
     margin-bottom: 1.25rem;
-    display: inline-block;
-    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    position: relative;
+    transition:
+      opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      color   0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .svc-link:hover { opacity: 1; }
+  .svc-link::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--accent);
+    border-radius: 1px;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .svc-card:hover .svc-link,
+  .svc-card:focus-visible .svc-link {
+    opacity: 1;
+    color: color-mix(in srgb, var(--accent) 90%, #fff);
+  }
+  .svc-card:hover .svc-link::after,
+  .svc-card:focus-visible .svc-link::after { width: 100%; }
+
+  /* Arrow character inside the link text slides right */
+  .svc-link-arrow {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .svc-card:hover .svc-link-arrow,
+  .svc-card:focus-visible .svc-link-arrow { transform: translateX(4px); }
 
   /* Bottom accent bar (expands on hover) */
   .svc-bar {
@@ -262,14 +360,14 @@ const services = [
     width: 0;
     border-radius: 2px;
     background: linear-gradient(90deg, var(--accent), transparent);
-    transition: width 0.5s ease;
+    transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     margin-top: auto;
   }
-  .svc-card:hover .svc-bar { width: 100%; }
+  .svc-card:hover .svc-bar,
+  .svc-card:focus-visible .svc-bar { width: 100%; }
 
   /* Corner bracket */
   .svc-corner {
-    position: absolute;
     bottom: 1.25rem;
     right: 1.25rem;
     width: 16px;
@@ -278,7 +376,8 @@ const services = [
     border-bottom: 1.5px solid var(--accent);
     border-radius: 0 0 4px 0;
     opacity: 0.25;
-    transition: opacity 0.3s;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .svc-card:hover .svc-corner { opacity: 0.55; }
+  .svc-card:hover .svc-corner,
+  .svc-card:focus-visible .svc-corner { opacity: 0.70; }
 </style>

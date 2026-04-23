@@ -500,7 +500,7 @@ const features = [
     font-weight: 700;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.30);
+    color: rgba(255,255,255,0.65);
     white-space: nowrap;
     padding-right: 1rem;
     border-right: 1px solid rgba(122,175,196,0.14);
@@ -629,14 +629,36 @@ const features = [
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    position: relative;
+    isolation: isolate;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: 0 2px 16px rgba(0,0,0,0.30);
   }
-  .werk-card:hover {
-    border-color: rgba(122,175,196,0.32);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.50), 0 0 0 1px rgba(122,175,196,0.08);
-    transform: translateY(-3px);
+  /* Radial glow halo — fades in on hover */
+  .werk-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(
+      ellipse 80% 55% at 50% 0%,
+      rgba(122,175,196,0.10),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
   }
+  .werk-card:hover {
+    border-color: rgba(122,175,196,0.38);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.55),
+                0 0 0 1px rgba(122,175,196,0.12);
+    transform: translateY(-5px);
+  }
+  .werk-card:hover::before { opacity: 1; }
 
   .werk-card-img {
     position: relative;
@@ -842,9 +864,45 @@ const features = [
     text-transform: uppercase;
     text-decoration: none;
     align-self: flex-start;
-    transition: background 0.2s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .cta-btn:hover { background: #1c2028; transform: translateY(-1px); }
+  /* Shine sweep on hover */
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%;
+    width: 40%; height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.12) 45%,
+      rgba(255,255,255,0.22) 50%,
+      rgba(255,255,255,0.12) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .cta-btn:hover,
+  .cta-btn:focus-visible {
+    background: #1a2030;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.50);
+  }
+  .cta-btn:hover::after,
+  .cta-btn:focus-visible::after { left: 120%; }
+  /* Arrow slides right on hover */
+  .cta-btn:hover svg,
+  .cta-btn:focus-visible svg { transform: translateX(4px); }
+  .cta-btn svg {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
   /* ── FEATURES SECTION ── */
   .features-section {
@@ -887,11 +945,15 @@ const features = [
     border-radius: 1.5rem;
     padding: 2.5rem;
     overflow: hidden;
+    isolation: isolate;
     border: 1px solid rgba(122,175,196,0.13);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .feature-card:hover {
-    box-shadow: 0 16px 48px rgba(0,0,0,0.40);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.45);
+    transform: translateY(-4px);
   }
 
   .feature-card--a {
@@ -902,8 +964,14 @@ const features = [
     background: linear-gradient(140deg, rgba(122,175,196,0.04) 0%, rgba(8,9,11,0.0) 60%);
     background-color: #0D1118;
   }
-  .feature-card--a:hover { border-color: rgba(122,175,196,0.28); }
-  .feature-card--b:hover { border-color: rgba(122,175,196,0.22); }
+  .feature-card--a:hover { border-color: rgba(122,175,196,0.32); }
+  .feature-card--b:hover { border-color: rgba(122,175,196,0.26); }
+
+  /* Icon box brightens on card hover */
+  .feature-card:hover .fc-icon {
+    box-shadow: 0 0 16px currentColor;
+    opacity: 1;
+  }
 
   .fc-top {
     display: flex;

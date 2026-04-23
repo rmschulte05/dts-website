@@ -1,0 +1,37 @@
+# Dutch Torque Service
+
+> Professionele kalibratie, reparatie en ISO 6789:2017 certificering van momentsleutels. Geautoriseerd Snap-On dealer. Gevestigd in Riethoven, Noord-Brabant. Werkzaam in Nederland, België en Duitsland.
+
+Dutch Torque Service (DTS) is een familiebedrijf — Jan-Piet Schulte en zonen — en de erkende voortzetter van Van Rootselaar Technic bv. per 1 januari 2026. DTS kalibreert op 5 meetpunten conform ISO 6789:2017 (Type I en Type II), met een eigen servicegarantie van ±2% — ruim binnen de ±4% ISO-tolerantie. Elk certificaat bevat as-found en as-left waarden, traceerbare referentieapparatuur en aanbevolen volgend interval.
+
+## Kerndiensten
+
+- [Momentsleutel Kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie): 5 meetpunten (20%, 40%, 60%, 80%, 100% van het bereik), minimaal 3 herhalingen per punt, conform ISO 6789:2017. Volledig protocol en certificaat per e-mail.
+- [Momentsleutel Reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie): Gratis diagnose, raming vooraf, originele Snap-On onderdelen als geautoriseerd dealer. Altijd gevolgd door kalibratie en certificaat.
+- [Momentsleutel Justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren): Fysiek bijstellen naar de juiste Newton-meterwaarden na val, slijtage of overbelasting. Altijd gevolgd door hercalibratie met as-left waarden op het certificaat.
+- [ISO 6789:2017 Certificering](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering): Audit-proof certificaat geschikt voor ISO 9001, IATF 16949 en VCA kwaliteitssystemen. Traceerbaar naar nationale referentienormen.
+- [Snap-On Kalibratie & Reparatie](https://www.dutchtorqueservice.nl/merken/snap-on-kalibratie): Geautoriseerd Snap-On dealer voor Zuid-Noord-Brabant. Originele onderdelen, fabrieksspecificaties, alle modellen (QJFR, QJFR2, ATECH, Type IID).
+
+## Kennisbank
+
+- [Hoe vaak moet je een momentsleutel laten kalibreren?](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren): ISO 6789 kalibratie-intervallen per toepassing, verplichte herkeuring na val of overbelasting.
+- [ISO 6789 Type I en Type II uitgelegd](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd): Onderscheid tussen indicerende (balksleutel, digitaal) en instellende (kliksleutel) instrumenten, met bijbehorende kalibratie-eisen.
+- [Kalibreren, Justeren of IJken — wat is het verschil?](https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken): Kalibreren = meten; justeren = bijstellen; ijken is juridisch en niet van toepassing op momentsleutels.
+- [Momentsleutel gevallen — wat nu?](https://www.dutchtorqueservice.nl/blog/momentsleutel-gevallen-wat-nu): Wat er intern gebeurt na een val (kliksleutel, digitaal, balksleutel), en waarom ISO 6789-2:2017 herkalibratie voorschrijft.
+- [Mijn momentsleutel klopt niet meer — wat nu?](https://www.dutchtorqueservice.nl/blog/mijn-momentsleutel-klopt-niet-meer): Signalen van een defecte sleutel, oorzaken, en de beslisboom kalibratie / justeren / reparatie.
+
+## Werk & Bedrijf
+
+- [Onze aanpak en cases](https://www.dutchtorqueservice.nl/werk)
+- [Over ons](https://www.dutchtorqueservice.nl/over-ons): familiebedrijf, Snap-On dealer, opvolger Van Rootselaar Technic bv.
+- [FAQ](https://www.dutchtorqueservice.nl/faq): Veelgestelde vragen over kalibratie, certificering en doorlooptijden.
+
+## Contact
+
+- Telefoon: +31 6 131 72 774
+- E-mail: info@dutchtorqueservice.nl
+- Adres: Tonterstraat 42, 5561 AN Riethoven, Noord-Brabant, Nederland
+- Openingstijden: Maandag t/m vrijdag 08:00–17:00
+- KvK: 67183360
+- Website: https://www.dutchtorqueservice.nl
+- Sitemap: https://www.dutchtorqueservice.nl/sitemap-index.xml

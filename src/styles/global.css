@@ -19,7 +19,20 @@
   padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+/* Note: no global scroll-behavior:smooth — it fights GSAP scrubbed triggers.
+   scroll-margin-top below still handles anchor jump offsets for the fixed nav. */
+
+:root {
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Keep in-page fragment targets clear of the fixed nav (~76px tall) */
+:target,
+#main-content,
+main,
+section[id] {
+  scroll-margin-top: 6rem;
+}
 
 body {
   background-color: #08090B;
@@ -36,7 +49,6 @@ body {
   color: #ffffff;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 img, video, svg { max-width: 100%; display: block; }
@@ -68,6 +80,7 @@ img, video, svg { max-width: 100%; display: block; }
   cursor:          pointer;
   transition:      transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   text-decoration: none;
+  touch-action:    manipulation;
 }
 
 .btn-primary {
@@ -75,21 +88,131 @@ img, video, svg { max-width: 100%; display: block; }
   color:       #08090B;
   box-shadow:  0 4px 20px rgba(122,175,196,0.30);
   border:      none;
+  position:    relative;
+  overflow:    hidden;
+  isolation:   isolate;
 }
-.btn-primary:hover {
-  box-shadow:  0 6px 30px rgba(122,175,196,0.50);
+/* Shine sweep across primary on hover */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 45%,
+    rgba(255,255,255,0.42) 50%,
+    rgba(255,255,255,0.22) 55%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+.btn-primary > * {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  box-shadow:  0 10px 36px rgba(122,175,196,0.55),
+               0 0 0 1px rgba(122,175,196,0.30);
   transform:   translateY(-2px);
+}
+.btn-primary:hover::after,
+.btn-primary:focus-visible::after {
+  left: 120%;
+}
+.btn-primary:hover svg,
+.btn-primary:focus-visible svg {
+  transform: translateX(4px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  transition-duration: 0.08s;
 }
 
 .btn-outline {
   background:   transparent;
   color:        #C4D4DC;
   border:       1px solid rgba(122,175,196,0.40);
+  position:     relative;
+  overflow:     hidden;
+  isolation:    isolate;
+  transition:   transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease,
+                color 0.35s ease;
 }
-.btn-outline:hover {
-  border-color: rgba(122,175,196,0.70);
-  color:        #ffffff;
-  transform:    translateY(-1px);
+
+/* Animated gradient fill — slides in from left on hover */
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #7AAFC4 0%, #5A95B0 100%);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* Shine sweep — diagonal highlight that crosses the button on hover */
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255,255,255,0.18) 45%,
+    rgba(255,255,255,0.30) 50%,
+    rgba(255,255,255,0.18) 55%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn-outline > * {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  border-color: rgba(122,175,196,0.95);
+  color:        #08090B;
+  transform:    translateY(-2px);
+  box-shadow:   0 10px 32px rgba(122,175,196,0.38),
+                0 0 0 1px rgba(122,175,196,0.25);
+}
+.btn-outline:hover::before,
+.btn-outline:focus-visible::before {
+  transform: translateX(0);
+}
+.btn-outline:hover::after,
+.btn-outline:focus-visible::after {
+  left: 120%;
+}
+.btn-outline:hover svg,
+.btn-outline:focus-visible svg {
+  transform: translateX(4px);
+}
+.btn-outline:active {
+  transform: translateY(0);
+  transition-duration: 0.08s;
 }
 
 .btn:focus-visible {
