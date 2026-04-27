@@ -1,0 +1,108 @@
+---
+/**
+ * Hero — full-viewport opening section.
+ *
+ * Props:
+ *  headline    — main large headline text
+ *  subheadline — optional smaller text below headline
+ *  ctaText     — optional button label
+ *  ctaHref     — optional button link (default '#')
+ *  bgImage     — optional background image URL
+ *  bgVideo     — optional background video URL (loops, muted)
+ *  overlay     — 0–100 opacity of dark overlay on bg (default 50)
+ *  align       — 'left' | 'center' | 'right' (default 'center')
+ */
+interface Props {
+  headline: string;
+  subheadline?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  bgImage?: string;
+  bgVideo?: string;
+  overlay?: number;
+  align?: 'left' | 'center' | 'right';
+}
+
+const {
+  headline,
+  subheadline,
+  ctaText,
+  ctaHref = '#',
+  bgImage,
+  bgVideo,
+  overlay = 50,
+  align = 'center',
+} = Astro.props;
+
+const alignClass = {
+  left: 'items-start text-left',
+  center: 'items-center text-center',
+  right: 'items-end text-right',
+}[align];
+---
+
+<section class="hero-section relative h-screen flex items-center justify-center overflow-hidden bg-black">
+
+  {/* Background video */}
+  {bgVideo && (
+    <video
+      class="absolute inset-0 w-full h-full object-cover"
+      autoplay muted loop playsinline preload="metadata"
+    >
+      <source src={bgVideo} type="video/mp4" />
+    </video>
+  )}
+
+  {/* Background image */}
+  {bgImage && !bgVideo && (
+    <img
+      src={bgImage}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+  )}
+
+  {/* Overlay */}
+  {(bgImage || bgVideo) && (
+    <div class="absolute inset-0 bg-black" style={`opacity: ${overlay / 100}`} />
+  )}
+
+  {/* Content */}
+  <div class={`relative z-10 flex flex-col ${alignClass} gap-6 px-6 max-w-6xl mx-auto w-full`}>
+    <h1 class="hero-headline text-6xl md:text-8xl xl:text-9xl font-black tracking-tight leading-[0.9] text-white">
+      {headline}
+    </h1>
+    {subheadline && (
+      <p class="hero-sub text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed">
+        {subheadline}
+      </p>
+    )}
+    {ctaText && (
+      <a
+        href={ctaHref}
+        class="hero-cta mt-2 inline-block px-8 py-4 bg-white text-black font-semibold text-xs tracking-[0.2em] uppercase hover:bg-white/80 transition-colors duration-300 w-fit"
+      >
+        {ctaText}
+      </a>
+    )}
+  </div>
+
+</section>
+
+<script>
+  import gsap from 'gsap';
+
+  const section = document.querySelector('.hero-section');
+  if (section) {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    const headline = section.querySelector('.hero-headline');
+    const sub = section.querySelector('.hero-sub');
+    const cta = section.querySelector('.hero-cta');
+
+    if (headline) tl.from(headline, { opacity: 0, y: 70, duration: 1.2 });
+    if (sub)      tl.from(sub,      { opacity: 0, y: 35, duration: 0.9 }, '-=0.7');
+    if (cta)      tl.from(cta,      { opacity: 0, y: 20, duration: 0.7 }, '-=0.5');
+  }
+</script>

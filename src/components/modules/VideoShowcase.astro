@@ -1,0 +1,96 @@
+---
+/**
+ * VideoShowcase — a prominent video section.
+ *
+ * Props:
+ *  src        — video file URL (mp4 recommended)
+ *  poster     — poster image URL shown before play
+ *  heading    — optional heading above the video
+ *  subheading — optional text below heading
+ *  fullWidth  — true = edge-to-edge, false = constrained max-w-6xl (default false)
+ *  dark       — background (default true = black)
+ *  autoplay   — autoplay on viewport entry, muted (default true)
+ */
+interface Props {
+  src?: string;
+  poster?: string;
+  heading?: string;
+  subheading?: string;
+  fullWidth?: boolean;
+  dark?: boolean;
+  autoplay?: boolean;
+}
+
+const {
+  src,
+  poster,
+  heading,
+  subheading,
+  fullWidth = false,
+  dark = true,
+  autoplay = true,
+} = Astro.props;
+---
+
+<section class={`py-4 px-4 ${dark ? 'bg-black' : 'bg-white'}`}>
+
+  {(heading || subheading) && (
+    <div class={`text-center mb-10 px-6 ${dark ? 'text-white' : 'text-black'}`} data-animate>
+      {heading && (
+        <h2 class="text-4xl md:text-6xl font-black tracking-tight">{heading}</h2>
+      )}
+      {subheading && (
+        <p class={`mt-4 text-lg ${dark ? 'text-neutral-400' : 'text-neutral-500'}`}>{subheading}</p>
+      )}
+    </div>
+  )}
+
+  <div
+    class={`${fullWidth ? 'w-full' : 'max-w-6xl mx-auto'} aspect-video bg-neutral-900 overflow-hidden`}
+    data-animate
+  >
+    {src ? (
+      <video
+        class="w-full h-full object-cover"
+        poster={poster}
+        muted
+        loop
+        playsinline
+        preload="none"
+        data-autoplay={autoplay ? 'true' : 'false'}
+        data-video-src={src}
+      >
+      </video>
+    ) : (
+      <div class="w-full h-full flex items-center justify-center text-neutral-700 font-mono text-sm">
+        video placeholder
+      </div>
+    )}
+  </div>
+
+</section>
+
+<script>
+  // Lazy-load and optionally autoplay videos on intersection
+  const videos = document.querySelectorAll('video[data-video-src]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const video = entry.target as HTMLVideoElement;
+          const src = video.dataset.videoSrc!;
+          if (!video.src) {
+            video.src = src;
+            video.load();
+          }
+          if (video.dataset.autoplay === 'true') {
+            video.play().catch(() => {});
+          }
+          observer.unobserve(video);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  videos.forEach((v) => observer.observe(v));
+</script>

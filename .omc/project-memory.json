@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776959380639,
+  "lastScanned": 1777282533443,
   "projectRoot": "/Users/rms/Desktop/DTS/website",
   "techStack": {
     "languages": [
@@ -76,92 +76,59 @@
   },
   "customNotes": [],
   "directoryMap": {
-    "awesome-claude-agents": {
-      "path": "awesome-claude-agents",
-      "purpose": null,
-      "fileCount": 5,
-      "lastAccessed": 1776959380609,
-      "keyFiles": [
-        "CLAUDE.md",
-        "CONTRIBUTING.md",
-        "LICENSE",
-        "README.md"
-      ]
-    },
     "dist": {
       "path": "dist",
       "purpose": "Distribution/build output",
-      "fileCount": 6,
-      "lastAccessed": 1776959380610,
+      "fileCount": 8,
+      "lastAccessed": 1777282533430,
       "keyFiles": [
-        "dts-logo.png",
+        "404.html",
         "favicon.svg",
         "index.html",
-        "robots.txt",
-        "sitemap-0.xml"
-      ]
-    },
-    "everything-claude-code": {
-      "path": "everything-claude-code",
-      "purpose": null,
-      "fileCount": 40,
-      "lastAccessed": 1776959380623,
-      "keyFiles": [
-        "AGENTS.md",
-        "CHANGELOG.md",
-        "CLAUDE.md",
-        "CODE_OF_CONDUCT.md",
-        "COMMANDS-QUICK-REF.md"
+        "llms.txt",
+        "og-image.jpg"
       ]
     },
     "public": {
       "path": "public",
       "purpose": "Public files",
-      "fileCount": 3,
-      "lastAccessed": 1776959380624,
+      "fileCount": 4,
+      "lastAccessed": 1777282533430,
       "keyFiles": [
-        "dts-logo.png",
         "favicon.svg",
+        "llms.txt",
+        "og-image.jpg",
         "robots.txt"
       ]
     },
     "scripts": {
       "path": "scripts",
       "purpose": "Build/utility scripts",
-      "fileCount": 0,
-      "lastAccessed": 1776959380624,
-      "keyFiles": []
+      "fileCount": 1,
+      "lastAccessed": 1777282533430,
+      "keyFiles": [
+        "generate-og-image.mjs"
+      ]
     },
     "src": {
       "path": "src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1776959380625,
+      "lastAccessed": 1777282533430,
       "keyFiles": []
-    },
-    "awesome-claude-agents/docs": {
-      "path": "awesome-claude-agents/docs",
-      "purpose": "Documentation",
-      "fileCount": 3,
-      "lastAccessed": 1776959380625,
-      "keyFiles": [
-        "best-practices.md",
-        "creating-agents.md",
-        "dependencies.md"
-      ]
     },
     "src/components": {
       "path": "src/components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1776959380627,
+      "lastAccessed": 1777282533431,
       "keyFiles": []
     },
     "src/data": {
       "path": "src/data",
       "purpose": "Data files",
       "fileCount": 1,
-      "lastAccessed": 1776959380628,
+      "lastAccessed": 1777282533431,
       "keyFiles": [
         "cases.ts"
       ]
@@ -169,12 +136,12 @@
     "src/pages": {
       "path": "src/pages",
       "purpose": "Page components",
-      "fileCount": 5,
-      "lastAccessed": 1776959380628,
+      "fileCount": 6,
+      "lastAccessed": 1777282533431,
       "keyFiles": [
+        "404.astro",
         "contact.astro",
-        "faq.astro",
-        "index.astro"
+        "faq.astro"
       ]
     }
   },
