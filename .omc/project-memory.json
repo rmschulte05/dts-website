@@ -261,15 +261,15 @@
       "type": "file"
     },
     {
-      "path": "src/pages/diensten/index.astro",
-      "accessCount": 8,
-      "lastAccessed": 1777288013556,
+      "path": "package.json",
+      "accessCount": 9,
+      "lastAccessed": 1777972804212,
       "type": "file"
     },
     {
-      "path": "package.json",
+      "path": "src/pages/diensten/index.astro",
       "accessCount": 8,
-      "lastAccessed": 1777971249415,
+      "lastAccessed": 1777288013556,
       "type": "file"
     },
     {
