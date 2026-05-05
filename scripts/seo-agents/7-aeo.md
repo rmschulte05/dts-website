@@ -118,7 +118,7 @@ On certificering page:
 - "Wat staat er in een kalibratiecertificaat?" — list the fields: as-found, as-left, reference equipment, traceability
 
 On snap-on page:
-- "Kan ik mijn Snap-On momentsleutel laten kalibreren?" — yes, geautoriseerd dealer voor Zuid-Noord-Brabant
+- "Kan ik mijn Snap-On Momentsleutel laten kalibreren?" — yes, geautoriseerd dealer voor Zuid-Noord-Brabant
 - "Snap-On dealer in de buurt van Eindhoven?" — Riethoven, 20 min, specific address
 
 On FAQ page (general):

@@ -2,40 +2,16 @@
 import Base from '../layouts/Base.astro';
 import NavIsland from '../components/modules/NavIsland.astro';
 import FooterDTS from '../components/modules/FooterDTS.astro';
-import { cases } from '../data/cases.ts';
 
-const serviceColors: Record<string, string> = {
-  'Kalibratie':    '#7AAFC4',
-  'Reparatie':     '#C48A64',
-  'Certificering': '#64C48A',
-  'Justeren':      '#C4AF64',
-  'Reiniging':     '#9696C4',
-};
-
-function shortDate(d: string) {
-  const parts = d.split(' ');
-  const monthMap: Record<string,string> = {
-    januari:'Jan', februari:'Feb', maart:'Mrt', april:'Apr', mei:'Mei',
-    juni:'Jun', juli:'Jul', augustus:'Aug', september:'Sep',
-    oktober:'Okt', november:'Nov', december:'Dec',
-  };
-  return `${monthMap[parts[1]] ?? parts[1]} ${parts[2]}`;
-}
-
-const filters = [
-  { label: 'Alle Cases',   key: 'alle',          color: '#B8C8D4' },
-  { label: 'Kalibratie',   key: 'Kalibratie',    color: '#7AAFC4' },
-  { label: 'Reparatie',    key: 'Reparatie',     color: '#C48A64' },
-  { label: 'Certificering',key: 'Certificering', color: '#64C48A' },
-  { label: 'Justeren',     key: 'Justeren',      color: '#C4AF64' },
-  { label: 'Reiniging',    key: 'Reiniging',     color: '#9696C4' },
-];
+// Cases page is in placeholder state until the first published case studies land.
+// The route stays live and indexable so SEO equity (links, sitemap entry,
+// keyword authority on "momentsleutel kalibratie cases") is preserved.
 
 const features = [
   {
     n: '01',
     label: 'ISO 6789 Gecertificeerd',
-    body: 'Elk gereedschap wordt gekalibreerd conform ISO 6789 — type I en type II. U ontvangt een volledig kalibratieprotocol.',
+    body: 'Elk gereedschap wordt gekalibreerd conform ISO 6789:2017 en 2003, type I en type II. U ontvangt een volledig kalibratieprotocol.',
     icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="4" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
       <path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -59,7 +35,7 @@ const features = [
   {
     n: '03',
     label: '±2% Nauwkeurigheid',
-    body: 'Kalibratie-uitslag valt altijd binnen de ±2% tolerantie van de ISO norm. Geen compromissen op precisie.',
+    body: 'Wij garanderen ±2%, ruim binnen de ±4% ISO 6789:2017 en 2003 tolerantie. Geen compromissen op precisie.',
     icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="10" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
       <line x1="4"  y1="16" x2="24" y2="16" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.5"/>
@@ -72,7 +48,7 @@ const features = [
   {
     n: '04',
     label: 'Snelle Doorlooptijd',
-    body: 'Van inleveren tot gecalibreerd en gecertificeerd gereedschap — snel terug in uw werkplaats.',
+    body: 'Van inleveren tot gecalibreerd en gecertificeerd gereedschap weer snel terug in uw werkplaats.',
     icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="16" r="9" stroke="currentColor" stroke-width="1.4"/>
       <path d="M14 9v7l4 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -82,11 +58,39 @@ const features = [
     accent: '#9696C4',
   },
 ];
+
+// Service categories shown as a card grid (the "what kind of work" placeholder)
+const services = [
+  {
+    title: 'Kalibratie',
+    body: 'Meting op 5 meetpunten over het volledige bereik. As-found en as-left waarden in een audit-proof protocol.',
+    href: '/diensten/momentsleutel-kalibratie',
+    accent: '#7AAFC4',
+  },
+  {
+    title: 'Reparatie',
+    body: 'Volledige revisie van klikmechanisme, ratel of veer, gevolgd door hercalibratie. Originele Snap-On onderdelen direct beschikbaar.',
+    href: '/diensten/momentsleutel-reparatie',
+    accent: '#C48A64',
+  },
+  {
+    title: 'Justeren',
+    body: 'Sleutel buiten tolerantie? Wij stellen hem opnieuw in op de juiste Newton-meterwaarden conform de fabrieksspecificatie.',
+    href: '/diensten/momentsleutel-justeren',
+    accent: '#C4AF64',
+  },
+  {
+    title: 'ISO Certificering',
+    body: 'Officieel ISO 6789:2017 en 2003 kalibratiecertificaat, geschikt voor ISO 9001, IATF 16949 en VCA kwaliteitssystemen.',
+    href: '/diensten/iso-6789-certificering',
+    accent: '#64C48A',
+  },
+];
 ---
 
 <Base
-  title="Gecertificeerde Momentsleutel Cases | Dutch Torque Service"
-  description="Bekijk onze gecertificeerde kalibratie- en reparatiecases. Professionele momentsleutel service voor werkplaatsen door heel Nederland — ISO 6789 gecertificeerd."
+  title="Ons Werk, Momentsleutel Kalibratie & Reparatie | Dutch Torque Service"
+  description="Een blik op het werk van Dutch Torque Service: ISO 6789:2017 en 2003 kalibratie, reparatie en certificering van momentsleutels. Cases volgen binnenkort."
   canonicalPath="/werk"
 >
   <NavIsland currentPage="werk" />
@@ -95,23 +99,15 @@ const features = [
 
     <!-- ── MECHANICAL BACKGROUND LAYER ── -->
     <div class="mech-bg" aria-hidden="true">
-      <!-- Dot grid -->
       <div class="mech-dots"></div>
-      <!-- Precision gauge SVG — top right -->
       <svg class="mech-gauge" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Outer ring -->
         <circle cx="200" cy="200" r="190" stroke="#7AAFC4" stroke-width="0.5"/>
-        <!-- Middle ring -->
         <circle cx="200" cy="200" r="150" stroke="#7AAFC4" stroke-width="0.3"/>
-        <!-- Inner ring -->
         <circle cx="200" cy="200" r="80"  stroke="#7AAFC4" stroke-width="0.5"/>
-        <!-- Crosshairs -->
         <line x1="200" y1="10"  x2="200" y2="390" stroke="#7AAFC4" stroke-width="0.4"/>
         <line x1="10"  y1="200" x2="390" y2="200" stroke="#7AAFC4" stroke-width="0.4"/>
-        <!-- Diagonal hairlines -->
         <line x1="65"  y1="65"  x2="335" y2="335" stroke="#7AAFC4" stroke-width="0.25"/>
         <line x1="335" y1="65"  x2="65"  y2="335" stroke="#7AAFC4" stroke-width="0.25"/>
-        <!-- Tick marks — every 30° -->
         {Array.from({length: 12}, (_, i) => {
           const angle = (i * 30 - 90) * Math.PI / 180;
           const isMajor = i % 3 === 0;
@@ -123,13 +119,10 @@ const features = [
           const y2 = 200 + r2 * Math.sin(angle);
           return <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#7AAFC4" stroke-width={isMajor ? "1.2" : "0.5"}/>;
         })}
-        <!-- Center dot -->
         <circle cx="200" cy="200" r="4" fill="#7AAFC4"/>
         <circle cx="200" cy="200" r="2" fill="#08090B"/>
-        <!-- Arc indicator -->
         <path d="M 200 50 A 150 150 0 0 1 350 200" stroke="#7AAFC4" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
-      <!-- Scan lines -->
       <div class="mech-scan"></div>
     </div>
 
@@ -147,25 +140,26 @@ const features = [
               ELKE SLEUTEL<br/>GECERTIFICEERD.
             </h1>
             <p class="werk-sub">
-              Een overzicht van uitgevoerd kalibratie- en servicewerk.
-              Elk geval gedocumenteerd, gemeten en gecertificeerd conform ISO&nbsp;6789.
+              Een korte introductie tot het werk van Dutch Torque Service: kalibratie, reparatie, justering en
+              certificering van momentsleutels conform ISO&nbsp;6789:2017 en 2003. Casevoorbeelden uit de
+              werkplaats volgen binnenkort.
             </p>
           </div>
 
           <div class="werk-hero-stats">
             <div class="stat-block">
-              <div class="stat-value">{cases.length}</div>
-              <div class="stat-label">Cases</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-block">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">ISO Cert.</div>
+              <div class="stat-value">ISO</div>
+              <div class="stat-label">6789 Cert.</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-block">
               <div class="stat-value">±2%</div>
               <div class="stat-label">Nauwkeurig</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-block">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Meetpunten</div>
             </div>
           </div>
 
@@ -173,119 +167,52 @@ const features = [
       </div>
     </section>
 
-    <!-- ── FILTER BAR ── -->
-    <div class="filter-bar-wrap">
+    <!-- ── WHAT WE DO (placeholder for cases grid) ── -->
+    <section class="services-section">
       <div class="werk-container">
-        <div class="filter-bar">
-          <div class="filter-left">
-            <span class="filter-label">Filter op dienst</span>
-            <div class="filter-pills">
-              {filters.map((f, i) => (
-                <button
-                  class={`filter-pill${i === 0 ? ' active' : ''}`}
-                  data-filter={f.key}
-                  style={`--pill-color: ${f.color};`}
-                >
-                  {i > 0 && <span class="pill-dot" style={`background:${f.color};`}></span>}
-                  {f.label}
-                </button>
-              ))}
-            </div>
+
+        <div class="services-header">
+          <div class="flex items-center gap-3">
+            <span class="block w-8 h-px" style="background:#7AAFC4;"></span>
+            <span class="eyebrow-text">Het Werk</span>
+            <span class="block w-8 h-px" style="background:#7AAFC4;"></span>
           </div>
-          <span class="filter-count" id="filter-count">{cases.length} resultaten</span>
+          <h2 class="services-title">Wat wij doen, in vier disciplines.</h2>
+          <p class="services-intro">
+            Wij werken aan momentsleutels van Snap-On, Stahlwille, Gedore, Facom, Hazet, Würth en alle andere
+            kwaliteitsmerken. Hieronder een overzicht van de diensten die wij dagelijks uitvoeren in ons lab in
+            Riethoven, Noord-Brabant.
+          </p>
         </div>
-      </div>
-    </div>
 
-    <!-- ── CASES GRID ── -->
-    <section class="werk-grid-section">
-      <div class="werk-container">
-        <div class="werk-grid">
-
-          {cases.map((c) => {
-            const isCert = c.services.includes('Certificering');
-            return (
-              <article class="werk-card" data-services={c.services.join(',')}>
-                <!-- Image -->
-                <div class="werk-card-img">
-                  {isCert && (
-                    <div class="cert-badge">
-                      <span class="cert-dot"></span>
-                      Gecertificeerd
-                    </div>
-                  )}
-                  {c.before ? (
-                    <img src={c.before} alt={c.model} class="w-full h-full object-cover" loading="lazy"/>
-                  ) : (
-                    <div class="img-placeholder">
-                      <div class="img-grid"></div>
-                      <svg width="52" height="22" viewBox="0 0 80 32" fill="none" class="relative z-10 opacity-[0.18]">
-                        <circle cx="12" cy="16" r="10" stroke="#7AAFC4" stroke-width="1.5"/>
-                        <circle cx="12" cy="16" r="5"  stroke="#7AAFC4" stroke-width="1"/>
-                        <rect x="22" y="12" width="38" height="8" rx="2" stroke="#7AAFC4" stroke-width="1.5"/>
-                        <rect x="60" y="10" width="14" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
-                      </svg>
-                    </div>
-                  )}
-                  <!-- Accent line bottom-left -->
-                  <div class="img-accent"></div>
-                </div>
-
-                <!-- Body -->
-                <div class="werk-card-body">
-                  <div class="card-top-row">
-                    <span class="card-type">{c.type}</span>
-                    {isCert && (
-                      <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" stroke="#64C48A" stroke-width="1.2"/>
-                        <path d="M5 8l2 2 4-4" stroke="#64C48A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    )}
-                  </div>
-                  <h2 class="card-model">{c.model}</h2>
-                  <div class="card-rule"></div>
-                  <div class="card-specs">
-                    <div class="spec-row">
-                      <span class="spec-k">Bereik</span>
-                      <span class="spec-v">{c.range}</span>
-                    </div>
-                    <div class="spec-row">
-                      <span class="spec-k">Diensten</span>
-                      <span class="spec-v spec-svc">
-                        {c.services.map((s, si) => (
-                          <span style={`color:${serviceColors[s] ?? '#7AAFC4'}`}>
-                            {s}{si < c.services.length - 1 ? <span style="color:rgba(255,255,255,0.15)"> · </span> : ''}
-                          </span>
-                        ))}
-                      </span>
-                    </div>
-                    <div class="spec-row">
-                      <span class="spec-k">Datum</span>
-                      <span class="spec-v">{shortDate(c.date)}</span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-
-          <!-- CTA card -->
-          <div class="cta-card">
-            <div class="cta-watermark">DTS</div>
-            <div class="cta-content">
-              <p class="cta-eyebrow">Dutch Torque Service</p>
-              <h3 class="cta-heading">OFFERTE<br/>AANVRAGEN?</h3>
-              <p class="cta-body">Onze ISO-gecertificeerde technici zorgen dat jouw gereedschap weer op specificatie is.</p>
-              <a href="/contact" class="cta-btn">
-                Neem contact op
-                <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+        <div class="services-grid">
+          {services.map((s) => (
+            <a class="service-card" href={s.href} style={`--accent: ${s.accent};`}>
+              <div class="sc-rule"></div>
+              <h3 class="sc-title">{s.title}</h3>
+              <p class="sc-body">{s.body}</p>
+              <span class="sc-link">
+                Meer over deze dienst
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-              </a>
-            </div>
-          </div>
-
+              </span>
+              <div class="sc-corner" aria-hidden="true"></div>
+            </a>
+          ))}
         </div>
+
+        <!-- Coming-soon notice for actual case studies -->
+        <div class="cases-notice">
+          <span class="cases-notice-dot"></span>
+          <p>
+            <strong>Casevoorbeelden volgen binnenkort.</strong>
+            Wij documenteren ons werk zorgvuldig, maar publiceren pas zodra wij voldoende afgeronde
+            case-foto's en meetprotocollen kunnen tonen. Vragen over een specifieke sleutel of merk?
+            <a href="/contact">Neem contact op</a>, dan vertellen wij je precies wat wij voor jou kunnen doen.
+          </p>
+        </div>
+
       </div>
     </section>
 
@@ -293,7 +220,6 @@ const features = [
     <section class="features-section">
       <div class="werk-container">
 
-        <!-- Header -->
         <div class="features-header">
           <div class="flex items-center gap-3">
             <span class="block w-8 h-px" style="background:#7AAFC4;"></span>
@@ -303,28 +229,43 @@ const features = [
           <h2 class="features-title">De standaard<br/>waarvoor wij staan.</h2>
         </div>
 
-        <!-- 2×2 feature cards -->
         <div class="features-grid">
           {features.map((f, i) => (
             <div class={`feature-card feature-card--${i % 2 === 0 ? 'a' : 'b'}`}>
-              <!-- Top row: number + icon -->
               <div class="fc-top">
                 <span class="fc-num" style={`color:${f.accent};`}>{f.n}</span>
                 <div class="fc-icon" style={`color:${f.accent}; border-color:${f.accent}33; background:${f.accent}12;`}>
                   <Fragment set:html={f.icon} />
                 </div>
               </div>
-              <!-- Rule -->
               <div class="fc-rule" style={`background:${f.accent}30;`}></div>
-              <!-- Text -->
               <h3 class="fc-label">{f.label}</h3>
               <p class="fc-body">{f.body}</p>
-              <!-- Decorative corner mark -->
               <div class="fc-corner" style={`border-color:${f.accent}40;`}></div>
             </div>
           ))}
         </div>
 
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="cta-section">
+      <div class="werk-container">
+        <div class="cta-card">
+          <div class="cta-watermark">DTS</div>
+          <div class="cta-content">
+            <p class="cta-eyebrow">Dutch Torque Service</p>
+            <h3 class="cta-heading">OFFERTE<br/>AANVRAGEN?</h3>
+            <p class="cta-body">Wij zorgen dat jouw gereedschap weer op specificatie is.</p>
+            <a href="/contact" class="cta-btn">
+              Neem contact op
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+                <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -342,7 +283,6 @@ const features = [
     position: relative;
   }
 
-  /* Shared container — used instead of .page-container to avoid double-margin issues */
   .werk-container {
     width: 100%;
     max-width: 1200px;
@@ -366,14 +306,12 @@ const features = [
     overflow: hidden;
     z-index: 0;
   }
-
   .mech-dots {
     position: absolute;
     inset: 0;
     background-image: radial-gradient(circle, rgba(122,175,196,0.035) 1px, transparent 1px);
     background-size: 40px 40px;
   }
-
   .mech-gauge {
     position: absolute;
     top: -80px;
@@ -382,7 +320,6 @@ const features = [
     height: auto;
     opacity: 0.055;
   }
-
   .mech-scan {
     position: absolute;
     inset: 0;
@@ -403,7 +340,6 @@ const features = [
     padding-bottom: clamp(4rem, 7vw, 6.5rem);
     border-bottom: 1px solid rgba(122,175,196,0.08);
   }
-
   .werk-hero-inner {
     display: flex;
     flex-wrap: wrap;
@@ -411,9 +347,7 @@ const features = [
     gap: 4rem;
     row-gap: 3.5rem;
   }
-
   .werk-hero-text { flex: 1; min-width: 280px; }
-
   .werk-headline {
     font-size: clamp(2.8rem, 7.5vw, 6.5rem);
     font-weight: 900;
@@ -422,14 +356,12 @@ const features = [
     color: #fff;
     margin-bottom: 1.5rem;
   }
-
   .werk-sub {
     font-size: 1rem;
     line-height: 1.75;
     color: #A0B4BE;
-    max-width: 46ch;
+    max-width: 56ch;
   }
-
   .werk-hero-stats {
     display: flex;
     align-items: stretch;
@@ -439,7 +371,6 @@ const features = [
     background: rgba(122,175,196,0.04);
     flex-shrink: 0;
   }
-
   .stat-block {
     padding: 1.5rem 2.25rem;
     text-align: center;
@@ -467,330 +398,302 @@ const features = [
     background: rgba(122,175,196,0.14);
     flex-shrink: 0;
   }
-
-  /* ── FILTER BAR ── */
-  .filter-bar-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    background: #0C0F14;
-    border-top: 1px solid rgba(122,175,196,0.12);
-    border-bottom: 1px solid rgba(122,175,196,0.12);
-    padding-block: 1.25rem;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.40);
-  }
-
-  .filter-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .filter-left {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-  }
-
-  .filter-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
-    white-space: nowrap;
-    padding-right: 1rem;
-    border-right: 1px solid rgba(122,175,196,0.14);
-  }
-
-  .filter-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; width: 100%; }
-
-  .filter-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    height: 36px;
-    padding: 0 16px;
-    border-radius: 100px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.10);
-    color: rgba(255,255,255,0.55);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .filter-pill:hover {
-    background: rgba(255,255,255,0.08);
-    border-color: var(--pill-color, rgba(122,175,196,0.5));
-    color: var(--pill-color, #7AAFC4);
-  }
-  .filter-pill.active {
-    background: var(--pill-color, #7AAFC4);
-    border-color: var(--pill-color, #7AAFC4);
-    color: #08090B;
-    box-shadow: 0 0 14px color-mix(in srgb, var(--pill-color, #7AAFC4) 40%, transparent);
-  }
-  .filter-pill.active .pill-dot {
-    background: rgba(0,0,0,0.50) !important;
-    box-shadow: none;
-  }
-
-  .pill-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: 0 0 4px currentColor;
-  }
-
-  .filter-count {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(122,175,196,0.45);
-    white-space: nowrap;
-    background: rgba(122,175,196,0.06);
-    border: 1px solid rgba(122,175,196,0.14);
-    padding: 5px 12px;
-    border-radius: 100px;
-    transition: color 0.2s ease;
-  }
-
-  /* ── FILTER BAR — MOBILE ── */
   @media (max-width: 639px) {
-    .filter-bar {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.875rem;
-    }
-    .filter-left {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.75rem;
-    }
-    .filter-label {
-      white-space: normal;
-      border-right: none;
-      padding-right: 0;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid rgba(122,175,196,0.14);
-    }
-    /* 2-column pill grid on mobile */
-    .filter-pills {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-    }
-    .filter-pill {
-      justify-content: center;
-    }
-    .filter-count {
-      align-self: flex-end;
-    }
-    /* Reduce stat block padding on small screens */
-    .stat-block {
-      padding: 1rem 1.25rem;
-    }
+    .stat-block { padding: 1rem 1.25rem; }
   }
 
-  /* Hidden card state */
-  .werk-card[data-filtered] {
-    display: none;
-  }
-
-  /* ── CASES GRID ── */
-  .werk-grid-section {
+  /* ── SERVICES SECTION (placeholder for cases) ── */
+  .services-section {
     position: relative;
     z-index: 1;
-    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(4rem, 8vw, 7rem);
   }
-
-  .werk-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.25rem;
-  }
-  @media (min-width: 600px)  { .werk-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .werk-grid { grid-template-columns: repeat(3, 1fr); } }
-
-  /* ── CASE CARD ── */
-  .werk-card {
-    background: #0D1017;
-    border: 1px solid rgba(122,175,196,0.14);
-    border-radius: 1.1rem;
-    overflow: hidden;
+  .services-header {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
-    position: relative;
-    isolation: isolate;
-    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: 0 2px 16px rgba(0,0,0,0.30);
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
   }
-  /* Radial glow halo — fades in on hover */
-  .werk-card::before {
+  .services-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .services-intro {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #9AAEB8;
+    max-width: 60ch;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px)  { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .service-card {
+    position: relative;
+    padding: 2rem 1.75rem 1.75rem;
+    border-radius: 1.25rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 16%, transparent);
+    background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 60%),
+                #0E1118;
+    overflow: hidden;
+    isolation: isolate;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    transition:
+      border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      transform    0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow   0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .service-card::after {
     content: '';
     position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: radial-gradient(
-      ellipse 80% 55% at 50% 0%,
-      rgba(122,175,196,0.10),
-      transparent 70%
-    );
-    opacity: 0;
-    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    top: 0; left: -60%;
+    width: 40%; height: 100%;
+    background: linear-gradient(115deg,
+      transparent 0%,
+      rgba(255,255,255,0.04) 45%,
+      rgba(255,255,255,0.09) 50%,
+      rgba(255,255,255,0.04) 55%,
+      transparent 100%);
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
     z-index: 0;
   }
-  .werk-card:hover {
-    border-color: rgba(122,175,196,0.38);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.55),
-                0 0 0 1px rgba(122,175,196,0.12);
-    transform: translateY(-5px);
+  .service-card > * { position: relative; z-index: 1; }
+  .service-card:hover,
+  .service-card:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    transform: translateY(-4px);
+    box-shadow:
+      0 14px 36px rgba(0,0,0,0.45),
+      0 0 28px color-mix(in srgb, var(--accent) 12%, transparent);
   }
-  .werk-card:hover::before { opacity: 1; }
+  .service-card:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+    outline-offset: 3px;
+  }
+  .service-card:hover::after,
+  .service-card:focus-visible::after { left: 120%; }
 
-  .werk-card-img {
+  .sc-rule {
+    height: 2px;
+    width: 36px;
+    background: var(--accent);
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+  .sc-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .sc-body {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: #8EAAB8;
+    flex: 1;
+  }
+  .sc-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 0.25rem;
+    transition: gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .service-card:hover .sc-link,
+  .service-card:focus-visible .sc-link { gap: 0.7rem; }
+  .sc-corner {
+    position: absolute;
+    bottom: 0.875rem;
+    right: 0.875rem;
+    width: 14px;
+    height: 14px;
+    border-right: 1.5px solid var(--accent);
+    border-bottom: 1.5px solid var(--accent);
+    border-radius: 0 0 4px 0;
+    opacity: 0.30;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .service-card:hover .sc-corner,
+  .service-card:focus-visible .sc-corner { opacity: 0.70; }
+
+  /* Coming-soon notice */
+  .cases-notice {
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: rgba(122,175,196,0.05);
+    border: 1px solid rgba(122,175,196,0.18);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+  .cases-notice-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7AAFC4;
+    box-shadow: 0 0 8px rgba(122,175,196,0.7);
+    margin-top: 0.55rem;
+    flex-shrink: 0;
+  }
+  .cases-notice p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #B8C8D4;
+  }
+  .cases-notice strong { color: #fff; font-weight: 700; }
+  .cases-notice a {
+    color: #7AAFC4;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cases-notice a:hover { color: #B8D4E0; }
+
+  /* ── FEATURES SECTION ── */
+  .features-section {
     position: relative;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: #090B0F;
+    z-index: 1;
+    padding-block: clamp(4rem, 8vw, 7rem);
+    background: #080A0E;
+    border-top: 1px solid rgba(122,175,196,0.10);
+    border-bottom: 1px solid rgba(122,175,196,0.10);
+  }
+  .features-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  }
+  .features-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: #fff;
   }
 
-  .img-placeholder {
-    width: 100%;
-    height: 100%;
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .feature-card {
+    position: relative;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(122,175,196,0.13);
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .feature-card:hover {
+    box-shadow: 0 20px 56px rgba(0,0,0,0.45);
+    transform: translateY(-4px);
+  }
+  .feature-card--a {
+    background: linear-gradient(140deg, rgba(122,175,196,0.07) 0%, rgba(8,9,11,0.0) 60%);
+    background-color: #0E1520;
+  }
+  .feature-card--b {
+    background: linear-gradient(140deg, rgba(122,175,196,0.04) 0%, rgba(8,9,11,0.0) 60%);
+    background-color: #0D1118;
+  }
+  .feature-card--a:hover { border-color: rgba(122,175,196,0.32); }
+  .feature-card--b:hover { border-color: rgba(122,175,196,0.26); }
+  .feature-card:hover .fc-icon {
+    box-shadow: 0 0 16px currentColor;
+    opacity: 1;
+  }
+
+  .fc-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+  .fc-num {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.70;
+  }
+  .fc-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-  }
-  .img-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(122,175,196,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(122,175,196,0.05) 1px, transparent 1px);
-    background-size: 28px 28px;
-  }
-
-  .cert-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: rgba(6,8,10,0.80);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(100,196,138,0.28);
-    font-size: 0.575rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #64C48A;
-  }
-  .cert-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #64C48A;
-    box-shadow: 0 0 5px #64C48A;
+    width: 56px;
+    height: 56px;
+    border-radius: 1rem;
+    border: 1px solid;
     flex-shrink: 0;
   }
-
-  .img-accent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 44px;
-    height: 2px;
-    background: linear-gradient(90deg, #7AAFC4, transparent);
-  }
-
-  /* ── CARD BODY ── */
-  .werk-card-body {
-    padding: 1.25rem 1.5rem 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(122,175,196,0.08);
-  }
-
-  .card-top-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.3rem;
-  }
-
-  .card-type {
-    font-size: 0.575rem;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(122,175,196,0.55);
-  }
-
-  .card-model {
-    font-size: 1.15rem;
-    font-weight: 900;
-    color: #fff;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
-    margin-bottom: 1rem;
-  }
-
-  .card-rule {
+  .fc-rule {
     height: 1px;
-    background: rgba(122,175,196,0.10);
-    margin-bottom: 0.9rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1px;
+  }
+  .fc-label {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .fc-body {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: #8EAAB8;
+  }
+  .fc-corner {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 20px;
+    height: 20px;
+    border-right: 1.5px solid;
+    border-bottom: 1.5px solid;
+    border-radius: 0 0 6px 0;
+    opacity: 0.40;
   }
 
-  .card-specs { display: flex; flex-direction: column; gap: 0.5rem; }
-
-  .spec-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.75rem;
+  /* ── CTA ── */
+  .cta-section {
+    position: relative;
+    z-index: 1;
+    padding-block: clamp(4rem, 7vw, 6rem);
   }
-  .spec-k {
-    font-size: 0.575rem;
-    font-weight: 700;
-    letter-spacing: 0.20em;
-    text-transform: uppercase;
-    color: rgba(122,175,196,0.38);
-    flex-shrink: 0;
-  }
-  .spec-v {
-    font-size: 0.725rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.82);
-    text-align: right;
-  }
-  .spec-svc {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 2px;
-    font-size: 0.7rem;
-  }
-
-  /* ── CTA CARD ── */
   .cta-card {
     background: #7AAFC4;
     border-radius: 1.1rem;
@@ -798,9 +701,8 @@ const features = [
     display: flex;
     align-items: stretch;
     position: relative;
-    min-height: 340px;
+    min-height: 280px;
   }
-
   .cta-watermark {
     position: absolute;
     bottom: -2rem;
@@ -813,7 +715,6 @@ const features = [
     user-select: none;
     pointer-events: none;
   }
-
   .cta-content {
     position: relative;
     z-index: 1;
@@ -822,7 +723,6 @@ const features = [
     flex-direction: column;
     justify-content: center;
   }
-
   .cta-eyebrow {
     font-size: 0.6rem;
     font-weight: 700;
@@ -831,7 +731,6 @@ const features = [
     color: rgba(0,0,0,0.50);
     margin-bottom: 0.75rem;
   }
-
   .cta-heading {
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     font-weight: 900;
@@ -840,7 +739,6 @@ const features = [
     color: #08090B;
     margin-bottom: 1rem;
   }
-
   .cta-body {
     font-size: 0.85rem;
     line-height: 1.65;
@@ -848,7 +746,6 @@ const features = [
     margin-bottom: 1.75rem;
     max-width: 26ch;
   }
-
   .cta-btn {
     display: inline-flex;
     align-items: center;
@@ -871,20 +768,17 @@ const features = [
                 transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  /* Shine sweep on hover */
   .cta-btn::after {
     content: '';
     position: absolute;
     top: 0; left: -60%;
     width: 40%; height: 100%;
-    background: linear-gradient(
-      115deg,
+    background: linear-gradient(115deg,
       transparent 0%,
       rgba(255,255,255,0.12) 45%,
       rgba(255,255,255,0.22) 50%,
       rgba(255,255,255,0.12) 55%,
-      transparent 100%
-    );
+      transparent 100%);
     transform: skewX(-18deg);
     transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
@@ -897,173 +791,9 @@ const features = [
   }
   .cta-btn:hover::after,
   .cta-btn:focus-visible::after { left: 120%; }
-  /* Arrow slides right on hover */
   .cta-btn:hover svg,
   .cta-btn:focus-visible svg { transform: translateX(4px); }
   .cta-btn svg {
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
-
-  /* ── FEATURES SECTION ── */
-  .features-section {
-    position: relative;
-    z-index: 1;
-    padding-block: clamp(4rem, 8vw, 7rem);
-    background: #080A0E;
-    border-top: 1px solid rgba(122,175,196,0.10);
-  }
-
-  .features-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.25rem;
-    margin-bottom: clamp(3rem, 5vw, 4.5rem);
-  }
-
-  .features-title {
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    color: #fff;
-  }
-
-  .features-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-  @media (min-width: 640px) {
-    .features-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* ── FEATURE CARD ── */
-  .feature-card {
-    position: relative;
-    border-radius: 1.5rem;
-    padding: 2.5rem;
-    overflow: hidden;
-    isolation: isolate;
-    border: 1px solid rgba(122,175,196,0.13);
-    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .feature-card:hover {
-    box-shadow: 0 20px 56px rgba(0,0,0,0.45);
-    transform: translateY(-4px);
-  }
-
-  .feature-card--a {
-    background: linear-gradient(140deg, rgba(122,175,196,0.07) 0%, rgba(8,9,11,0.0) 60%);
-    background-color: #0E1520;
-  }
-  .feature-card--b {
-    background: linear-gradient(140deg, rgba(122,175,196,0.04) 0%, rgba(8,9,11,0.0) 60%);
-    background-color: #0D1118;
-  }
-  .feature-card--a:hover { border-color: rgba(122,175,196,0.32); }
-  .feature-card--b:hover { border-color: rgba(122,175,196,0.26); }
-
-  /* Icon box brightens on card hover */
-  .feature-card:hover .fc-icon {
-    box-shadow: 0 0 16px currentColor;
-    opacity: 1;
-  }
-
-  .fc-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 1.75rem;
-  }
-
-  .fc-num {
-    font-size: 4rem;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.04em;
-    font-variant-numeric: tabular-nums;
-    /* color set inline per accent */
-    opacity: 0.70;
-  }
-
-  .fc-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 1rem;
-    border: 1px solid;
-    flex-shrink: 0;
-    /* color/background/border-color set inline */
-  }
-
-  .fc-rule {
-    height: 1px;
-    margin-bottom: 1.5rem;
-    border-radius: 1px;
-    /* background set inline */
-  }
-
-  .fc-label {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.75rem;
-    line-height: 1.2;
-  }
-
-  .fc-body {
-    font-size: 0.875rem;
-    line-height: 1.7;
-    color: #8EAAB8;
-  }
-
-  /* Decorative corner bracket */
-  .fc-corner {
-    position: absolute;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 20px;
-    height: 20px;
-    border-right: 1.5px solid;
-    border-bottom: 1.5px solid;
-    border-radius: 0 0 6px 0;
-    opacity: 0.40;
-    /* border-color set inline */
-  }
 </style>
-
-<script>
-  const pills    = document.querySelectorAll<HTMLButtonElement>('.filter-pill');
-  const cards    = document.querySelectorAll<HTMLElement>('.werk-card[data-services]');
-  const countEl  = document.getElementById('filter-count')!;
-
-  function applyFilter(key: string) {
-    let visible = 0;
-    cards.forEach(card => {
-      const services = (card.dataset.services ?? '').split(',');
-      const show = key === 'alle' || services.includes(key);
-      if (show) {
-        card.removeAttribute('data-filtered');
-        visible++;
-      } else {
-        card.setAttribute('data-filtered', '');
-      }
-    });
-    countEl.textContent = `${visible} resultaten`;
-  }
-
-  pills.forEach(btn => {
-    btn.addEventListener('click', () => {
-      pills.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      applyFilter(btn.dataset.filter ?? 'alle');
-    });
-  });
-</script>

@@ -20,7 +20,7 @@ const serviceTextColors: Record<string, string> = {
 <section id="cases" class="cases-section page-wrap">
   <div class="page-container">
 
-    <!-- Section header — centred -->
+    <!-- Section header, centred -->
     <div class="cases-header type-stack flex flex-col items-center text-center" data-animate>
       <div class="flex items-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
@@ -31,11 +31,11 @@ const serviceTextColors: Record<string, string> = {
         Elke sleutel vertelt een verhaal.
       </h2>
       <p class="text-base max-w-md leading-relaxed" style="color:#A8BAC2;">
-        Elke kaart toont de volledige voor- en na-documentatie — open er een.
+        Elke kaart toont de volledige voor- en na-documentatie, open er een.
       </p>
     </div>
 
-    <!-- Cases grid — 12-col: full → 6/6 → 4/4/4 -->
+    <!-- Cases grid, 12-col: full → 6/6 → 4/4/4 -->
     <div class="cases-grid-layout">
       {cases.map((c, i) => (
         <article
@@ -47,7 +47,7 @@ const serviceTextColors: Record<string, string> = {
             {c.before ? (
               <img
                 src={c.before}
-                alt={`${c.model} — voor service`}
+                alt={`${c.model}, voor service`}
                 class="case-img w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -96,7 +96,7 @@ const serviceTextColors: Record<string, string> = {
             </div>
           </div>
 
-          <!-- Full-card trigger — a real <button> covers the whole card so screen
+          <!-- Full-card trigger, a real <button> covers the whole card so screen
                readers announce a single labelled action per card instead of an
                article-with-role=button. Clicks anywhere on the card still open
                the modal; Enter/Space works natively. -->
@@ -112,15 +112,15 @@ const serviceTextColors: Record<string, string> = {
       ))}
     </div><!-- end cases-grid-layout -->
 
-    <!-- View all — separated from card grid with a visual break -->
+    <!-- View all, separated from card grid with a visual break -->
     <div class="cases-cta" data-animate>
       <div class="cases-cta-divider" aria-hidden="true">
         <span class="cases-cta-line"></span>
         <span class="cases-cta-dot"></span>
         <span class="cases-cta-line"></span>
       </div>
-      <a href="/werk" class="btn btn-outline">
-        Naar de werkpagina
+      <a href="/diensten" class="btn btn-outline">
+        Bekijk diensten
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -219,8 +219,8 @@ const serviceTextColors: Record<string, string> = {
 
       <!-- Footer: DTS cert mark -->
       <div class="flex items-center justify-between" style="margin-top: 2rem; padding-top: 1.75rem; border-top: 1px solid rgba(122,175,196,0.1);">
-        <span class="text-[11px]" style="color: rgba(122,175,196,0.60);">Jouw sleutel ook <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration: underline; text-underline-offset: 2px;">momentsleutel kalibreren laten</a>?</span>
-        <span class="text-[11px]" style="color: rgba(122,175,196,0.50);">Dutch Torque Service — ISO 6789:2017 gecertificeerd</span>
+        <span class="text-[11px]" style="color: rgba(122,175,196,0.60);">Jouw sleutel ook <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration: underline; text-underline-offset: 2px;">Momentsleutel laten kalibreren</a>?</span>
+        <span class="text-[11px]" style="color: rgba(122,175,196,0.50);">Dutch Torque Service. ISO 6789:2017 en 2003 gecertificeerd</span>
       </div>
     </div>
   </div>
@@ -268,7 +268,7 @@ const serviceTextColors: Record<string, string> = {
     flex-shrink: 0;
   }
 
-  /* Custom grid — overrides page-grid for more generous gaps */
+  /* Custom grid, overrides page-grid for more generous gaps */
   .cases-grid-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -277,7 +277,7 @@ const serviceTextColors: Record<string, string> = {
   @media (min-width: 640px)  { .cases-grid-layout { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 1024px) { .cases-grid-layout { grid-template-columns: repeat(3, 1fr); } }
 
-  /* Case card — GSAP never touches these elements. Hover is driven by both
+  /* Case card. GSAP never touches these elements. Hover is driven by both
      :hover AND a JS-tracked .is-hover class (pointerenter/pointerleave),
      so fast cursor passes across the grid reliably show "Bekijk details"
      even when the translateY animation momentarily moves an edge pixel
@@ -295,7 +295,7 @@ const serviceTextColors: Record<string, string> = {
     isolation: isolate;
   }
 
-  /* Teal glow halo — appears on hover via pseudo-element.
+  /* Teal glow halo, appears on hover via pseudo-element.
      Sits BEHIND card content, so image/info stay crisp. */
   .case-card::before {
     content: '';
@@ -316,7 +316,7 @@ const serviceTextColors: Record<string, string> = {
   .case-card:hover::before,
   .case-card.is-hover::before { opacity: 1; }
 
-  /* Scroll-in keyframe — only animates opacity/transform, never blocks hover */
+  /* Scroll-in keyframe, only animates opacity/transform, never blocks hover */
   @keyframes cardIn {
     from { opacity: 0; transform: translateY(22px) scale(0.97); }
     to   { opacity: 1; transform: none; }
@@ -330,7 +330,7 @@ const serviceTextColors: Record<string, string> = {
     opacity: 1;
   }
 
-  /* Safety net — if neither .is-animated nor .is-done gets added
+  /* Safety net, if neither .is-animated nor .is-done gets added
      (IO/animationend race, tab backgrounded during entrance, reduced-motion
      quirks), force-show after 1.2s so the page NEVER renders as empty
      or un-hoverable. Overridden the moment either class lands. */
@@ -341,7 +341,7 @@ const serviceTextColors: Record<string, string> = {
     animation: caseCardFallbackShow 0.01s linear 1.2s forwards;
   }
 
-  /* HOVER — works unconditionally, no class prerequisite.
+  /* HOVER, works unconditionally, no class prerequisite.
      :hover AND .is-hover both trigger the state so fast cursor passes
      that miss a :hover update (edge pixel / translate flicker) still
      reveal the label via the JS pointer-event channel. */
@@ -362,7 +362,7 @@ const serviceTextColors: Record<string, string> = {
   .case-card.is-hover .badge                    { transform: translateY(-1px); filter: brightness(1.25) saturate(1.15); }
 
   /* Keep visual children above the glow ::before (z-index: 0).
-     The .case-open-btn is deliberately EXCLUDED — it has its own
+     The .case-open-btn is deliberately EXCLUDED, it has its own
      position: absolute + z-index: 3 so it stays as a full-card click
      overlay. Overriding it here would collapse it into normal flow
      and kill card clicks. */
@@ -379,7 +379,7 @@ const serviceTextColors: Record<string, string> = {
     outline-offset: 2px;
   }
 
-  /* Badge transition baseline — activated by .case-card:hover above */
+  /* Badge transition baseline, activated by .case-card:hover above */
   .badge {
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
                 filter 0.35s ease;
@@ -404,7 +404,7 @@ const serviceTextColors: Record<string, string> = {
     border-top: 1px solid rgba(122, 175, 196, 0.08);
   }
 
-  /* Transparent button layered over the whole card — invisible unless focused.
+  /* Transparent button layered over the whole card, invisible unless focused.
      The hover darkening is applied on the card itself (below) so pointer and
      keyboard focus both reveal the label the same way. */
   .case-open-btn {
@@ -430,7 +430,7 @@ const serviceTextColors: Record<string, string> = {
     outline-offset: 4px;
   }
   /* Darken overlay matches the old .case-overlay behaviour on card hover.
-     Unconditional — no longer waits for .is-done. */
+     Unconditional, no longer waits for .is-done. */
   .case-card:hover .case-open-btn,
   .case-card.is-hover .case-open-btn,
   .case-open-btn:focus-visible {
@@ -646,7 +646,7 @@ const serviceTextColors: Record<string, string> = {
     });
   }
 
-  // Click — handled on the real <button> inside each card. Enter/Space are
+  // Click, handled on the real <button> inside each card. Enter/Space are
   // native to <button> so no keydown handler is needed.
   document.querySelectorAll<HTMLButtonElement>('.case-open-btn').forEach(btn => {
     btn.addEventListener('click', () => {

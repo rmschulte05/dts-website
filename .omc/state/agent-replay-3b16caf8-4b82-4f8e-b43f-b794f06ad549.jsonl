@@ -1,0 +1,12 @@
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"geo-audit"}
+{"t":0,"agent":"a7749ee","agent_type":"geo-ai-visibility","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"acb72d7","agent_type":"geo-platform-analysis","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a3273b2","agent_type":"geo-technical","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"adc741a","agent_type":"geo-content","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a0fbd44","agent_type":"geo-schema","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a3273b2","agent_type":"geo-technical","event":"agent_stop","success":true,"duration_ms":79956}
+{"t":0,"agent":"a7749ee","agent_type":"geo-ai-visibility","event":"agent_stop","success":true,"duration_ms":121201}
+{"t":0,"agent":"acb72d7","agent_type":"geo-platform-analysis","event":"agent_stop","success":true,"duration_ms":165072}
+{"t":0,"agent":"adc741a","agent_type":"geo-content","event":"agent_stop","success":true,"duration_ms":141925}
+{"t":0,"agent":"a0fbd44","agent_type":"geo-schema","event":"agent_stop","success":true,"duration_ms":177432}
+{"t":0,"agent":"a8a5643","agent_type":"unknown","event":"agent_stop","success":true}

@@ -1,5 +1,5 @@
 ---
-// Hero — full-viewport, everything above the fold
+// Hero, full-viewport, everything above the fold
 ---
 
 <section class="hero-section">
@@ -9,7 +9,7 @@
   <div class="hero-bg" aria-hidden="true"></div>
   <!-- Dark zone protecting text legibility -->
   <div class="hero-overlay" aria-hidden="true"></div>
-  <!-- Radial glow — warm halo behind text column -->
+  <!-- Radial glow, warm halo behind text column -->
   <div class="hero-glow" aria-hidden="true"></div>
   <!-- Bottom fade into next section -->
   <div class="hero-bottom-fade" aria-hidden="true"></div>
@@ -43,21 +43,21 @@
           <span class="hero-word block text-white">PRECISIE</span>
         </span>
         <span class="word-reveal block">
-          <span class="hero-word block text-white">IN ELKE</span>
+          <span class="hero-word block text-white">OP ELK</span>
         </span>
         <span class="word-reveal block">
-          <span class="hero-word block hero-word-gradient">NEWTON METER.</span>
+          <span class="hero-word block hero-word-gradient">MOMENT.</span>
         </span>
         <span class="word-reveal block">
           <span class="hero-word hero-word-sub block text-white">Momentsleutel kalibratie, reparatie &amp; certificering.</span>
         </span>
       </h1>
 
-      <!-- Subtitle + CTAs — side by side on desktop -->
+      <!-- Subtitle + CTAs, side by side on desktop -->
       <div class="hero-mid">
         <p class="hero-sub">
-          Professionele momentsleutel kalibratie, reparatie en certificering conform ISO&nbsp;6789:2017.
-          Binnen 48&nbsp;uur gecertificeerd — voor werkplaatsen door heel Nederland.
+          Professionele momentsleutel kalibratie, reparatie en certificering conform ISO&nbsp;6789:2017 en 2003.
+          Snel gecertificeerd en beschikbaar voor werkplaatsen door heel Nederland.
         </p>
         <div class="hero-ctas">
           <a href="#diensten" class="btn btn-primary">
@@ -66,19 +66,18 @@
               <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <a href="#cases" class="btn btn-outline">Bekijk Ons Werk</a>
+          <a href="/diensten" class="btn btn-outline">Bekijk Onze Diensten</a>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ── STATS BAR — pinned to bottom of hero ── -->
+  <!-- ── STATS BAR, pinned to bottom of hero ── -->
   <div class="hero-stats-bar">
     <div class="hero-stats-inner">
       {[
-        { value: '±2%',  label: 'Koppelmoment',         color: '#7AAFC4' },
-        { value: '48u',  label: 'Doorlooptijd',          color: '#C4AF64' },
+        { value: '±2%',  label: 'precisie',         color: '#7AAFC4' },
         { value: 'ISO',  label: '6789 Gecertificeerd', color: '#64C48A' },
       ].map((stat, i) => (
         <Fragment>
@@ -105,7 +104,7 @@
   .hero-section {
     position: relative;
     height: 100vh;       /* fallback for older Safari / unsupported browsers */
-    height: 100dvh;      /* dynamic viewport — excludes mobile browser chrome */
+    height: 100dvh;      /* dynamic viewport, excludes mobile browser chrome */
     min-height: 580px;
     background: transparent;
     z-index: 1;
@@ -217,7 +216,7 @@
   @media (min-width: 1100px) { .hero-accent-bar { display: block; } }
 
   /* ── EYEBROW ── */
-  /* (no extra style needed — uses inline/utility classes) */
+  /* (no extra style needed, uses inline/utility classes) */
 
   /* ── HEADLINE ── */
   .hero-headline {
@@ -340,7 +339,7 @@
     height: 2rem;
     background: rgba(122,175,196,0.14);
     /* padding-inline instead of margin keeps spacing inside the outer
-       flex context — prevents Chrome vs Safari margin-collapse divergence */
+       flex context, prevents Chrome vs Safari margin-collapse divergence */
     padding-inline: 2rem;
     box-sizing: content-box;
     background-clip: content-box;
@@ -350,7 +349,7 @@
     .hero-stats-inner  { flex-wrap: nowrap; gap: 0; }
   }
 
-  /* Scroll hint — right side of stats bar */
+  /* Scroll hint, right side of stats bar */
   .hero-scroll-hint {
     display: none;
     margin-left: auto;
@@ -378,7 +377,7 @@
   }
 
   /* ─────────────────────────────────────────
-     ENTRANCE ANIMATIONS — CSS keyframes only.
+     ENTRANCE ANIMATIONS. CSS keyframes only.
      Never use gsap.from() for these: GSAP sets
      opacity:0 as an inline style immediately,
      and iOS Safari can freeze the element there
@@ -402,7 +401,7 @@
     animation-delay: 0.08s;
   }
 
-  /* Headline words — each child gets a slightly longer delay */
+  /* Headline words, each child gets a slightly longer delay */
   .word-reveal:nth-child(1) .hero-word {
     animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     animation-delay: 0.12s;
@@ -450,33 +449,10 @@
 
 <script>
   import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  gsap.registerPlugin(ScrollTrigger);
 
   // ── Accent bar grows in (not a visibility-critical element) ──
   gsap.from('.hero-accent-bar', {
     scaleY: 0, transformOrigin: 'top center', duration: 1.2, ease: 'power3.out', delay: 0.5,
   });
-
-  // ── Parallax on scroll — desktop only, NO opacity.
-  //    On mobile Safari, ScrollTrigger.refresh() (called in Base.astro) can
-  //    run while window.scrollY > 0 (URL-bar collapse effect), which would
-  //    immediately apply a fractional opacity and make the hero invisible.
-  //    Solution: only animate transform on desktop, never opacity.
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isDesktop = window.innerWidth >= 768;
-
-  if (isDesktop && !prefersReduced) {
-    gsap.to('.hero-body', {
-      scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.8,
-      },
-      y: -80,
-      // opacity intentionally removed — see comment above
-    });
-  }
 
 </script>

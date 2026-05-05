@@ -9,7 +9,7 @@ interface Props {
 }
 const {
   title,
-  description = 'Dutch Torque Service — Professionele kalibratie en service van momentsleutels',
+  description = 'Dutch Torque Service. Professionele kalibratie en service van momentsleutels',
   canonicalPath,
 } = Astro.props;
 
@@ -22,7 +22,7 @@ const localBusinessSchema = {
   "@id": "https://www.dutchtorqueservice.nl/#business",
   "name": "Dutch Torque Service",
   "legalName": "Dutch Torque Service",
-  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 certificering. ±2% servicegarantie, ruim binnen de ISO 6789 tolerantie van ±4%. Geautoriseerd Snap-On dealer.",
+  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering. ±2% servicegarantie, ruim binnen de ISO 6789 tolerantie van ±4%. Geautoriseerd Snap-On dealer.",
   "url": "https://www.dutchtorqueservice.nl",
   "logo": "https://www.dutchtorqueservice.nl/logo/dts-logo-2x.webp",
   "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
@@ -55,7 +55,7 @@ const localBusinessSchema = {
     "Momentsleutel justeren"
   ],
   "knowsAbout": [
-    "ISO 6789:2017",
+    "ISO 6789:2017 en 2003",
     "ISO 6789-1",
     "ISO 6789-2",
     "Momentsleutel kalibratie",
@@ -91,12 +91,20 @@ const websiteSchema = {
   "@id": "https://www.dutchtorqueservice.nl/#website",
   "url": "https://www.dutchtorqueservice.nl",
   "name": "Dutch Torque Service",
-  "description": "Specialist in momentsleutel kalibratie, reparatie en certificering conform ISO 6789:2017",
+  "description": "Specialist in momentsleutel kalibratie, reparatie en certificering conform ISO 6789:2017 en 2003",
   "inLanguage": "nl-NL",
   "publisher": { "@id": "https://www.dutchtorqueservice.nl/#business" },
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".aeo-definition", ".def-card p", ".sec-sub", ".hero-subtitle"]
+    "cssSelector": [".hero-subtitle", ".sec-sub", ".article-lead", ".faq-answer"]
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.dutchtorqueservice.nl/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
   }
 };
 
@@ -108,8 +116,9 @@ const personSchema = {
   "jobTitle": "Eigenaar & Kalibratietechnicus",
   "worksFor": { "@id": "https://www.dutchtorqueservice.nl/#business" },
   "url": "https://www.dutchtorqueservice.nl/over-ons",
+  "inLanguage": "nl-NL",
   "knowsAbout": [
-    "ISO 6789:2017 kalibratie",
+    "ISO 6789:2017 en 2003 kalibratie",
     "Type I en Type II momentsleutels",
     "Snap-On momentsleutel service",
     "Traceerbare referentieapparatuur",
@@ -156,14 +165,14 @@ const personSchema = {
          layout frontmatter). One variable woff2 replaces seven separate weights, no third-party
          request (GDPR-safe), no render-blocking external stylesheet, font-display: swap built in. -->
 
-    <!-- Structured data — LocalBusiness + WebSite + Person -->
+    <!-- Structured data. LocalBusiness + WebSite + Person -->
     <script type="application/ld+json" set:html={JSON.stringify([localBusinessSchema, websiteSchema, personSchema])} />
 
     <!-- Per-page structured data slot -->
     <slot name="head" />
   </head>
   <body>
-    <!-- Skip link — allows keyboard users to jump past nav directly to content -->
+    <!-- Skip link, allows keyboard users to jump past nav directly to content -->
     <a href="#main-content" class="skip-link">Ga naar inhoud</a>
     <!-- Skip-link target: invisible anchor placed before page content -->
     <div id="main-content" tabindex="-1" style="outline:none;"></div>
@@ -194,7 +203,7 @@ const personSchema = {
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (!prefersReduced) {
-        // Global scroll-reveal — fromTo so GSAP owns both states explicitly
+        // Global scroll-reveal, fromTo so GSAP owns both states explicitly
         document.querySelectorAll('[data-animate]').forEach((el) => {
           const delay = parseFloat((el as HTMLElement).dataset.animateDelay ?? '0');
           const dir   = (el as HTMLElement).dataset.animateFrom ?? 'bottom';

@@ -10,10 +10,10 @@ const accent = '#7AAFC4';
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "serviceType": "Momentsleutel Reparatie",
-  "name": "Momentsleutel Reparatie",
+  "serviceType": "Momentsleutel reparatie",
+  "name": "Momentsleutel reparatie",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Professionele momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 gecertificeerd resultaat. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie.",
+  "description": "Professionele Momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 en 2003 gecertificeerd resultaat. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie.",
   "areaServed": [
     { "@type": "Country", "name": "Netherlands" },
     { "@type": "Country", "name": "Belgium" },
@@ -27,15 +27,16 @@ const schema = {
 const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "Hoe verloopt een momentsleutel reparatie bij Dutch Torque Service?",
-  "description": "Ontvangst, gratis diagnose, kostenraming, reparatie pas na akkoord, hersamenstelling, en kalibratie conform ISO 6789:2017 met certificaat.",
+  "name": "Hoe verloopt een Momentsleutel reparatie bij Dutch Torque Service?",
+  "description": "Ontvangst, gratis diagnose, kostenraming, reparatie pas na akkoord, hersamenstelling, en kalibratie conform ISO 6789:2017 en 2003 met certificaat.",
   "inLanguage": "nl-NL",
+  "totalTime": "PT2H",
   "step": [
     { "@type": "HowToStep", "position": 1, "name": "Ontvangst & registratie", "text": "We registreren jouw sleutel met merk, type en serienummer, en bevestigen ontvangst per e-mail." },
     { "@type": "HowToStep", "position": 2, "name": "Gratis diagnose", "text": "Visuele en mechanische inspectie. We brengen de schade in kaart: klik-mechanisme, veer, ratel of kalibratie-drift." },
     { "@type": "HowToStep", "position": 3, "name": "Kostenraming & akkoord", "text": "Je ontvangt een heldere raming. Wij repareren pas na jouw akkoord. Geen verborgen kosten." },
     { "@type": "HowToStep", "position": 4, "name": "Reparatie & vervanging slijtdelen", "text": "Demontage, reiniging, vervanging van defecte onderdelen, hersmering en hersamenstelling." },
-    { "@type": "HowToStep", "position": 5, "name": "Kalibratie & certificaat", "text": "Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en leveren een volledig protocol met as-left waarden." }
+    { "@type": "HowToStep", "position": 5, "name": "Kalibratie & certificaat", "text": "Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en 2003 en leveren een volledig protocol met as-left waarden." }
   ]
 };
 
@@ -63,35 +64,64 @@ const steps = [
   {
     n: '05',
     title: 'Kalibratie & certificaat',
-    body: 'Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en leveren een volledig <a href="/diensten/iso-6789-certificering" style="color:#7AAFC4; text-decoration:underline;">ISO 6789:2017 protocol</a>.',
+    body: 'Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en 2003 en leveren een volledig <a href="/diensten/iso-6789-certificering" style="color:#7AAFC4; text-decoration:underline;">ISO 6789:2017 en 2003 protocol</a>.',
   },
 ];
 
 const repairTable = [
-  { situatie: 'Afwijking < 6%, geen mechanische schade', advies: '<a href="/diensten/momentsleutel-justeren" style="color:#7AAFC4; text-decoration:underline;">Justeren</a> + <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">kalibreren</a> — goedkoopst' },
+  { situatie: 'Afwijking < 6%, geen mechanische schade', advies: '<a href="/diensten/momentsleutel-justeren" style="color:#7AAFC4; text-decoration:underline;">Justeren</a> + <a href="/diensten/momentsleutel-kalibratie" style="color:#7AAFC4; text-decoration:underline;">kalibreren</a>, goedkoopst' },
   { situatie: 'Afwijking > 6% of klik voelt anders', advies: 'Reparatie: vervanging slijtdelen' },
   { situatie: 'Reparatiekosten > 70% van de nieuwprijs', advies: 'Vervangingsadvies (wij leveren als <a href="/merken/snap-on-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Snap-On dealer</a> ook nieuw)' },
-  { situatie: 'Premium merk (Snap-On, Stahlwille)', advies: 'Reparatie loont vrijwel altijd — kwaliteitsbasis is degelijk' },
+  { situatie: 'Premium merk (Snap-On, Stahlwille)', advies: 'Reparatie loont vrijwel altijd, kwaliteitsbasis is degelijk' },
+];
+
+const merken = [
+  { naam: 'Snap-On',     tagline: 'Originele onderdelen direct beschikbaar via geautoriseerd dealer.', accent: '#C4AF64', link: '/merken/snap-on-kalibratie' },
+  { naam: 'Stahlwille',  tagline: 'Premium Duits precisiegereedschap. Volledige revisie mogelijk.',    accent: '#7AAFC4' },
+  { naam: 'Gedore',      tagline: 'Industriestandaard. Slijtdelen en hercalibratie ISO 6789:2017 en 2003.',    accent: '#7AAFC4' },
+  { naam: 'Facom',       tagline: 'Frans precisiegereedschap. Mechanische revisie en kalibratie.',     accent: '#7AAFC4' },
+  { naam: 'Hazet',       tagline: 'Duitse kwaliteit. Reparatie inclusief ISO-certificaat.',            accent: '#7AAFC4' },
+  { naam: 'Würth',       tagline: 'Volledig revisietraject met certificaat na afloop.',                accent: '#7AAFC4' },
+  { naam: 'Proto',       tagline: 'Industrieel zwaar gebruik. Slijtdelen plus hercalibratie.',         accent: '#7AAFC4' },
+  { naam: 'Ander merk?', tagline: 'Niet zeker of jouw merk erbij hoort? Vraag het ons even.',          accent: '#64C48A', link: '/contact' },
 ];
 
 const whyCards = [
   {
+    number: '01',
     accent: '#7AAFC4',
-    icon: '✓',
+    icon: `<svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+      <circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M21 21l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M14 11v6M11 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>`,
+    tagline: 'Geen kosten vooraf',
     title: 'Gratis diagnose',
-    body: 'Geen kosten voor de inspectie. Raming altijd vooraf — geen verrassingen achteraf.',
+    body: 'Wij inspecteren jouw sleutel kosteloos en sturen daarna een heldere raming. Reparatie pas na jouw akkoord, geen verrassingen achteraf.',
   },
   {
+    number: '02',
     accent: '#C4AF64',
-    icon: '✦',
+    icon: `<svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+      <path d="M16 3l3.2 9.8H29l-7.9 5.8 3.0 9.6L16 22.4 7.9 28.2l3.0-9.6L3 12.8h9.8z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>`,
+    tagline: 'Geautoriseerd dealer',
     title: 'Originele Snap-On onderdelen',
-    body: 'Als geautoriseerd dealer zijn originele Snap-On onderdelen direct beschikbaar — iets wat de meeste generieke bedrijven niet kunnen bieden.',
+    body: 'Als geautoriseerd Snap-On dealer hebben wij directe toegang tot originele onderdelen, iets wat generieke bedrijven niet kunnen bieden.',
+    link: '/merken/snap-on-kalibratie',
   },
   {
+    number: '03',
     accent: '#64C48A',
-    icon: '◎',
+    icon: `<svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="16" cy="16" r="7"  stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="16" cy="16" r="2"  fill="currentColor"/>
+    </svg>`,
+    tagline: 'Altijd ISO-conform',
     title: 'Kalibratie na elke reparatie',
-    body: 'Na elke reparatie krijg je altijd een ISO 6789:2017 conform certificaat met volledig meetprotocol.',
+    body: 'Na elke reparatie kalibreren wij de sleutel conform ISO 6789:2017 en 2003 en leveren een volledig meetprotocol met certificaat.',
+    link: '/diensten/iso-6789-certificering',
   },
 ];
 
@@ -102,7 +132,7 @@ const faq = [
   },
   {
     q: 'Kan ik mijn Snap-On sleutel bij jullie laten repareren met originele onderdelen?',
-    a: 'Ja — als geautoriseerd Snap-On dealer hebben wij toegang tot originele Snap-On onderdelen en reparatiemethoden conform fabrieksnorm en ISO 6789:2017.',
+    a: 'Ja, als geautoriseerd Snap-On dealer hebben wij toegang tot originele Snap-On onderdelen en reparatiemethoden conform fabrieksnorm en ISO 6789:2017 en 2003.',
   },
   {
     q: 'Hoe lang duurt een reparatie?',
@@ -110,7 +140,7 @@ const faq = [
   },
   {
     q: 'Wordt na reparatie ook een kalibratiecertificaat afgegeven?',
-    a: 'Altijd. Na elke reparatie kalibreren wij de sleutel conform <a href="/diensten/iso-6789-certificering" style="color:#7AAFC4; text-decoration:underline;">ISO 6789:2017</a> en leveren een volledig protocol met as-found en as-left waarden.',
+    a: 'Altijd. Na elke reparatie kalibreren wij de sleutel conform <a href="/diensten/iso-6789-certificering" style="color:#7AAFC4; text-decoration:underline;">ISO 6789:2017 en 2003</a> en leveren een volledig protocol met as-found en as-left waarden.',
   },
   {
     q: 'Wat als mijn sleutel niet meer te repareren is?',
@@ -120,8 +150,8 @@ const faq = [
 ---
 
 <Base
-  title="Momentsleutel Reparatie — Alle Merken | Dutch Torque Service"
-  description="Professionele momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 gecertificeerd. Snap-On, Stahlwille. Stuur op →"
+  title="Momentsleutel reparatie. Alle Merken | Dutch Torque Service"
+  description="Professionele Momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 en 2003 gecertificeerd. Snap-On, Stahlwille. Stuur op →"
   canonicalPath="/diensten/momentsleutel-reparatie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -144,17 +174,17 @@ const faq = [
           </div>
 
           <h1 class="hero-h1" data-animate data-animate-delay="0.08">
-            Momentsleutel Reparatie.
+            Momentsleutel reparatie.
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
             Reparatie van alle gangbare merken. Gratis diagnose, raming vooraf.<br />
-            Kalibratie conform ISO 6789:2017 erna. Stuur hem gewoon op — wij kijken er even naar.
+            Kalibratie conform ISO 6789:2017 en 2003 erna. Stuur hem gewoon op en wij kijken er even naar.
           </p>
 
           <div class="hero-ctas" data-animate data-animate-delay="0.22">
             <a href="/contact" class="btn btn-primary">Plan reparatie</a>
-            <a href="/werk" class="btn btn-outline">Bekijk cases</a>
+            <a href="/diensten" class="btn btn-outline">Bekijk diensten</a>
           </div>
 
           <!-- Stats badges -->
@@ -166,11 +196,11 @@ const faq = [
         </div>
     </PageSection>
 
-    <!-- WHAT IS X — CHAT UI -->
+    <!-- WHAT IS X. CHAT UI -->
     <PageSection>
       <ChatExplainer
         question="Wat als mijn momentsleutel niet meer klopt?"
-        answer="Dan repareren wij hem. We inspecteren gratis, geven je een heldere raming vóór we beginnen, vervangen de slijtdelen en kalibreren na afloop opnieuw conform <a href='/diensten/iso-6789-certificering' style='color:#7AAFC4; text-decoration:underline;'>ISO 6789:2017</a>. Geen verrassingen."
+        answer="Dan repareren wij hem. We inspecteren gratis, geven je een heldere raming vóór we beginnen, vervangen de slijtdelen en kalibreren na afloop opnieuw conform <a href='/diensten/iso-6789-certificering' style='color:#7AAFC4; text-decoration:underline;'>ISO 6789:2017 en 2003</a>. Geen verrassingen."
         accent="#C48A64"
         reactions={[
           { emoji: '🔧', count: 16 },
@@ -190,7 +220,7 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Ons proces</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="sec-title">Hoe verloopt een momentsleutel reparatie?</h2>
+          <h2 class="sec-title">Hoe verloopt een Momentsleutel reparatie?</h2>
         </div>
 
         <div class="steps-grid">
@@ -250,13 +280,24 @@ const faq = [
           <h2 class="sec-title">Merken die wij repareren.</h2>
         </div>
 
-        <div class="def-card" data-animate data-animate-delay="0.08">
-          <p class="body-text">
-            Wij repareren alle gangbare kwaliteitsmerken: <strong style="color:#C8D8E0;">Snap-On</strong> (originele onderdelen beschikbaar als geautoriseerd dealer), <strong style="color:#C8D8E0;">Stahlwille</strong>, <strong style="color:#C8D8E0;">Gedore</strong>, <strong style="color:#C8D8E0;">Facom</strong>, <strong style="color:#C8D8E0;">Hazet</strong>, <strong style="color:#C8D8E0;">Würth</strong>, <strong style="color:#C8D8E0;">Proto</strong>, en andere kwaliteitsmerken. Niet zeker of wij jouw merk repareren? <a href="/contact" style="color:#7AAFC4; text-decoration:underline;">Vraag het even — wij vertellen je of het kan</a>.
-          </p>
-          <p class="body-text" style="margin-top:1.25rem;">
-            <a href="/merken/snap-on-kalibratie" style="color:#7AAFC4; text-decoration:underline;">Snap-On kalibratie Noord-Brabant</a>
-          </p>
+        <div class="merken-grid">
+          {merken.map((m, i) => {
+            const Tag = m.link ? 'a' : 'div';
+            const props = m.link ? { href: m.link } : {};
+            return (
+              <Tag
+                {...props}
+                class="merk-card"
+                data-animate
+                data-animate-delay={String(i * 0.05)}
+                style={`--accent: ${m.accent};`}
+              >
+                <span class="merk-name">{m.naam}</span>
+                <p class="merk-tagline">{m.tagline}</p>
+                <div class="merk-corner" aria-hidden="true"></div>
+              </Tag>
+            );
+          })}
         </div>
     </PageSection>
 
@@ -273,14 +314,32 @@ const faq = [
           <h2 class="sec-title">Waarom monteurs voor DTS kiezen.</h2>
         </div>
 
-        <div class="why-grid">
-          {whyCards.map((card, i) => (
-            <div class="why-card" data-animate data-animate-delay={String(i * 0.10)} style={`border-color:rgba(${card.accent === '#7AAFC4' ? '122,175,196' : card.accent === '#C4AF64' ? '196,175,100' : '100,196,138'},0.14);`}>
-              <div class="why-icon" style={`color:${card.accent};`}>{card.icon}</div>
-              <h3 class="why-title" style={`color:${card.accent};`}>{card.title}</h3>
-              <p class="why-body">{card.body}</p>
-            </div>
-          ))}
+        <div class="value-grid">
+          {whyCards.map((card, i) => {
+            const Tag = card.link ? 'a' : 'div';
+            const props = card.link ? { href: card.link } : {};
+            return (
+              <Tag
+                {...props}
+                class="value-card"
+                data-animate
+                data-animate-delay={String(i * 0.12)}
+                style={`--accent: ${card.accent};`}
+              >
+                <div class="vc-top">
+                  <span class="vc-num" aria-hidden="true">{card.number}</span>
+                  <div class="vc-icon" aria-hidden="true">
+                    <Fragment set:html={card.icon} />
+                  </div>
+                </div>
+                <div class="vc-rule"></div>
+                <p class="vc-tagline">{card.tagline}</p>
+                <h3 class="vc-title">{card.title}</h3>
+                <p class="vc-body">{card.body}</p>
+                <div class="vc-corner" aria-hidden="true"></div>
+              </Tag>
+            );
+          })}
         </div>
     </PageSection>
 
@@ -319,7 +378,7 @@ const faq = [
           </div>
           <h2 class="sec-title">Sleutel kapot? Stuur hem op.</h2>
           <p class="sec-sub">
-            Stuur ons jouw sleutel op of bel direct voor een afspraak. Bij grotere revisies hoor je vooraf de doorlooptijd. Wij zijn gevestigd in Riethoven (Noord-Brabant) — opsturen kan landelijk.
+            Stuur ons jouw sleutel op of bel direct voor een afspraak. Bij grotere revisies hoor je vooraf de doorlooptijd. Wij zijn gevestigd in Riethoven (Noord-Brabant), opsturen kan landelijk.
           </p>
           <div class="sec-ctas">
             <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
@@ -522,36 +581,138 @@ const faq = [
   }
   .incl-detail a { color: #7AAFC4; text-decoration: underline; }
 
-  /* ── Why DTS ── */
-  .why-grid {
+  /* ── Merken grid ── */
+  .merken-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 560px) { .merken-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) { .merken-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  .merk-card {
+    position: relative;
+    padding: 1.5rem 1.5rem 1.75rem;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
+    background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 60%),
+                #0E1118;
+    overflow: hidden;
+    isolation: isolate;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition:
+      border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      transform    0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow   0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .merk-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.04) 45%,
+      rgba(255,255,255,0.09) 50%,
+      rgba(255,255,255,0.04) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .merk-card > * { position: relative; z-index: 1; }
+  .merk-card:hover,
+  .merk-card:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+    transform: translateY(-4px);
+    box-shadow:
+      0 12px 32px rgba(0,0,0,0.40),
+      0 0 24px color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+  a.merk-card:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+    outline-offset: 3px;
+  }
+  .merk-card:hover::after,
+  .merk-card:focus-visible::after { left: 120%; }
+
+  .merk-name {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .merk-tagline {
+    font-size: 0.825rem;
+    line-height: 1.55;
+    color: #8EAAB8;
+  }
+  .merk-corner {
+    position: absolute;
+    bottom: 0.875rem;
+    right: 0.875rem;
+    width: 14px;
+    height: 14px;
+    border-right: 1.5px solid var(--accent);
+    border-bottom: 1.5px solid var(--accent);
+    border-radius: 0 0 4px 0;
+    opacity: 0.30;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .merk-card:hover .merk-corner,
+  .merk-card:focus-visible .merk-corner { opacity: 0.70; }
+
+  /* ── Value cards (Why DTS) — sitewide standard, mirrors CoreValues ── */
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1.25rem;
   }
-  .why-card {
-    background: #0E1118;
-    border: 1px solid rgba(122,175,196,0.14);
-    border-radius: 1.5rem;
-    padding: 2rem;
+  @media (min-width: 640px)  { .value-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .value-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  .value-card {
     position: relative;
-    isolation: isolate;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(122,175,196,0.13);
     overflow: hidden;
-    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    isolation: isolate;
+    text-decoration: none;
+    display: block;
+    background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 8%, transparent) 0%, transparent 55%),
+                #0E1118;
+    transition:
+      border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow   0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      transform    0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.28);
   }
-  .why-card::before {
+  .value-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 110%, rgba(122,175,196,0.10) 0%, transparent 65%);
+    border-radius: inherit;
+    background: radial-gradient(
+      ellipse 75% 55% at 50% 0%,
+      color-mix(in srgb, var(--accent) 16%, transparent) 0%,
+      transparent 70%
+    );
     opacity: 0;
     transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: -1;
     pointer-events: none;
-    z-index: 0;
-    border-radius: inherit;
   }
-  .why-card::after {
+  .value-card::after {
     content: '';
     position: absolute;
     top: 0;
@@ -562,7 +723,7 @@ const faq = [
       115deg,
       transparent 0%,
       rgba(255,255,255,0.05) 45%,
-      rgba(255,255,255,0.09) 50%,
+      rgba(255,255,255,0.10) 50%,
       rgba(255,255,255,0.05) 55%,
       transparent 100%
     );
@@ -571,33 +732,106 @@ const faq = [
     pointer-events: none;
     z-index: 0;
   }
-  .why-card > * { position: relative; z-index: 1; }
-  .why-card:hover,
-  .why-card:focus-visible {
-    border-color: rgba(122,175,196,0.35);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 0 1px rgba(122,175,196,0.14);
+  .value-card:hover,
+  .value-card:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    box-shadow:
+      0 20px 56px rgba(0,0,0,0.50),
+      0 0 36px color-mix(in srgb, var(--accent) 12%, transparent);
+    transform: translateY(-6px);
   }
-  .why-card:hover::before,
-  .why-card:focus-visible::before { opacity: 1; }
-  .why-card:hover::after,
-  .why-card:focus-visible::after { left: 120%; }
+  .value-card:hover::before,
+  .value-card:focus-visible::before { opacity: 1; }
+  .value-card:hover::after,
+  .value-card:focus-visible::after  { left: 120%; }
+  a.value-card:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--accent) 70%, transparent);
+    outline-offset: 3px;
+  }
 
-  .why-icon {
-    font-size: 1.5rem;
+  .value-card > * { position: relative; z-index: 1; }
+  .value-card .vc-corner { position: absolute !important; }
+
+  .vc-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+  .vc-num {
+    font-size: 3.5rem;
     font-weight: 900;
-    margin-bottom: 1rem;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    color: var(--accent);
+    opacity: 0.65;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .why-title {
-    font-size: 1.05rem;
+  .value-card:hover .vc-num,
+  .value-card:focus-visible .vc-num { opacity: 0.90; }
+  .vc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--accent);
+    flex-shrink: 0;
+    transition:
+      background   0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform    0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .value-card:hover .vc-icon,
+  .value-card:focus-visible .vc-icon {
+    background:   color-mix(in srgb, var(--accent) 22%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    transform:    scale(1.08);
+  }
+  .vc-rule {
+    height: 1px;
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+    margin-bottom: 1.5rem;
+  }
+  .vc-tagline {
+    font-size: 0.65rem;
     font-weight: 700;
-    margin-bottom: 0.625rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.75;
+    margin-bottom: 0.5rem;
   }
-  .why-body {
-    font-size: 0.875rem;
-    line-height: 1.75;
-    color: #8EAAB8;
+  .vc-title {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
   }
+  .vc-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #A8BDC7;
+  }
+  .vc-corner {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 18px;
+    height: 18px;
+    border-right: 1.5px solid var(--accent);
+    border-bottom: 1.5px solid var(--accent);
+    border-radius: 0 0 5px 0;
+    opacity: 0.30;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .value-card:hover .vc-corner,
+  .value-card:focus-visible .vc-corner { opacity: 0.65; }
 
   /* ── FAQ ── */
   .faq-list {

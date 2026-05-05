@@ -77,7 +77,7 @@ BEFORE:
 
 AFTER:
 "Kalibratie is niet alleen een vinkje in je kwaliteitssysteem. Een momentsleutel die 10%
-buiten tolerantie zit, draait een wielmoer aan met 10% te weinig koppelmoment — dat is
+buiten tolerantie zit, draait een wielmoer aan met 10% te weinig afwijking — dat is
 het verschil tussen een veilige auto en een die zijn wiel verliest op de snelweg."
 ```
 
@@ -148,7 +148,7 @@ of een windturbineserviceteam — een afwijkende momentsleutel is in elk geval e
 Pull from these observed patterns (approved stats from config.md):
 - Sleutels die 2 jaar niet gecheckt zijn: gemiddeld 8–12% buiten tolerantie
 - Turnaround: 48 uur na ontvangst
-- Accuracy: ±2% koppelmoment
+- Accuracy: ±2% afwijking
 
 ### Ensure External Source Link
 

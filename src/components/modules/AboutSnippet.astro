@@ -1,9 +1,15 @@
 ---
+import { Image } from 'astro:assets';
+import jpPortrait from '../../img/jp/JP.png';
+
 interface Props {
   imageSrc?: string;
   imageAlt?: string;
 }
-const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleutel kalibratie in Riethoven, Noord-Brabant' } = Astro.props;
+const {
+  imageSrc,
+  imageAlt = 'Jan-Piet Schulte, oprichter van Dutch Torque Service in Riethoven, Noord-Brabant',
+} = Astro.props;
 ---
 
 <section id="over-ons" class="about-section relative page-wrap overflow-hidden">
@@ -14,7 +20,7 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
 
   <div class="relative page-container">
 
-    <!-- Section label — centred -->
+    <!-- Section label, centred -->
     <div class="about-header type-stack flex flex-col items-center text-center" data-animate>
       <div class="flex items-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
@@ -36,7 +42,7 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
     <!-- 12-col grid: image = 5 cols, text = 6 cols, 1 col gap -->
     <div class="page-grid items-center">
 
-      <!-- Image — 5 cols on desktop -->
+      <!-- Image, 5 cols on desktop -->
       <div class="about-image-wrap col-span-12 lg:col-span-5" data-animate data-animate-from="left">
         <div class="image-frame relative">
           {imageSrc ? (
@@ -48,18 +54,27 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
               decoding="async"
             />
           ) : (
-            <div class="img-card w-full aspect-[4/3] image-placeholder flex flex-col items-center justify-center gap-4 relative overflow-hidden">
-              <div class="placeholder-grid absolute inset-0"></div>
-              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" class="relative z-10 opacity-40">
-                <circle cx="20" cy="40" r="14" stroke="#7AAFC4" stroke-width="1.5"/>
-                <circle cx="20" cy="40" r="7"  stroke="#7AAFC4" stroke-width="1"/>
-                <rect x="34" y="34" width="32" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
-                <rect x="66" y="31" width="10" height="18" rx="4" stroke="#7AAFC4" stroke-width="1.5"/>
-              </svg>
-              <p class="relative z-10 text-xs tracking-[0.25em] uppercase font-medium" style="color:rgba(122,175,196,0.55);">
-                Foto volgt binnenkort
-              </p>
-            </div>
+            <Image
+              src={jpPortrait}
+              alt={imageAlt}
+              widths={[480, 720, 960]}
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              format="webp"
+              quality={82}
+              loading="lazy"
+              decoding="async"
+              class="img-card w-full aspect-[4/3] object-cover"
+            />
+          )}
+          <!-- Bottom gradient + founder caption (matches over-ons) -->
+          {!imageSrc && (
+            <>
+              <div class="founder-fade" aria-hidden="true"></div>
+              <div class="founder-meta">
+                <span class="founder-meta-eyebrow">Oprichter</span>
+                <p class="founder-meta-name">Jan-Piet Schulte</p>
+              </div>
+            </>
           )}
           <!-- Corner brackets -->
           <div class="corner corner-tl absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 rounded-tl" style="border-color:rgba(122,175,196,0.55);"></div>
@@ -69,33 +84,33 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
         </div>
       </div>
 
-      <!-- Text — 6 cols on desktop, starts at col 7 (1-col gap after image) -->
+      <!-- Text, 6 cols on desktop, starts at col 7 (1-col gap after image) -->
       <div class="about-text col-span-12 lg:col-span-6 lg:col-start-7" data-animate data-animate-from="right">
         <p class="text-base md:text-lg leading-relaxed mb-6 md:mb-8" style="color:#C4D0D8;">
           Dutch Torque Service is dé specialist voor professionele momentsleutel kalibratie, reparatie
-          en officiële certificering conform ISO&nbsp;6789:2017. Als geautoriseerd Snap-On dealer en erkende
+          en officiële certificering conform ISO&nbsp;6789:2017 en 2003. Als geautoriseerd Snap-On dealer en erkende
           opvolger van Van Rootselaar Technic bv. brengen wij een reputatie van tientallen jaren
           naar werkplaatsen in Nederland.
         </p>
         <p class="text-base leading-relaxed" style="color:#A8B8C4;">
-          Je ontvangt altijd een volledig kalibratieprotocol met meetresultaten voor én na de service —
+          Je ontvangt altijd een volledig kalibratieprotocol met meetresultaten voor én na de service ,
           inclusief de gebruikte referentieapparatuur en je volgende kalibratietermijn.
           Audit-proof documentatie, geen verrassingen.
         </p>
 
-        <!-- Trust tags — 2×2 grid on mobile, wrapping row on desktop -->
+        <!-- Trust tags, 2×2 grid on mobile, wrapping row on desktop -->
         <div class="about-tags">
-          {['ISO 6789:2017', 'Type I & II', 'Snap-On Dealer', 'Gecertificeerd'].map(tag => (
+          {['ISO 6789:2017 en 2003', 'Type I & II', 'Snap-On Dealer', 'Gecertificeerd'].map(tag => (
             <span class="badge" style="background: rgba(122,175,196,0.1); border: 1px solid rgba(122,175,196,0.22); color:#7AAFC4;">
               {tag}
             </span>
           ))}
         </div>
 
-        <!-- Button — wrapped in its own row for clear separation -->
+        <!-- Button, wrapped in its own row for clear separation -->
         <div class="about-btn-row">
           <a href="/over-ons" class="btn btn-outline">
-            Over Jan-Piet Schulte
+            Over ons
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -174,6 +189,45 @@ const { imageSrc, imageAlt = 'Dutch Torque Service — professionele momentsleut
   .image-placeholder {
     background: transparent;
     border: 1px solid rgba(122, 175, 196, 0.2);
+  }
+
+  /* ── Founder portrait caption overlay (matches over-ons) ── */
+  .image-frame { position: relative; }
+  .img-card { border-radius: 1.5rem; }
+  .founder-fade {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 40%;
+    border-radius: 0 0 1.5rem 1.5rem;
+    pointer-events: none;
+    background: linear-gradient(to top,
+      rgba(8, 9, 11, 0.85) 0%,
+      rgba(8, 9, 11, 0.45) 50%,
+      transparent 100%);
+    z-index: 1;
+  }
+  .founder-meta {
+    position: absolute;
+    left: clamp(1rem, 2.5vw, 1.5rem);
+    right: clamp(1rem, 2.5vw, 1.5rem);
+    bottom: clamp(1rem, 2.5vw, 1.5rem);
+    color: #fff;
+    z-index: 2;
+  }
+  .founder-meta-eyebrow {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(155, 200, 217, 0.95);
+    margin-bottom: 0.4rem;
+  }
+  .founder-meta-name {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
   }
   .placeholder-grid {
     background-image:

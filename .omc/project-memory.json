@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777282533443,
+  "lastScanned": 1777965072386,
   "projectRoot": "/Users/rms/Desktop/DTS/website",
   "techStack": {
     "languages": [
@@ -80,7 +80,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 8,
-      "lastAccessed": 1777282533430,
+      "lastAccessed": 1777965072367,
       "keyFiles": [
         "404.html",
         "favicon.svg",
@@ -93,7 +93,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 4,
-      "lastAccessed": 1777282533430,
+      "lastAccessed": 1777965072367,
       "keyFiles": [
         "favicon.svg",
         "llms.txt",
@@ -105,7 +105,7 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 1,
-      "lastAccessed": 1777282533430,
+      "lastAccessed": 1777965072372,
       "keyFiles": [
         "generate-og-image.mjs"
       ]
@@ -114,21 +114,21 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1777282533430,
+      "lastAccessed": 1777965072373,
       "keyFiles": []
     },
     "src/components": {
       "path": "src/components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1777282533431,
+      "lastAccessed": 1777965072375,
       "keyFiles": []
     },
     "src/data": {
       "path": "src/data",
       "purpose": "Data files",
       "fileCount": 1,
-      "lastAccessed": 1777282533431,
+      "lastAccessed": 1777965072376,
       "keyFiles": [
         "cases.ts"
       ]
@@ -137,7 +137,7 @@
       "path": "src/pages",
       "purpose": "Page components",
       "fileCount": 6,
-      "lastAccessed": 1777282533431,
+      "lastAccessed": 1777965072376,
       "keyFiles": [
         "404.astro",
         "contact.astro",
@@ -147,27 +147,75 @@
   },
   "hotPaths": [
     {
-      "path": "src/components/modules/CasesGrid.astro",
-      "accessCount": 31,
-      "lastAccessed": 1776966113258,
+      "path": "src/components/modules/NavIsland.astro",
+      "accessCount": 35,
+      "lastAccessed": 1777971843404,
       "type": "file"
     },
     {
-      "path": "src/components/modules/NavIsland.astro",
-      "accessCount": 24,
-      "lastAccessed": 1776965333478,
+      "path": "src/components/modules/CasesGrid.astro",
+      "accessCount": 33,
+      "lastAccessed": 1777972488794,
       "type": "file"
     },
     {
       "path": "src/layouts/Base.astro",
-      "accessCount": 20,
-      "lastAccessed": 1776962401508,
+      "accessCount": 24,
+      "lastAccessed": 1777288000990,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/momentsleutel-reparatie.astro",
+      "accessCount": 19,
+      "lastAccessed": 1777972443488,
       "type": "file"
     },
     {
       "path": "src/styles/global.css",
       "accessCount": 17,
       "lastAccessed": 1776967383299,
+      "type": "file"
+    },
+    {
+      "path": "src/layouts/BlogLayout.astro",
+      "accessCount": 17,
+      "lastAccessed": 1777288005580,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/FooterDTS.astro",
+      "accessCount": 17,
+      "lastAccessed": 1777971884944,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/momentsleutel-kalibratie.astro",
+      "accessCount": 17,
+      "lastAccessed": 1777972425544,
+      "type": "file"
+    },
+    {
+      "path": "src/components/modules/HeroDTS.astro",
+      "accessCount": 16,
+      "lastAccessed": 1777966254736,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/over-ons.astro",
+      "accessCount": 16,
+      "lastAccessed": 1777971249821,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "accessCount": 16,
+      "lastAccessed": 1777971928574,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/werk.astro",
+      "accessCount": 16,
+      "lastAccessed": 1777972181571,
       "type": "file"
     },
     {
@@ -183,39 +231,45 @@
       "type": "file"
     },
     {
-      "path": "src/components/modules/HeroDTS.astro",
+      "path": "src/pages/faq.astro",
       "accessCount": 12,
-      "lastAccessed": 1776962395344,
+      "lastAccessed": 1777287929936,
       "type": "file"
     },
     {
-      "path": "src/components/modules/FooterDTS.astro",
+      "path": "src/pages/contact.astro",
       "accessCount": 12,
-      "lastAccessed": 1776965272050,
+      "lastAccessed": 1777966577675,
       "type": "file"
     },
     {
-      "path": "src/pages/werk.astro",
+      "path": "src/pages/diensten/momentsleutel-justeren.astro",
       "accessCount": 11,
-      "lastAccessed": 1776965306112,
+      "lastAccessed": 1777965893140,
       "type": "file"
     },
     {
-      "path": "src/layouts/BlogLayout.astro",
-      "accessCount": 10,
-      "lastAccessed": 1776965138651,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/index.astro",
-      "accessCount": 8,
-      "lastAccessed": 1776962378672,
+      "path": "src/components/modules/AboutSnippet.astro",
+      "accessCount": 11,
+      "lastAccessed": 1777971454483,
       "type": "file"
     },
     {
       "path": "src/components/modules/CoreValues.astro",
+      "accessCount": 9,
+      "lastAccessed": 1777965996314,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/diensten/index.astro",
       "accessCount": 8,
-      "lastAccessed": 1776965223627,
+      "lastAccessed": 1777288013556,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 8,
+      "lastAccessed": 1777971249415,
       "type": "file"
     },
     {
@@ -225,21 +279,27 @@
       "type": "file"
     },
     {
-      "path": "src/pages/diensten/momentsleutel-kalibratie.astro",
+      "path": "src/pages/diensten/iso-6789-certificering.astro",
       "accessCount": 7,
-      "lastAccessed": 1776965148732,
+      "lastAccessed": 1777286616111,
       "type": "file"
     },
     {
-      "path": "src/pages/diensten/momentsleutel-reparatie.astro",
+      "path": "src/pages/merken/snap-on-kalibratie.astro",
       "accessCount": 7,
-      "lastAccessed": 1776965217262,
+      "lastAccessed": 1777286945040,
       "type": "file"
     },
     {
-      "path": "src/pages/contact.astro",
+      "path": "src/pages/blog/momentsleutel-gevallen-wat-nu.astro",
       "accessCount": 7,
-      "lastAccessed": 1776965225459,
+      "lastAccessed": 1777286958309,
+      "type": "file"
+    },
+    {
+      "path": "GEO-AUDIT-REPORT.md",
+      "accessCount": 7,
+      "lastAccessed": 1777287894299,
       "type": "file"
     },
     {
@@ -255,81 +315,51 @@
       "type": "file"
     },
     {
-      "path": "src/pages/faq.astro",
-      "accessCount": 6,
-      "lastAccessed": 1776965184711,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/diensten/momentsleutel-justeren.astro",
-      "accessCount": 6,
-      "lastAccessed": 1776965275382,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/diensten/iso-6789-certificering.astro",
-      "accessCount": 6,
-      "lastAccessed": 1776965327534,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/over-ons.astro",
-      "accessCount": 6,
-      "lastAccessed": 1776967423768,
-      "type": "file"
-    },
-    {
       "path": "src/pages/blog/verschil-kalibreren-justeren-ijken.astro",
-      "accessCount": 5,
-      "lastAccessed": 1776960970557,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/merken/snap-on-kalibratie.astro",
-      "accessCount": 5,
-      "lastAccessed": 1776965385268,
-      "type": "file"
-    },
-    {
-      "path": "GEO-AUDIT-REPORT.md",
-      "accessCount": 4,
-      "lastAccessed": 1776959951603,
-      "type": "file"
-    },
-    {
-      "path": "package.json",
-      "accessCount": 4,
-      "lastAccessed": 1776960651687,
+      "accessCount": 6,
+      "lastAccessed": 1777286618068,
       "type": "file"
     },
     {
       "path": "astro.config.mjs",
-      "accessCount": 4,
-      "lastAccessed": 1776960651980,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/blog/momentsleutel-gevallen-wat-nu.astro",
-      "accessCount": 4,
-      "lastAccessed": 1776960876365,
-      "type": "file"
-    },
-    {
-      "path": "src/components/modules/AboutSnippet.astro",
-      "accessCount": 4,
-      "lastAccessed": 1776965035956,
+      "accessCount": 6,
+      "lastAccessed": 1777971118727,
       "type": "file"
     },
     {
       "path": "src/pages/blog/hoe-vaak-momentsleutel-kalibreren.astro",
-      "accessCount": 4,
-      "lastAccessed": 1776965056013,
+      "accessCount": 5,
+      "lastAccessed": 1777286618959,
       "type": "file"
     },
     {
-      "path": "src/pages/diensten/index.astro",
+      "path": "src/pages/blog/index.astro",
+      "accessCount": 5,
+      "lastAccessed": 1777286993963,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/iso-6789-type-1-type-2-uitgelegd.astro",
       "accessCount": 4,
-      "lastAccessed": 1776965076928,
+      "lastAccessed": 1777286617561,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/blog/mijn-momentsleutel-klopt-niet-meer.astro",
+      "accessCount": 4,
+      "lastAccessed": 1777286619594,
+      "type": "file"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "accessCount": 4,
+      "lastAccessed": 1777286621565,
+      "type": "file"
+    },
+    {
+      "path": "public/robots.txt",
+      "accessCount": 4,
+      "lastAccessed": 1777287402689,
       "type": "file"
     },
     {
@@ -339,27 +369,27 @@
       "type": "file"
     },
     {
-      "path": "src/pages/blog/iso-6789-type-1-type-2-uitgelegd.astro",
-      "accessCount": 3,
-      "lastAccessed": 1776960766499,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/blog/mijn-momentsleutel-klopt-niet-meer.astro",
-      "accessCount": 3,
-      "lastAccessed": 1776960815601,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/404.astro",
-      "accessCount": 3,
-      "lastAccessed": 1776965339239,
-      "type": "file"
-    },
-    {
       "path": "src/components/ui/PageSection.astro",
       "accessCount": 3,
       "lastAccessed": 1776967376708,
+      "type": "file"
+    },
+    {
+      "path": ".claude/skills/seo-optimize/SKILL.md",
+      "accessCount": 3,
+      "lastAccessed": 1777286415927,
+      "type": "file"
+    },
+    {
+      "path": ".claude/skills/seo-optimize/project-profile.md",
+      "accessCount": 3,
+      "lastAccessed": 1777286603579,
+      "type": "file"
+    },
+    {
+      "path": "scripts/generate-og-image.mjs",
+      "accessCount": 3,
+      "lastAccessed": 1777970397751,
       "type": "file"
     },
     {
@@ -369,9 +399,15 @@
       "type": "file"
     },
     {
-      "path": "public/robots.txt",
+      "path": "GEO-AUDIT-REPORT-learnmexicanslang.md",
       "accessCount": 2,
-      "lastAccessed": 1776960379807,
+      "lastAccessed": 1777284374305,
+      "type": "file"
+    },
+    {
+      "path": "public/llms.txt",
+      "accessCount": 2,
+      "lastAccessed": 1777286759322,
       "type": "file"
     },
     {
@@ -381,21 +417,9 @@
       "type": "file"
     },
     {
-      "path": "GEO-AUDIT-REPORT-learnmexicanslang.md",
-      "accessCount": 1,
-      "lastAccessed": 1776885315674,
-      "type": "file"
-    },
-    {
       "path": "geo-report-learnmexicanslang/index.html",
       "accessCount": 1,
       "lastAccessed": 1776885739452,
-      "type": "file"
-    },
-    {
-      "path": "src/pages/blog/index.astro",
-      "accessCount": 1,
-      "lastAccessed": 1776959597368,
       "type": "file"
     },
     {
@@ -405,21 +429,21 @@
       "type": "file"
     },
     {
-      "path": "public/llms.txt",
-      "accessCount": 1,
-      "lastAccessed": 1776960351598,
-      "type": "file"
-    },
-    {
-      "path": "scripts/generate-og-image.mjs",
-      "accessCount": 1,
-      "lastAccessed": 1776960405044,
-      "type": "file"
-    },
-    {
       "path": "CLAUDE.md",
       "accessCount": 1,
       "lastAccessed": 1776960651172,
+      "type": "file"
+    },
+    {
+      "path": ".claude/skills/seo-optimize/seo.config.md",
+      "accessCount": 1,
+      "lastAccessed": 1777286002974,
+      "type": "file"
+    },
+    {
+      "path": ".vercel/project.json",
+      "accessCount": 1,
+      "lastAccessed": 1777287125539,
       "type": "file"
     }
   ],

@@ -18,7 +18,7 @@ You will receive:
 ## Audience Search Behaviour
 
 ### How mechanics search (mobile, short, specific):
-"momentsleutel kalibreren laten", "snap-on sleutel kapot", "kalibratie certificaat 48 uur",
+"Momentsleutel laten kalibreren", "snap-on sleutel kapot", "kalibratie certificaat 48 uur",
 "momentsleutel buiten tolerantie wat nu"
 
 ### How workshop managers search (solution + location):
@@ -61,7 +61,7 @@ Check the title:
 - **Format:** `[Primary keyword] | [USP or location] — Dutch Torque Service`
 
 **Target title examples:**
-- "Momentsleutel Kalibreren Laten | ISO 6789 — Dutch Torque Service" (62 — trim if needed)
+- "Momentsleutel laten kalibreren | ISO 6789 — Dutch Torque Service" (62 — trim if needed)
 - "Hoe Vaak Momentsleutel Kalibreren? — Dutch Torque Service" (56)
 - "ISO 6789 Type I en Type II Uitgelegd — Dutch Torque Service" (58)
 

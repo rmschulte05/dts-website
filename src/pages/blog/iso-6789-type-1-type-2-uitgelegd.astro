@@ -38,12 +38,12 @@ const schema = {
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <div class="prose">
-    <p>Als je gereedschap laat kalibreren conform ISO 6789, kom je altijd het onderscheid tussen Type I en Type II tegen. Het onderscheid bepaalt hoe jouw sleutel gecalibreerd wordt — en wat er in het certificaat staat. Hieronder leggen we het helder uit.</p>
+    <p>Als je gereedschap laat kalibreren conform ISO 6789, kom je altijd het onderscheid tussen Type I en Type II tegen. Het onderscheid bepaalt hoe jouw sleutel gecalibreerd wordt, en wat er in het certificaat staat. Hieronder leggen we het helder uit.</p>
 
     <h2>De twee hoofdcategorieën</h2>
-    <p><a href="https://www.iso.org/standard/66335.html" target="_blank" rel="noopener noreferrer">ISO 6789:2017</a> verdeelt momentsleutels in twee hoofdtypen op basis van hun functie:</p>
+    <p><a href="https://www.iso.org/standard/66335.html" target="_blank" rel="noopener noreferrer">ISO 6789:2017 en 2003</a> verdeelt momentsleutels in twee hoofdtypen op basis van hun functie:</p>
     <table>
-      <thead><tr><th></th><th>Type I — Indicerend</th><th>Type II — Instellend</th></tr></thead>
+      <thead><tr><th></th><th>Type I. Indicerend</th><th>Type II. Instellend</th></tr></thead>
       <tbody>
         <tr><td><strong>Functie</strong></td><td>Toont het toegepaste koppel terwijl je draait</td><td>Geeft een signaal als het ingestelde koppel bereikt is</td></tr>
         <tr><td><strong>Voorbeelden</strong></td><td>Balkmonteur, digitale koppelmeter</td><td>Kliksleutel, voorinstelbare sleutel</td></tr>
@@ -53,22 +53,22 @@ const schema = {
       </tbody>
     </table>
 
-    <h2>Type I — Indicerende momentsleutels</h2>
+    <h2>Type I. Indicerende momentsleutels</h2>
     <p>Type I instrumenten tonen het koppel continu tijdens gebruik. Er zijn drie subcategorieën:</p>
     <ul>
-      <li><strong>Type IA — balksleutel:</strong> De klassieke staafveer. Meest directe en minst slijtgevoelige uitvoering — geen mechanisch klikmechanisme dat slijt.</li>
-      <li><strong>Type IB — wijzerplaatsleutel:</strong> Analoge weergave via wijzerplaat. Goed leesbaar, geschikt voor controlemetingen en kwaliteitscontrole.</li>
-      <li><strong>Type IC — digitale indicerende sleutel:</strong> Digitaal display, vaak met geheugen en data-outputfunctie voor traceerbaarheid en rapportage.</li>
+      <li><strong>Type IA, balksleutel:</strong> De klassieke staafveer. Meest directe en minst slijtgevoelige uitvoering, geen mechanisch klikmechanisme dat slijt.</li>
+      <li><strong>Type IB, wijzerplaatsleutel:</strong> Analoge weergave via wijzerplaat. Goed leesbaar, geschikt voor controlemetingen en kwaliteitscontrole.</li>
+      <li><strong>Type IC, digitale indicerende sleutel:</strong> Digitaal display, vaak met geheugen en data-outputfunctie voor traceerbaarheid en rapportage.</li>
     </ul>
-    <div class="callout"><p><strong>Type IA balksleutels</strong> zijn de minst onderhoudsgevoelige variant — er is geen mechanisch klikmechanisme dat op termijn vermoeid. Ideaal voor bedrijven die willen minimaliseren op onderhoud.</p></div>
+    <div class="callout"><p><strong>Type IA balksleutels</strong> zijn de minst onderhoudsgevoelige variant, er is geen mechanisch klikmechanisme dat op termijn vermoeid. Ideaal voor bedrijven die willen minimaliseren op onderhoud.</p></div>
 
-    <h2>Type II — Instellende momentsleutels</h2>
+    <h2>Type II. Instellende momentsleutels</h2>
     <p>Type II instrumenten worden vooraf ingesteld op een doelkoppel en geven een signaal wanneer dat bereikt is. Dit is verreweg het meest gebruikte type in werkplaatsen. Subcategorieën:</p>
     <ul>
-      <li><strong>Type IIA — enkelvoudig instelbaar:</strong> Vaste fabrieksinstelling, niet door de gebruiker aanpasbaar.</li>
-      <li><strong>Type IIB — kliksleutel met micrometer-instelling:</strong> De meest gebruikte werkplaatssleutel. Verstelbaar over het volledige bereik via een micrometer.</li>
-      <li><strong>Type IIC — kliksleutel met schaalinstelling:</strong> Vergelijkbaar met IIB; instelling via een schaal op de behuizing.</li>
-      <li><strong>Type IID — elektronische kliksleutel:</strong> Digitale instelling, vaak met signaalgeheugen en datalogging voor traceerbaarheid.</li>
+      <li><strong>Type IIA, enkelvoudig instelbaar:</strong> Vaste fabrieksinstelling, niet door de gebruiker aanpasbaar.</li>
+      <li><strong>Type IIB, kliksleutel met micrometer-instelling:</strong> De meest gebruikte werkplaatssleutel. Verstelbaar over het volledige bereik via een micrometer.</li>
+      <li><strong>Type IIC, kliksleutel met schaalinstelling:</strong> Vergelijkbaar met IIB; instelling via een schaal op de behuizing.</li>
+      <li><strong>Type IID, elektronische kliksleutel:</strong> Digitale instelling, vaak met signaalgeheugen en datalogging voor traceerbaarheid.</li>
     </ul>
 
     <h2>Wat betekent dit voor kalibratie?</h2>
@@ -96,16 +96,16 @@ const schema = {
       <div class="details-body"><p>In theorie zijn de nauwkeurigheidseisen gelijk (±4%). In de praktijk zijn balksleutels (Type IA) minder gevoelig voor slijtage omdat er geen klikmechanisme is dat op termijn vermoeid raakt.</p></div>
     </details>
     <details>
-      <summary>Mijn kliksleutel — is dat Type IIB of IIC?</summary>
+      <summary>Mijn kliksleutel, is dat Type IIB of IIC?</summary>
       <div class="details-body"><p>Als je hem kunt instellen met een draaiknop die lijkt op een micrometer (met mm-markering), is het IIB. Als er een cilinder met schaalmarkering is, is het IIC. Beide werken hetzelfde kalibratieschema.</p></div>
     </details>
     <details>
       <summary>Kalibreren jullie alle subcategorieën?</summary>
-      <div class="details-body"><p>Ja. Wij kalibreren alle Type I en Type II subcategorieën conform ISO 6789:2017, voor alle gangbare merken.</p></div>
+      <div class="details-body"><p>Ja. Wij kalibreren alle Type I en Type II subcategorieën conform ISO 6789:2017 en 2003, voor alle gangbare merken.</p></div>
     </details>
     <details>
-      <summary>Mijn sleutel heeft zowel een klik als een display — welk type is dat?</summary>
-      <div class="details-body"><p>Waarschijnlijk Type IID — een elektronische kliksleutel. Het display toont het doelkoppel en de sleutel klikt bij bereik. Wij kalibreren ook dit type.</p></div>
+      <summary>Mijn sleutel heeft zowel een klik als een display, welk type is dat?</summary>
+      <div class="details-body"><p>Waarschijnlijk Type IID, een elektronische kliksleutel. Het display toont het doelkoppel en de sleutel klikt bij bereik. Wij kalibreren ook dit type.</p></div>
     </details>
     <details>
       <summary>Staat het type op mijn kalibratiecertificaat?</summary>
@@ -113,8 +113,8 @@ const schema = {
     </details>
 
     <div class="article-cta">
-      <h3>Wil je weten welk type jouw momentsleutel is — of wanneer hij voor het laatst gekalibreerd is?</h3>
-      <p>Bekijk onze <a href="/diensten/momentsleutel-kalibratie">kalibratie service</a> of <a href="/diensten/iso-6789-certificering">ISO 6789 certificering</a> — of bel ons direct.</p>
+      <h3>Wil je weten welk type jouw momentsleutel is, of wanneer hij voor het laatst gekalibreerd is?</h3>
+      <p>Bekijk onze <a href="/diensten/momentsleutel-kalibratie">kalibratie service</a> of <a href="/diensten/iso-6789-certificering">ISO 6789 certificering</a>, of bel ons direct.</p>
       <a href="tel:+31613172774" class="btn btn-primary">+31(0)6-131 72 774</a>
     </div>
   </div>

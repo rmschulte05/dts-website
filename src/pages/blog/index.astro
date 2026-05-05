@@ -4,7 +4,7 @@ import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 
-// Auto-collect all blog articles — just add a new .astro file with `export const meta = {...}` and it appears here
+// Auto-collect all blog articles, just add a new .astro file with `export const meta = {...}` and it appears here
 const modules = import.meta.glob('./*.astro', { eager: true });
 
 const posts = Object.entries(modules)
@@ -14,13 +14,37 @@ const posts = Object.entries(modules)
     ...mod.meta,
   }))
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// CollectionPage + ItemList schema for the blog index, every article gets a
+// canonical URL entry so AI engines can map the kennisbank as a coherent corpus.
+const blogCollectionSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "url": "https://www.dutchtorqueservice.nl/blog",
+  "name": "Momentsleutel Kennisbank",
+  "description": "Praktische artikelen over momentsleutel kalibratie, ISO 6789:2017 en 2003, reparatie en certificering.",
+  "inLanguage": "nl-NL",
+  "isPartOf": { "@id": "https://www.dutchtorqueservice.nl/#website" },
+  "publisher": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": posts.map((post, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `https://www.dutchtorqueservice.nl/blog/${post.slug}`,
+      "name": post.title
+    }))
+  }
+};
 ---
 
 <Base
-  title="Blog | Dutch Torque Service — Momentsleutel Kennisbank"
-  description="Praktische artikelen over momentsleutel kalibratie, ISO 6789, reparatie en certificering. Kennisbank van Dutch Torque Service."
+  title="Blog | Dutch Torque Service. Momentsleutel Kennisbank"
+  description="Praktische artikelen over momentsleutel kalibratie, ISO 6789:2017 en 2003, reparatie en certificering. Kennisbank van Dutch Torque Service voor werkplaatsen."
   canonicalPath="/blog"
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(blogCollectionSchema)} />
+
   <NavIsland currentPage="blog" />
 
   <main>
@@ -32,7 +56,7 @@ const posts = Object.entries(modules)
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
           </div>
           <h1 class="font-black tracking-tight text-white" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height:1.05;">Momentsleutel Kennisbank.</h1>
-          <p class="sec-sub">Praktische artikelen over kalibratie, reparatie, ISO 6789 en alles rondom jouw momentsleutel — geschreven door vakspecialisten.</p>
+          <p class="sec-sub">Praktische artikelen over kalibratie, reparatie, ISO 6789 en alles rondom jouw momentsleutel, geschreven door vakspecialisten.</p>
         </div>
 
         <div class="grid gap-6" style="grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));">

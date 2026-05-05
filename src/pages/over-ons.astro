@@ -1,15 +1,38 @@
 ---
 import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
 import NavIsland from '../components/modules/NavIsland.astro';
 import FooterDTS from '../components/modules/FooterDTS.astro';
 import PageSection from '../components/ui/PageSection.astro';
+import jpPortrait from '../img/jp/JP.png';
+
+// ProfilePage + AboutPage schema referencing the Person already declared in Base.astro.
+// Helps AI engines anchor "Jan-Piet Schulte" + "Dutch Torque Service" as a single entity graph.
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": ["AboutPage", "ProfilePage"],
+  "url": "https://www.dutchtorqueservice.nl/over-ons",
+  "name": "Over Dutch Torque Service",
+  "inLanguage": "nl-NL",
+  "about": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "mainEntity": { "@id": "https://www.dutchtorqueservice.nl/#jan-piet-schulte" },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dutchtorqueservice.nl/" },
+      { "@type": "ListItem", "position": 2, "name": "Over Ons", "item": "https://www.dutchtorqueservice.nl/over-ons" }
+    ]
+  }
+};
 ---
 
 <Base
-  title="Over Ons | Dutch Torque Service — Riethoven, Noord-Brabant"
-  description="Dutch Torque Service is opgericht door Jan-Piet Schulte en zonen als opvolger van Van Rootselaar Technic bv. Geautoriseerd Snap-On dealer, ISO 6789 gecertificeerd, gevestigd in Riethoven."
+  title="Over Ons | Dutch Torque Service. Riethoven, Noord-Brabant"
+  description="Dutch Torque Service is opgericht door Jan-Piet Schulte en zonen als opvolger van Van Rootselaar Technic bv. Snap-On dealer en ISO 6789 specialist."
   canonicalPath="/over-ons"
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />
+
   <NavIsland currentPage="over-ons" />
 
   <main>
@@ -26,7 +49,7 @@ import PageSection from '../components/ui/PageSection.astro';
         </h1>
         <p class="sec-sub">
           Dutch Torque Service is opgericht vanuit een passie voor precisie en een erfenis van vertrouwen.
-          Wij zijn de erkende voortzetter van Van Rootselaar Technic bv. — een naam die tientallen jaren synoniem stond voor betrouwbare momentsleutel service in Nederland.
+          Wij zijn de erkende voortzetter van Van Rootselaar Technic bv., een naam die tientallen jaren synoniem stond voor betrouwbare momentsleutel service in Nederland.
         </p>
     </PageSection>
 
@@ -34,18 +57,28 @@ import PageSection from '../components/ui/PageSection.astro';
     <PageSection>
         <div class="page-grid items-center gap-y-16">
 
-          <!-- Image placeholder left -->
+          <!-- Founder portrait left -->
           <div class="col-span-12 lg:col-span-5" data-animate data-animate-from="left">
-            <div class="relative" style="border-radius: 1.5rem; overflow: hidden; aspect-ratio: 4/3; background: #0E1118; border: 1px solid rgba(122,175,196,0.14);">
-              <div class="absolute inset-0" style="background-image: linear-gradient(rgba(122,175,196,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(122,175,196,0.04) 1px, transparent 1px); background-size: 28px 28px;"></div>
-              <div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                <svg width="72" height="72" viewBox="0 0 80 80" fill="none" style="opacity:0.35;">
-                  <circle cx="20" cy="40" r="14" stroke="#7AAFC4" stroke-width="1.5"/>
-                  <circle cx="20" cy="40" r="7" stroke="#7AAFC4" stroke-width="1"/>
-                  <rect x="34" y="34" width="32" height="12" rx="3" stroke="#7AAFC4" stroke-width="1.5"/>
-                  <rect x="66" y="31" width="10" height="18" rx="4" stroke="#7AAFC4" stroke-width="1.5"/>
-                </svg>
-                <p class="text-xs tracking-[0.25em] uppercase font-medium" style="color:rgba(122,175,196,0.45);">Teamfoto volgt binnenkort</p>
+            <div class="founder-frame relative" style="border-radius: 1.5rem; overflow: hidden; aspect-ratio: 4/3; background: #0E1118; border: 1px solid rgba(122,175,196,0.18);">
+              <Image
+                src={jpPortrait}
+                alt="Jan-Piet Schulte, oprichter van Dutch Torque Service"
+                widths={[480, 720, 960]}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                format="webp"
+                quality={84}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+              <!-- Bottom gradient for caption legibility -->
+              <div class="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none" style="background: linear-gradient(to top, rgba(8,9,11,0.85) 0%, rgba(8,9,11,0.45) 50%, transparent 100%);"></div>
+              <!-- Founder caption -->
+              <div class="founder-meta">
+                <span class="founder-meta-eyebrow">
+                  Oprichter
+                </span>
+                <p class="founder-meta-name">Jan-Piet Schulte</p>
               </div>
               <!-- Corner brackets -->
               <div class="absolute -top-2 -left-2 w-5 h-5" style="border-top: 2px solid rgba(122,175,196,0.5); border-left: 2px solid rgba(122,175,196,0.5); border-radius: 4px 0 0 0;"></div>
@@ -65,10 +98,10 @@ import PageSection from '../components/ui/PageSection.astro';
               Voortzetter van een bewezen naam.
             </h2>
             <p class="mb-5" style="font-size: 1.05rem; line-height: 1.8; color: #C4D0D8;">
-              Per 1 januari 2026 heeft Dutch Torque Service via een warme overdracht de momentsleutelwerkzaamheden overgenomen van <strong style="color:#fff;">Van Rootselaar Technic bv.</strong> te Stiens — een bedrijf dat jarenlang het vertrouwen van werkplaatsen in binnen- en buitenland verdiende.
+              Per 1 januari 2026 heeft Dutch Torque Service via een warme overdracht de momentsleutelwerkzaamheden overgenomen van <strong style="color:#fff;">Van Rootselaar Technic bv.</strong> te Stiens, een bedrijf dat jarenlang het vertrouwen van werkplaatsen in binnen- en buitenland verdiende.
             </p>
             <p class="mb-5" style="font-size: 0.975rem; line-height: 1.8; color: #A8B8C4;">
-              Ger van Rootselaar heeft ons persoonlijk het vertrouwen gegeven om zijn erfenis voort te zetten. Dat nemen wij serieus: dezelfde zorgvuldige werkwijze, dezelfde moderne test- en controleapparatuur, dezelfde nauwkeurigheidseisen — maar nu vanuit Riethoven, Noord-Brabant.
+              Ger van Rootselaar heeft ons persoonlijk het vertrouwen gegeven om zijn erfenis voort te zetten. Dat nemen wij serieus: dezelfde zorgvuldige werkwijze, dezelfde moderne test- en controleapparatuur, dezelfde nauwkeurigheidseisen, maar nu vanuit Riethoven, Noord-Brabant.
             </p>
             <p style="font-size: 0.975rem; line-height: 1.8; color: #A8B8C4;">
               Naast onze kalibratie- en reparatiediensten runnen wij een officieel <strong style="color:#C4D0D8;">Snap-On dealerbedrijf</strong> voor de regio Zuid-Noord-Brabant. Zo combineren wij de beste gereedschapskennis met gecertificeerde precisiediensten.
@@ -113,7 +146,7 @@ import PageSection from '../components/ui/PageSection.astro';
             {
               num: '03',
               title: 'ISO Gecertificeerd',
-              body: 'Al onze kalibratiewerkzaamheden worden uitgevoerd conform ISO 6789:2017. Je ontvangt een volledig protocol met meetwaarden voor en na — audit-proof en transparant.',
+              body: 'Al onze kalibratiewerkzaamheden worden uitgevoerd conform ISO 6789:2017 en 2003. Je ontvangt een volledig protocol met meetwaarden voor en na, audit-proof en transparant.',
               accent: '#64C48A',
             },
           ].map((v, i) => (
@@ -138,7 +171,7 @@ import PageSection from '../components/ui/PageSection.astro';
           {[
             { value: '±2%',   label: 'Servicegarantie (ISO-norm: ±4%)', color: '#7AAFC4' },
             { value: 'Snelle',  label: 'Doorlooptijd',               color: '#C4AF64' },
-            { value: 'ISO',   label: '6789:2017 Gecertificeerd',  color: '#64C48A' },
+            { value: 'ISO',   label: '6789:2017 en 2003 Gecertificeerd',  color: '#64C48A' },
             { value: '100%',  label: 'Gedocumenteerd protocol',   color: '#C48A64' },
           ].map((s, i) => (
             <div class="text-center" data-animate data-animate-delay={String(i * 0.08)}>
@@ -169,7 +202,7 @@ import PageSection from '../components/ui/PageSection.astro';
 </Base>
 
 <style>
-  /* ── Team / value cards — lift + accent glow halo ── */
+  /* ── Team / value cards, lift + accent glow halo ── */
   .team-card {
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -183,7 +216,47 @@ import PageSection from '../components/ui/PageSection.astro';
     border-color: color-mix(in srgb, var(--accent) 32%, transparent) !important;
   }
 
-  /* ── Google Maps link — animated underline L→R ── */
+  /* ── Founder portrait caption overlay ── */
+  .founder-meta {
+    position: absolute;
+    left: clamp(1rem, 2.5vw, 1.5rem);
+    right: clamp(1rem, 2.5vw, 1.5rem);
+    bottom: clamp(1rem, 2.5vw, 1.5rem);
+    color: #fff;
+    z-index: 1;
+  }
+  .founder-meta-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(155, 200, 217, 0.95);
+    margin-bottom: 0.4rem;
+  }
+  .founder-meta-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #64C48A;
+    box-shadow: 0 0 6px rgba(100, 196, 138, 0.7);
+  }
+  .founder-meta-name {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+  .founder-meta-role {
+    font-size: 0.78rem;
+    color: #B8C4CC;
+    line-height: 1.4;
+  }
+
+  /* ── Google Maps link, animated underline L→R ── */
   a[href*="maps.google"] {
     color: rgba(122,175,196,0.5);
     text-decoration: none;

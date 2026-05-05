@@ -1,15 +1,15 @@
 # Dutch Torque Service
 
-> Professionele kalibratie, reparatie en ISO 6789:2017 certificering van momentsleutels. Geautoriseerd Snap-On dealer. Gevestigd in Riethoven, Noord-Brabant. Werkzaam in Nederland, België en Duitsland.
+> Professionele kalibratie, reparatie en ISO 6789:2017 en 2003 certificering van momentsleutels. Geautoriseerd Snap-On dealer. Gevestigd in Riethoven, Noord-Brabant. Werkzaam in Nederland, België en Duitsland.
 
-Dutch Torque Service (DTS) is een familiebedrijf — Jan-Piet Schulte en zonen — en de erkende voortzetter van Van Rootselaar Technic bv. per 1 januari 2026. DTS kalibreert op 5 meetpunten conform ISO 6789:2017 (Type I en Type II), met een eigen servicegarantie van ±2% — ruim binnen de ±4% ISO-tolerantie. Elk certificaat bevat as-found en as-left waarden, traceerbare referentieapparatuur en aanbevolen volgend interval.
+Dutch Torque Service (DTS) is een familiebedrijf — Jan-Piet Schulte en zonen — en de erkende voortzetter van Van Rootselaar Technic bv. per 1 januari 2026. DTS kalibreert op 5 meetpunten conform ISO 6789:2017 en 2003 (Type I en Type II), met een eigen servicegarantie van ±2% — ruim binnen de ±4% ISO-tolerantie. Elk certificaat bevat as-found en as-left waarden, traceerbare referentieapparatuur en aanbevolen volgend interval.
 
 ## Kerndiensten
 
-- [Momentsleutel Kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie): 5 meetpunten (20%, 40%, 60%, 80%, 100% van het bereik), minimaal 3 herhalingen per punt, conform ISO 6789:2017. Volledig protocol en certificaat per e-mail.
-- [Momentsleutel Reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie): Gratis diagnose, raming vooraf, originele Snap-On onderdelen als geautoriseerd dealer. Altijd gevolgd door kalibratie en certificaat.
+- [Momentsleutel Kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie): 5 meetpunten (20%, 40%, 60%, 80%, 100% van het bereik), minimaal 3 herhalingen per punt, conform ISO 6789:2017 en 2003. Volledig protocol en certificaat per e-mail.
+- [Momentsleutel reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie): Gratis diagnose, raming vooraf, originele Snap-On onderdelen als geautoriseerd dealer. Altijd gevolgd door kalibratie en certificaat.
 - [Momentsleutel Justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren): Fysiek bijstellen naar de juiste Newton-meterwaarden na val, slijtage of overbelasting. Altijd gevolgd door hercalibratie met as-left waarden op het certificaat.
-- [ISO 6789:2017 Certificering](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering): Audit-proof certificaat geschikt voor ISO 9001, IATF 16949 en VCA kwaliteitssystemen. Traceerbaar naar nationale referentienormen.
+- [ISO 6789:2017 en 2003 Certificering](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering): Audit-proof certificaat geschikt voor ISO 9001, IATF 16949 en VCA kwaliteitssystemen. Traceerbaar naar nationale referentienormen.
 - [Snap-On Kalibratie & Reparatie](https://www.dutchtorqueservice.nl/merken/snap-on-kalibratie): Geautoriseerd Snap-On dealer voor Zuid-Noord-Brabant. Originele onderdelen, fabrieksspecificaties, alle modellen (QJFR, QJFR2, ATECH, Type IID).
 
 ## Kennisbank

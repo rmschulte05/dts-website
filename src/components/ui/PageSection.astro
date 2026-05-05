@@ -1,6 +1,6 @@
 ---
 /**
- * PageSection — the single source of truth for inner-page sections.
+ * PageSection, the single source of truth for inner-page sections.
  *
  * Usage:
  *   <PageSection>               → separator + page-wrap + page-container
@@ -11,7 +11,7 @@
  */
 interface Props {
   id?:        string;
-  separator?: boolean;   // default true — teal rule at top
+  separator?: boolean;   // default true, teal rule at top
   center?:    boolean;   // text-center on the container
   hero?:      boolean;   // extra top padding to clear fixed nav
   tight?:     boolean;   // half padding-block
@@ -77,7 +77,7 @@ const {
     padding-block:  clamp(2rem, 4vw, 4rem);
   }
 
-  /* Centred content column — flex-column, gap drives all child spacing */
+  /* Centred content column, flex-column, gap drives all child spacing */
   :global(.page-container--center) {
     display: flex;
     flex-direction: column;

@@ -14,8 +14,8 @@ Identify the page type and apply the right keyword strategy:
 
 | Page | Primary keyword | Secondary keywords |
 |---|---|---|
-| momentsleutel-kalibratie | `momentsleutel kalibreren` | `kalibratie momentsleutel prijs`, `ISO 6789 kalibratie`, `momentsleutel laten kalibreren` |
-| momentsleutel-reparatie | `momentsleutel reparatie` | `momentsleutel defect`, `kliksleutel repareren`, `momentsleutel kapot` |
+| momentsleutel-kalibratie | `momentsleutel kalibreren` | `kalibratie momentsleutel prijs`, `ISO 6789 kalibratie`, `Momentsleutel laten kalibreren` |
+| momentsleutel-reparatie | `Momentsleutel reparatie` | `momentsleutel defect`, `kliksleutel repareren`, `momentsleutel kapot` |
 | momentsleutel-justeren | `momentsleutel justeren` | `momentsleutel afstellen`, `momentsleutel te laat klikken` |
 | iso-6789-certificering | `ISO 6789 certificaat` | `ISO 6789:2017`, `kalibratie certificaat momentsleutel`, `traceerbaar certificaat` |
 | snap-on-kalibratie | `Snap-On momentsleutel kalibreren` | `Snap-On dealer Noord-Brabant`, `Snap-On service` |
@@ -49,10 +49,10 @@ Identify the page type and apply the right keyword strategy:
 **Internal links:**
 - Each service page should link to at least 2 other service pages
 - Use these approved anchor patterns:
-  - `"momentsleutel kalibreren laten"` → `/diensten/momentsleutel-kalibratie`
+  - `"Momentsleutel laten kalibreren"` → `/diensten/momentsleutel-kalibratie`
   - `"ISO 6789:2017 certificaat"` → `/diensten/iso-6789-certificering`
-  - `"momentsleutel laten justeren"` → `/diensten/momentsleutel-justeren`
-  - `"momentsleutel reparatie"` → `/diensten/momentsleutel-reparatie`
+  - `"Momentsleutel laten justeren"` → `/diensten/momentsleutel-justeren`
+  - `"Momentsleutel reparatie"` → `/diensten/momentsleutel-reparatie`
   - `"Snap-On kalibratie Noord-Brabant"` → `/merken/snap-on-kalibratie`
   - `"ons volledige aanbod van diensten"` → `/diensten`
 - Never: `klik hier`, `lees meer`, `bekijk onze diensten`, `meer informatie`

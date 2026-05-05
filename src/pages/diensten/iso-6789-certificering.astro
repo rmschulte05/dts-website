@@ -13,7 +13,7 @@ const schema = [
     "@type": "Service",
     "name": "ISO 6789 Certificaat Momentsleutel",
     "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-    "description": "Officieel ISO 6789:2017 kalibratiecertificaat voor momentsleutels. Audit-proof, volledig traceerbaar. Voor ISO 9001, IATF 16949 en VCA gecertificeerde bedrijven.",
+    "description": "Officieel ISO 6789:2017 en 2003 kalibratiecertificaat voor momentsleutels. Voor ISO 9001, IATF 16949 en VCA gecertificeerde bedrijven.",
     "areaServed": [
       { "@type": "Country", "name": "Netherlands" },
       { "@type": "Country", "name": "Belgium" },
@@ -40,7 +40,7 @@ const schema = [
         "name": "Hoe lang is een certificaat geldig?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ISO 6789:2017 schrijft geen vaste geldigheidsduur voor — dat bepaalt jouw eigen kwaliteitshandboek. De aanbevolen minimumfrequentie is jaarlijks. Na een incident (val, overbelasting) is directe herkeuring nodig."
+          "text": "ISO 6789:2017 en 2003 schrijft geen vaste geldigheidsduur voor, dat bepaalt jouw eigen kwaliteitshandboek. De aanbevolen minimumfrequentie is jaarlijks. Na een incident (val, overbelasting) is directe herkeuring nodig."
         }
       },
       {
@@ -56,7 +56,7 @@ const schema = [
         "name": "Wat als mijn sleutel buiten tolerantie valt bij de as-found meting?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Als de sleutel buiten tolerantie zit, kun je hem ook laten justeren — dan voeren wij de as-left meting daarna uit. Beide waarden staan op het certificaat. Je betaalt een eerlijke prijs — altijd vooraf gecommuniceerd."
+          "text": "Als de sleutel buiten tolerantie zit, kun je hem ook laten justeren, dan voeren wij de as-left meting daarna uit. Beide waarden staan op het certificaat. Je betaalt een eerlijke prijs, altijd vooraf gecommuniceerd."
         }
       }
     ]
@@ -67,7 +67,7 @@ const certChecklist = [
   { item: 'Instrumentgegevens: merk, type, serienummer, bereik' },
   { item: 'As-found meetwaarden op minimaal 5 meetpunten (voor de ingreep)' },
   { item: 'As-left meetwaarden na kalibratie/justering' },
-  { item: 'Toegestane tolerantie conform ISO 6789:2017' },
+  { item: 'Toegestane tolerantie conform ISO 6789:2017 en 2003' },
   { item: 'Gebruikte referentieapparatuur met eigen kalibratiestatus' },
   { item: 'Naam en kwalificatie van de uitvoerende technicus' },
   { item: 'Datum van kalibratie' },
@@ -86,7 +86,7 @@ const whyCards = [
     accent: '#7AAFC4',
     icon: '◎',
     title: 'Traceerbare referentieapparatuur',
-    body: 'Onze referentieapparatuur heeft altijd een actuele kalibratiestatus. Die staat gewoon op jouw certificaat — volledig herleidbaar naar nationaal referentiemateriaal.',
+    body: 'Onze referentieapparatuur heeft altijd een actuele kalibratiestatus. Die staat gewoon op jouw certificaat, volledig herleidbaar naar nationaal referentiemateriaal.',
   },
   {
     accent: '#C4AF64',
@@ -109,7 +109,7 @@ const faq = [
   },
   {
     q: 'Hoe lang is een certificaat geldig?',
-    a: 'ISO 6789:2017 schrijft geen vaste geldigheidsduur voor — dat bepaalt jouw eigen kwaliteitshandboek. De aanbevolen minimumfrequentie is jaarlijks. Na een incident (val, overbelasting) is directe herkeuring nodig.',
+    a: 'ISO 6789:2017 en 2003 schrijft geen vaste geldigheidsduur voor, dat bepaalt jouw eigen kwaliteitshandboek. De aanbevolen minimumfrequentie is jaarlijks. Na een incident (val, overbelasting) is directe herkeuring nodig.',
   },
   {
     q: 'Kalibreren jullie ook voor IATF 16949 gecertificeerde bedrijven?',
@@ -117,14 +117,14 @@ const faq = [
   },
   {
     q: 'Wat als mijn sleutel buiten tolerantie valt bij de as-found meting?',
-    a: 'Als de sleutel buiten tolerantie zit, kun je hem ook <a href="/diensten/momentsleutel-justeren">laten justeren</a> — dan voeren wij de as-left meting daarna uit. Beide waarden staan op het certificaat. Je betaalt een eerlijke prijs — altijd vooraf gecommuniceerd.',
+    a: 'Als de sleutel buiten tolerantie zit, kun je hem ook <a href="/diensten/momentsleutel-justeren">laten justeren</a>, dan voeren wij de as-left meting daarna uit. Beide waarden staan op het certificaat. Je betaalt een eerlijke prijs, altijd vooraf gecommuniceerd.',
   },
 ];
 ---
 
 <Base
   title="ISO 6789 Certificaat Momentsleutel | Dutch Torque Service"
-  description="Officieel ISO 6789:2017 kalibratiecertificaat voor momentsleutels. Audit-proof, volledig traceerbaar. Voor ISO 9001, IATF 16949 en VCA. Stuur op →"
+  description="Officieel ISO 6789:2017 en 2003 kalibratiecertificaat voor momentsleutels. Voor ISO 9001, IATF 16949 en VCA. Stuur op →"
   canonicalPath="/diensten/iso-6789-certificering"
 >
   {schema.map(s => (
@@ -152,28 +152,27 @@ const faq = [
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
-            Officieel ISO 6789:2017 kalibratiecertificaat, volledig traceerbaar. Gewoon audit-proof — snel in je inbox.
+            Officieel ISO 6789:2017 en 2003 kalibratiecertificaat, volledig traceerbaar. Gewoon snel in je inbox.
           </p>
 
           <div class="hero-ctas" data-animate data-animate-delay="0.22">
-            <a href="/contact" class="btn btn-primary">Plan certificering</a>
-            <a href="/diensten/momentsleutel-kalibratie" class="btn btn-outline">Momentsleutel kalibreren laten</a>
+            <a href="/contact" class="btn btn-primary">Neem contact op</a>
+            <a href="/diensten/momentsleutel-kalibratie" class="btn btn-outline">Momentsleutel laten kalibreren</a>
           </div>
 
           <!-- Stats badges -->
           <div class="hero-badges" data-animate data-animate-delay="0.30">
-            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">ISO 6789:2017</span>
-            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Volledig Traceerbaar</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">ISO 6789:2017 en 2003</span>
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Audit-Proof</span>
           </div>
         </div>
     </PageSection>
 
-    <!-- WHAT IS X — CHAT UI -->
+    <!-- WHAT IS X. CHAT UI -->
     <PageSection>
       <ChatExplainer
         question="Heb ik echt een ISO 6789 certificaat nodig?"
-        answer="Als je werkt in een gecertificeerde omgeving, met klanten die kwaliteitseisen stellen, of als je gereedschap inzet op kritische verbindingen: ja. Het certificaat bewijst traceerbaarheid en nauwkeurigheid — DTS hanteert een eigen servicegarantie van ±2%, ruim binnen de ISO 6789:2017 tolerantie van ±4%. Audit-proof, volledig gedocumenteerd. Twijfel? Laat je <a href='/diensten/momentsleutel-kalibratie'>momentsleutel kalibreren</a>."
+        answer="Als je werkt in een gecertificeerde omgeving, met klanten die kwaliteitseisen stellen, of als je gereedschap inzet op kritische verbindingen: ja. Het certificaat bewijst traceerbaarheid en nauwkeurigheid. DTS hanteert een eigen servicegarantie van ±2%, ruim binnen de ISO 6789:2017 en 2003 tolerantie van ±4%. Audit-proof, volledig gedocumenteerd. Twijfel? Laat je <a href='/diensten/momentsleutel-kalibratie'>momentsleutel kalibreren</a>."
         accent="#64C48A"
         reactions={[
           { emoji: '📜', count: 22 },
@@ -204,9 +203,9 @@ const faq = [
             <li>Bedrijven gecertificeerd conform <strong style="color:#C8D8E0;">ISO 9001</strong> (kwaliteitsmanagement)</li>
             <li>Bedrijven gecertificeerd conform <strong style="color:#C8D8E0;">IATF 16949</strong> (automotive kwaliteitsmanagement)</li>
             <li>Bedrijven met <strong style="color:#C8D8E0;">VCA- of VCA**</strong>-certificering</li>
-            <li>Overheidscontracten of aanbestedingen — de opdrachtgever vraagt gewoon om papier.</li>
+            <li>Overheidscontracten of aanbestedingen, de opdrachtgever vraagt gewoon om papier.</li>
             <li>Bedrijven die garantieclaims willen voorkomen bij kritische verbindingen</li>
-            <li>Elke werkplaats die niet aansprakelijk wil zijn als een wielmoer loslaat — want dat is wat er op het spel staat.</li>
+            <li>Elke werkplaats die niet aansprakelijk wil zijn als een wielmoer loslaat, want dat is wat er op het spel staat.</li>
           </ul>
         </div>
     </PageSection>
@@ -225,7 +224,7 @@ const faq = [
         </div>
 
         <div class="def-card" data-animate data-animate-delay="0.08">
-          <p class="body-text" style="margin-bottom:1.25rem;">Dit staat er in elk DTS-certificaat — geen vage samenvattingen, gewoon alle meetwaarden.</p>
+          <p class="body-text" style="margin-bottom:1.25rem;">Dit staat er in elk DTS-certificaat, geen vage samenvattingen, gewoon alle meetwaarden.</p>
           <ul class="cert-checklist">
             {certChecklist.map(row => (
               <li>
@@ -247,11 +246,11 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Instrumenttypen</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="sec-title">Type I en Type II — welke norm geldt?</h2>
+          <h2 class="sec-title">Type I en Type II, welke norm geldt?</h2>
         </div>
 
         <p class="body-text" style="margin-bottom:2rem;" data-animate data-animate-delay="0.04">
-          De ISO 6789:2017 norm heeft voor elk type sleutel zijn eigen eisen — meetpunten, herhalingen, tolerantie. Toch even checken welke op jouw sleutel van toepassing is.
+          De ISO 6789:2017 en 2003 norm heeft voor elk type sleutel zijn eigen eisen, meetpunten, herhalingen, tolerantie. Toch even checken welke op jouw sleutel van toepassing is.
         </p>
 
         <div class="table-wrap" data-animate data-animate-delay="0.08">
@@ -314,7 +313,7 @@ const faq = [
             <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="sec-title">Veelgestelde vragen over ISO 6789:2017 certificering.</h2>
+          <h2 class="sec-title">Veelgestelde vragen over ISO 6789:2017 en 2003 certificering.</h2>
         </div>
 
         <div class="faq-list" data-animate data-animate-delay="0.08">
@@ -339,7 +338,7 @@ const faq = [
           </div>
           <h2 class="sec-title">Klaar voor jouw audit?</h2>
           <p class="sec-sub">
-            Bel ons of stuur jouw sleutel landelijk op. Ons lab in Riethoven, Noord-Brabant bezorgt snel een geldig ISO 6789:2017 certificaat in je inbox.
+            Bel ons of stuur jouw sleutel landelijk op. Ons lab in Riethoven, Noord-Brabant bezorgt snel een geldig ISO 6789:2017 en 2003 certificaat in je inbox.
           </p>
           <div class="sec-ctas">
             <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>

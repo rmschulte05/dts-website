@@ -4,8 +4,8 @@ const services = [
     id: 'justeren',
     title: 'Justeren',
     subtitle: 'Instelling & Afstelling',
-    description: 'Sleutel buiten tolerantie door slijtage of een val? Wij stellen je momentsleutel opnieuw in op de juiste Newton-meterwaarden over het volledige bereik — conform ISO\u00A06789:2017.',
-    link: { href: '/diensten/momentsleutel-justeren', label: 'momentsleutel laten justeren' },
+    description: 'Sleutel buiten tolerantie door slijtage of een val? Wij stellen je momentsleutel opnieuw in op de juiste Newton-meterwaarden over het volledige bereik, conform ISO\u00A06789:2017 en 2003.',
+    link: { href: '/diensten/momentsleutel-justeren', label: 'Momentsleutel laten justeren' },
     accent: '#C4AF64',
     icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.5"/>
@@ -19,9 +19,9 @@ const services = [
   {
     id: 'kalibratie',
     title: 'Kalibratie',
-    subtitle: 'ISO 6789:2017 Conform',
-    description: 'Professionele momentsleutel kalibratie op 5 meetpunten over het volledige bereik. Volledig kalibratieprotocol conform ISO\u00A06789:2017 type\u00A0I en\u00A0II inbegrepen.',
-    link: { href: '/diensten/momentsleutel-kalibratie', label: 'momentsleutel kalibreren laten' },
+    subtitle: 'ISO 6789:2017 en 2003 Conform',
+    description: 'Professionele momentsleutel kalibratie op 5 meetpunten over het volledige bereik. Volledig kalibratieprotocol conform ISO\u00A06789:2017 en 2003 type\u00A0I en\u00A0II inbegrepen.',
+    link: { href: '/diensten/momentsleutel-kalibratie', label: 'Momentsleutel laten kalibreren' },
     accent: '#7AAFC4',
     icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="10" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
@@ -37,8 +37,8 @@ const services = [
     id: 'reparatie',
     title: 'Reparatie',
     subtitle: 'Herstel & Revisie',
-    description: 'Volledige demontage, reiniging en vervanging van slijtdelen. Van Snap-On tot Stahlwille: wij herstellen jouw momentsleutel als nieuw — zonder de aanschafprijs van vervangen.',
-    link: { href: '/diensten/momentsleutel-reparatie', label: 'momentsleutel reparatie' },
+    description: 'Volledige demontage, reiniging en vervanging van slijtdelen. Van Snap-On tot Stahlwille: wij herstellen jouw momentsleutel als nieuw, zonder de aanschafprijs van vervangen.',
+    link: { href: '/diensten/momentsleutel-reparatie', label: 'Momentsleutel reparatie' },
     accent: '#C48A64',
     icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <path d="M6 22L18 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -53,7 +53,7 @@ const services = [
     title: 'Certificering',
     subtitle: 'Officieel Certificaat',
     description: 'Officieel DTS-kalibratiecertificaat met meetwaarden voor en na de service, gebruikte referentieapparatuur en volgende kalibratietermijn. Audit-proof voor ISO-gecertificeerde bedrijven.',
-    link: { href: '/diensten/iso-6789-certificering', label: 'ISO 6789:2017 certificaat' },
+    link: { href: '/diensten/iso-6789-certificering', label: 'ISO 6789:2017 en 2003 certificaat' },
     accent: '#64C48A',
     icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="4" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
@@ -172,7 +172,7 @@ const services = [
     cursor: default;
   }
 
-  /* Accent glow halo — radial behind card content */
+  /* Accent glow halo, radial behind card content */
   .svc-card::before {
     content: '';
     position: absolute;
@@ -230,7 +230,7 @@ const services = [
     position: relative;
     z-index: 1;
   }
-  /* svc-corner is absolutely positioned — restore that */
+  /* svc-corner is absolutely positioned, restore that */
   .svc-corner {
     position: absolute !important;
   }

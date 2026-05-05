@@ -1,0 +1,53 @@
+{
+  "agents": [
+    {
+      "agent_id": "a7749ee97ca3d720f",
+      "agent_type": "geo-ai-visibility",
+      "started_at": "2026-04-27T10:56:06.004Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-27T10:58:07.205Z",
+      "duration_ms": 121201
+    },
+    {
+      "agent_id": "acb72d71e9f645f67",
+      "agent_type": "geo-platform-analysis",
+      "started_at": "2026-04-27T10:56:23.854Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-27T10:59:08.926Z",
+      "duration_ms": 165072
+    },
+    {
+      "agent_id": "a3273b21a5bf9d2b3",
+      "agent_type": "geo-technical",
+      "started_at": "2026-04-27T10:56:38.408Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-27T10:57:58.364Z",
+      "duration_ms": 79956
+    },
+    {
+      "agent_id": "adc741a23149ffa8d",
+      "agent_type": "geo-content",
+      "started_at": "2026-04-27T10:56:56.052Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-27T10:59:17.977Z",
+      "duration_ms": 141925
+    },
+    {
+      "agent_id": "a0fbd44f11b0f84c2",
+      "agent_type": "geo-schema",
+      "started_at": "2026-04-27T10:57:14.534Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-04-27T11:00:11.966Z",
+      "duration_ms": 177432
+    }
+  ],
+  "total_spawned": 5,
+  "total_completed": 5,
+  "total_failed": 0,
+  "last_updated": "2026-05-05T09:15:31.634Z"
+}

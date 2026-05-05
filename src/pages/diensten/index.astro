@@ -8,7 +8,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Diensten Dutch Torque Service",
-  "description": "Overzicht van alle momentsleutel diensten van Dutch Torque Service: kalibratie, reparatie, justeren en ISO 6789:2017 certificering.",
+  "description": "Overzicht van alle momentsleutel diensten van Dutch Torque Service: kalibratie, reparatie, justeren en ISO 6789:2017 en 2003 certificering.",
   "url": "https://www.dutchtorqueservice.nl/diensten",
   "itemListElement": [
     {
@@ -17,7 +17,7 @@ const serviceSchema = {
       "item": {
         "@type": "Service",
         "name": "Momentsleutel Kalibratie",
-        "description": "Professionele kalibratie van momentsleutels conform ISO 6789:2017 met ±2% nauwkeurigheidsgarantie en volledig gedocumenteerd certificaat.",
+        "description": "Professionele kalibratie van momentsleutels conform ISO 6789:2017 en 2003 met ±2% nauwkeurigheidsgarantie en volledig gedocumenteerd certificaat.",
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
@@ -34,8 +34,8 @@ const serviceSchema = {
       "position": 2,
       "item": {
         "@type": "Service",
-        "name": "Momentsleutel Reparatie",
-        "description": "Reparatie van alle merken momentsleutels. Van mechanische slijtage tot interne beschadigingen — wij stellen jouw gereedschap weer volledig in orde.",
+        "name": "Momentsleutel reparatie",
+        "description": "Reparatie van alle merken momentsleutels. Van mechanische slijtage tot interne beschadigingen, wij stellen jouw gereedschap weer volledig in orde.",
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
@@ -70,8 +70,8 @@ const serviceSchema = {
       "position": 4,
       "item": {
         "@type": "Service",
-        "name": "ISO 6789:2017 Certificering",
-        "description": "Officiële ISO 6789:2017 certificering van momentsleutels voor kwaliteitssystemen, audits en inspecties. Volledig traceerbaar en audit-proof.",
+        "name": "ISO 6789:2017 en 2003 Certificering",
+        "description": "Officiële ISO 6789:2017 en 2003 certificering van momentsleutels voor kwaliteitssystemen, audits en inspecties.",
         "url": "https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
@@ -92,9 +92,9 @@ const services = [
     label: 'Kalibratie',
     cta: 'Hoe kalibratie werkt',
     accent: '#7AAFC4',
-    eyebrow: 'ISO 6789:2017',
+    eyebrow: 'ISO 6789:2017 en 2003',
     title: 'Momentsleutel Kalibratie',
-    desc: 'Wij meten en documenteren de werkelijke waarden van jouw momentsleutel met ±2% nauwkeurigheid. Inclusief volledig traceerbaar certificaat.',
+    desc: 'Wij meten en documenteren de werkelijke waarden van jouw momentsleutel binnen onze ±2% servicegarantie (ruim binnen de ±4% ISO 6789:2017 en 2003 tolerantie). Inclusief certificaat.',
     icon: `<svg width="32" height="32" viewBox="0 0 80 80" fill="none"><circle cx="20" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="40" r="7" stroke="currentColor" stroke-width="1"/><rect x="34" y="34" width="32" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="66" y="31" width="10" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>`,
   },
   {
@@ -103,8 +103,8 @@ const services = [
     cta: 'Reparatie bekijken',
     accent: '#C48A64',
     eyebrow: 'Alle merken',
-    title: 'Momentsleutel Reparatie',
-    desc: 'Van mechanische slijtage tot interne beschadigingen — wij repareren momentsleutels van alle merken. Diagnose altijd gratis, reparatie pas na jouw akkoord. Na reparatie altijd opnieuw gecertificeerd.',
+    title: 'Momentsleutel reparatie',
+    desc: 'Van mechanische slijtage tot interne beschadigingen, wij repareren momentsleutels van alle merken. Diagnose altijd gratis, reparatie pas na jouw akkoord. Na reparatie altijd opnieuw gecertificeerd.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
   },
   {
@@ -114,7 +114,7 @@ const services = [
     accent: '#C4AF64',
     eyebrow: 'Nauwkeurig bijstellen',
     title: 'Momentsleutel Justeren',
-    desc: 'Is jouw momentsleutel buiten tolerantie geraakt? Wij stellen hem nauwkeurig bij tot binnen ±2% van de opgegeven waarde. Inclusief her-kalibratie en nieuw certificaat.',
+    desc: 'Is jouw momentsleutel buiten tolerantie geraakt? Wij stellen hem nauwkeurig bij tot binnen onze ±2% servicegarantie. Inclusief her-kalibratie en nieuw certificaat met as-left waarden.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
   },
   {
@@ -123,8 +123,8 @@ const services = [
     cta: 'Certificaat bekijken',
     accent: '#64C48A',
     eyebrow: 'Audit-proof',
-    title: 'ISO 6789:2017 Certificering',
-    desc: 'Officiële certificering conform ISO 6789:2017 voor kwaliteitssystemen, audits en inspecties. Volledig gedocumenteerd met meetwaarden voor en na — transparant en traceerbaar.',
+    title: 'ISO 6789:2017 en 2003 Certificering',
+    desc: 'Officiële certificering conform ISO 6789:2017 en 2003 voor kwaliteitssystemen, audits en inspecties. Volledig gedocumenteerd met meetwaarden voor en na.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
   },
 ];
@@ -132,7 +132,7 @@ const services = [
 
 <Base
   title="Momentsleutel Diensten | Dutch Torque Service"
-  description="Momentsleutel kalibreren, repareren of certificeren? Dutch Torque Service: ±2% nauwkeurig, snelle doorlooptijd. ISO 6789:2017 conform, Noord-Brabant. Stuur op."
+  description="Momentsleutel kalibreren, repareren of certificeren? Dutch Torque Service: ±2% nauwkeurig, snelle doorlooptijd. ISO 6789:2017 en 2003 conform, Noord-Brabant. Stuur op."
   canonicalPath="/diensten"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
@@ -151,7 +151,7 @@ const services = [
           Momentsleutel Diensten.
         </h1>
         <p class="sec-sub" style="font-size: clamp(1rem, 1.6vw, 1.15rem);">
-          Alles voor jouw momentsleutel — van kalibratie en certificering tot volledige reparatie. Gecertificeerd conform ISO 6789:2017.
+          Alles voor jouw momentsleutel <br> Van kalibratie en certificering tot volledige reparatie. <br> Gecertificeerd conform ISO 6789:2017 en 2003.
         </p>
         <!-- Scroll hint -->
         <div class="scroll-hint" aria-hidden="true">
@@ -163,7 +163,7 @@ const services = [
 
     <!-- SERVICE CARDS 2x2 GRID -->
     <PageSection>
-        <!-- Section intro — sec-head drives all spacing + centering -->
+        <!-- Section intro, sec-head drives all spacing + centering -->
         <div class="sec-head" data-animate>
           <div class="sec-eyebrow">
             <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
@@ -171,7 +171,7 @@ const services = [
             <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
           </div>
           <p class="sec-sub">
-            Twijfel je welke dienst je eigenlijk nodig hebt? Bel even — we adviseren je gratis en eerlijk.
+            Twijfel je welke dienst je eigenlijk nodig hebt? Bel even, we adviseren je gratis en eerlijk.
           </p>
         </div>
 
@@ -220,7 +220,7 @@ const services = [
           </div>
           <h2 class="sec-title">Geautoriseerd Snap-On Dealer.</h2>
           <p class="sec-sub">
-            Dutch Torque Service is geautoriseerd Snap-On dealer voor de regio Zuid-Noord-Brabant. Wij kalibreren en repareren Snap-On momentsleutels — met hetzelfde ISO 6789:2017 protocol als al onze andere sleutels.
+            Dutch Torque Service is geautoriseerd Snap-On dealer voor de regio Zuid-Noord-Brabant. Wij kalibreren en repareren Snap-On momentsleutels met hetzelfde ISO 6789:2017 en 2003 protocol als al onze andere sleutels.
           </p>
           <div class="sec-ctas">
             <a href="/merken/snap-on-kalibratie" class="btn btn-outline">
@@ -232,9 +232,9 @@ const services = [
 
     <!-- CTA -->
     <PageSection center animate>
-        <h2 class="sec-title">Sleutel moet gecheckt? Stuur hem op.</h2>
+        <h2 class="sec-title">Je sleutel moet worden gecheckt? Stuur hem op.</h2>
         <p class="sec-sub">
-          Wij werken landelijk — stuur je sleutel gewoon op of kom langs in Riethoven. Eerlijk advies, altijd gratis.
+          Wij werken landelijk en internationaal, stuur je sleutel gewoon op of kom langs in Riethoven. Eerlijk advies, altijd gratis.
         </p>
         <div class="sec-ctas">
           <a href="/contact" class="btn btn-primary">
@@ -287,7 +287,7 @@ const services = [
     transform: none;
   }
 
-  /* Radial glow halo — fades in from bottom on hover */
+  /* Radial glow halo, fades in from bottom on hover */
   .service-card::before {
     content: '';
     position: absolute;
@@ -300,7 +300,7 @@ const services = [
     border-radius: inherit;
   }
 
-  /* Shine sweep — diagonal highlight that crosses the card */
+  /* Shine sweep, diagonal highlight that crosses the card */
   .service-card::after {
     content: '';
     position: absolute;

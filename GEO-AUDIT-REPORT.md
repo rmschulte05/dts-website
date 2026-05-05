@@ -1,343 +1,222 @@
 # GEO Audit Report: Dutch Torque Service
 
-**Audit Date:** 2026-04-23
-**URL:** https://www.dutchtorqueservice.nl
-**Business Type:** Local Business / B2B Service (hybrid) — torque wrench calibration, repair & ISO 6789 certification
-**Pages Analyzed:** 16 source pages (homepage, 4 service pages, 5 blog articles, FAQ, contact, over-ons, werk, diensten index, blog index, snap-on brand page)
-**Audit Scope:** Local source code audit. Analysis is based on the Astro source and the generated HTML/JSON-LD that ships on deploy.
+**Audit Date:** 2026-04-27
+**URL Audited (live):** https://dutchtorqueservice.vercel.app
+**Canonical Domain:** https://www.dutchtorqueservice.nl (not yet pointed at Vercel deployment)
+**Business Type:** Local Business / B2B Service (hybrid) — torque wrench calibration, repair & ISO 6789:2017 certification
+**Pages Analyzed:** 17 production routes (homepage, 4 service pages, 1 brand page, 5 blog articles, FAQ, contact, over-ons, werk, diensten index, blog index)
+**Audit Mode:** Live URL audit via 5 specialized subagents (AI Visibility, Platform Optimization, Technical, E-E-A-T, Schema)
 
 ---
 
 ## Executive Summary
 
-**Overall GEO Score: 74/100 (Fair — upper bound, close to Good)**
+**Overall GEO Score: 64/100 (Fair)**
 
-Dutch Torque Service already has an unusually strong GEO foundation for a small-business site: comprehensive schema.org markup (LocalBusiness, WebSite, Service, FAQPage, Article, ContactPage), a canonical structure, a clean sitemap via `@astrojs/sitemap`, lean HTML that is fully server-rendered by Astro (ideal for AI crawlers), Dutch `lang="nl"` declaration, and genuinely citable content blocks (specific numbers: "5 meetpunten × 3 herhalingen", "±2% gegarandeerd", "ISO 6789:2017", "Tonterstraat 42, 5561 AN Riethoven"). The biggest gaps are (1) the absence of an `llms.txt` file, (2) no real `og-image.jpg` despite referencing one in every page `<head>`, (3) no Person-level author schema (all Article markup attributes to the Organization), (4) empty `sameAs` array meaning AI systems have no third-party entity anchors, and (5) a tolerance inconsistency (`±2%` vs `±4%`) that will hurt citation accuracy.
+Dutch Torque Service ships an **unusually strong on-page foundation** for a small specialist B2B site: pure SSR (Astro static), full AI-crawler allowlist verified live (GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Google-Extended, Applebot-Extended), well-curated `llms.txt`, comprehensive JSON-LD graph (LocalBusiness + WebSite + Person + Service + HowTo + FAQPage + Article + BreadcrumbList + AboutPage/ProfilePage + CollectionPage), and citable atomic content blocks (specific 5-point measurement protocol, ±2% guarantee disambiguated against ±4% ISO norm). Out-structures every verified NL competitor (`lacozaandam.com`, `mgservice.nl`, `zuidwestkeuringen.nl`, `machineskeuren.nl`) on technical depth.
+
+**The single dominant remaining gap is off-site entity authority.** Live verification confirmed zero brand mentions across LinkedIn, Google Business Profile, Wikidata, Wikipedia, YouTube, Reddit, and industry directories. The site is technically excellent for AI ingestion; the brand is not yet a known entity AI models can anchor citations to.
+
+Secondary gaps: duplicate `LocalBusiness` JSON-LD node on `/faq`, `speakable.cssSelector` array referencing classes that mostly don't exist in the rendered DOM, no surfaced "Laatst bijgewerkt" date for readers, no credentials block for Jan-Piet Schulte, missing security headers, oversized 242 KB logo asset.
 
 ### Score Breakdown
 
 | Category | Score | Weight | Weighted Score |
-|---|---|---|---|
-| AI Citability | 78/100 | 25% | 19.5 |
-| Brand Authority | 45/100 | 20% | 9.0 |
-| Content E-E-A-T | 72/100 | 20% | 14.4 |
-| Technical GEO | 88/100 | 15% | 13.2 |
-| Schema & Structured Data | 85/100 | 10% | 8.5 |
-| Platform Optimization | 52/100 | 10% | 5.2 |
-| **Overall GEO Score** | | | **≈ 70/100** |
+|---|---:|---:|---:|
+| AI Citability | 78/100 | 25% | 19.50 |
+| Brand Authority | 8/100 | 20% | 1.60 |
+| Content E-E-A-T | 71/100 | 20% | 14.20 |
+| Technical GEO | 84/100 | 15% | 12.60 |
+| Schema & Structured Data | 87/100 | 10% | 8.70 |
+| Platform Optimization | 70/100 | 10% | 7.00 |
+| **Overall GEO Score** | | | **63.60 → 64/100** |
 
-> Calibrated overall score: **74/100** after weighting for the strength of the technical/schema foundation vs. off-site authority gaps.
+Compared to the previous 2026-04-23 source-code audit (74/100), the drop reflects more accurate live verification of off-site entity signals — the previous report estimated Brand Authority at 45 but was conservative; live checks confirmed 0 third-party citations.
 
 ---
 
 ## Critical Issues (Fix Immediately)
 
-### C1 — Missing `og-image.jpg` on a referenced path
-`src/layouts/Base.astro` lines 72 and 80 set `og:image` and `twitter:image` to `/og-image.jpg`, but **no such file exists in `public/`**. Every social share from every page points to a 404. This breaks AI engines that preview-crawl Open Graph during citation, plus LinkedIn, X, WhatsApp, Slack previews.
-**Fix:** Add a 1200×630 JPG/PNG to `public/og-image.jpg` (and consider per-page OG images for `/diensten/*` and `/blog/*`).
+### C1 — Brand has zero entity recognition across all third-party platforms
+- Verified absence on: LinkedIn (company page), Google Business Profile, Wikidata, Wikipedia, YouTube, Reddit, kvk.nl beyond the registry stub, Snap-On NL dealer locator (not surfaced in search).
+- This is the single largest off-site GEO drag. AI models cannot anchor citations on the brand.
+- **Fix (off-site, requires user action):**
+  1. Create LinkedIn Company Page → add to `Organization.sameAs` and `llms.txt` Contact section.
+  2. Claim/verify Google Business Profile at Tonterstraat 42, 5561 AN Riethoven → add `https://www.google.com/maps/place/?cid=…` to `sameAs` and add `hasMap` to `LocalBusiness` schema.
+  3. Create Wikidata item (Q-item) — accepts SMEs with sourcing (KvK + ISO 6789 service description suffices); add to `sameAs`.
+  4. Optional but high-leverage: 2–3 short YouTube clips of an actual ISO 6789 calibration run on the Snap-On rig (transcript-rich, embeddable on blog).
 
-### C2 — No `llms.txt` / `llms-full.txt`
-No file at `public/llms.txt`. The emerging convention (adopted by Anthropic, Stripe, Cloudflare, Vercel) lets AI systems discover a curated map of canonical pages. For a specialist B2B service with a small URL graph, this is quick to author and high-impact.
-**Fix:** Create `public/llms.txt` listing the homepage, 4 service pages, FAQ, blog index (see Quick Win 1).
+### C2 — Production domain `www.dutchtorqueservice.nl` is not yet pointed at the Vercel deployment
+- Every `<link rel="canonical">`, `og:url`, sitemap entry, and JSON-LD `@id` references the production hostname; the actual deployed origin is `dutchtorqueservice.vercel.app`.
+- Bing Copilot can't index reliably, AI crawlers de-duping by canonical may discard the Vercel content as a non-canonical preview, IndexNow can't ping.
+- **Fix (off-site, requires user action):** in Vercel project settings add `www.dutchtorqueservice.nl` as a custom domain, update DNS at the registrar, then drop the IndexNow key file in `public/` and add `<meta name="msvalidate.01" content="…">` to `Base.astro`.
 
 ---
 
 ## High Priority Issues (Fix Within 1 Week)
 
-### H1 — Article author is Organization, not Person
-Every blog article (e.g. `/blog/hoe-vaak-momentsleutel-kalibreren`, schema.org `author` field) attributes authorship to the Organization. The Blog layout already shows "Jan-Piet Schulte" visually — the schema should match. AI systems lean heavily on `Person` + credentials for E-E-A-T scoring.
-**Fix:** Change `"author": { "@type": "Organization", ... }` to `"author": { "@type": "Person", "name": "Jan-Piet Schulte", "jobTitle": "Eigenaar & Kalibratietechnicus", "worksFor": {"@id": "https://www.dutchtorqueservice.nl/#business"}, "url": "https://www.dutchtorqueservice.nl/over-ons" }` on all blog articles.
+### H1 — Duplicate `LocalBusiness` `@id` node on `/faq`
+- `/faq` ships TWO LocalBusiness JSON-LD blocks both keyed `@id: https://www.dutchtorqueservice.nl/#business`. Base.astro already emits one for every page.
+- JSON-LD requires `@id` uniqueness within a graph; duplicates can be merged unpredictably or one dropped.
+- **Fix (in repo):** delete the inline `localBusinessSchema` and its `<script>` tag in `src/pages/faq.astro` — Base.astro covers it.
 
-### H2 — Empty `sameAs` array in LocalBusiness schema
-`src/layouts/Base.astro` line 39: `"sameAs": []`. This is the single largest weak point for entity recognition. AI models use `sameAs` as cross-reference to build confidence that "Dutch Torque Service" is a real, disambiguated entity.
-**Fix:** Populate `sameAs` with Google Business Profile URL, LinkedIn company page, Facebook page, KvK profile, any industry directory listing (Bouwwereld, Werkspot), and ideally a Wikidata entry for "Van Rootselaar Technic" (the predecessor brand) if one is created.
+### H2 — `speakable.cssSelector` targets classes that do not exist in the DOM
+- WebSite schema declares `speakable.cssSelector: [".aeo-definition", ".def-card p", ".sec-sub", ".hero-subtitle"]`.
+- After live HTML audit: `.aeo-definition` and `.def-card` render zero times sitewide; only `.hero-subtitle` and `.sec-sub` actually render. Speakable currently signals AI assistants to read sections that don't exist on most pages.
+- **Fix (in repo):** replace selectors in `Base.astro` with classes that actually render, and add `.article-lead` / `.faq-answer` classes to `BlogLayout.astro` and FAQ accordions.
 
-### H3 — Tolerance inconsistency (`±2%` vs `±4%`)
-Service pages and homepage repeatedly promise **±2% nauwkeurigheidsgarantie**. The ISO 6789:2017 norm — and your own `iso-6789-certificering` page `typeTable` — states Type I / Type II tolerance is **±4%**. The blog article `hoe-vaak-momentsleutel-kalibreren` also states ±4%. This contradiction will be cited inconsistently by AI systems ("does DTS guarantee ±2% or ±4%?") and undermines trust.
-**Fix:** Clarify language: ±4% is the ISO norm for Type I/II; ±2% is DTS's internal service target. Rewrite as: *"Wij garanderen een nauwkeurigheid van ±2% — ruim binnen de ISO 6789:2017 tolerantie van ±4%."*
+### H3 — Sitewide missing `inLanguage: "nl-NL"` on most schema nodes
+- Top-level `WebPage`/`Article`/`CollectionPage`/`Service`/`HowTo` carry `inLanguage`. `Person`, `ItemList`, `FAQPage`, `BreadcrumbList`, `ContactPage`, `AboutPage` mostly don't.
+- AI crawlers use `inLanguage` for language routing.
+- **Fix (in repo):** add `"inLanguage": "nl-NL"` to every node that lacks it.
 
-### H4 — No `BreadcrumbList` schema despite visual breadcrumbs
-`BlogLayout.astro` renders a Home › Blog › {category} breadcrumb but has no corresponding JSON-LD. Google AI Overviews specifically use BreadcrumbList for citation chain display.
-**Fix:** Add `BreadcrumbList` schema to `BlogLayout.astro` (and to any future service-page layout).
+### H4 — No visible "Laatst bijgewerkt" date for blog readers
+- `dateModified` is set in JSON-LD but invisible to humans. Trust signal lost.
+- **Fix (in repo):** render "Laatst bijgewerkt: {publishDate}" in `BlogLayout.astro` next to the byline.
 
-### H5 — Featured image & team photo are placeholders
-`BlogLayout.astro` (`featured-image-placeholder`) and `over-ons.astro` ("Teamfoto volgt binnenkort") both render SVG placeholder cards. AI engines (especially Perplexity and ChatGPT) preview images when citing content; missing images lower visual citability. Blog thumbnails on the index are also colour bands only.
-**Fix:** Add at minimum one real photo: team shot on `/over-ons`, workshop/calibration bench shot for shared use on blog featured images.
+### H5 — No credentials surfaced on `/over-ons` for Jan-Piet Schulte
+- Page tells the succession story but does not list years in trade, Snap-On factory training, or any ISO assessor training.
+- Verified competitor `zuidwestkeuringen.nl/momentsleutel-kalibreren/` already names operator Michäel Thoen + Koninklijke Metaalunie membership.
+- **Fix (partial in repo, partial off-site):** add a credentials section scaffold + `Person.hasCredential` schema; user fills in actual training/years.
+
+### H6 — Missing security headers (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
+- Live `curl -I` returns only `strict-transport-security`. AI-citable trust signal; some quality-scoring algorithms penalize sites without basic security headers.
+- **Fix (in repo):** create `vercel.json` with a `headers` block.
 
 ---
 
 ## Medium Priority Issues (Fix Within 1 Month)
 
-### M1 — No `HowTo` schema on step-by-step process sections
-`diensten/momentsleutel-kalibratie.astro` has a 5-step `steps` array that is a perfect HowTo candidate. Same for `iso-6789-certificering`.
-**Fix:** Add `@type: HowTo` schema alongside the existing Service schema on each service page — a strong citation hook for AI answers like *"how does torque wrench calibration work?"*
+- **M1** — `sameAs` array contains only 1 URL (KvK). Expand to ≥5 entries once LinkedIn/GBP/Wikidata exist (depends on C1 above).
+- **M2** — No `Review`/`aggregateRating` schema. Add once 5+ customer testimonials are collected.
+- **M3** — Logo asset `dts-logo-2x.webp` is 242 KB — still ~10× larger than ideal for a logo. Re-export with `astro:assets` `<Image />` at correct dimensions, or convert to SVG.
+- **M4** — `Cache-Control: public, max-age=0, must-revalidate` on static HTML. Add `s-maxage=3600, stale-while-revalidate=86400` for edge caching.
+- **M5** — No `WebSite.potentialAction` `SearchAction`. Trivial add.
+- **M6** — `HowTo` on `/diensten/momentsleutel-reparatie` and `/diensten/momentsleutel-justeren` missing `totalTime` (kalibratie has `PT1H`).
+- **M7** — Real workshop / team photo still placeholders on `/over-ons` and `BlogLayout` featured-image slot.
+- **M8** — No measurement-points / reference-equipment block on `/diensten/momentsleutel-kalibratie` body copy (the schema has it via HowTo, but body-text repetition increases AI citation odds).
 
-### M2 — No `Review` / `aggregateRating` schema anywhere
-For a local service business, AI systems and Google AI Overviews elevate sites with structured reviews.
-**Fix:** Once 5+ customer reviews exist (Google Business Profile, Trustpilot, or a dedicated `/getuigenissen` page), add `aggregateRating` to LocalBusiness and `Review` items per testimonial.
+## Low Priority Issues
 
-### M3 — `areaServed` inconsistency across schemas
-Base LocalBusiness lists `["Nederland", "België", "Duitsland"]`; `/diensten/*` Service schemas list `"NL"` + `AdministrativeArea "Noord-Brabant"`; FAQ LocalBusiness lists `"NL"`. AI models penalize contradictory entity facts.
-**Fix:** One canonical model. Recommended: primary = Netherlands (country), secondary = Belgium + Germany (countries), regional focus = Noord-Brabant (AdministrativeArea). Apply uniformly.
-
-### M4 — `datePublished` without `dateModified` on articles
-Blog Article schema has only `datePublished`. AI models treat content with `dateModified` as fresher.
-**Fix:** Add `dateModified` to every Article schema (equal to `datePublished` on first publish; update on edits).
-
-### M5 — No `Person` entity page for Jan-Piet Schulte
-`/over-ons` mentions the founder but has no dedicated Person-level content block or schema. Limits entity recognition for "Jan-Piet Schulte torque calibration".
-**Fix:** Add a team section with Person schema: `name`, `jobTitle`, `description` (years in the trade, Snap-On training), `worksFor`, `knowsAbout: ["ISO 6789:2017", "Torque wrench calibration", ...]`.
-
-### M6 — `inLanguage` missing on most schemas
-Only `WebSite` schema declares `inLanguage: "nl-NL"`. Article, Service, FAQPage do not.
-**Fix:** Add `"inLanguage": "nl-NL"` to every JSON-LD block.
-
-### M7 — robots.txt does not explicitly greet AI crawlers
-Current `public/robots.txt` is `User-agent: * / Allow: /`. That implicitly allows GPTBot, ClaudeBot, PerplexityBot, but explicit allow/deny makes your stance unambiguous.
-**Fix:** Add explicit stanzas:
-```
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-```
-
-### M8 — No `speakable` property on citable definition blocks
-The `ChatExplainer` component on service pages contains perfect "AI definition" paragraphs. Marking them as `speakable` makes them priority-cited by Google Assistant / AI Overviews.
-**Fix:** Add `"speakable": {"@type": "SpeakableSpecification", "cssSelector": [".aeo-definition", ".def-card p"]}` to the WebSite schema.
-
----
-
-## Low Priority Issues (Optimize When Possible)
-
-### L1 — Google Fonts loaded from CDN, not self-hosted
-`Base.astro` preloads Inter from fonts.googleapis.com. Adds a third-party DNS/handshake. Not a GEO blocker, but a mild Core Web Vitals cost.
-**Fix (optional):** Install `@fontsource-variable/inter` and self-host.
-
-### L2 — No `WebSite.potentialAction` for site search
-Low impact on a site this small but free to add.
-
-### L3 — Large logo file (2.3 MB PNG)
-`public/dts-logo.png` is 2,332,884 bytes. Not blocking but bloats every page.
-**Fix:** Export a 512×512 WebP + SVG source.
-
-### L4 — No `dateModified` on LocalBusiness
-Optional but helpful freshness signal.
-
-### L5 — Blog RSS feed missing
-`@astrojs/rss` is not installed. Adds a small discovery signal.
+- **L1** — No font preload for Inter Variable woff2 (FOUT/LCP risk).
+- **L2** — Some images missing `width`/`height` (CLS risk, currently low because most visuals are inline SVG).
+- **L3** — No RSS feed for the blog.
 
 ---
 
 ## Category Deep Dives
 
 ### AI Citability — 78/100
-**Strengths:** Content is dense with quotable atomic facts — specific addresses, phone numbers, ISO numbers, measurement specs. The `ChatExplainer` component on service pages is a perfect "one-sentence answer" block AI engines can lift verbatim. FAQ accordions use plain-HTML `<details>/<summary>` which is extremely extractable. Tables (`toepassing vs kalibratieinterval`, `term vs betekenis`, `gevolg vs impact`) are the single most-citable format for AI summaries.
 
-**Weaknesses:**
-- H3 tolerance contradiction (±2% vs ±4%) will produce contradictory AI citations.
-- Some citable blocks lack `speakable` / microformat hints.
-- Video placeholders in `hoe-vaak-momentsleutel-kalibreren.astro` ("Voeg YouTube embed-ID toe") are visible in rendered HTML — AI crawlers will ingest the placeholder text.
+Atomic citable passages live across the site, particularly:
+- `/diensten/momentsleutel-kalibratie`: *"Kalibratie op 5 meetpunten (≥20%, 40%, 60%, 80%, 100% van het bereik) voor de ingreep. Drie herhalingen per punt."* — score 95.
+- `/blog/iso-6789-type-1-type-2-uitgelegd`: ships a Type I vs II comparison table — score 88. None of the verified NL competitors publish an equivalent.
+- `/blog/verschil-kalibreren-justeren-ijken`: *"Kalibreren is het meten van de afwijking van een instrument ten opzichte van een bekende referentie. Meer niet."* — cleanest definitional sentence in the niche.
 
-**Example of excellent citable content** (`/diensten/momentsleutel-kalibratie`):
-> *"Kalibratie op 5 meetpunten (≥20%, 40%, 60%, 80%, 100% van het bereik) voor de ingreep. Drie herhalingen per punt."*
+### Brand Authority — 8/100
 
-This is an ideal AI-citation passage. Keep writing in this shape.
+The single most-fixable score. Off-site entity desert (see C1). Once LinkedIn + GBP + Wikidata land, this jumps to ~50–60 mechanically.
 
-### Brand Authority — 45/100
-**Strengths:** Clear brand-name consistency. KvK number (67183360) cited. Succession story from "Van Rootselaar Technic bv." adds institutional legitimacy.
+### Content E-E-A-T — 71/100
 
-**Weaknesses:**
-- `sameAs` is empty — the single most fixable authority signal.
-- No Google Business Profile reference detected.
-- No LinkedIn company page cited.
-- No third-party directory citations (Snap-On dealer listing would be a strong external anchor).
-- No Wikipedia / Wikidata entry. For a niche B2B service this is normal but a Wikidata entry is cheap insurance.
-- No detected press mentions or trade-publication citations. `werk.astro` (1,001 lines) likely contains case studies but was not individually verified for named-client + outcome pairs.
+Sub-scores: Experience 17/25, Expertise 21/25, Authoritativeness 14/25, Trustworthiness 19/25. Best-in-niche blog depth and the just-shipped tolerance-honesty wording (±2% DTS guarantee within ±4% ISO norm) are differentiators no NL competitor matches. Held back by absent credentials, no real photos, no testimonials.
 
-### Content E-E-A-T — 72/100
-**Strengths:**
-- **Experience:** The succession narrative ("per 1 januari 2026 heeft DTS de werkzaamheden overgenomen van Van Rootselaar Technic bv.") is a strong authenticity signal.
-- **Expertise:** Content uses precise domain terminology (as-found, as-left, Type I/II, traceerbaar referentieapparatuur, nominale bereik). Reads as written by a practitioner, not a marketer.
-- **Authoritativeness:** ISO 6789:2017 and NEN external references with proper `rel="noopener noreferrer"`.
-- **Trustworthiness:** KvK number, full NAP, specific hours, personal phone number visible.
+### Technical GEO — 84/100
 
-**Weaknesses:**
-- Author credentials for Jan-Piet Schulte are not published anywhere (years of experience, Snap-On factory training, ISO 6789 assessor training).
-- No "Updated" dates on any content — readers and AI cannot tell if a blog post is current.
-- No single "credentials" / "accreditations" page listing the traceability chain of the reference equipment.
+SSR perfect (100). AI allowlist + sitemap chain best-in-class. HSTS at 2-year preload. Deductions: missing security headers (−28), oversized logo, canonical/origin mismatch.
 
-### Technical GEO — 88/100
-**Strengths:**
-- Astro static output = zero JavaScript needed to render content. Every AI crawler sees the complete HTML on first fetch. The single most important technical GEO property and it is already optimal.
-- `lang="nl"` correctly declared.
-- Canonical URL on every page via `Base.astro`.
-- Sitemap generated by `@astrojs/sitemap` at `/sitemap-index.xml` and `/sitemap-0.xml`, referenced in `robots.txt`.
-- Open Graph, Twitter Card, theme-color, author, geo.region all present.
-- Skip link for a11y.
-- `prefers-reduced-motion` respected in GSAP script.
-- Reasonable header hierarchy (one H1 per page; H2/H3 structure logical).
-- HTTPS site.
+### Schema & Structured Data — 87/100
 
-**Weaknesses:**
-- `og:image` / `twitter:image` reference a non-existent file.
-- No explicit AI crawler allowlist (see M7).
-- No `llms.txt`.
+Production-grade. `@id` graph integrity 100%, `areaServed` and `openingHoursSpecification` consistent everywhere. Three fixable items: duplicate LocalBusiness on `/faq`, broken `speakable` selectors, missing `inLanguage` on several node types.
 
-### Schema & Structured Data — 85/100
-**Strengths:** Most sophisticated schema implementation this audit has seen for a small business. Types present:
-- `LocalBusiness` (Base layout + contact page + FAQ page)
-- `WebSite`
-- `Service` (per-service-page)
-- `ItemList` (services overview, home)
-- `FAQPage` (FAQ page + 2 service pages)
-- `ContactPage`
-- `Article` (blog posts)
-- `Brand` (Snap-On page)
+### Platform Optimization — 70/100
 
-All schemas properly use `@id` references to the business node — a Level-2 entity-graph pattern. Well above baseline.
-
-**Weaknesses (all addressable):**
-- Empty `sameAs`.
-- Article `author` = Organization (should be Person).
-- No `BreadcrumbList`.
-- No `HowTo` on process sections.
-- No `Review` / `aggregateRating`.
-- LocalBusiness duplicated across Base.astro and contact.astro / faq.astro — same `@id` used so this is technically OK (fact merging) but introduces drift risk.
-- `openingHours` written as `"Mo-Fr 08:00-17:00"` string in Base but as `OpeningHoursSpecification` object in contact.astro. Standardize on the object form everywhere.
-
-### Platform Optimization — 52/100
-AI systems cite sites most heavily when those sites also appear in their training corpora and common third-party indexes.
-
-| Platform | Readiness | Notes |
-|---|---|---|
-| Google AI Overviews | Medium | Strong schema; needs Google Business Profile claim + reviews for local pack pull-in |
-| ChatGPT web search | Medium-high | Fully crawlable, clean HTML, citable passages |
-| Perplexity AI | Medium-high | Same — strong content, missing off-site citations |
-| Google Gemini | Medium | Benefits from Google Business Profile signals |
-| Bing Copilot | Medium | Verify Bing Webmaster Tools submission; otherwise crawlable |
-
-Not verified in this local audit: presence on YouTube, Reddit, Wikipedia/Wikidata, industry directories.
+Per-platform: Google AIO 78, ChatGPT 74, Perplexity 70, Bing 52 (canonical/origin mismatch), Apple 76. Bing pulls the average down; once C2 (DNS cutover) lands, Bing rises to ~75 and the aggregate to ~76.
 
 ---
 
-## Quick Wins (Implement This Week)
+## Quick Wins (Implementing Now)
 
-1. **Create `public/llms.txt`** (5 minutes, high impact)
-   ```
-   # Dutch Torque Service
-   > Professionele kalibratie, reparatie en ISO 6789:2017 certificering
-   > van momentsleutels. Geautoriseerd Snap-On dealer. Gevestigd in
-   > Riethoven, Noord-Brabant. Werkzaam in Nederland, België en Duitsland.
-
-   ## Kerndiensten
-   - [Momentsleutel Kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie): 5 meetpunten conform ISO 6789:2017
-   - [Momentsleutel Reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie)
-   - [Momentsleutel Justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren)
-   - [ISO 6789:2017 Certificering](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering)
-   - [Snap-On Kalibratie](https://www.dutchtorqueservice.nl/merken/snap-on-kalibratie)
-
-   ## Kennisbank
-   - [Hoe vaak momentsleutel kalibreren](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren)
-   - [ISO 6789 Type 1 & Type 2](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd)
-   - [Verschil kalibreren, justeren, ijken](https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken)
-   - [Momentsleutel gevallen — wat nu?](https://www.dutchtorqueservice.nl/blog/momentsleutel-gevallen-wat-nu)
-
-   ## Contact
-   - Telefoon: +31 6 131 72 774
-   - E-mail: info@dutchtorqueservice.nl
-   - Adres: Tonterstraat 42, 5561 AN Riethoven, NL
-   - Openingstijden: Ma–Vr 08:00–17:00
-   - KvK: 67183360
-   ```
-
-2. **Ship an actual `og-image.jpg`** (1200×630) — returns on every social share, AI preview, and Slack/WhatsApp link.
-
-3. **Fix the tolerance wording** site-wide (`±2%` vs `±4%` distinction — H3 above).
-
-4. **Populate `sameAs`** with Google Business Profile + LinkedIn + KvK profile URLs in `Base.astro`.
-
-5. **Change Article `author` to Person schema** — one find-and-replace across the 5 blog posts.
-
-6. **Add explicit AI-crawler allow lines** to `robots.txt` (M7).
-
-7. **Remove the "Voeg YouTube embed-ID toe" placeholder text** from `hoe-vaak-momentsleutel-kalibreren.astro`.
-
----
+1. Remove duplicate `LocalBusiness` JSON-LD from `/faq` (H1).
+2. Rewrite `speakable.cssSelector` to actually-rendered classes; add `.article-lead` + `.faq-answer` classes (H2).
+3. Add `inLanguage: "nl-NL"` to every schema node that lacks it (H3).
+4. Render "Laatst bijgewerkt" date in `BlogLayout.astro` (H4).
+5. Add credentials scaffold + `Person.hasCredential` to `/over-ons` (H5, partial — scaffold ready for user to fill).
+6. Add `vercel.json` with security headers (H6) and edge caching (M4).
+7. Add `WebSite.potentialAction` `SearchAction` (M5).
+8. Add `totalTime` to `/diensten/*` `HowTo` blocks (M6).
+9. Disambiguate the remaining bare `±2%` references in `diensten/index.astro` (continuation of the prior tolerance fix).
 
 ## 30-Day Action Plan
 
-### Week 1: Foundation fixes (visible on next deploy)
-- [ ] Create `public/llms.txt` (Quick Win 1)
-- [ ] Produce and commit `public/og-image.jpg`
-- [ ] Fix tolerance wording (±2% guarantee vs ±4% ISO norm)
-- [ ] Populate `sameAs` in Base.astro with ≥3 canonical URLs
-- [ ] Change Article author to Person (Jan-Piet Schulte) on all 5 blog posts
-- [ ] Add explicit AI-crawler allow stanzas to `robots.txt`
-- [ ] Remove YouTube placeholder text from blog posts
+### Week 1: Code-only quick wins (this run)
+- [x] Phase 3 + Phase 4 from prior `/seo-optimize` run
+- [x] Duplicate `LocalBusiness` removed from `/faq`
+- [x] `speakable.cssSelector` corrected; classes added to DOM
+- [x] `inLanguage: "nl-NL"` propagated to all nodes
+- [x] Visible "Laatst bijgewerkt" surfaced in blog layout
+- [x] Credentials block scaffold on `/over-ons`
+- [x] `vercel.json` with security headers + edge caching
+- [x] `SearchAction` added to WebSite schema
+- [x] `totalTime` added to remaining HowTos
+- [x] Tolerance disambiguation completed in diensten/index.astro
 
-### Week 2: Schema depth
-- [ ] Add `BreadcrumbList` JSON-LD to `BlogLayout.astro`
-- [ ] Add `HowTo` schema to each service page process section
-- [ ] Add `dateModified` to all Article schemas
-- [ ] Add `inLanguage: "nl-NL"` to every JSON-LD block
-- [ ] Standardize `openingHours` on `OpeningHoursSpecification` object form
-- [ ] Standardize `areaServed` across all schemas
+### Week 2: Off-site entity work (requires user action)
+- [ ] Create LinkedIn Company Page; populate; add to `sameAs`
+- [ ] Claim Google Business Profile at Tonterstraat 42, 5561 AN Riethoven; add to `sameAs`; add `hasMap`
+- [ ] Create Wikidata item; add to `sameAs`
+- [ ] Cut over `www.dutchtorqueservice.nl` DNS to Vercel
+- [ ] Submit `sitemap-index.xml` to Google Search Console + Bing Webmaster Tools
 
-### Week 3: Entity & authority
-- [ ] Claim / verify Google Business Profile; link in `sameAs`
-- [ ] Create LinkedIn company page; link in `sameAs`
-- [ ] Add `/over-ons` Person content block + Person schema for Jan-Piet Schulte (jobTitle, knowsAbout, credentials)
-- [ ] Publish real team photo on `/over-ons`
-- [ ] Publish real workshop/calibration bench photo shared across blog featured images
+### Week 3: Real-content depth
+- [ ] Take + publish real workshop photo (test bench, deadweight standards)
+- [ ] Take + publish real Jan-Piet headshot for `BlogLayout` featured-image slot
+- [ ] Fill in actual credentials in the new `/over-ons` block (years, factory training, prior-employer history)
 
-### Week 4: Content & evergreen assets
-- [ ] Collect and publish 3–5 customer testimonials with schema `Review` markup
-- [ ] Add `aggregateRating` to LocalBusiness once ≥5 reviews exist
-- [ ] Produce or embed a real calibration video (replaces placeholder in `hoe-vaak-momentsleutel-kalibreren`); add `VideoObject` schema
-- [ ] Write one new article targeting a high-intent unanswered query (e.g. "Momentsleutel kalibratie kosten" or "ISO 6789 vs DKD — wat is het verschil")
-- [ ] Submit updated sitemap to Google Search Console and Bing Webmaster Tools
+### Week 4: Reviews + content
+- [ ] Collect ≥5 customer testimonials with named companies
+- [ ] Add `Review` schema items + `aggregateRating` to `LocalBusiness`
+- [ ] Publish 2–3 short YouTube clips of an actual ISO 6789 calibration run
+- [ ] Optionally publish 1 new article: "Momentsleutel kalibratie kosten" (high-intent, no current competitor in NL targets it)
 
 ---
 
 ## Appendix: Pages Analyzed
 
-| URL | Title (source) | Schema Types | GEO Issues Found |
+| URL | Title | Schema Types | Issues |
 |---|---|---|---|
-| `/` | Momentsleutel Kalibratie & Reparatie… | LocalBusiness, WebSite, ItemList | 2 (og-image, sameAs) |
-| `/over-ons` | Over Ons \| Dutch Torque Service… | LocalBusiness, WebSite | 3 (no Person, placeholder photo, no credentials) |
-| `/contact` | Momentsleutel Kalibratie Riethoven… | LocalBusiness, WebSite, ContactPage | 1 (og-image) |
-| `/faq` | Momentsleutel Kalibratie FAQ… | LocalBusiness, WebSite, FAQPage | 1 (og-image) |
-| `/diensten` | Momentsleutel Diensten… | LocalBusiness, WebSite, ItemList (Service×4) | 2 (HowTo missing, areaServed drift) |
-| `/diensten/momentsleutel-kalibratie` | Momentsleutel Laten Kalibreren… | LocalBusiness, WebSite, Service, FAQPage | 3 (tolerance wording, HowTo, speakable) |
-| `/diensten/iso-6789-certificering` | ISO 6789 Certificaat Momentsleutel | LocalBusiness, WebSite, Service, FAQPage | 2 (HowTo, areaServed) |
-| `/diensten/momentsleutel-justeren` | (not individually read — assumed same pattern) | Service (expected) | n/a verified |
-| `/diensten/momentsleutel-reparatie` | (not individually read — assumed same pattern) | Service (expected) | n/a verified |
-| `/merken/snap-on-kalibratie` | Snap-On Kalibratie & Reparatie… | LocalBusiness, WebSite, Service + Brand | 1 (no HowTo) |
-| `/blog` | Blog — Momentsleutel Kennisbank | LocalBusiness, WebSite | 1 (no CollectionPage schema) |
-| `/blog/hoe-vaak-momentsleutel-kalibreren` | Hoe vaak momentsleutel kalibreren | Article | 3 (author=Org, YouTube placeholder, no dateModified) |
-| `/blog/iso-6789-type-1-type-2-uitgelegd` | (inferred) | Article (expected) | 3 (same as above) |
-| `/blog/mijn-momentsleutel-klopt-niet-meer` | (inferred) | Article (expected) | 3 (same as above) |
-| `/blog/momentsleutel-gevallen-wat-nu` | (inferred) | Article (expected) | 3 (same as above) |
-| `/blog/verschil-kalibreren-justeren-ijken` | (inferred) | Article (expected) | 3 (same as above) |
-| `/werk` | (not fully read — 1,001 lines) | (likely CaseStudy/ItemList) | n/a verified |
-
-> Note: `diensten/momentsleutel-justeren`, `diensten/momentsleutel-reparatie`, `werk`, and 4 of the 5 blog posts were not individually inspected. The sampled files are highly consistent, so findings on `author=Organization`, `dateModified` absence, and tolerance wording almost certainly repeat across them. Verify during remediation.
+| `/` | Momentsleutel Kalibratie ISO 6789:2017 \| Dutch Torque Service | LocalBusiness, WebSite, Person, ItemList | speakable mismatch |
+| `/contact` | Momentsleutel Kalibratie Riethoven \| Dutch Torque Service | + ContactPage | inLanguage missing |
+| `/over-ons` | Over Ons \| Dutch Torque Service — Riethoven, Noord-Brabant | + AboutPage+ProfilePage | credentials missing |
+| `/faq` | Momentsleutel Kalibratie FAQ \| Dutch Torque Service | + FAQPage (10 Q) | DUP LocalBusiness |
+| `/werk` | Gecertificeerde Momentsleutel Cases \| Dutch Torque Service | (Base graph only) | (clean) |
+| `/diensten` | Momentsleutel Diensten \| Dutch Torque Service | + ItemList(Service×4) | (clean) |
+| `/diensten/momentsleutel-kalibratie` | Momentsleutel Laten Kalibreren \| Dutch Torque Service | + Service+HowTo+FAQPage | (clean) |
+| `/diensten/momentsleutel-reparatie` | Momentsleutel Reparatie — Alle Merken \| Dutch Torque Service | + Service+HowTo | totalTime missing |
+| `/diensten/momentsleutel-justeren` | Momentsleutel Justeren ISO 6789 \| Dutch Torque Service | + Service+HowTo | totalTime missing |
+| `/diensten/iso-6789-certificering` | ISO 6789 Certificaat Momentsleutel \| Dutch Torque Service | + Service+FAQPage | (clean) |
+| `/merken/snap-on-kalibratie` | Snap-On Kalibratie & Reparatie \| Geautoriseerd Dealer DTS | + Service+Brand | (clean) |
+| `/blog/` | Blog \| Dutch Torque Service — Momentsleutel Kennisbank | + CollectionPage+ItemList | (clean) |
+| `/blog/iso-6789-type-1-type-2-uitgelegd` | ISO 6789 Type I en Type II … | + Article + BreadcrumbList | dateModified visible? |
+| `/blog/verschil-kalibreren-justeren-ijken` | Kalibreren, Justeren of IJken … | + Article + BreadcrumbList + FAQPage | dateModified visible? |
+| `/blog/hoe-vaak-momentsleutel-kalibreren` | Hoe vaak moet je een momentsleutel laten kalibreren? | + Article + BreadcrumbList | dateModified visible? |
+| `/blog/mijn-momentsleutel-klopt-niet-meer` | Mijn momentsleutel klopt niet meer — wat nu? | + Article + BreadcrumbList | dateModified visible? |
+| `/blog/momentsleutel-gevallen-wat-nu` | Momentsleutel Gevallen — Wat Nu? | + Article + BreadcrumbList + FAQPage | dateModified visible? |
 
 ---
 
-## Competitor Evidence
+## Verified Competitor Evidence
 
-No competitor references were included because (a) the skill was invoked against a local project with no WebFetch path to dutchtorqueservice.nl in this session, and (b) the `Competitor Evidence Standard` in this skill's spec requires every competitor claim to be verified against a live URL, which is not possible in this run. Competitive benchmarking against domains like `calibra.nl`, `dkd.nl`, `testequity.nl`, and Snap-On's own NL dealer network can be added in a follow-up GEO audit once the site is reachable for live comparison.
+| Competitor | URL | Notable Differentiation Against DTS |
+|---|---|---|
+| Kalibratiebureau Nederland | https://www.kalibratiebureau.nl/ | ISO 17025-accredited; owns the "accredited" entity slot DTS cannot match without a 17025 lab |
+| Laco Zaandam | https://lacozaandam.com/nl/diensten/momentsleutels-kalibreren/ | No ISO 6789 reference, no tolerance tables, no FAQ schema (DTS wins on depth) |
+| MG Service | https://mgservice.nl/service-en-reparatie-gereedschap/momentsleutel-kalibreren/ | DIN EN ISO 6789:2017 mentioned; "officiële Wera-partner" anchor; no schema, no tables |
+| Zuidwest Keuringen | https://zuidwestkeuringen.nl/momentsleutel-kalibreren/ | Named operator Michäel Thoen + Koninklijke Metaalunie membership (DTS lacks comparable credentials surface) |
+| CE-ESTER (machineskeuren.nl) | https://www.machineskeuren.nl/kalibreren/momentsleutel/ | "1.000+ bedrijven" social-proof claim; mechanical test bench detail (0.5–4s force) |
+| RAD Torque NL (distributor, not direct competitor) | https://www.radialtorque.eu/radtorque/momentsleutels/kalibratie/ | Systems-product depth; not a direct AEO competitor in calibration-as-service |
 
 ---
 
-**Prepared by:** `/geo-audit` skill (local source-code audit mode)
-**Next recommended audit:** 90 days after deployment of Week-1 + Week-2 fixes, run in live-URL mode for a full off-site / brand-authority pass.
+**Prepared by:** `/geo-audit` skill (live URL audit, 5-subagent parallel)
+**Next recommended audit:** 60 days after Week 2 off-site entity work + DNS cutover land, to re-score Brand Authority against actual third-day citations.

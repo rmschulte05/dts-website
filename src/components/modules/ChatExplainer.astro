@@ -32,13 +32,13 @@ const {
     <span class="chrome-title">DTS &middot; Vraag &amp; Antwoord</span>
     <span class="chrome-live" aria-hidden="true">
       <span class="live-dot"></span>
-      <span class="live-label">LIVE</span>
+      <span class="live-label">Q&amp;A</span>
     </span>
   </div>
 
   <!-- Messages -->
   <div class="chat-body">
-    <!-- User question — types in on scroll entry -->
+    <!-- User question, types in on scroll entry -->
     <div class="chat-row user-row">
       <div class="bubble user-bubble" aria-label={question}>
         <span class="user-text" aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">|</span>
@@ -308,7 +308,7 @@ const {
       setTimeout(typeChar, 550);
     }
 
-    // Emoji reactions — one click per emoji per visit
+    // Emoji reactions, one click per emoji per visit
     chat.querySelectorAll<HTMLButtonElement>('.reaction-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         if (btn.classList.contains('reacted')) return;

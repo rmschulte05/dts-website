@@ -10,7 +10,8 @@ const diensten = [
 
 const navigatie = [
   { label: 'Home',     href: '/' },
-  { label: 'Werk',     href: '/werk' },
+  { label: 'Diensten', href: '/diensten' },
+  { label: 'Blog',     href: '/blog' },
   { label: 'Over Ons', href: '/over-ons' },
   { label: 'Contact',  href: '/contact' },
 ];
@@ -22,7 +23,7 @@ const navigatie = [
   <div class="footer-bg" aria-hidden="true">
     <div class="footer-dots"></div>
 
-    <!-- Large precision gauge — bottom right -->
+    <!-- Large precision gauge, bottom right -->
     <svg class="footer-gauge" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="250" cy="250" r="240" stroke="#7AAFC4" stroke-width="0.5"/>
       <circle cx="250" cy="250" r="195" stroke="#7AAFC4" stroke-width="0.3"/>
@@ -64,7 +65,7 @@ const navigatie = [
   <!-- ── CONTENT ── -->
   <div class="footer-content">
 
-    <!-- Brand block — full row on mobile, left panel on desktop -->
+    <!-- Brand block, full row on mobile, left panel on desktop -->
     <div class="footer-brand" data-animate>
       <img
         src="/logo/dts-logo-1x.webp"
@@ -78,7 +79,7 @@ const navigatie = [
       />
       <p class="footer-desc">
         Specialist in professionele kalibratie, service en reparatie van momentsleutels.
-        Gecertificeerd conform ISO&nbsp;6789:2017 — type I en type II.
+        Gecertificeerd conform ISO&nbsp;6789:2017 en 2003 voor type I en type II.
       </p>
 
       <!-- Certification badges -->
@@ -88,7 +89,7 @@ const navigatie = [
             <rect x="1" y="1" width="14" height="14" rx="2" stroke="#64C48A" stroke-width="1"/>
             <path d="M4 8l2.5 2.5L12 5" stroke="#64C48A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span style="color:#64C48A;">ISO 6789:2017</span>
+          <span style="color:#64C48A;">ISO 6789:2017 en 2003</span>
         </div>
         <div class="footer-badge">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -104,7 +105,7 @@ const navigatie = [
             <circle cx="8" cy="8" r="3"   stroke="#C4AF64" stroke-width="1"/>
             <circle cx="8" cy="8" r="1"   fill="#C4AF64"/>
           </svg>
-          <span style="color:#C4AF64;">±2% Koppelmoment</span>
+          <span style="color:#C4AF64;">±2% afwijking</span>
         </div>
       </div>
     </div>
@@ -156,14 +157,6 @@ const navigatie = [
             </a>
           </li>
           <li>
-            <a href="tel:+31613172774" class="footer-link">
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
-                <path d="M3 1h3l1.5 4-2 1.2a9.5 9.5 0 004.3 4.3L11 8.5l4 1.5v3a1 1 0 01-1 1C6.2 14 1 8.8 1 2a1 1 0 011-1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/>
-              </svg>
-              +31(0)6-131 72 774
-            </a>
-          </li>
-          <li>
             <span class="footer-link footer-link--plain">
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;">
                 <circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="1.1"/>
@@ -176,7 +169,7 @@ const navigatie = [
 
         <!-- CTA button -->
         <a href="/contact" class="footer-cta-btn">
-          Offerte aanvragen
+          Reparatie aanvragen
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
             <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>

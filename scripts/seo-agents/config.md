@@ -65,7 +65,7 @@ VOICE_GUIDELINES:
 **Vocabulary to USE:**
 - `gereedschap` not `instrumenten`
 - `sleutel` in conversational context, `momentsleutel` in technical
-- `koppelmoment` for torque in technical context
+- `afwijking` for torque in technical context
 - `afwijking` for deviation
 - `buiten tolerantie` for out of spec
 - `nakijken` / `checken` interchangeably
@@ -99,7 +99,7 @@ SERVICES:
   What: measuring and documenting torque deviation per ISO 6789:2017
   Key facts: 48-hour turnaround, ±2% accuracy, as-found/as-left protocol
 
-- Momentsleutel Reparatie   → /diensten/momentsleutel-reparatie
+- Momentsleutel reparatie   → /diensten/momentsleutel-reparatie
   What: diagnosing and repairing click mechanisms, springs, ratchets
   Key facts: free diagnosis, repair estimate before any work starts
 
@@ -131,7 +131,7 @@ These stats are verified and can be used without additional fact-checking:
 ```
 APPROVED_STATS:
 - Turnaround: 48 uur na ontvangst
-- Accuracy guarantee: ±2% koppelmoment
+- Accuracy guarantee: ±2% afwijking
 - Standard: ISO 6789:2017
 - Typical drift (unchecked 2 years): 8–12% buiten tolerantie (observed in practice)
 - Opening hours: Ma–Vr 08:00–17:00
@@ -189,10 +189,10 @@ COMPETITORS:
 
 ```
 ANCHOR_PATTERNS:
-- "momentsleutel kalibreren laten"       → /diensten/momentsleutel-kalibratie
+- "Momentsleutel laten kalibreren"       → /diensten/momentsleutel-kalibratie
 - "ISO 6789:2017 certificaat"            → /diensten/iso-6789-certificering
-- "momentsleutel laten justeren"         → /diensten/momentsleutel-justeren
-- "momentsleutel reparatie"              → /diensten/momentsleutel-reparatie
+- "Momentsleutel laten justeren"         → /diensten/momentsleutel-justeren
+- "Momentsleutel reparatie"              → /diensten/momentsleutel-reparatie
 - "Snap-On kalibratie Noord-Brabant"     → /merken/snap-on-kalibratie
 - "ons volledige aanbod van diensten"    → /diensten
 ```

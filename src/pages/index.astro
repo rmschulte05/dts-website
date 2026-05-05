@@ -4,7 +4,6 @@ import WrenchBackground from '../components/modules/WrenchBackground.astro';
 import NavIsland from '../components/modules/NavIsland.astro';
 import HeroDTS from '../components/modules/HeroDTS.astro';
 import AboutSnippet from '../components/modules/AboutSnippet.astro';
-import CasesGrid from '../components/modules/CasesGrid.astro';
 import Services from '../components/modules/Services.astro';
 import CoreValues from '../components/modules/CoreValues.astro';
 import FooterDTS from '../components/modules/FooterDTS.astro';
@@ -19,13 +18,13 @@ const servicesSchema = {
       "@type": "ListItem",
       "position": 1,
       "name": "Momentsleutel Kalibratie",
-      "description": "Professionele kalibratie op 5 meetpunten conform ISO 6789:2017",
+      "description": "Professionele kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003",
       "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie"
     },
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Momentsleutel Reparatie",
+      "name": "Momentsleutel reparatie",
       "description": "Volledig herstel van momentsleutels, van Snap-On tot Stahlwille",
       "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie"
     },
@@ -39,7 +38,7 @@ const servicesSchema = {
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "ISO 6789:2017 Certificering",
+      "name": "ISO 6789:2017 en 2003 Certificering",
       "description": "Officieel kalibratiecertificaat, audit-proof voor gecertificeerde bedrijven",
       "url": "https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering"
     }
@@ -48,8 +47,8 @@ const servicesSchema = {
 ---
 
 <Base
-  title="Momentsleutel Kalibratie & Reparatie | Dutch Torque Service — ISO 6789:2017 Gecertificeerd"
-  description="Momentsleutel kalibratie, reparatie en ISO 6789:2017 certificering. ±2% servicegarantie (ruim binnen de ±4% ISO-tolerantie), snelle doorlooptijd. Geautoriseerd Snap-On dealer voor werkplaatsen in Nederland, België en Duitsland."
+  title="Momentsleutel Kalibratie ISO 6789:2017 en 2003 | Dutch Torque Service"
+  description="Momentsleutel kalibratie en ISO 6789:2017 en 2003 certificering. ±2% servicegarantie binnen ±4% ISO-tolerantie. Geautoriseerd Snap-On dealer voor NL, BE en DE."
   canonicalPath="/"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
@@ -62,7 +61,6 @@ const servicesSchema = {
   <main>
     <HeroDTS />
     <AboutSnippet />
-    <CasesGrid />
     <Services />
     <CoreValues />
   </main>
