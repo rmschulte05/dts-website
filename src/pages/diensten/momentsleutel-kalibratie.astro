@@ -13,7 +13,7 @@ const schema = {
   "serviceType": "Kalibratie momentsleutel",
   "name": "Momentsleutel Kalibratie",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Momentsleutel kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie. Volledig protocol inbegrepen. Geautoriseerd Snap-On dealer.",
+  "description": "Momentsleutel kalibreren en kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie. Certificaat en meetrapport (as-found / as-left) inbegrepen. Lab in Riethoven. Geautoriseerd Snap-On dealer.",
   "areaServed": [
     { "@type": "Country", "name": "Netherlands" },
     { "@type": "Country", "name": "Belgium" },
@@ -44,53 +44,6 @@ const howToSchema = {
     { "@type": "HowToStep", "position": 3, "name": "As-found meting", "text": "Kalibratie op 5 meetpunten (20%, 40%, 60%, 80% en 100% van het bereik) voor de ingreep, met minimaal 3 herhalingen per punt." },
     { "@type": "HowToStep", "position": 4, "name": "Justering indien nodig", "text": "Als de afwijking buiten tolerantie valt, wordt de sleutel gejusteerd voordat de as-left meting plaatsvindt." },
     { "@type": "HowToStep", "position": 5, "name": "Protocol & certificaat", "text": "Volledig kalibratieprotocol met as-found, as-left, gebruikte referentieapparatuur en aanbevolen interval voor de volgende kalibratie." }
-  ]
-};
-
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Hoeveel meetpunten gebruiken jullie bij kalibratie?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "5 punten: 20%, 40%, 60%, 80% en 100% van het nominale bereik, met minimaal 3 herhalingen per punt."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Welke typen momentsleutels kalibreren jullie?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Alle Type I (indicerend) en Type II (instellend) instrumenten conform ISO 6789:2017 en 2003. Van balksleutels tot digitale kliksleutels en alles daartussenin."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Moet ik mijn sleutel opsturen of kunnen jullie op locatie kalibreren?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Opsturen is de standaard. Heb je een grotere batch? Neem even contact op, dan kijken we wat we voor je kunnen regelen."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Hoe snel ontvang ik mijn certificaat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Snel na ontvangst van je sleutel sturen we je het certificaat per e-mail."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Mijn kwaliteitshandboek vereist ISO-kalibratie, voldoen jullie hieraan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Wij kalibreren conform ISO 6789:2017 en 2003 Type I en II, met traceerbare referentieapparatuur en een geldig certificaat."
-      }
-    }
   ]
 };
 
@@ -204,12 +157,44 @@ const faq = [
     a: 'Ja. Wij kalibreren conform <a href="/diensten/iso-6789-certificering">ISO 6789:2017 en 2003</a> Type I en II, met traceerbare referentieapparatuur en een geldig certificaat.',
     html: true,
   },
+  {
+    q: 'Wat kost een momentsleutel kalibratie?',
+    a: 'De prijs hangt af van het type momentsleutel en het merk. Een vaste prijs noemen we hier niet. <a href="/contact">Stuur een bericht</a>, bel <a href="tel:+31613172774">+31 6 13 17 27 74</a> of mail <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>, dan hoor je wat het voor jouw sleutel(s) wordt.',
+    html: true,
+  },
+  {
+    q: 'Hoe vaak moet ik een momentsleutel laten kalibreren?',
+    a: 'Als richtlijn eens per jaar (12 maanden). Gebruik je de sleutel dagelijks in productie of assemblage, dan is elke 3 tot 6 maanden of na 5.000 gebruikscycli verstandiger. Kalibreer ook opnieuw na een val of bij twijfel. Meer uitleg staat in <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak moet je een momentsleutel kalibreren</a>.',
+    html: true,
+  },
+  {
+    q: 'Wat is het verschil tussen momentsleutel kalibreren en momentsleutel ijken?',
+    a: 'Kalibreren is meten hoeveel jouw sleutel afwijkt en dat vastleggen. IJken is een wettelijke handeling voor meetinstrumenten als weegschalen en benzinepompen. Momentsleutels vallen daar niet onder. Zoek je "momentsleutel ijken", dan heb je bijna altijd een kalibratie met certificaat nodig. Zie <a href="/blog/verschil-kalibreren-justeren-ijken">het verschil tussen kalibreren, justeren en ijken</a>.',
+    html: true,
+  },
+  {
+    q: 'Krijg ik een certificaat en meetrapport bij de kalibratie?',
+    a: 'Ja. Je krijgt een <a href="/diensten/iso-6789-certificering">kalibratiecertificaat</a> met het kalibratieprotocol: as-found en as-left meetwaarden, de gebruikte referentieapparatuur en een aanbevolen termijn voor de volgende kalibratie.',
+    html: true,
+  },
 ];
+
+// Schema is afgeleid van de zichtbare FAQ, zodat beide nooit uit de pas lopen.
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
 ---
 
 <Base
-  title="Momentsleutel laten kalibreren | Dutch Torque Service"
-  description="Laat je momentsleutel kalibreren op 5 meetpunten conform ISO 6789:2017 en 2003. Protocol + certificaat inbegrepen. Bel +31(0)6-131 72 774."
+  title="Momentsleutel kalibreren & kalibratie | Dutch Torque Service"
+  description="Momentsleutel laten kalibreren? Kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003, met certificaat en meetrapport. Riethoven, +31 6 13 17 27 74."
   canonicalPath="/diensten/momentsleutel-kalibratie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -253,6 +238,23 @@ const faq = [
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">ISO 6789:2017 en 2003</span>
           </div>
         </div>
+    </PageSection>
+
+    <!-- ══════════════════════════════════════
+         KALIBRATIE — definitie (kalibreren + kalibratie)
+    ══════════════════════════════════════ -->
+    <PageSection>
+      <div class="sec-head" data-animate>
+        <h2 class="sec-title">Momentsleutel kalibratie: wat het is en wanneer je het nodig hebt.</h2>
+      </div>
+      <div class="def-card" data-animate data-animate-delay="0.08">
+        <p class="body-text">
+          Een momentsleutel kalibreren betekent meten hoeveel jouw sleutel afwijkt van de ingestelde waarde en dat vastleggen. De kalibratie van een momentsleutel gebeurt bij ons op 5 meetpunten, conform ISO 6789:2017 en 2003, en eindigt met een certificaat en meetrapport. Wijkt de sleutel te veel af, dan <a href="/diensten/momentsleutel-justeren">justeren</a> we hem en meten we opnieuw.
+        </p>
+        <p class="body-text" style="margin-top:1rem;">
+          Meestal eens per jaar, bij intensief gebruik vaker, en altijd na een val. Meer daarover lees je in <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak je een momentsleutel moet kalibreren</a>.
+        </p>
+      </div>
     </PageSection>
 
     <!-- WHAT IS X. CHAT UI -->
@@ -378,6 +380,23 @@ const faq = [
     </PageSection>
 
     <!-- ══════════════════════════════════════
+         IJKEN
+    ══════════════════════════════════════ -->
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+      <div class="sec-head" data-animate>
+        <h2 id="ijken" class="sec-title">Momentsleutel ijken? Dan bedoel je meestal kalibreren.</h2>
+      </div>
+      <div class="def-card" data-animate data-animate-delay="0.08">
+        <p class="body-text">
+          IJken is een wettelijke handeling, bijvoorbeeld voor weegschalen en benzinepompen. Momentsleutels vallen daar niet onder, dus een officieel ijkbewijs voor een momentsleutel bestaat niet. Staat "ijken" in jouw kwaliteitshandboek of auditrapport, dan wordt bijna altijd een kalibratie met certificaat bedoeld. Die leveren wij, en zo nodig <a href="/diensten/momentsleutel-justeren">justeren</a> we de sleutel erbij.
+        </p>
+        <p class="body-text" style="margin-top:1rem;">
+          Het hele verschil staat uitgelegd in <a href="/blog/verschil-kalibreren-justeren-ijken">kalibreren, justeren of ijken: wat is het verschil?</a>
+        </p>
+      </div>
+    </PageSection>
+
+    <!-- ══════════════════════════════════════
          FAQ
     ══════════════════════════════════════ -->
     <PageSection>
@@ -417,8 +436,11 @@ const faq = [
           <p class="sec-sub">
             Bel of mail. Stuur je sleutel op naar ons lab in Riethoven (Noord-Brabant), landelijk op te sturen, snel na ontvangst gekalibreerd en onderweg terug.
           </p>
+          <p class="body-text" style="margin-top:1rem;">
+            Dutch Torque Service · Jan-Piet Schulte · Tonterstraat 42, 5561 AN Riethoven · +31 6 13 17 27 74 · info@dutchtorqueservice.nl
+          </p>
           <div class="sec-ctas">
-            <a href="tel:+31613172774" class="btn btn-primary">Bel +31(0)6-131 72 774</a>
+            <a href="tel:+31613172774" class="btn btn-primary">Bel +31 6 13 17 27 74</a>
             <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-outline">Stuur een e-mail</a>
           </div>
         </div>
@@ -475,6 +497,10 @@ const faq = [
     font-size: 0.975rem;
     line-height: 1.8;
     color: #8EAAB8;
+  }
+  .body-text a {
+    color: #7AAFC4;
+    text-decoration: underline;
   }
 
   /* ── What is it ── */
