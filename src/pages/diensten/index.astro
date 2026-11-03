@@ -3,35 +3,18 @@ import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
 import PageSection from '../../components/ui/PageSection.astro';
+import ProcessSteps from '../../components/modules/ProcessSteps.astro';
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Diensten Dutch Torque Service",
-  "description": "Overzicht van alle momentsleutel diensten van Dutch Torque Service: kalibratie, reparatie, justeren en ISO 6789:2017 en 2003 certificering.",
+  "description": "Overzicht van alle momentsleutel diensten van Dutch Torque Service: reparatie, justeren, kalibratie en ISO 6789:2017 en 2003 certificering.",
   "url": "https://www.dutchtorqueservice.nl/diensten",
   "itemListElement": [
     {
       "@type": "ListItem",
       "position": 1,
-      "item": {
-        "@type": "Service",
-        "name": "Momentsleutel Kalibratie",
-        "description": "Professionele kalibratie van momentsleutels conform ISO 6789:2017 en 2003 met ±2% nauwkeurigheidsgarantie en volledig gedocumenteerd certificaat.",
-        "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie",
-        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-        "areaServed": [
-          { "@type": "Country", "name": "Netherlands" },
-          { "@type": "Country", "name": "Belgium" },
-          { "@type": "Country", "name": "Germany" },
-          { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
-        ],
-        "inLanguage": "nl-NL"
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
       "item": {
         "@type": "Service",
         "name": "Momentsleutel reparatie",
@@ -49,12 +32,30 @@ const serviceSchema = {
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 2,
       "item": {
         "@type": "Service",
         "name": "Momentsleutel Justeren",
         "description": "Nauwkeurig bijstellen van momentsleutels die buiten tolerantie zijn geraakt, inclusief her-kalibratie en certificering na de ingreep.",
         "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren",
+        "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+        "areaServed": [
+          { "@type": "Country", "name": "Netherlands" },
+          { "@type": "Country", "name": "Belgium" },
+          { "@type": "Country", "name": "Germany" },
+          { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
+        ],
+        "inLanguage": "nl-NL"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Service",
+        "name": "Momentsleutel Kalibratie",
+        "description": "Professionele kalibratie van momentsleutels conform ISO 6789:2017 en 2003 met ±2% nauwkeurigheidsgarantie en volledig gedocumenteerd certificaat.",
+        "url": "https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie",
         "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
         "areaServed": [
           { "@type": "Country", "name": "Netherlands" },
@@ -88,21 +89,11 @@ const serviceSchema = {
 
 const services = [
   {
-    href: '/diensten/momentsleutel-kalibratie',
-    label: 'Kalibratie',
-    cta: 'Momentsleutel kalibreren: hoe het werkt',
-    accent: '#7AAFC4',
-    eyebrow: 'ISO 6789:2017 en 2003',
-    title: 'Momentsleutel Kalibratie',
-    desc: 'Wij meten en documenteren de werkelijke waarden van jouw momentsleutel binnen onze ±2% servicegarantie (ruim binnen de ±4% ISO 6789:2017 en 2003 tolerantie). Inclusief certificaat.',
-    icon: `<svg width="32" height="32" viewBox="0 0 80 80" fill="none"><circle cx="20" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="40" r="7" stroke="currentColor" stroke-width="1"/><rect x="34" y="34" width="32" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="66" y="31" width="10" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>`,
-  },
-  {
     href: '/diensten/momentsleutel-reparatie',
-    label: 'Reparatie',
+    label: 'Repareren',
     cta: 'Reparatie bekijken',
     accent: '#C48A64',
-    eyebrow: 'Alle merken',
+    eyebrow: 'Alleen indien nodig',
     title: 'Momentsleutel reparatie',
     desc: 'Van mechanische slijtage tot interne beschadigingen, wij repareren momentsleutels van alle merken. Diagnose altijd gratis, reparatie pas na jouw akkoord. Na reparatie altijd opnieuw gecertificeerd.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
@@ -112,14 +103,24 @@ const services = [
     label: 'Justeren',
     cta: 'Hoe justeren werkt',
     accent: '#C4AF64',
-    eyebrow: 'Nauwkeurig bijstellen',
+    eyebrow: 'Alleen indien nodig',
     title: 'Momentsleutel Justeren',
     desc: 'Is jouw momentsleutel buiten tolerantie geraakt? Wij stellen hem nauwkeurig bij tot binnen onze ±2% servicegarantie. Inclusief her-kalibratie en nieuw certificaat met as-left waarden.',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
   },
   {
+    href: '/diensten/momentsleutel-kalibratie',
+    label: 'Kalibreren',
+    cta: 'Momentsleutel kalibreren: hoe het werkt',
+    accent: '#7AAFC4',
+    eyebrow: 'ISO 6789:2017 en 2003',
+    title: 'Momentsleutel Kalibratie',
+    desc: 'Wij meten en documenteren de werkelijke waarden van jouw momentsleutel binnen onze ±2% servicegarantie (ruim binnen de ±4% ISO 6789:2017 en 2003 tolerantie). Inclusief certificaat.',
+    icon: `<svg width="32" height="32" viewBox="0 0 80 80" fill="none"><circle cx="20" cy="40" r="14" stroke="currentColor" stroke-width="1.5"/><circle cx="20" cy="40" r="7" stroke="currentColor" stroke-width="1"/><rect x="34" y="34" width="32" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><rect x="66" y="31" width="10" height="18" rx="4" stroke="currentColor" stroke-width="1.5"/></svg>`,
+  },
+  {
     href: '/diensten/iso-6789-certificering',
-    label: 'Certificering',
+    label: 'Certificeren',
     cta: 'Certificaat bekijken',
     accent: '#64C48A',
     eyebrow: 'Audit-proof',
@@ -151,7 +152,7 @@ const services = [
           Momentsleutel Diensten.
         </h1>
         <p class="sec-sub" style="font-size: clamp(1rem, 1.6vw, 1.15rem);">
-          Alles voor jouw momentsleutel <br> Van kalibratie en certificering tot volledige reparatie. <br> Gecertificeerd conform ISO 6789:2017 en 2003.
+          Alles voor jouw momentsleutel <br> Diagnosticeren, repareren, justeren, kalibreren, certificeren. <br> Gecertificeerd conform ISO 6789:2017 en 2003.
         </p>
         <!-- Scroll hint -->
         <div class="scroll-hint" aria-hidden="true">
@@ -159,6 +160,10 @@ const services = [
             <path d="M4 7l5 5 5-5" stroke="#7AAFC4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
+    </PageSection>
+
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+      <ProcessSteps heading="Zo werken wij aan elke sleutel." />
     </PageSection>
 
     <!-- SERVICE CARDS 2x2 GRID -->
@@ -209,25 +214,6 @@ const services = [
             </a>
           ))}
         </div>
-    </PageSection>
-
-    <!-- MERKEN / SNAP-ON -->
-    <PageSection center animate>
-          <div class="sec-eyebrow">
-            <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
-            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Merken</span>
-            <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
-          </div>
-          <h2 class="sec-title">Geautoriseerd Snap-On Dealer.</h2>
-          <p class="sec-sub">
-            Dutch Torque Service is geautoriseerd Snap-On dealer voor de regio Zuid-Noord-Brabant. Wij kalibreren en repareren Snap-On momentsleutels met hetzelfde ISO 6789:2017 en 2003 protocol als al onze andere sleutels.
-          </p>
-          <div class="sec-ctas">
-            <a href="/merken/snap-on-kalibratie" class="btn btn-outline">
-              Snap-On kalibratie &amp; dealer
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
     </PageSection>
 
     <!-- CTA -->

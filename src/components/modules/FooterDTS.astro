@@ -1,12 +1,13 @@
 ---
+import { WORK_SEQUENCE } from '../../data/workSequence';
+
 const year = new Date().getFullYear();
 
-const diensten = [
-  { label: 'Justeren',      href: '/diensten#justeren',      color: '#C4AF64' },
-  { label: 'Kalibratie',    href: '/diensten#kalibratie',    color: '#7AAFC4' },
-  { label: 'Reparatie',     href: '/diensten#reparatie',     color: '#C48A64' },
-  { label: 'Certificering', href: '/diensten#certificering', color: '#64C48A' },
-];
+const diensten = WORK_SEQUENCE.map((step) => ({
+  label: step.title,
+  href: step.href,
+  color: step.accent,
+}));
 
 const navigatie = [
   { label: 'Home',     href: '/' },

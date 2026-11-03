@@ -18,7 +18,6 @@ Identify the page type and apply the right keyword strategy:
 | momentsleutel-reparatie | `Momentsleutel reparatie` | `momentsleutel defect`, `kliksleutel repareren`, `momentsleutel kapot` |
 | momentsleutel-justeren | `momentsleutel justeren` | `momentsleutel afstellen`, `momentsleutel te laat klikken` |
 | iso-6789-certificering | `ISO 6789 certificaat` | `ISO 6789:2017`, `kalibratie certificaat momentsleutel`, `traceerbaar certificaat` |
-| snap-on-kalibratie | `Snap-On momentsleutel kalibreren` | `Snap-On dealer Noord-Brabant`, `Snap-On service` |
 | over-ons | `Dutch Torque Service` | `momentsleutel specialist Nederland`, `Jan-Piet Schulte` |
 | contact | `momentsleutel kalibratie contact` | `Dutch Torque Service telefoon`, `momentsleutel opsturen` |
 
@@ -53,7 +52,6 @@ Identify the page type and apply the right keyword strategy:
   - `"ISO 6789:2017 certificaat"` → `/diensten/iso-6789-certificering`
   - `"Momentsleutel laten justeren"` → `/diensten/momentsleutel-justeren`
   - `"Momentsleutel reparatie"` → `/diensten/momentsleutel-reparatie`
-  - `"Snap-On kalibratie Noord-Brabant"` → `/merken/snap-on-kalibratie`
   - `"ons volledige aanbod van diensten"` → `/diensten`
 - Never: `klik hier`, `lees meer`, `bekijk onze diensten`, `meer informatie`
 

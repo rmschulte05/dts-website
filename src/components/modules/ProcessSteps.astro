@@ -1,0 +1,193 @@
+---
+import { WORK_SEQUENCE, type WorkStepId } from '../../data/workSequence';
+
+interface Props {
+  heading?: string;
+  headingId?: string;
+  eyebrow?: string;
+  bodies?: Partial<Record<WorkStepId, string>>;
+}
+
+const {
+  heading = 'Van diagnosticeren tot certificeren.',
+  headingId,
+  eyebrow = 'Ons proces',
+  bodies,
+} = Astro.props;
+
+const steps = WORK_SEQUENCE.map((step) => ({
+  ...step,
+  body: bodies?.[step.id] ?? step.body,
+}));
+---
+
+<div class="proc-head" data-animate>
+  <div class="proc-eyebrow">
+    <span class="proc-rule"></span>
+    <span class="proc-eyebrow-text">{eyebrow}</span>
+    <span class="proc-rule"></span>
+  </div>
+  <h2 class="proc-title" id={headingId}>{heading}</h2>
+</div>
+
+<div class="proc-grid">
+  {steps.map((step, i) => (
+    <div
+      class="proc-card"
+      data-animate
+      data-animate-delay={String(i * 0.08)}
+      style={`--accent: ${step.accent};`}
+    >
+      <div class="proc-number">{step.n}</div>
+      <h3 class="proc-card-title">{step.title}</h3>
+      <p class="proc-body" set:html={step.body} />
+    </div>
+  ))}
+</div>
+
+<style>
+  .proc-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .proc-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .proc-rule {
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: #7AAFC4;
+    opacity: 0.75;
+  }
+
+  .proc-eyebrow-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #7AAFC4;
+  }
+
+  .proc-title {
+    font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #fff;
+    max-width: 36ch;
+  }
+
+  .proc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .proc-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .proc-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1200px) {
+    .proc-grid { grid-template-columns: repeat(5, 1fr); }
+  }
+
+  .proc-card {
+    background: #0E1118;
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, rgba(122,175,196,0.14));
+    border-radius: 1.5rem;
+    padding: 1.75rem;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .proc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 110%, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+  }
+  .proc-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255,255,255,0.05) 45%,
+      rgba(255,255,255,0.09) 50%,
+      rgba(255,255,255,0.05) 55%,
+      transparent 100%
+    );
+    transform: skewX(-18deg);
+    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .proc-card > * { position: relative; z-index: 1; }
+  .proc-card:hover,
+  .proc-card:focus-within {
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+  .proc-card:hover::before,
+  .proc-card:focus-within::before { opacity: 1; }
+  .proc-card:hover::after,
+  .proc-card:focus-within::after { left: 120%; }
+
+  .proc-number {
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+  .proc-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #E8F0F4;
+    margin-bottom: 0.625rem;
+  }
+  .proc-body {
+    font-size: 0.875rem;
+    line-height: 1.75;
+    color: #8EAAB8;
+  }
+  .proc-body :global(a) {
+    color: #7AAFC4;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.2s;
+  }
+  .proc-body :global(a:hover),
+  .proc-body :global(a:focus-visible) {
+    color: #A0C8D8;
+    background-size: 100% 1px;
+  }
+</style>

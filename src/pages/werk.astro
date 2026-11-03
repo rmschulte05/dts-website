@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import NavIsland from '../components/modules/NavIsland.astro';
 import FooterDTS from '../components/modules/FooterDTS.astro';
+import ProcessSteps from '../components/modules/ProcessSteps.astro';
+import { SELLABLE_SERVICES } from '../data/workSequence';
 
 // Cases page is in placeholder state until the first published case studies land.
 // The route stays live and indexable so SEO equity (links, sitemap entry,
@@ -59,33 +61,12 @@ const features = [
   },
 ];
 
-// Service categories shown as a card grid (the "what kind of work" placeholder)
-const services = [
-  {
-    title: 'Kalibratie',
-    body: 'Meting op 5 meetpunten over het volledige bereik. As-found en as-left waarden in een audit-proof protocol.',
-    href: '/diensten/momentsleutel-kalibratie',
-    accent: '#7AAFC4',
-  },
-  {
-    title: 'Reparatie',
-    body: 'Volledige revisie van klikmechanisme, ratel of veer, gevolgd door hercalibratie. Originele Snap-On onderdelen direct beschikbaar.',
-    href: '/diensten/momentsleutel-reparatie',
-    accent: '#C48A64',
-  },
-  {
-    title: 'Justeren',
-    body: 'Sleutel buiten tolerantie? Wij stellen hem opnieuw in op de juiste Newton-meterwaarden conform de fabrieksspecificatie.',
-    href: '/diensten/momentsleutel-justeren',
-    accent: '#C4AF64',
-  },
-  {
-    title: 'ISO Certificering',
-    body: 'Officieel ISO 6789:2017 en 2003 kalibratiecertificaat, geschikt voor ISO 9001, IATF 16949 en VCA kwaliteitssystemen.',
-    href: '/diensten/iso-6789-certificering',
-    accent: '#64C48A',
-  },
-];
+const services = SELLABLE_SERVICES.map((step) => ({
+  title: step.title,
+  body: step.body,
+  href: step.href,
+  accent: step.accent,
+}));
 ---
 
 <Base
@@ -140,8 +121,8 @@ const services = [
               ELKE SLEUTEL<br/>GECERTIFICEERD.
             </h1>
             <p class="werk-sub">
-              Een korte introductie tot het werk van Dutch Torque Service: kalibratie, reparatie, justering en
-              certificering van momentsleutels conform ISO&nbsp;6789:2017 en 2003. Casevoorbeelden uit de
+              Een korte introductie tot het werk van Dutch Torque Service: diagnosticeren, repareren, justeren,
+              kalibreren en certificeren van momentsleutels conform ISO&nbsp;6789:2017 en 2003. Casevoorbeelden uit de
               werkplaats volgen binnenkort.
             </p>
           </div>
@@ -177,12 +158,16 @@ const services = [
             <span class="eyebrow-text">Het Werk</span>
             <span class="block w-8 h-px" style="background:#7AAFC4;"></span>
           </div>
-          <h2 class="services-title">Wat wij doen, in vier disciplines.</h2>
+          <h2 class="services-title">Wat wij doen, in deze volgorde.</h2>
           <p class="services-intro">
             Wij werken aan momentsleutels van Snap-On, Stahlwille, Gedore, Facom, Hazet, Würth en alle andere
             kwaliteitsmerken. Hieronder een overzicht van de diensten die wij dagelijks uitvoeren in ons lab in
             Riethoven, Noord-Brabant.
           </p>
+        </div>
+
+        <div class="werk-process">
+          <ProcessSteps heading="Van diagnosticeren tot certificeren." />
         </div>
 
         <div class="services-grid">
@@ -428,6 +413,10 @@ const services = [
     line-height: 1.75;
     color: #9AAEB8;
     max-width: 60ch;
+  }
+
+  .werk-process {
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
   }
 
   .services-grid {

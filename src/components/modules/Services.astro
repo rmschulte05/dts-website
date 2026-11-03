@@ -1,13 +1,21 @@
 ---
-const services = [
-  {
-    id: 'justeren',
-    title: 'Justeren',
-    subtitle: 'Instelling & Afstelling',
-    description: 'Sleutel buiten tolerantie door slijtage of een val? Wij stellen je momentsleutel opnieuw in op de juiste Newton-meterwaarden over het volledige bereik, conform ISO\u00A06789:2017 en 2003.',
-    link: { href: '/diensten/momentsleutel-justeren', label: 'Momentsleutel laten justeren' },
-    accent: '#C4AF64',
-    icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+import { WORK_SEQUENCE, type WorkStepId } from '../../data/workSequence';
+
+const icons: Record<WorkStepId, string> = {
+  diagnosticeren: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+      <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="17" y1="17" x2="24" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="12" y1="9" x2="12" y2="15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="9" y1="12" x2="15" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>`,
+  repareren: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+      <path d="M6 22L18 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="21" cy="7"  r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M18 10l3-3"   stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="7"  cy="21" r="4" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M6 22l3-3"    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>`,
+  justeren: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <circle cx="14" cy="14" r="9" stroke="currentColor" stroke-width="1.5"/>
       <circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
       <line x1="14" y1="2"  x2="14" y2="6"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -15,15 +23,7 @@ const services = [
       <line x1="2"  y1="14" x2="6"  y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       <line x1="22" y1="14" x2="26" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>`,
-  },
-  {
-    id: 'kalibratie',
-    title: 'Kalibratie',
-    subtitle: 'ISO 6789:2017 en 2003 Conform',
-    description: 'Professionele momentsleutel kalibratie op 5 meetpunten over het volledige bereik. Volledig kalibratieprotocol conform ISO\u00A06789:2017 en 2003 type\u00A0I en\u00A0II inbegrepen.',
-    link: { href: '/diensten/momentsleutel-kalibratie', label: 'Momentsleutel kalibreren en kalibratie' },
-    accent: '#7AAFC4',
-    icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+  kalibreren: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="10" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
       <line x1="4"  y1="16" x2="24" y2="16" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.5"/>
       <line x1="8"  y1="10" x2="8"  y2="7"  stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -32,35 +32,16 @@ const services = [
       <line x1="11" y1="10" x2="11" y2="8"  stroke="currentColor" stroke-width="1"   stroke-linecap="round" stroke-opacity="0.5"/>
       <line x1="17" y1="10" x2="17" y2="8"  stroke="currentColor" stroke-width="1"   stroke-linecap="round" stroke-opacity="0.5"/>
     </svg>`,
-  },
-  {
-    id: 'reparatie',
-    title: 'Reparatie',
-    subtitle: 'Herstel & Revisie',
-    description: 'Volledige demontage, reiniging en vervanging van slijtdelen. Van Snap-On tot Stahlwille: wij herstellen jouw momentsleutel als nieuw, zonder de aanschafprijs van vervangen.',
-    link: { href: '/diensten/momentsleutel-reparatie', label: 'Momentsleutel reparatie' },
-    accent: '#C48A64',
-    icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
-      <path d="M6 22L18 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="21" cy="7"  r="4" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M18 10l3-3"   stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="7"  cy="21" r="4" stroke="currentColor" stroke-width="1.5"/>
-      <path d="M6 22l3-3"    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>`,
-  },
-  {
-    id: 'certificering',
-    title: 'Certificering',
-    subtitle: 'Officieel Certificaat',
-    description: 'Officieel DTS-kalibratiecertificaat met meetwaarden voor en na de service, gebruikte referentieapparatuur en volgende kalibratietermijn. Audit-proof voor ISO-gecertificeerde bedrijven.',
-    link: { href: '/diensten/iso-6789-certificering', label: 'ISO 6789:2017 en 2003 certificaat' },
-    accent: '#64C48A',
-    icon: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+  certificeren: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="4" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
       <path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`,
-  },
-];
+};
+
+const services = WORK_SEQUENCE.map((step) => ({
+  ...step,
+  icon: icons[step.id],
+}));
 ---
 
 <section id="diensten" class="services-section relative page-wrap">
@@ -75,15 +56,15 @@ const services = [
     <div class="svc-header" data-animate>
       <div class="flex items-center justify-center gap-3">
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
-        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Wat wij doen</span>
+        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Onze werkwijze</span>
         <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white max-w-xl mx-auto text-center">
-        Kalibratie, reparatie<br/>en certificering.
+      <h2 class="text-4xl md:text-5xl font-black leading-tight tracking-tight text-white max-w-3xl mx-auto text-center">
+        Diagnosticeren, repareren,<br/>justeren, kalibreren, certificeren.
       </h2>
     </div>
 
-    <!-- 4 cards -->
+    <!-- 5-step sequence -->
     <div class="svc-grid">
       {services.map((svc, i) => (
         <div
@@ -111,10 +92,8 @@ const services = [
           <!-- Text -->
           <p class="svc-subtitle">{svc.subtitle}</p>
           <h3 class="svc-title">{svc.title}</h3>
-          <p class="svc-body">{svc.description}</p>
-          {svc.link && (
-            <a href={svc.link.href} class="svc-link">{svc.link.label} <span class="svc-link-arrow" aria-hidden="true">→</span></a>
-          )}
+          <p class="svc-body">{svc.body}</p>
+          <a href={svc.href} class="svc-link">{svc.linkLabel} <span class="svc-link-arrow" aria-hidden="true">→</span></a>
 
           <!-- Hover bottom bar -->
           <div class="svc-bar"></div>
@@ -149,12 +128,13 @@ const services = [
     gap: 1.25rem;
   }
   @media (min-width: 540px)  { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .svc-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 900px)  { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1280px) { .svc-grid { grid-template-columns: repeat(5, 1fr); } }
 
   /* ── CARD ── */
   .svc-card {
     position: relative;
-    padding: 2rem;
+    padding: 1.5rem 1.35rem;
     border-radius: 1.5rem;
     border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
     background:
@@ -265,7 +245,7 @@ const services = [
   .svc-icon { display: flex; align-items: center; justify-content: center; }
 
   .svc-number {
-    font-size: 3.25rem;
+    font-size: 2.5rem;
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -295,7 +275,7 @@ const services = [
   }
 
   .svc-title {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 900;
     color: #fff;
     line-height: 1.2;

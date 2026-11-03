@@ -111,9 +111,6 @@ SERVICES:
   What: issuing a traceable calibration certificate with as-found/as-left values
   Key facts: ISO 6789:2017 Type I and Type II, traceable to national standards
 
-- Snap-On Kalibratie        → /merken/snap-on-kalibratie
-  What: calibration for all Snap-On torque wrenches; also authorised dealer
-  Key facts: geautoriseerd Snap-On dealer, Zuid-Noord-Brabant
 ```
 
 **Service mention style (correct):**
@@ -135,7 +132,6 @@ APPROVED_STATS:
 - Standard: ISO 6789:2017
 - Typical drift (unchecked 2 years): 8–12% buiten tolerantie (observed in practice)
 - Opening hours: Ma–Vr 08:00–17:00
-- Snap-On dealer territory: Zuid-Noord-Brabant
 - Succession: erkend opvolger van Van Rootselaar Technic bv. per 1 januari 2026
 ```
 
@@ -193,7 +189,6 @@ ANCHOR_PATTERNS:
 - "ISO 6789:2017 certificaat"            → /diensten/iso-6789-certificering
 - "Momentsleutel laten justeren"         → /diensten/momentsleutel-justeren
 - "Momentsleutel reparatie"              → /diensten/momentsleutel-reparatie
-- "Snap-On kalibratie Noord-Brabant"     → /merken/snap-on-kalibratie
 - "ons volledige aanbod van diensten"    → /diensten
 ```
 
@@ -221,7 +216,7 @@ TECHNICAL_NOTE: |
 ADDITIONAL_CONTEXT: |
   - DTS is gevestigd in Riethoven (Noord-Brabant), een klein dorp — lokale SEO is belangrijk
   - Erkend opvolger van Van Rootselaar Technic bv. te Stiens — tientallen jaren reputatie
-  - Geautoriseerd Snap-On dealer voor Zuid-Noord-Brabant
+  - DTS is not a Snap-On dealer. Do not claim dealer status, original Snap-On parts, or new Snap-On tool sales. Snap-On may be named only as one brand among others that DTS calibrates and repairs.
   - Blog articles are written in Dutch, targeting Dutch mechanics and workshop managers
   - The site runs on Astro; blog articles are .astro or .mdx files in src/pages/blog/
   - Internal links should use the /blog/ prefix for blog articles

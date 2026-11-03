@@ -4,6 +4,8 @@ import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 import ChatExplainer from '../../components/modules/ChatExplainer.astro';
+import ProcessSteps from '../../components/modules/ProcessSteps.astro';
+import { getHowToSteps } from '../../data/workSequence';
 
 const accent = '#7AAFC4';
 
@@ -22,6 +24,14 @@ const schema = [
     ],
     "inLanguage": "nl-NL",
     "url": "https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Hoe wij een momentsleutel certificeren, in 5 stappen",
+    "description": "Diagnosticeren, repareren indien nodig, justeren indien nodig, kalibreren en certificeren conform ISO 6789:2017 en 2003.",
+    "inLanguage": "nl-NL",
+    "step": getHowToSteps()
   },
   {
     "@context": "https://schema.org",
@@ -180,6 +190,13 @@ const faq = [
           { emoji: '🏆', count: 14 },
         ]}
       />
+    </PageSection>
+
+    <!-- ══════════════════════════════════════
+         PROCESS
+    ══════════════════════════════════════ -->
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+      <ProcessSteps heading="Hoe wij een momentsleutel certificeren." />
     </PageSection>
 
     <!-- ══════════════════════════════════════

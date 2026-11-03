@@ -88,12 +88,11 @@ Establish DTS as the credible specialist voice:
 **Author Attribution:**
 - Ensure articles include: "Door Jan-Piet Schulte · Dutch Torque Service · momentsleutel specialist"
 - Reference the succession from Van Rootselaar Technic bv. where topic fits
-- Mention Snap-On dealer status (geautoriseerd dealer, Zuid-Noord-Brabant) on relevant pages
+- Do not mention Snap-On dealer status. DTS is not an authorised dealer and does not sell Snap-On tools or original Snap-On parts.
 
 **Brand Authority:**
 - "Gecertificeerd conform ISO 6789:2017" — always with the year
 - "Erkend opvolger van Van Rootselaar Technic bv. te Stiens"
-- "Geautoriseerd Snap-On dealer voor Zuid-Noord-Brabant"
 - KvK 67183360 visible on contact and about pages
 
 **External Authority:**
@@ -216,7 +215,8 @@ Before returning enhanced article:
 - [ ] Kalibreren/justeren/ijken distinctions technically correct
 - [ ] Author line added: "Door Jan-Piet Schulte..."
 - [ ] At least one external link (iso.org or nen.nl)
-- [ ] Snap-On dealer and/or Van Rootselaar succession mentioned where relevant
+- [ ] Van Rootselaar succession mentioned where relevant
+- [ ] No Snap-On dealer, original-parts, or new-tool claims
 - [ ] Phone number +31(0)6-131 72 774 in any CTA section
 - [ ] Trust-destroying language removed
 - [ ] Limitations acknowledged honestly

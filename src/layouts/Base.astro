@@ -22,7 +22,7 @@ const localBusinessSchema = {
   "@id": "https://www.dutchtorqueservice.nl/#business",
   "name": "Dutch Torque Service",
   "legalName": "Dutch Torque Service",
-  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering. ±2% servicegarantie, ruim binnen de ISO 6789 tolerantie van ±4%. Geautoriseerd Snap-On dealer.",
+  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering. ±2% servicegarantie, ruim binnen de ISO 6789 tolerantie van ±4%.",
   "url": "https://www.dutchtorqueservice.nl",
   "logo": "https://www.dutchtorqueservice.nl/logo/dts-logo-2x.webp",
   "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
@@ -49,10 +49,10 @@ const localBusinessSchema = {
     { "@type": "AdministrativeArea", "name": "Noord-Brabant" }
   ],
   "serviceType": [
-    "Momentsleutel kalibratie",
     "Momentsleutel reparatie",
-    "ISO 6789 certificering",
-    "Momentsleutel justeren"
+    "Momentsleutel justeren",
+    "Momentsleutel kalibratie",
+    "ISO 6789 certificering"
   ],
   "knowsAbout": [
     "ISO 6789:2017 en 2003",
@@ -76,7 +76,12 @@ const localBusinessSchema = {
   "inLanguage": "nl-NL",
   "foundingDate": "2026-01-01",
   "sameAs": [
-    "https://www.kvk.nl/zoeken/?source=all&q=67183360"
+    "https://www.kvk.nl/zoeken/?source=all&q=67183360",
+    // C1 (GEO audit 2026-04-27): off-site entity anchors. Fill real URLs once
+    // the profiles exist — AI engines cannot anchor the brand without them.
+    "https://www.linkedin.com/company/dutch-torque-service",   // ← create + verify
+    "https://g.page/dutchtorqueservice",                        // ← Google Business Profile CID
+    "https://www.wikidata.org/wiki/Q_PLACEHOLDER"               // ← create Wikidata item
   ]
 };
 
@@ -115,7 +120,7 @@ const personSchema = {
   "knowsAbout": [
     "ISO 6789:2017 en 2003 kalibratie",
     "Type I en Type II momentsleutels",
-    "Snap-On momentsleutel service",
+    "Snap-On momentsleutels",
     "Traceerbare referentieapparatuur",
     "Kalibratieprotocollen voor ISO 9001, IATF 16949 en VCA"
   ]
@@ -133,6 +138,9 @@ const personSchema = {
     <meta name="author" content="Dutch Torque Service" />
     <meta name="geo.region" content="NL-NB" />
     <meta name="geo.placename" content="Riethoven, Noord-Brabant" />
+    <!-- C2 (GEO audit 2026-04-27): Bing/IndexNow verification + ping hook so
+         Bing Copilot can index. Replace the key + add msvalidate from BWT. -->
+    <meta name="IndexNow-Key" content="REPLACE_WITH_YOUR_INDEXNOW_KEY" />
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />

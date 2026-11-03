@@ -153,7 +153,7 @@ const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http
         ±2% GARANTIE
       </text>
     </g>
-    <!-- Pill 3: Snap-On -->
+    <!-- Pill 3: all brands -->
     <g transform="translate(578, 0)">
       <rect x="0" y="0" width="244" height="56" rx="28"
             fill="${TEAL}" fill-opacity="0.10"
@@ -162,7 +162,7 @@ const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http
       <text x="48" y="36"
             font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
             font-size="20" font-weight="800" letter-spacing="2" fill="${TEAL_HI}">
-        SNAP-ON DEALER
+        ALLE MERKEN
       </text>
     </g>
   </g>
