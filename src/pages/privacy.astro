@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import NavIsland from '../components/modules/NavIsland.astro';
+import FooterDTS from '../components/modules/FooterDTS.astro';
+import PageSection from '../components/ui/PageSection.astro';
+
+const privacySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.dutchtorqueservice.nl/privacy/#webpage",
+  "url": "https://www.dutchtorqueservice.nl/privacy/",
+  "name": "Privacybeleid | Dutch Torque Service",
+  "inLanguage": "nl-NL",
+  "dateModified": "2026-11-13",
+  "isPartOf": { "@id": "https://www.dutchtorqueservice.nl/#website" },
+  "about": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dutchtorqueservice.nl/" },
+      { "@type": "ListItem", "position": 2, "name": "Privacybeleid", "item": "https://www.dutchtorqueservice.nl/privacy/" }
+    ]
+  }
+};
+---
+
+<Base
+  title="Privacybeleid | Dutch Torque Service"
+  description="Hoe Dutch Torque Service je gegevens verwerkt: e-mail of telefoon, geen contactformulier, geen Google Analytics, hosting via Cloudflare. Riethoven."
+  canonicalPath="/privacy/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(privacySchema)} />
+
+  <NavIsland />
+
+  <main>
+    <PageSection hero center animate>
+        <div class="sec-eyebrow">
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Privacy</span>
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        </div>
+        <h1 class="font-black tracking-tight text-white" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1;">
+          Privacybeleid
+        </h1>
+        <p class="sec-sub">
+          Hoe wij omgaan met gegevens die je ons toevertrouwt. Laatst bijgewerkt op 13 november 2026.
+        </p>
+    </PageSection>
+
+    <PageSection>
+        <article class="privacy-prose" data-animate>
+          <p>
+            Dutch Torque Service, Tonterstraat 42, 5561 AN Riethoven, Nederland.
+            KvK 67183360.
+            E-mail: <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>.
+            Telefoon: <a href="tel:+31613172774">+31 6 131 72 774</a>.
+            Openingstijden: maandag tot en met vrijdag, 08:00–17:00.
+          </p>
+
+          <h2>Welke gegevens we verwerken</h2>
+          <p>
+            Deze website heeft geen contactformulier, geen klantaccounts en geen nieuwsbrief.
+            We gebruiken geen Google Analytics en geen advertentie- of marketingcookies.
+            De Content-Security-Policy van de site staat alleen scripts van onze eigen website toe;
+            scripts van derden worden daardoor in de browser geblokkeerd.
+          </p>
+          <p>
+            Als je ons zelf een e-mail stuurt of belt, verwerken we de gegevens die je ons daarbij geeft:
+            je naam, e-mailadres, telefoonnummer, de inhoud van je bericht, en wat we nodig hebben om je
+            aanvraag te behandelen (bijvoorbeeld diagnose, reparatie, justeren, kalibratie of certificering
+            van een momentsleutel). E-mail verloopt via Zoho Mail (Zoho Corporation, servers onder zoho.eu),
+            op basis van de mailservers van dit domein.
+          </p>
+          <p>
+            De site wordt gehost via Cloudflare Pages. Cloudflare verwerkt daarbij technische gegevens die bij
+            het afleveren van een website horen, zoals je IP-adres, browsertype, het opgevraagde adres en het
+            tijdstip, voor beveiliging en levering van de site. De site zelf zet geen trackingcookies.
+            Cloudflare kan om beveiligingsredenen een functionele cookie plaatsen.
+          </p>
+
+          <h2>Waarvoor we die gegevens gebruiken</h2>
+          <p>
+            Alleen om je vraag of opdracht te beantwoorden en uit te voeren, en om te voldoen aan wettelijke
+            verplichtingen, bijvoorbeeld administratie. We verkopen je gegevens niet en gebruiken ze niet
+            voor geautomatiseerde profilering of advertenties.
+          </p>
+
+          <h2>Hoe lang we gegevens bewaren</h2>
+          <p>
+            We bewaren correspondentie en opdrachtgegevens zolang dat nodig is om je aanvraag te behandelen
+            en om te voldoen aan wettelijke verplichtingen. Er is geen aparte, publiek vastgelegde
+            bewaartermijn per type gegeven.
+          </p>
+
+          <h2>Jouw rechten</h2>
+          <p>
+            Op grond van de Algemene Verordening Gegevensbescherming (AVG) kun je ons vragen om inzage,
+            correctie of verwijdering van je gegevens, of om beperking van de verwerking, en kun je bezwaar
+            maken. Je kunt ook een klacht indienen bij de
+            <a href="https://www.autoriteitpersoonsgegevens.nl/" rel="noopener noreferrer">Autoriteit Persoonsgegevens</a>.
+            Voor verzoeken mail je <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>.
+          </p>
+        </article>
+    </PageSection>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  .privacy-prose {
+    max-width: 44rem;
+    margin-inline: auto;
+    color: #9AAEB8;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  .privacy-prose p { margin-bottom: 1.25rem; }
+  .privacy-prose h2 {
+    color: #E8F0F4;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 2.25rem 0 0.85rem;
+  }
+  .privacy-prose a {
+    color: #7AAFC4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .privacy-prose a:hover,
+  .privacy-prose a:focus-visible {
+    color: #9BC5D8;
+  }
+</style>
