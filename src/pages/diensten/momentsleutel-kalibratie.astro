@@ -15,7 +15,7 @@ const schema = {
   "serviceType": "Kalibratie momentsleutel",
   "name": "Momentsleutel Kalibratie",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Momentsleutel kalibreren en kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie. Certificaat en meetrapport (as-found / as-left) inbegrepen. Lab in Riethoven.",
+  "description": "Momentsleutel kalibreren en kalibratie volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie. Certificaat en meetrapport (as-found / as-left) inbegrepen. Lab in Riethoven.",
   "areaServed": [
     { "@type": "Country", "name": "Netherlands" },
     { "@type": "Country", "name": "Belgium" },
@@ -44,7 +44,7 @@ const howToSchema = {
 };
 
 const included = [
-  { item: 'As-found meting',        detail: 'Meetwaarden vóór ingreep, 5 punten × 3 herhalingen', html: false },
+  { item: 'As-found meting',        detail: 'Meetwaarden vóór ingreep, meetpunten volgens de norm, met meerdere metingen per punt', html: false },
   { item: 'As-left meting',         detail: 'Meetwaarden na ingreep', html: false },
   { item: 'Referentieapparatuur',   detail: 'Traceerbaar, eigen kalibratiestatus vermeld', html: false },
   { item: '<a href="/diensten/iso-6789-certificering">Kalibratiecertificaat</a>', detail: 'Conform ISO 6789:2017 en 2003', html: true },
@@ -96,7 +96,7 @@ const whyCards = [
 const faq = [
   {
     q: 'Hoeveel meetpunten gebruiken jullie bij kalibratie?',
-    a: '5 punten: 20%, 40%, 60%, 80% en 100% van het nominale bereik, met minimaal 3 herhalingen per punt.',
+    a: 'Het aantal meetpunten en metingen per punt volgt de toepasselijke ISO 6789-norm (2017 en 2003) en hangt af van type en klasse. We meten over het hele bereik, met meerdere metingen per punt.',
     html: false,
   },
   {
@@ -156,7 +156,7 @@ const faqSchema = {
 
 <Base
   title="Momentsleutel kalibreren & kalibratie | Dutch Torque Service"
-  description="Momentsleutel laten kalibreren? Kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003, met certificaat en meetrapport. Riethoven, +31 6 13 17 27 74."
+  description="Momentsleutel laten kalibreren? Kalibratie volgens ISO 6789:2017 en 2003 over het hele bereik, met certificaat en meetrapport. Riethoven, +31 6 13 17 27 74."
   canonicalPath="/diensten/momentsleutel-kalibratie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -184,7 +184,7 @@ const faqSchema = {
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
-            Kalibratie op 5 meetpunten conform ISO 6789:2017 en 2003.<br />
+            Kalibratie volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt.<br />
             Stuur je sleutel op, snel terug met volledig protocol.
           </p>
 
@@ -211,7 +211,7 @@ const faqSchema = {
       </div>
       <div class="def-card" data-animate data-animate-delay="0.08">
         <p class="body-text">
-          Een momentsleutel kalibreren betekent meten hoeveel jouw sleutel afwijkt van de ingestelde waarde en dat vastleggen. De kalibratie van een momentsleutel gebeurt bij ons op 5 meetpunten, conform ISO 6789:2017 en 2003, en eindigt met een certificaat en meetrapport. Wijkt de sleutel te veel af, dan <a href="/diensten/momentsleutel-justeren">justeren</a> we hem en meten we opnieuw.
+          Een momentsleutel kalibreren betekent meten hoeveel jouw sleutel afwijkt van de ingestelde waarde en dat vastleggen. De kalibratie van een momentsleutel gebeurt bij ons op meetpunten volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt, en eindigt met een certificaat en meetrapport. Wijkt de sleutel te veel af, dan <a href="/diensten/momentsleutel-justeren">justeren</a> we hem en meten we opnieuw.
         </p>
         <p class="body-text" style="margin-top:1rem;">
           Meestal eens per jaar, bij intensief gebruik vaker, en altijd na een val. Meer daarover lees je in <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak je een momentsleutel moet kalibreren</a>.
