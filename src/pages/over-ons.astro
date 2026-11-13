@@ -11,7 +11,7 @@ import jpPortrait from '../img/jp/JP.png';
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": ["AboutPage", "ProfilePage"],
-  "url": "https://www.dutchtorqueservice.nl/over-ons",
+  "url": "https://www.dutchtorqueservice.nl/over-ons/",
   "name": "Over Dutch Torque Service",
   "inLanguage": "nl-NL",
   "about": { "@id": "https://www.dutchtorqueservice.nl/#business" },
@@ -20,7 +20,7 @@ const aboutPageSchema = {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dutchtorqueservice.nl/" },
-      { "@type": "ListItem", "position": 2, "name": "Over Ons", "item": "https://www.dutchtorqueservice.nl/over-ons" }
+      { "@type": "ListItem", "position": 2, "name": "Over Ons", "item": "https://www.dutchtorqueservice.nl/over-ons/" }
     ]
   }
 };
@@ -28,7 +28,7 @@ const aboutPageSchema = {
 
 <Base
   title="Over Ons | Dutch Torque Service. Riethoven, Noord-Brabant"
-  description="Dutch Torque Service, opgericht door Jan-Piet Schulte en zonen, zet de reparatie- en kalibratiewerkzaamheden voor momentsleutels van Van Rootselaar Technic bv. voort. ISO 6789 specialist in Riethoven."
+  description="Dutch Torque Service van Jan-Piet Schulte en zonen zet de kalibratie en reparatie van momentsleutels van Van Rootselaar Technic bv. voort, in Riethoven."
   canonicalPath="/over-ons"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(aboutPageSchema)} />

@@ -5,30 +5,48 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
-  canonicalPath?: string;  // e.g. "/" or "/werk"
+  canonicalPath?: string;  // e.g. "/" or "/werk/"
+  robots?: string;
+  noCanonical?: boolean;
 }
 const {
   title,
   description = 'Dutch Torque Service. Professionele kalibratie en service van momentsleutels',
   canonicalPath,
+  robots = 'index, follow',
+  noCanonical = false,
 } = Astro.props;
 
 const siteBase = 'https://www.dutchtorqueservice.nl';
-const canonicalURL = siteBase + (canonicalPath ?? '/');
+
+/** Absolute www URL with a trailing slash (home is siteBase + "/"). */
+function absoluteUrl(path?: string): string {
+  if (!path || path === '/') return `${siteBase}/`;
+  const withSlash = path.startsWith('/') ? path : `/${path}`;
+  return siteBase + (withSlash.endsWith('/') ? withSlash : `${withSlash}/`);
+}
+
+const canonicalURL = absoluteUrl(canonicalPath ?? '/');
+const ogImage = `${siteBase}/og-image.jpg`;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "ProfessionalService"],
   "@id": "https://www.dutchtorqueservice.nl/#business",
   "name": "Dutch Torque Service",
   "legalName": "Dutch Torque Service",
-  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering. ±2% servicegarantie, ruim binnen de ISO 6789 tolerantie van ±4%.",
-  "url": "https://www.dutchtorqueservice.nl",
+  "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering. \u00b12% servicegarantie, ruim binnen de ISO 6789 tolerantie van \u00b14%.",
+  "url": "https://www.dutchtorqueservice.nl/",
   "logo": "https://www.dutchtorqueservice.nl/logo/dts-logo-2x.webp",
-  "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
+  "image": ogImage,
   "telephone": "+31613172774",
   "email": "info@dutchtorqueservice.nl",
-  "taxID": "67183360",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "KvK",
+    "propertyID": "ChamberOfCommerceNumber",
+    "value": "67183360"
+  },
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Tonterstraat 42",
@@ -72,16 +90,11 @@ const localBusinessSchema = {
       "closes": "17:00"
     }
   ],
-  "priceRange": "€€",
   "inLanguage": "nl-NL",
   "foundingDate": "2026-01-01",
   "sameAs": [
     "https://www.kvk.nl/zoeken/?source=all&q=67183360",
-    // C1 (GEO audit 2026-04-27): off-site entity anchors. Fill real URLs once
-    // the profiles exist — AI engines cannot anchor the brand without them.
-    "https://www.linkedin.com/company/dutch-torque-service",   // ← create + verify
-    "https://g.page/dutchtorqueservice",                        // ← Google Business Profile CID
-    "https://www.wikidata.org/wiki/Q_PLACEHOLDER"               // ← create Wikidata item
+    "https://www.linkedin.com/company/dutch-torque-service"
   ]
 };
 
@@ -89,7 +102,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": "https://www.dutchtorqueservice.nl/#website",
-  "url": "https://www.dutchtorqueservice.nl",
+  "url": "https://www.dutchtorqueservice.nl/",
   "name": "Dutch Torque Service",
   "description": "Specialist in momentsleutel kalibratie, reparatie en certificering conform ISO 6789:2017 en 2003",
   "inLanguage": "nl-NL",
@@ -97,14 +110,6 @@ const websiteSchema = {
   "speakable": {
     "@type": "SpeakableSpecification",
     "cssSelector": [".hero-subtitle", ".sec-sub", ".article-lead", ".faq-answer"]
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://www.dutchtorqueservice.nl/?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
   }
 };
 
@@ -115,7 +120,7 @@ const personSchema = {
   "name": "Jan-Piet Schulte",
   "jobTitle": "Eigenaar & Kalibratietechnicus",
   "worksFor": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "url": "https://www.dutchtorqueservice.nl/over-ons",
+  "url": "https://www.dutchtorqueservice.nl/over-ons/",
   "inLanguage": "nl-NL",
   "knowsAbout": [
     "ISO 6789:2017 en 2003 kalibratie",
@@ -134,23 +139,23 @@ const personSchema = {
     <meta name="theme-color" content="#08090B" />
     <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta name="author" content="Dutch Torque Service" />
     <meta name="geo.region" content="NL-NB" />
     <meta name="geo.placename" content="Riethoven, Noord-Brabant" />
-    <!-- C2 (GEO audit 2026-04-27): Bing/IndexNow verification + ping hook so
-         Bing Copilot can index. Replace the key + add msvalidate from BWT. -->
-    <meta name="IndexNow-Key" content="REPLACE_WITH_YOUR_INDEXNOW_KEY" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href={canonicalURL} />
+    {(!noCanonical) && <link rel="canonical" href={canonicalURL} />}
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Dutch Torque Service" />
     <meta property="og:locale" content="nl_NL" />
     <meta property="og:site_name" content="Dutch Torque Service" />
 
@@ -158,7 +163,7 @@ const personSchema = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/og-image.jpg" />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
