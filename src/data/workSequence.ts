@@ -59,9 +59,9 @@ export const WORK_SEQUENCE: WorkStep[] = [
     n: '04',
     title: 'Kalibreren',
     subtitle: 'ISO 6789:2017 en 2003',
-    body: 'Gedocumenteerde meting op 5 meetpunten over het volledige bereik (as-left na de ingreep). Drie herhalingen per punt, traceerbare referentieapparatuur.',
+    body: 'Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het volledige bereik (as-left na de ingreep). Meerdere metingen per punt, traceerbare referentieapparatuur.',
     howToText:
-      'Gedocumenteerde meting op 5 meetpunten over het volledige bereik (as-left na de ingreep). Drie herhalingen per punt, traceerbare referentieapparatuur.',
+      'Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het volledige bereik (as-left na de ingreep). Meerdere metingen per punt, traceerbare referentieapparatuur.',
     accent: '#7AAFC4',
     href: '/diensten/momentsleutel-kalibratie',
     linkLabel: 'Momentsleutel kalibreren',
