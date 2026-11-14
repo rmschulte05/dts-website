@@ -1,0 +1,107 @@
+---
+export const meta = {
+  title: 'Momentsleutel opsturen voor kalibratie: hoe werkt dat?',
+  excerpt: 'Ja, je kunt je momentsleutel opsturen. Pak hem stevig in, stuur een briefje met je contactgegevens mee en stuur hem naar ons lab in Riethoven. Diagnose is gratis, en we repareren of justeren pas na jouw akkoord.',
+  category: 'Kalibratie',
+  readTime: '4 min',
+  date: '2026-11-14',
+  dateDisplay: '14 november 2026',
+  accent: '#7AAFC4',
+};
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import { Image } from 'astro:assets';
+import certP1 from '../../img/certificates/sample-certificate-redacted-p1-1400.webp';
+
+const pageUrl = 'https://www.dutchtorqueservice.nl/blog/momentsleutel-opsturen-voor-kalibratie/';
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Momentsleutel opsturen voor kalibratie: hoe werkt dat?",
+  "description": "Zo stuur je een momentsleutel op voor kalibratie bij Dutch Torque Service in Riethoven: inpakken, wat je meestuurt, het adres en wat er daarna met je sleutel gebeurt.",
+  "author": { "@id": "https://www.dutchtorqueservice.nl/#jan-piet-schulte" },
+  "publisher": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "mainEntityOfPage": pageUrl,
+  "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
+  "datePublished": "2026-11-14",
+  "dateModified": "2026-11-14",
+  "url": pageUrl,
+  "inLanguage": "nl-NL"
+};
+---
+
+<BlogLayout
+  title="Momentsleutel opsturen voor kalibratie: zo werkt het | DTS"
+  description="Momentsleutel opsturen voor kalibratie? Zo pak je hem in, dit stuur je mee en hier stuur je hem heen. Gratis diagnose, reparatie of justeren pas na jouw akkoord."
+  canonicalPath="/blog/momentsleutel-opsturen-voor-kalibratie/"
+  headline="Momentsleutel opsturen voor kalibratie: hoe werkt dat?"
+  category="Kalibratie"
+  readTime="4 min"
+  publishDate="14 november 2026"
+  updatedDate="14 november 2026"
+  excerpt="Ja, je kunt je momentsleutel opsturen. Pak hem stevig in, stuur een briefje met je contactgegevens mee en stuur hem naar ons lab in Riethoven. Diagnose is gratis, en we repareren of justeren pas na jouw akkoord."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <Image
+    slot="featured-image"
+    src={certP1}
+    alt="Voorbeeld van een kalibratiecertificaat van Dutch Torque Service volgens DIN EN ISO 6789-1:2017, met identnummer en naam van de tester zwart gemaakt"
+    widths={[700, 1400]}
+    sizes="(max-width: 900px) 100vw, 900px"
+    loading="eager"
+    style="width:100%; height:auto; max-height:560px; object-fit:cover; object-position:top; display:block; border-radius:12px;"
+    fetchpriority="high"
+  />
+
+  <div class="prose">
+    <h2>Kun je een momentsleutel opsturen voor kalibratie?</h2>
+    <p>Ja. Dutch Torque Service kalibreert in een eigen lab in Riethoven (Noord-Brabant). Je stuurt je momentsleutel op, of je brengt hem langs. We ontvangen sleutels van werkplaatsen uit heel de Benelux. Kalibreren op locatie doen we niet: de meting gebeurt altijd in ons lab, met traceerbare referentieapparatuur.</p>
+
+    <h2>Hoe pak je een momentsleutel in om op te sturen?</h2>
+    <p>Stevig, zodat hij niet kan schuiven of vallen in de doos. Een momentsleutel is een meetinstrument, en een harde klap onderweg kan de meting beïnvloeden.</p>
+    <ul>
+      <li>Gebruik bij voorkeur de originele koffer of doos.</li>
+      <li>Geen koffer? Wikkel de sleutel goed in bubbeltjesplastic en vul de lege ruimte in de doos op.</li>
+      <li>Stel de sleutel niet eerst zelf bij. Dan laat de eerste meting (as-found) zien hoe hij echt in jouw werkplaats werkte.</li>
+    </ul>
+
+    <h2>Wat stuur je mee met je momentsleutel?</h2>
+    <p>Een briefje met je naam en contactgegevens, zodat we je direct kunnen bereiken. Handig om er ook op te zetten:</p>
+    <ul>
+      <li>je bedrijfsnaam en het e-mailadres waar het certificaat naartoe moet;</li>
+      <li>het eigen identificatie- of inventarisnummer van de sleutel, als jouw kwaliteitssysteem dat gebruikt (het certificaat heeft daar een vast veld voor);</li>
+      <li>wat je opviel: klikt te vroeg of te laat, gevallen, overbelast, of gewoon toe aan de periodieke kalibratie.</li>
+    </ul>
+
+    <h2>Naar welk adres stuur je de momentsleutel?</h2>
+    <p><strong>Dutch Torque Service</strong><br />Tonterstraat 42<br />5561 AN Riethoven<br />Nederland</p>
+    <p>Na ontvangst bevestigen we dat per e-mail, en we houden je op de hoogte van de voortgang.</p>
+
+    <h2>Wat gebeurt er met je momentsleutel als hij binnen is?</h2>
+    <ol>
+      <li><strong>Gratis diagnose.</strong> Visuele en mechanische inspectie plus een as-found meting. Zo zie je hoe de sleutel binnenkwam.</li>
+      <li><strong>Alleen als het nodig is: <a href="/diensten/momentsleutel-reparatie/">reparatie</a>.</strong> Bij mechanische schade, en pas na jouw akkoord.</li>
+      <li><strong>Alleen als het nodig is: <a href="/diensten/momentsleutel-justeren/">justeren</a>.</strong> Valt de sleutel buiten tolerantie, dan stellen we hem bij tot binnen onze ±2% servicegarantie, ruim binnen de ±4% van ISO 6789.</li>
+      <li><strong><a href="/diensten/momentsleutel-kalibratie/">Kalibreren</a>.</strong> Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het bereik, met meerdere metingen per punt.</li>
+      <li><strong><a href="/diensten/iso-6789-certificering/">Certificaat</a>.</strong> Met de as-found en as-left waarden, de gebruikte referentieapparatuur en het aanbevolen volgende interval. Je ontvangt het per e-mail.</li>
+    </ol>
+
+    <h2>Hoe lang duurt het voordat je je momentsleutel terug hebt?</h2>
+    <p>We kalibreren snel na ontvangst en communiceren de doorlooptijd altijd vooraf. Heb je spoed? Neem dan eerst contact op: bij beschikbaarheid is kalibratie op dezelfde dag mogelijk, na overleg.</p>
+
+    <h2>Wat kost het om een momentsleutel te laten kalibreren?</h2>
+    <p>We publiceren geen prijslijst, omdat de prijs afhangt van het type sleutel en het merk. De diagnose is altijd gratis. <a href="/contact/">Stuur ons een bericht</a> voor een prijsopgave; we reageren binnen één werkdag.</p>
+
+    <h2>Kun je ook meerdere momentsleutels tegelijk opsturen?</h2>
+    <p>Ja. Neem bij een grotere batch eerst even <a href="/contact/">contact</a> op, dan stemmen we de aanlevering samen af.</p>
+
+    <h2>Kun je je momentsleutel ook langsbrengen?</h2>
+    <p>Ja, in Riethoven, maandag tot en met vrijdag van 08:00 tot 17:00. Bel of mail even vooraf, dan weet je zeker dat er iemand is: <a href="tel:+31613172774">+31 6 131 72 774</a> of <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>.</p>
+
+    <h2>Welke momentsleutels kun je opsturen?</h2>
+    <p>Type I (aanwijzende) en Type II (instellende) momentsleutels, van onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. Ook hydraulisch en high-torque gereedschap kun je bij ons laten kalibreren of repareren. Niet zeker welk type je hebt? Lees <a href="/blog/iso-6789-type-1-type-2-uitgelegd/">ISO 6789 Type I en Type II uitgelegd</a>.</p>
+
+    <h2>Wanneer stuur je je momentsleutel op?</h2>
+    <p>Als de kalibratietermijn uit jouw kwaliteitshandboek verloopt, en direct na een val of overbelasting. Meer daarover lees je in <a href="/blog/hoe-vaak-momentsleutel-kalibreren/">hoe vaak je een momentsleutel moet laten kalibreren</a> en <a href="/blog/momentsleutel-gevallen-wat-nu/">momentsleutel gevallen, wat nu?</a></p>
+  </div>
+</BlogLayout>

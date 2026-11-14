@@ -22,6 +22,44 @@ const lastmodByPath = {
   '/over-ons/': '2026-11-03',
   '/werk/': '2026-11-03',
   '/privacy/': '2026-11-13',
+  '/blog/momentsleutel-opsturen-voor-kalibratie/': '2026-11-14',
+};
+
+// Internal links in page bodies were written without a trailing slash, which
+// costs a 301 hop on Cloudflare Pages. Normalise them in the built HTML so page
+// copy (inside 90-day ledger windows) stays untouched.
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+function addSlash(path) {
+  const m = path.match(/^([^?#]*)([?#].*)?$/);
+  let p = m[1]; const rest = m[2] ?? '';
+  if (p === '' || p.endsWith('/')) return path;
+  const last = p.split('/').pop();
+  if (last.includes('.')) return path; // files: /favicon.svg, /_astro/x.css
+  return p + '/' + rest;
+}
+const trailingSlashLinks = {
+  name: 'dts-trailing-slash-links',
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      const root = fileURLToPath(dir);
+      async function walk(d) {
+        for (const e of await readdir(d, { withFileTypes: true })) {
+          const f = join(d, e.name);
+          if (e.isDirectory()) await walk(f);
+          else if (e.name.endsWith('.html')) {
+            const html = await readFile(f, 'utf8');
+            const out = html
+              .replace(/href=(["'])(\/(?!\/)[^"']*)\1/g, (_, q, u) => `href=${q}${addSlash(u)}${q}`)
+              .replace(/"(https:\/\/www\.dutchtorqueservice\.nl\/[^"\s]*)"/g, (_, u) => `"https://www.dutchtorqueservice.nl${addSlash(u.slice('https://www.dutchtorqueservice.nl'.length))}"`);
+            if (out !== html) await writeFile(f, out);
+          }
+        }
+      }
+      await walk(root);
+    },
+  },
 };
 
 export default defineConfig({
@@ -34,6 +72,7 @@ export default defineConfig({
     defaultStrategy: 'hover',
   },
   integrations: [
+    trailingSlashLinks,
     sitemap({
       changefreq: 'weekly',
       priority: 0.8,

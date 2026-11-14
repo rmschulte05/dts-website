@@ -27,7 +27,7 @@ export const WORK_SEQUENCE: WorkStep[] = [
     howToText:
       'Visuele en mechanische inspectie plus as-found meting. We brengen schade, slijtage en afwijking in kaart voordat we iets aan de sleutel doen. Altijd gratis.',
     accent: '#8EAAB8',
-    href: '/diensten',
+    href: '/diensten/',
     linkLabel: 'Onze diensten',
   },
   {
@@ -39,7 +39,7 @@ export const WORK_SEQUENCE: WorkStep[] = [
     howToText:
       'Alleen bij mechanische schade: demontage, reiniging en vervanging van slijtdelen, pas na jouw akkoord. Geen schade? Dan slaan we deze stap over.',
     accent: '#C48A64',
-    href: '/diensten/momentsleutel-reparatie',
+    href: '/diensten/momentsleutel-reparatie/',
     linkLabel: 'Momentsleutel reparatie',
   },
   {
@@ -51,7 +51,7 @@ export const WORK_SEQUENCE: WorkStep[] = [
     howToText:
       'Alleen als de sleutel buiten tolerantie valt. We stellen hem bij tot binnen onze ±2% servicegarantie. Zit hij er al binnen? Dan slaan we justeren over.',
     accent: '#C4AF64',
-    href: '/diensten/momentsleutel-justeren',
+    href: '/diensten/momentsleutel-justeren/',
     linkLabel: 'Momentsleutel laten justeren',
   },
   {
@@ -63,7 +63,7 @@ export const WORK_SEQUENCE: WorkStep[] = [
     howToText:
       'Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het volledige bereik (as-left na de ingreep). Meerdere metingen per punt, traceerbare referentieapparatuur.',
     accent: '#7AAFC4',
-    href: '/diensten/momentsleutel-kalibratie',
+    href: '/diensten/momentsleutel-kalibratie/',
     linkLabel: 'Momentsleutel kalibreren',
   },
   {
@@ -75,7 +75,7 @@ export const WORK_SEQUENCE: WorkStep[] = [
     howToText:
       'ISO 6789:2017 en 2003 certificaat met as-found en as-left waarden, gebruikte referentieapparatuur en aanbevolen interval. Audit-proof.',
     accent: '#64C48A',
-    href: '/diensten/iso-6789-certificering',
+    href: '/diensten/iso-6789-certificering/',
     linkLabel: 'ISO 6789 certificaat',
   },
 ];

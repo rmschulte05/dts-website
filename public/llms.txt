@@ -27,6 +27,7 @@ Laatst bijgewerkt: 2026-11-14
 
 ## Kennisbank
 
+- [Momentsleutel opsturen voor kalibratie: hoe werkt dat?](https://www.dutchtorqueservice.nl/blog/momentsleutel-opsturen-voor-kalibratie/): inpakken, wat je meestuurt, adres (Tonterstraat 42, 5561 AN Riethoven) en wat er daarna gebeurt. Niet op locatie.
 - [Hoe vaak moet je een momentsleutel laten kalibreren?](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren/)
 - [ISO 6789 Type I en Type II uitgelegd](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd/)
 - [Kalibreren, justeren of ijken: wat is het verschil?](https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken/): ijken is een wettelijke handeling en geldt niet voor momentsleutels.
