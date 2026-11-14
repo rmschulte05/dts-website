@@ -1,36 +1,48 @@
 # Dutch Torque Service
 
-> Professionele kalibratie, reparatie en ISO 6789:2017 en 2003 certificering van momentsleutels. Gevestigd in Riethoven, Noord-Brabant. Werkzaam in de Benelux en Duitsland.
+> Dutch Torque Service (DTS) diagnosticeert, repareert, justeert en kalibreert momentsleutels en levert een kalibratiecertificaat volgens ISO 6789:2017 en 2003 (Type I en Type II). Lab in Riethoven, Noord-Brabant. Klanten: werkplaatsen en bedrijven in Nederland, België en Duitsland.
 
-Dutch Torque Service (DTS) is een familiebedrijf — Jan-Piet Schulte en zonen — en de erkende voortzetter van Van Rootselaar Technic bv. per 1 januari 2026. DTS kalibreert volgens ISO 6789:2017 en 2003 (Type I en Type II) over het hele bereik, met meerdere metingen per punt, met een eigen servicegarantie van ±2% — ruim binnen de ±4% ISO-tolerantie. Elk certificaat bevat as-found en as-left waarden, traceerbare referentieapparatuur en aanbevolen volgend interval.
+Laatst bijgewerkt: 2026-11-14
 
-## Kerndiensten
+## Kernfeiten
 
-- [Momentsleutel Kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie): meetpunten volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt. Volledig protocol en certificaat per e-mail.
-- [Momentsleutel reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie): Gratis diagnose, raming vooraf. Altijd gevolgd door kalibratie en certificaat.
-- [Momentsleutel Justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren): Fysiek bijstellen naar de juiste Newton-meterwaarden na val, slijtage of overbelasting. Altijd gevolgd door hercalibratie met as-left waarden op het certificaat.
-- [ISO 6789:2017 en 2003 Certificering](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering): Audit-proof certificaat geschikt voor ISO 9001, IATF 16949 en VCA kwaliteitssystemen. Traceerbaar naar nationale referentienormen.
+- Bedrijf: Dutch Torque Service, familiebedrijf van Jan-Piet Schulte (eigenaar en kalibratietechnicus) en zonen. KvK 67183360.
+- Per 1 januari 2026 heeft Dutch Torque Service de werkplaatsuitrusting voor dit werk overgenomen van Van Rootselaar Technic bv. in Stiens en zet het die activiteiten voort.
+- Diensten: diagnose, reparatie, justeren en kalibratie van momentsleutels, met kalibratiecertificaat volgens ISO 6789:2017 en 2003. Ook hydraulisch en high-torque gereedschap.
+- Werkwijze: je stuurt de momentsleutel op of brengt hem langs in het lab in Riethoven. DTS kalibreert niet op locatie.
+- Kalibratie: volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt. Het certificaat vermeldt as-found en as-left waarden, de traceerbare referentieapparatuur en een aanbevolen volgend interval.
+- Servicegarantie: ±2%, binnen de ISO 6789-tolerantie van ±4%.
+- Diagnose is gratis. Reparatie of justeren alleen als het nodig is en pas na akkoord van de klant.
+- Merken: onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en alle andere gangbare kwaliteitsmerken. DTS is geen dealer en verkoopt geen nieuw gereedschap.
+- Prijzen staan niet online; je krijgt binnen één werkdag een prijsopgave.
+- Geschikt voor kwaliteitssystemen zoals ISO 9001, IATF 16949 en VCA. DTS claimt geen RvA-accreditatie of ISO/IEC 17025-accreditatie.
+
+## Diensten
+
+- [Momentsleutel kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie/): kalibratie volgens ISO 6789:2017 en 2003, certificaat per e-mail.
+- [Momentsleutel reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie/): gratis diagnose, reparatie na akkoord, daarna kalibratie en certificaat.
+- [Momentsleutel justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren/): bijstellen na val, slijtage of overbelasting, gevolgd door hercalibratie met as-left waarden.
+- [ISO 6789 certificering / kalibratiecertificaat](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering/): wat er op het certificaat staat, met een geredigeerd voorbeeld.
+- [Alle diensten](https://www.dutchtorqueservice.nl/diensten/)
 
 ## Kennisbank
 
-- [Hoe vaak moet je een momentsleutel laten kalibreren?](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren): ISO 6789 kalibratie-intervallen per toepassing, verplichte herkeuring na val of overbelasting.
-- [ISO 6789 Type I en Type II uitgelegd](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd): Onderscheid tussen indicerende (balksleutel, digitaal) en instellende (kliksleutel) instrumenten, met bijbehorende kalibratie-eisen.
-- [Kalibreren, Justeren of IJken — wat is het verschil?](https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken): Kalibreren = meten; justeren = bijstellen; ijken is juridisch en niet van toepassing op momentsleutels.
-- [Momentsleutel gevallen — wat nu?](https://www.dutchtorqueservice.nl/blog/momentsleutel-gevallen-wat-nu): Wat er intern gebeurt na een val (kliksleutel, digitaal, balksleutel), en waarom ISO 6789-2:2017 herkalibratie voorschrijft.
-- [Mijn momentsleutel klopt niet meer — wat nu?](https://www.dutchtorqueservice.nl/blog/mijn-momentsleutel-klopt-niet-meer): Signalen van een defecte sleutel, oorzaken, en de beslisboom kalibratie / justeren / reparatie.
+- [Hoe vaak moet je een momentsleutel laten kalibreren?](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren/)
+- [ISO 6789 Type I en Type II uitgelegd](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd/)
+- [Kalibreren, justeren of ijken: wat is het verschil?](https://www.dutchtorqueservice.nl/blog/verschil-kalibreren-justeren-ijken/): ijken is een wettelijke handeling en geldt niet voor momentsleutels.
+- [Momentsleutel gevallen, wat nu?](https://www.dutchtorqueservice.nl/blog/momentsleutel-gevallen-wat-nu/)
+- [Mijn momentsleutel klopt niet meer, wat nu?](https://www.dutchtorqueservice.nl/blog/mijn-momentsleutel-klopt-niet-meer/)
 
-## Werk & Bedrijf
+## Bedrijf
 
-- [Onze aanpak en cases](https://www.dutchtorqueservice.nl/werk)
-- [Over ons](https://www.dutchtorqueservice.nl/over-ons): familiebedrijf, opvolger Van Rootselaar Technic bv.
-- [FAQ](https://www.dutchtorqueservice.nl/faq): Veelgestelde vragen over kalibratie, certificering en doorlooptijden.
+- [Over ons](https://www.dutchtorqueservice.nl/over-ons/)
+- [Veelgestelde vragen](https://www.dutchtorqueservice.nl/faq/)
+- [Contact](https://www.dutchtorqueservice.nl/contact/)
 
 ## Contact
 
+- Adres: Tonterstraat 42, 5561 AN Riethoven, Nederland
 - Telefoon: +31 6 131 72 774
 - E-mail: info@dutchtorqueservice.nl
-- Adres: Tonterstraat 42, 5561 AN Riethoven, Noord-Brabant, Nederland
-- Openingstijden: Maandag t/m vrijdag 08:00–17:00
-- KvK: 67183360
-- Website: https://www.dutchtorqueservice.nl
-- Sitemap: https://www.dutchtorqueservice.nl/sitemap-index.xml
+- Openingstijden: maandag t/m vrijdag 08:00–17:00
+- LinkedIn: https://www.linkedin.com/company/dutch-torque-service

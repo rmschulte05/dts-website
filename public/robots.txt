@@ -1,59 +1,46 @@
 # Dutch Torque Service — robots.txt
-# Full crawl access for search engines and AI assistants.
+# Updated 2026-11-14. Full crawl access for search engines and AI assistants.
+# Content signals (contentsignals.org): search, AI answers/grounding and training all allowed.
 
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
-# Explicit allow for major AI crawlers (clarity over implicit *).
+# Explicit allow for AI search, assistant and training crawlers (clarity over implicit *).
+# OpenAI: OAI-SearchBot = ChatGPT search, ChatGPT-User = user fetches, GPTBot = training
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
 User-agent: GPTBot
 Allow: /
 
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
+# Anthropic: Claude-SearchBot = search, Claude-User = user fetches, ClaudeBot = training
+User-agent: Claude-SearchBot
+User-agent: Claude-User
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
-Allow: /
-
+# Perplexity
 User-agent: PerplexityBot
-Allow: /
-
 User-agent: Perplexity-User
 Allow: /
 
+# Google (Googlebot powers AI Overviews/AI Mode; Google-Extended = Gemini apps/training)
+User-agent: Googlebot
 User-agent: Google-Extended
 Allow: /
 
-User-agent: Applebot-Extended
-Allow: /
-
+# Microsoft (Bing index powers Copilot and feeds ChatGPT search)
 User-agent: Bingbot
 Allow: /
 
-User-agent: CCBot
-Allow: /
-
+# Apple, Meta, Amazon, DuckDuckGo, Mistral, Common Crawl
+User-agent: Applebot
+User-agent: Applebot-Extended
 User-agent: Meta-ExternalAgent
-Allow: /
-
 User-agent: Amazonbot
-Allow: /
-
 User-agent: DuckAssistBot
-Allow: /
-
-User-agent: YouBot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: Diffbot
+User-agent: MistralAI-User
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://www.dutchtorqueservice.nl/sitemap-index.xml

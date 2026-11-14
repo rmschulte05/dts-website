@@ -11,9 +11,10 @@ interface Props {
   category: string;
   readTime: string;
   publishDate: string;
+  updatedDate?: string;
   excerpt: string;
 }
-const { title, description, canonicalPath, headline, category, readTime, publishDate, excerpt } = Astro.props;
+const { title, description, canonicalPath, headline, category, readTime, publishDate, updatedDate, excerpt } = Astro.props;
 
 // Emit a BreadcrumbList JSON-LD. Home › Blog › {headline}, for every article.
 const siteBase = 'https://www.dutchtorqueservice.nl';
@@ -91,7 +92,7 @@ const accent = categoryColors[category] ?? '#7AAFC4';
           <div class="author-info">
             <span class="author-name">Jan-Piet Schulte</span>
             <span class="author-role">Dutch Torque Service · {publishDate}</span>
-            <span class="author-updated">Laatst bijgewerkt: {publishDate}</span>
+            <span class="author-updated">Laatst bijgewerkt: {updatedDate ?? publishDate}</span>
           </div>
         </div>
       </div>
