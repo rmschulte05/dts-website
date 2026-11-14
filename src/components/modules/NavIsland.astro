@@ -6,10 +6,10 @@ const { currentPage = 'home' } = Astro.props;
 
 const links = [
   { label: 'Home',      href: '/',          key: 'home' },
-  { label: 'Diensten',  href: '/diensten',  key: 'diensten' },
-  { label: 'Blog',      href: '/blog',      key: 'blog' },
-  { label: 'Over Ons',  href: '/over-ons',  key: 'over-ons' },
-  { label: 'Contact',   href: '/contact',   key: 'contact' },
+  { label: 'Diensten',  href: '/diensten/',  key: 'diensten' },
+  { label: 'Blog',      href: '/blog/',      key: 'blog' },
+  { label: 'Over Ons',  href: '/over-ons/',  key: 'over-ons' },
+  { label: 'Contact',   href: '/contact/',   key: 'contact' },
 ];
 ---
 
@@ -83,6 +83,7 @@ const links = [
     id="nav-mobile"
     class="mobile-overlay"
     aria-hidden="true"
+    inert
     role="dialog"
     aria-modal="true"
     aria-label="Navigatiemenu"
@@ -598,6 +599,7 @@ const links = [
     lastFocus = document.activeElement as HTMLElement | null;
 
     toggle?.setAttribute('aria-expanded', 'true');
+    mobileMenu?.removeAttribute('inert');
     mobileMenu?.setAttribute('aria-hidden', 'false');
     mobileMenu?.classList.add('open');
     // Prevent background scroll while overlay is open
@@ -630,6 +632,7 @@ const links = [
 
     toggle?.setAttribute('aria-expanded', 'false');
     mobileMenu?.setAttribute('aria-hidden', 'true');
+    mobileMenu?.setAttribute('inert', '');
     mobileMenu?.classList.remove('open');
     document.body.style.overflow = '';
     mobileLinks.forEach(l => l.setAttribute('tabindex', '-1'));

@@ -8,6 +8,8 @@ interface Props {
   canonicalPath?: string;  // e.g. "/" or "/werk/"
   robots?: string;
   noCanonical?: boolean;
+  ogType?: 'website' | 'article';
+  autoBreadcrumb?: boolean; // false when the page/layout emits its own BreadcrumbList
 }
 const {
   title,
@@ -15,6 +17,8 @@ const {
   canonicalPath,
   robots = 'index, follow',
   noCanonical = false,
+  ogType = 'website',
+  autoBreadcrumb = true,
 } = Astro.props;
 
 const siteBase = 'https://www.dutchtorqueservice.nl';
@@ -28,6 +32,39 @@ function absoluteUrl(path?: string): string {
 
 const canonicalURL = absoluteUrl(canonicalPath ?? '/');
 const ogImage = `${siteBase}/og-image.jpg`;
+const ogImageAlt = 'Dutch Torque Service, Precisie op elk moment. Momentsleutel kalibratie, reparatie en certificering, Riethoven, Noord-Brabant';
+
+// BreadcrumbList for every page except home, unless the page emits its own.
+const crumbNames: Record<string, string> = {
+  'diensten': 'Diensten',
+  'momentsleutel-kalibratie': 'Momentsleutel kalibratie',
+  'momentsleutel-reparatie': 'Momentsleutel reparatie',
+  'momentsleutel-justeren': 'Momentsleutel justeren',
+  'iso-6789-certificering': 'ISO 6789 certificering',
+  'blog': 'Blog',
+  'contact': 'Contact',
+  'faq': 'Veelgestelde vragen',
+  'werk': 'Ons werk',
+  'over-ons': 'Over ons',
+  'privacy': 'Privacybeleid',
+};
+const crumbPath = new URL(canonicalURL).pathname;
+const crumbSegments = crumbPath.split('/').filter(Boolean);
+const breadcrumbSchema = (autoBreadcrumb && !noCanonical && crumbSegments.length > 0 && robots.startsWith('index'))
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteBase}/` },
+        ...crumbSegments.map((seg, i) => ({
+          "@type": "ListItem",
+          "position": i + 2,
+          "name": crumbNames[seg] ?? seg,
+          "item": `${siteBase}/${crumbSegments.slice(0, i + 1).join('/')}/`,
+        })),
+      ],
+    }
+  : null;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -57,8 +94,8 @@ const localBusinessSchema = {
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 51.3397,
-    "longitude": 5.4119
+    "latitude": 51.34915,
+    "longitude": 5.38555
   },
   "areaServed": [
     { "@type": "Country", "name": "Netherlands" },
@@ -148,7 +185,7 @@ const personSchema = {
     {(!noCanonical) && <link rel="canonical" href={canonicalURL} />}
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -156,7 +193,7 @@ const personSchema = {
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="Dutch Torque Service" />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content="nl_NL" />
     <meta property="og:site_name" content="Dutch Torque Service" />
 
@@ -165,9 +202,12 @@ const personSchema = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
 
     <!-- Fonts: Inter Variable is self-hosted via @fontsource-variable/inter (imported in the
@@ -176,6 +216,8 @@ const personSchema = {
 
     <!-- Structured data. LocalBusiness + WebSite + Person -->
     <script type="application/ld+json" set:html={JSON.stringify([localBusinessSchema, websiteSchema, personSchema])} />
+
+    {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 
     <!-- Per-page structured data slot -->
     <slot name="head" />

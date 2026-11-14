@@ -11,10 +11,13 @@ const diensten = WORK_SEQUENCE.map((step) => ({
 
 const navigatie = [
   { label: 'Home',     href: '/' },
-  { label: 'Diensten', href: '/diensten' },
-  { label: 'Blog',     href: '/blog' },
-  { label: 'Over Ons', href: '/over-ons' },
-  { label: 'Contact',  href: '/contact' },
+  { label: 'Diensten', href: '/diensten/' },
+  { label: 'Momentsleutel opsturen', href: '/blog/momentsleutel-opsturen-voor-kalibratie/' },
+  { label: 'Veelgestelde vragen', href: '/faq/' },
+  { label: 'Ons werk', href: '/werk/' },
+  { label: 'Blog',     href: '/blog/' },
+  { label: 'Over Ons', href: '/over-ons/' },
+  { label: 'Contact',  href: '/contact/' },
 ];
 ---
 
@@ -116,7 +119,7 @@ const navigatie = [
 
       <!-- Diensten -->
       <div class="footer-col" data-animate data-animate-delay="0.05">
-        <h4 class="footer-col-heading">Diensten</h4>
+        <h2 class="footer-col-heading">Diensten</h2>
         <ul>
           {diensten.map(link => (
             <li>
@@ -131,7 +134,7 @@ const navigatie = [
 
       <!-- Navigatie -->
       <div class="footer-col" data-animate data-animate-delay="0.10">
-        <h4 class="footer-col-heading">Navigatie</h4>
+        <h2 class="footer-col-heading">Navigatie</h2>
         <ul>
           {navigatie.map(link => (
             <li>
@@ -146,7 +149,7 @@ const navigatie = [
 
       <!-- Contact -->
       <div class="footer-col footer-col--contact" data-animate data-animate-delay="0.15">
-        <h4 class="footer-col-heading">Contact</h4>
+        <h2 class="footer-col-heading">Contact</h2>
         <ul>
           <li>
             <a href="mailto:info@dutchtorqueservice.nl" class="footer-link">
@@ -169,7 +172,7 @@ const navigatie = [
         </ul>
 
         <!-- CTA button -->
-        <a href="/contact" class="footer-cta-btn">
+        <a href="/contact/" class="footer-cta-btn">
           Reparatie aanvragen
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false">
             <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
