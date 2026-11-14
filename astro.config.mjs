@@ -93,5 +93,8 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    // CSP is script-src 'self': small scripts must ship as files, never inline,
+    // or the browser blocks them (Q&A widget and reading bar were dead).
+    build: { assetsInlineLimit: 0 },
   },
 });
