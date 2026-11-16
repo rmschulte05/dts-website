@@ -24,6 +24,33 @@ const schema = {
   "url": "https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren/",
   "inLanguage": "nl-NL"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Geldt er een wettelijke verplichting om momentsleutels te kalibreren?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Een algemene wettelijke verplichting bestaat niet, maar voor bedrijven met een ISO-kwaliteitssysteem (9001, IATF 16949, VCA) is kalibratie van meetmiddelen een directe normeis. Bovendien maakt kalibratie aansprakelijkheidsclaims bij mechanisch falen vrijwel kansloos." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik zelf controleren of mijn momentsleutel nog klopt?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Zonder traceerbare referentieapparatuur niet betrouwbaar. Je kunt signalen herkennen (klik te vroeg/laat, val, overbelasting), maar een professionele kalibratie is de enige manier om de werkelijke afwijking te documenteren." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe lang duurt een kalibratie bij Dutch Torque Service?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Wij werken met een snelle doorlooptijd. In overleg is dezelfde dag mogelijk. Je ontvangt het certificaat per e-mail." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kalibreren jullie ook meerdere sleutels tegelijk?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ja, wij verwerken ook grotere hoeveelheden. Neem contact op om de aanlevering van grotere aantallen af te stemmen. We kalibreren in ons lab in Riethoven, niet op locatie." }
+    }
+  ]
+};
 ---
 
 <BlogLayout
@@ -38,6 +65,7 @@ const schema = {
   excerpt="ISO 6789 stelt geen vaste kalibratieperiode vast. Toch is er een duidelijk antwoord, afhankelijk van gebruik, omgeving en incident. Dit artikel geeft je de feiten."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <div class="prose">
     <p>Een momentsleutel die niet meer klopt is geen gereedschap, het is een aansprakelijkheidsrisico. Toch weet de meerderheid van de werkplaatsen niet precies wanneer kalibratie verplicht is. Dit artikel geeft je de feiten, de norm, en een praktisch beslisschema.</p>

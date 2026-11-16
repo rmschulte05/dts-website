@@ -31,37 +31,37 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Wat is het verschil tussen kalibreren en justeren?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Kalibreren is meten en documenteren van de afwijking, er wordt niets aan de sleutel veranderd. Justeren is het fysiek bijstellen van de sleutel zodat hij weer binnen tolerantie valt. Justeren volgt altijd op kalibratie, nooit andersom." }
-    },
-    {
-      "@type": "Question",
-      "name": "Moet ik mijn momentsleutel laten ijken?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Nee. Momentsleutels vallen niet onder de Metrologiewet en kunnen wettelijk niet worden geijkt. Voor een kwaliteitssysteem (ISO 9001, VCA, IATF 16949) heb je een ISO 6789:2017 en 2003 kalibratiecertificaat nodig, geen ijkbewijs." }
-    },
-    {
-      "@type": "Question",
       "name": "Kan ik mijn sleutel laten kalibreren zonder hem te laten justeren?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Kalibratie en justeren zijn twee losse stappen. Als jouw sleutel binnen tolerantie zit, hoef je niets bij te stellen, je krijgt gewoon het certificaat." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Kalibratie en justeren zijn twee losse stappen. Als jouw sleutel binnen tolerantie zit, hoef je niets bij te stellen, je krijgt gewoon het certificaat. Zit hij erbuiten, dan bespreken we of justeren zinvol is." }
     },
     {
       "@type": "Question",
-      "name": "Wat staat er op een ISO 6789:2017 en 2003 kalibratiecertificaat?",
-      "acceptedAnswer": { "@type": "Answer", "text": "De gemeten waarden per meetpunt (as-found en as-left indien bijgesteld), de meetonzekerheid, de referentieapparatuur waarmee gemeten is, datum, naam van het lab en handtekening van de verantwoordelijke." }
+      "name": "Wat staat er precies op een ISO 6789:2017 en 2003 kalibratiecertificaat?",
+      "acceptedAnswer": { "@type": "Answer", "text": "De gemeten waarden per meetpunt, as-found en as-left als er is bijgesteld. De meetonzekerheid. De referentieapparatuur waarmee gemeten is. Datum, naam, handtekening. Alles wat jij nodig hebt voor je kwaliteitssysteem, en niets wat er niet bij hoort." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mijn kwaliteitshandboek zegt dat ik mijn gereedschap moet \"ijken\". Wat doe ik?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Waarschijnlijk staat dat er al jaren in en heeft iemand het ooit fout overgeschreven. In de context van momentsleutels betekent het gewoon kalibratie. Laat eventueel je kwaliteitsmanager de tekst aanpassen naar \"kalibreren conform ISO 6789:2017 en 2003\", je auditor zal het waarderen." }
     },
     {
       "@type": "Question",
       "name": "Hoe lang duurt kalibratie bij Dutch Torque Service?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Wij werken met een snelle doorlooptijd. Na afronding is jouw sleutel gekalibreerd en het certificaat opgesteld." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Wij werken met een snelle doorlooptijd. Na afronding is jouw sleutel gekalibreerd en het certificaat opgesteld. Voor batches nemen we even contact op over de planning. Geen verrassingen achteraf." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mijn sleutel klopt niet meer, kalibratie of reparatie?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Klikmechanisme werkt niet meer, veer defect, schaalverdeling beschadigd? Dan is het reparatie. Werkt alles mechanisch goed maar klopt het afwijking niet? Dan is kalibratie gevolgd door eventueel justeren de juiste route. Twijfel je? Stuur hem gewoon op en wij kijken er even naar." }
     }
   ]
-};
+}
 
 ---
 
 <BlogLayout
   title="Kalibreren, Justeren of IJken. Wat is het Verschil? | DTS"
-  description="Kalibreren is meten, justeren is bijstellen, ijken geldt wettelijk niet voor momentsleutels. Het proces volgens ISO 6789:2017 en 2003, uitgelegd door Jan-Piet."
+  description="Kalibreren is meten, justeren is bijstellen, ijken geldt wettelijk niet voor momentsleutels. Het proces volgens ISO 6789:2017 en 2003, door Jan-Piet."
   canonicalPath="/blog/verschil-kalibreren-justeren-ijken"
   headline="Kalibreren, Justeren of IJken. Wat is het Verschil?"
   category="Kennisbank"

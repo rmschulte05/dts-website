@@ -23,6 +23,38 @@ const schema = {
   "url": "https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd/",
   "inLanguage": "nl-NL"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Type I nauwkeuriger dan Type II?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In theorie zijn de nauwkeurigheidseisen gelijk (±4%). In de praktijk zijn balksleutels (Type IA) minder gevoelig voor slijtage omdat er geen klikmechanisme is dat op termijn vermoeid raakt." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mijn kliksleutel, is dat Type IIB of IIC?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Als je hem kunt instellen met een draaiknop die lijkt op een micrometer (met mm-markering), is het IIB. Als er een cilinder met schaalmarkering is, is het IIC. Beide werken hetzelfde kalibratieschema." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kalibreren jullie alle subcategorieën?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Wij kalibreren alle Type I en Type II subcategorieën conform ISO 6789:2017 en 2003, voor alle gangbare merken." }
+    },
+    {
+      "@type": "Question",
+      "name": "Mijn sleutel heeft zowel een klik als een display, welk type is dat?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Waarschijnlijk Type IID, een elektronische kliksleutel. Het display toont het doelkoppel en de sleutel klikt bij bereik. Wij kalibreren ook dit type." }
+    },
+    {
+      "@type": "Question",
+      "name": "Staat het type op mijn kalibratiecertificaat?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Ons DTS-certificaat vermeldt het instrumenttype (I of II) en de subcategorie, naast alle meetwaarden en de referentieapparatuur." }
+    }
+  ]
+};
 ---
 
 <BlogLayout
@@ -37,6 +69,7 @@ const schema = {
   excerpt="Als je gereedschap laat kalibreren kom je altijd Type I en Type II tegen. Het onderscheid bepaalt hoe je sleutel gecalibreerd wordt. Hier is de heldere uitleg."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <div class="prose">
     <p>Als je gereedschap laat kalibreren conform ISO 6789, kom je altijd het onderscheid tussen Type I en Type II tegen. Het onderscheid bepaalt hoe jouw sleutel gecalibreerd wordt, en wat er in het certificaat staat. Hieronder leggen we het helder uit.</p>
