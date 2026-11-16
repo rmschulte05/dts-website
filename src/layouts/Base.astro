@@ -2,6 +2,10 @@
 import '@fontsource-variable/inter';
 import '../styles/global.css';
 
+interface HreflangLink {
+  lang: string;
+  href: string;
+}
 interface Props {
   title: string;
   description?: string;
@@ -10,6 +14,11 @@ interface Props {
   noCanonical?: boolean;
   ogType?: 'website' | 'article';
   autoBreadcrumb?: boolean; // false when the page/layout emits its own BreadcrumbList
+  htmlLang?: string;
+  ogLocale?: string;
+  ogLocaleAlternate?: string[];
+  hreflang?: HreflangLink[];
+  skipLinkLabel?: string;
 }
 const {
   title,
@@ -19,6 +28,11 @@ const {
   noCanonical = false,
   ogType = 'website',
   autoBreadcrumb = true,
+  htmlLang = 'nl',
+  ogLocale = 'nl_NL',
+  ogLocaleAlternate = [],
+  hreflang = [],
+  skipLinkLabel = 'Ga naar inhoud',
 } = Astro.props;
 
 const siteBase = 'https://www.dutchtorqueservice.nl';
@@ -47,6 +61,8 @@ const crumbNames: Record<string, string> = {
   'werk': 'Ons werk',
   'over-ons': 'Over ons',
   'privacy': 'Privacybeleid',
+  'en': 'English',
+  'torque-wrench-calibration': 'Torque wrench calibration',
 };
 const crumbPath = new URL(canonicalURL).pathname;
 const crumbSegments = crumbPath.split('/').filter(Boolean);
@@ -169,7 +185,7 @@ const personSchema = {
 };
 ---
 <!DOCTYPE html>
-<html lang="nl">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -193,7 +209,13 @@ const personSchema = {
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:alt" content={ogImageAlt} />
-    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:locale" content={ogLocale} />
+    {ogLocaleAlternate.map((loc) => (
+      <meta property="og:locale:alternate" content={loc} />
+    ))}
+    {hreflang.map((h) => (
+      <link rel="alternate" hreflang={h.lang} href={h.href} />
+    ))}
     <meta property="og:site_name" content="Dutch Torque Service" />
 
     <!-- Twitter Card -->
@@ -223,7 +245,7 @@ const personSchema = {
   </head>
   <body>
     <!-- Skip link, allows keyboard users to jump past nav directly to content -->
-    <a href="#main-content" class="skip-link">Ga naar inhoud</a>
+    <a href="#main-content" class="skip-link">{skipLinkLabel}</a>
     <!-- Skip-link target: invisible anchor placed before page content -->
     <div id="main-content" tabindex="-1" style="outline:none;"></div>
     <slot />

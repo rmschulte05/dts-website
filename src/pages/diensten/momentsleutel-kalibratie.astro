@@ -121,7 +121,7 @@ const faq = [
   },
   {
     q: 'Wat kost een momentsleutel kalibratie?',
-    a: 'De prijs hangt af van het type momentsleutel en het merk. Een vaste prijs noemen we hier niet. <a href="/contact">Stuur een bericht</a>, bel <a href="tel:+31613172774">+31 6 13 17 27 74</a> of mail <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>, dan hoor je wat het voor jouw sleutel(s) wordt.',
+    a: 'De prijs hangt af van het type momentsleutel en het merk. Een vaste prijs noemen we hier niet. <a href="/contact">Stuur een bericht</a>, bel <a href="tel:+31613172774">+31 6 13 17 27 74</a> of mail <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>, dan hoor je wat het voor jouw sleutel(s) wordt. Meer uitleg: <a href="/blog/wat-kost-momentsleutel-kalibreren/">wat kost momentsleutel kalibreren</a>.',
     html: true,
   },
   {
@@ -158,6 +158,11 @@ const faqSchema = {
   title="Momentsleutel laten kalibreren | Dutch Torque Service"
   description="Momentsleutel laten kalibreren volgens ISO 6789:2017 en 2003, met certificaat. Lab in Riethoven. Offerte binnen één werkdag, bel +31 6 131 72 774."
   canonicalPath="/diensten/momentsleutel-kalibratie"
+  hreflang={[
+    { lang: 'nl', href: 'https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie/' },
+    { lang: 'en', href: 'https://www.dutchtorqueservice.nl/en/torque-wrench-calibration/' },
+    { lang: 'x-default', href: 'https://www.dutchtorqueservice.nl/' },
+  ]}
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToSchema)} />

@@ -2,7 +2,7 @@
 
 > Dutch Torque Service (DTS) diagnosticeert, repareert, justeert en kalibreert momentsleutels en levert een kalibratiecertificaat volgens ISO 6789:2017 en 2003 (Type I en Type II). Lab in Riethoven, Noord-Brabant. Klanten: werkplaatsen en bedrijven in Nederland, België en Duitsland.
 
-Laatst bijgewerkt: 2026-11-14
+Laatst bijgewerkt: 2026-11-16
 
 ## Kernfeiten
 
@@ -25,8 +25,13 @@ Laatst bijgewerkt: 2026-11-14
 - [ISO 6789 certificering / kalibratiecertificaat](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering/): wat er op het certificaat staat, met een geredigeerd voorbeeld.
 - [Alle diensten](https://www.dutchtorqueservice.nl/diensten/)
 
+## English
+
+- [Torque wrench calibration in the Netherlands](https://www.dutchtorqueservice.nl/en/torque-wrench-calibration/): send-in or lab visit in Riethoven. ISO 6789:2017 and 2003 certificate, ±2% service guarantee. Quote within one working day. No on-site calibration. The rest of the site is in Dutch.
+
 ## Kennisbank
 
+- [Wat kost het om een momentsleutel te laten kalibreren?](https://www.dutchtorqueservice.nl/blog/wat-kost-momentsleutel-kalibreren/): geen prijslijst online; de prijs hangt af van type, merk en het werk dat nodig is. Offerte binnen één werkdag. Diagnose is gratis.
 - [Momentsleutel opsturen voor kalibratie: hoe werkt dat?](https://www.dutchtorqueservice.nl/blog/momentsleutel-opsturen-voor-kalibratie/): inpakken, wat je meestuurt, adres (Tonterstraat 42, 5561 AN Riethoven) en wat er daarna gebeurt. Niet op locatie.
 - [Hoe vaak moet je een momentsleutel laten kalibreren?](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren/)
 - [ISO 6789 Type I en Type II uitgelegd](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd/)
