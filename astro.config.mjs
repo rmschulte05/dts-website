@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // Privacy is new as of this technical pass (2026-11-13).
 const lastmodByPath = {
   '/': '2026-11-03',
-  '/blog/': '2026-11-03',
+  '/blog/': '2026-11-16',
   '/blog/hoe-vaak-momentsleutel-kalibreren/': '2026-11-13',
   '/blog/iso-6789-type-1-type-2-uitgelegd/': '2026-11-13',
   '/blog/mijn-momentsleutel-klopt-niet-meer/': '2026-11-03',
@@ -23,6 +23,8 @@ const lastmodByPath = {
   '/werk/': '2026-11-03',
   '/privacy/': '2026-11-13',
   '/blog/momentsleutel-opsturen-voor-kalibratie/': '2026-11-14',
+  '/blog/wat-kost-momentsleutel-kalibreren/': '2026-11-16',
+  '/en/torque-wrench-calibration/': '2026-11-16',
 };
 
 // Internal links in page bodies were written without a trailing slash, which

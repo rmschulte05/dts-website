@@ -1,0 +1,113 @@
+---
+export const meta = {
+  title: 'Wat kost het om een momentsleutel te laten kalibreren?',
+  excerpt: 'We publiceren geen prijslijst. Wat een kalibratie kost, hangt af van het type momentsleutel, het merk en van het werk dat nodig is. De diagnose is altijd gratis, en je krijgt binnen één werkdag een prijsopgave.',
+  category: 'Kalibratie',
+  readTime: '4 min',
+  date: '2026-11-16',
+  dateDisplay: '16 november 2026',
+  accent: '#7AAFC4',
+};
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const pageUrl = 'https://www.dutchtorqueservice.nl/blog/wat-kost-momentsleutel-kalibreren/';
+
+const faq = [
+  {
+    q: 'Wat kost het om een momentsleutel te laten kalibreren?',
+    a: 'We publiceren geen prijslijst. De prijs hangt af van het type momentsleutel, het merk en van het werk dat nodig is. Reparatie of justeren doen we alleen als het nodig is, en alleen na jouw akkoord. <a href="/contact/">Stuur een bericht</a> voor een prijsopgave; we reageren binnen één werkdag.',
+  },
+  {
+    q: 'Is de diagnose gratis?',
+    a: 'Ja. De diagnose is altijd gratis. We repareren of justeren pas na jouw akkoord.',
+  },
+  {
+    q: 'Kalibreert Dutch Torque Service ook op locatie?',
+    a: 'Nee. Je stuurt de momentsleutel op of je brengt hem langs in ons lab in Riethoven. We kalibreren niet op locatie.',
+  },
+  {
+    q: 'Hoe vraag ik een offerte aan?',
+    a: 'Mail <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>, bel <a href="tel:+31613172774">+31 6 131 72 774</a> of <a href="/contact/">stuur een bericht</a>. Je krijgt binnen één werkdag een prijsopgave.',
+  },
+];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Wat kost het om een momentsleutel te laten kalibreren?",
+  "description": "Wat kost momentsleutel kalibreren? Dutch Torque Service publiceert geen prijslijst. De prijs hangt af van type, merk en het werk dat nodig is. Offerte binnen één werkdag.",
+  "author": { "@id": "https://www.dutchtorqueservice.nl/#jan-piet-schulte" },
+  "publisher": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "mainEntityOfPage": pageUrl,
+  "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
+  "datePublished": "2026-11-16",
+  "dateModified": "2026-11-16",
+  "url": pageUrl,
+  "inLanguage": "nl-NL"
+};
+---
+
+<BlogLayout
+  title="Momentsleutel kalibreren prijs: hoe zit dat? | DTS"
+  description="Wat kost momentsleutel kalibreren? We publiceren geen prijslijst. De prijs hangt af van type, merk en het werk dat nodig is. Offerte binnen één werkdag."
+  canonicalPath="/blog/wat-kost-momentsleutel-kalibreren/"
+  headline="Wat kost het om een momentsleutel te laten kalibreren?"
+  category="Kalibratie"
+  readTime="4 min"
+  publishDate="16 november 2026"
+  updatedDate="16 november 2026"
+  excerpt="We publiceren geen prijslijst. Wat een kalibratie kost, hangt af van het type momentsleutel, het merk en van het werk dat nodig is. De diagnose is altijd gratis, en je krijgt binnen één werkdag een prijsopgave."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <div class="prose">
+    <p>Bij Dutch Torque Service staat er geen prijslijst online. Wat een <a href="/diensten/momentsleutel-kalibratie/">momentsleutel kalibratie</a> kost, hangt af van het type momentsleutel, het merk, en van het werk dat nodig is. De diagnose is altijd gratis, en je krijgt binnen één werkdag een prijsopgave.</p>
+
+    <h2>Waarom staat er geen prijs op de website?</h2>
+    <p>We publiceren geen prijslijst, omdat niet elke sleutel dezelfde behandeling nodig heeft. Eerst kijken we wat er aan de hand is. <a href="/diensten/momentsleutel-reparatie/">Reparatie</a> of <a href="/diensten/momentsleutel-justeren/">justeren</a> doen we alleen als het nodig is, en alleen na jouw akkoord. Daarom maken we de prijsopgave per sleutel, of per batch.</p>
+
+    <h2>Wat bepaalt de prijs?</h2>
+    <p>De prijs hangt af van:</p>
+    <ul>
+      <li>het type momentsleutel (Type I, indicerend, of Type II, instellend);</li>
+      <li>het merk, bijvoorbeeld Snap-On, Stahlwille, Gedore, Facom, Hazet of Würth, of een ander gangbaar kwaliteitsmerk;</li>
+      <li>het werk dat nodig is: alleen kalibreren, of ook justeren of reparatie na jouw akkoord.</li>
+    </ul>
+    <p>We servicen ook hydraulisch en high-torque industrieel gereedschap. Daarvoor geldt hetzelfde: geen prijslijst online, wel een prijsopgave binnen één werkdag.</p>
+
+    <h2>Wat zit er bij een kalibratie?</h2>
+    <ul>
+      <li>Gratis diagnose.</li>
+      <li>Kalibratie volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt.</li>
+      <li>Een <a href="/diensten/iso-6789-certificering/">kalibratiecertificaat</a> met as-found en as-left waarden, de gebruikte traceerbare referentieapparatuur en een aanbevolen termijn voor de volgende kalibratie. Je krijgt het certificaat per e-mail.</li>
+      <li>Onze servicegarantie is ±2%, binnen de ISO 6789-tolerantie van ±4%.</li>
+    </ul>
+    <p>DTS is geen dealer en verkoopt geen nieuw gereedschap. We claimen geen RvA-accreditatie of ISO/IEC 17025-accreditatie. Het certificaat is een conformiteitsverklaring volgens ISO 6789:2017 en 2003, bruikbaar voor kwaliteitssystemen zoals ISO 9001, IATF 16949 en VCA.</p>
+
+    <h2>Hoe vraag je een offerte aan?</h2>
+    <p><a href="/contact/">Stuur een bericht</a>, mail <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a> of bel <a href="tel:+31613172774">+31 6 131 72 774</a>. Je krijgt binnen één werkdag een prijsopgave. Je kunt de sleutel <a href="/blog/momentsleutel-opsturen-voor-kalibratie/">opsturen</a> of langsbrengen in ons lab: Tonterstraat 42, 5561 AN Riethoven. Openingstijden: maandag tot en met vrijdag, 08:00–17:00. Kalibreren op locatie doen we niet.</p>
+    <p>We werken voor werkplaatsen en bedrijven in Nederland, België en Duitsland.</p>
+
+    <h2>Veelgestelde vragen</h2>
+    {faq.map((item) => (
+      <details>
+        <summary>{item.q}</summary>
+        <p set:html={item.a} />
+      </details>
+    ))}
+  </div>
+</BlogLayout>
