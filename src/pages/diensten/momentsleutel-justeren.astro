@@ -44,7 +44,7 @@ const adviesTable = [
 const faq = [
   {
     q: 'Is justeren hetzelfde als kalibreren?',
-    a: 'Nee. Kalibreren = meten en documenteren. Justeren = corrigeren. Na het justeren meten we altijd opnieuw, zo documenteren we de nieuwe waarden in een <a href="/diensten/momentsleutel-kalibratie">kalibratierapport</a>.',
+    a: 'Nee. Kalibreren = meten en documenteren. Justeren = corrigeren. Na het justeren meten we altijd opnieuw, zo documenteren we de nieuwe waarden in een <a href="/diensten/momentsleutel-kalibratie">kalibratierapport</a>. Meer over het verschil lees je in <a href="/blog/verschil-kalibreren-justeren-ijken/">kalibreren, justeren of ijken</a>.',
   },
   {
     q: 'Hoe weet ik of mijn sleutel gejusteerd moet worden?',
@@ -55,15 +55,27 @@ const faq = [
     a: 'Afhankelijk van type en merk. Neem contact op voor een prijsindicatie.',
   },
 ];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
 ---
 
 <Base
-  title="Momentsleutel Justeren ISO 6789 | Dutch Torque Service"
-  description="Momentsleutel buiten tolerantie? Wij justeren naar de juiste Nm-waarden conform ISO 6789:2017 en 2003, met herkalibratie en as-left waarden op het certificaat."
+  title="Momentsleutel justeren (bijstellen) | Dutch Torque Service"
+  description="Momentsleutel justeren: bijstellen naar de juiste Nm-waarde. Alleen indien nodig, na jouw akkoord, met herkalibratie en as-left waarden op het certificaat."
   canonicalPath="/diensten/momentsleutel-justeren"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <NavIsland currentPage="diensten" />
 
@@ -205,6 +217,7 @@ const faq = [
             </details>
           ))}
         </div>
+        <p class="sec-sub" style="margin-top:1.25rem; text-align:center;">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a>.</p>
     </PageSection>
 
     <!-- ══════════════════════════════════════

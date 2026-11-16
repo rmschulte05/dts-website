@@ -116,15 +116,27 @@ const faq = [
     a: 'Dan ontvang je een diagnoserapport en eerlijk advies over vervanging.',
   },
 ];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
 ---
 
 <Base
-  title="Momentsleutel reparatie. Alle Merken | Dutch Torque Service"
-  description="Professionele Momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 en 2003 gecertificeerd. Snap-On, Stahlwille. Stuur op →"
+  title="Momentsleutel reparatie | Snap-On, Stahlwille | DTS"
+  description="Momentsleutel reparatie van Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth. Gratis diagnose, raming vooraf. Lab in Riethoven. Stuur je sleutel op."
   canonicalPath="/diensten/momentsleutel-reparatie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <NavIsland currentPage="diensten" />
 
@@ -321,6 +333,7 @@ const faq = [
             </details>
           ))}
         </div>
+        <p class="sec-sub" style="margin-top:1.25rem; text-align:center;">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a> of <a href="/blog/mijn-momentsleutel-klopt-niet-meer/">mijn momentsleutel klopt niet meer</a>.</p>
     </PageSection>
 
     <!-- ══════════════════════════════════════

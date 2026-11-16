@@ -23,10 +23,37 @@ const schema = {
   "url": "https://www.dutchtorqueservice.nl/blog/mijn-momentsleutel-klopt-niet-meer/",
   "inLanguage": "nl-NL"
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hoeveel kost een reparatie?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dat hangt af van de schade en het merk. We doen altijd eerst een gratis diagnose en sturen je een heldere raming. Je bepaalt zelf of je akkoord gaat, wij repareren nooit zonder toestemming." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik mijn Snap-On sleutel bij jullie laten repareren?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ja. Wij repareren Snap-On momentsleutels net als andere merken, gevolgd door kalibratie conform ISO 6789:2017 en 2003." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoe lang duurt een reparatie?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Eenvoudige reparaties + kalibratie: snel klaar. Meer uitgebreide revisies: 2–5 werkdagen. We communiceren de doorlooptijd altijd vooraf zodat je weet waar je aan toe bent." }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat als ik mijn sleutel liever wil laten vervangen?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Dan geven we je een eerlijk advies en een diagnoserapport, zodat je zelf kunt beslissen over vervanging." }
+    }
+  ]
+};
 ---
 
 <BlogLayout
-  title="Momentsleutel Klopt Niet Meer. Wat Nu? | Dutch Torque Service"
+  title="Momentsleutel klopt niet meer: oorzaken en wat nu? | DTS"
   description="Je momentsleutel klikt te vroeg, te laat of voelt anders aan. Stop direct met gebruik: oorzaken, risico's en de juiste vervolgstap. Dutch Torque Service."
   canonicalPath="/blog/mijn-momentsleutel-klopt-niet-meer"
   headline="Mijn momentsleutel klopt niet meer, wat nu?"
@@ -37,6 +64,7 @@ const schema = {
   excerpt="Je kliksleutel klikt te vroeg. Of te laat. Of helemaal niet meer. Stop direct met gebruik. Dit artikel legt uit waarom, en wat de juiste vervolgstap is."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <div class="prose">
     <p>Je werkt met een kliksleutel, maar het klikt te vroeg. Of te laat. Of helemaal niet meer. Of het gevoel klopt gewoon niet. Wat doe je? <strong>Stop direct met gebruik.</strong> Dit artikel legt uit waarom, en wat de juiste vervolgstap is.</p>
