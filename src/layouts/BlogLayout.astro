@@ -92,7 +92,7 @@ const accent = categoryColors[category] ?? '#7AAFC4';
             <span>JP</span>
           </div>
           <div class="author-info">
-            <span class="author-name">Jan-Piet Schulte</span>
+            <span class="author-name"><a href="/over-ons/">Jan-Piet Schulte</a></span>
             <span class="author-role">Dutch Torque Service · {publishDate}</span>
             <span class="author-updated">Laatst bijgewerkt: {updatedDate ?? publishDate}</span>
           </div>
@@ -309,6 +309,7 @@ const accent = categoryColors[category] ?? '#7AAFC4';
 }
 .author-info { display: flex; flex-direction: column; gap: 0.15rem; }
 .author-name { font-size: 0.82rem; font-weight: 600; color: #C4D0D8; }
+.author-name a { color: inherit; text-decoration: underline; }
 .author-role { font-size: 0.72rem; color: rgba(154,174,184,0.45); }
 .author-updated { font-size: 0.68rem; color: rgba(154,174,184,0.35); margin-top: 0.1rem; letter-spacing: 0.02em; }
 

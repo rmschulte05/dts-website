@@ -91,10 +91,10 @@ const aboutPageSchema = {
               Voortzetting van de werkzaamheden.
             </h2>
             <p class="mb-5" style="font-size: 1.05rem; line-height: 1.8; color: #C4D0D8;">
-              Per 1 januari 2026 heeft Dutch Torque Service de werkplaatsinrichting voor de reparatie en kalibratie van momentsleutels overgenomen van <strong style="color:#fff;">Van Rootselaar Technic bv.</strong> te Stiens. Deze werkzaamheden worden door Dutch Torque Service voortgezet.
+              Per 1 januari 2026 heeft Dutch Torque Service de werkplaatsinrichting voor de <a href="/diensten/momentsleutel-reparatie/">reparatie</a> en <a href="/diensten/momentsleutel-kalibratie/">kalibratie</a> van momentsleutels overgenomen van <strong style="color:#fff;">Van Rootselaar Technic bv.</strong> te Stiens. <a href="/werk/">Deze werkzaamheden</a> worden door Dutch Torque Service voortgezet.
             </p>
             <p style="font-size: 0.975rem; line-height: 1.8; color: #A8B8C4;">
-              Wij voeren deze werkzaamheden uit met moderne test- en controleapparatuur en volgens strikte nauwkeurigheidseisen, vanuit Riethoven, Noord-Brabant.
+              Wij voeren deze werkzaamheden uit met moderne test- en controleapparatuur en volgens strikte nauwkeurigheidseisen, vanuit <a href="/diensten/momentsleutel-kalibratie-noord-brabant/">Riethoven, Noord-Brabant</a>.
             </p>
           </div>
         </div>
@@ -136,7 +136,7 @@ const aboutPageSchema = {
             {
               num: '03',
               title: 'ISO Gecertificeerd',
-              body: 'Al onze kalibratiewerkzaamheden worden uitgevoerd conform ISO 6789:2017 en 2003. Je ontvangt een volledig protocol met meetwaarden voor en na, audit-proof en transparant.',
+              body: 'Al onze kalibratiewerkzaamheden worden uitgevoerd conform <a href="/diensten/iso-6789-certificering/">ISO 6789:2017 en 2003</a>. Je ontvangt een volledig protocol met meetwaarden voor en na, audit-proof en transparant.',
               accent: '#64C48A',
             },
           ].map((v, i) => (
@@ -148,7 +148,7 @@ const aboutPageSchema = {
             >
               <span style={`font-size: 3rem; font-weight: 900; line-height: 1; letter-spacing: -0.04em; color: ${v.accent}; opacity: 0.55; display: block; margin-bottom: 1.5rem;`}>{v.num}</span>
               <h3 class="text-xl font-black text-white mb-3" style="letter-spacing: -0.01em;">{v.title}</h3>
-              <p style="font-size: 0.9rem; line-height: 1.75; color: #8EAAB8;">{v.body}</p>
+              <p style="font-size: 0.9rem; line-height: 1.75; color: #8EAAB8;" set:html={v.body} />
               <div class="absolute bottom-5 right-5 w-4 h-4" style={`border-right: 1.5px solid ${v.accent}; border-bottom: 1.5px solid ${v.accent}; border-radius: 0 0 4px 0; opacity: 0.3;`}></div>
             </div>
           ))}
@@ -262,4 +262,5 @@ const aboutPageSchema = {
     color: #7AAFC4;
     background-size: 100% 1px;
   }
+  .team-card a, p a { color: #7AAFC4; text-decoration: underline; }
 </style>
