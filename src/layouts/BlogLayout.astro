@@ -2,6 +2,7 @@
 import Base from './Base.astro';
 import NavIsland from '../components/modules/NavIsland.astro';
 import FooterDTS from '../components/modules/FooterDTS.astro';
+import { getRelatedLinks } from '../data/relatedContent';
 
 interface Props {
   title: string;
@@ -15,6 +16,7 @@ interface Props {
   excerpt: string;
 }
 const { title, description, canonicalPath, headline, category, readTime, publishDate, updatedDate, excerpt } = Astro.props;
+const relatedLinks = getRelatedLinks(canonicalPath);
 
 // Emit a BreadcrumbList JSON-LD. Home › Blog › {headline}, for every article.
 const siteBase = 'https://www.dutchtorqueservice.nl';
@@ -140,7 +142,26 @@ const accent = categoryColors[category] ?? '#7AAFC4';
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
+        <!-- Related links: layout block, not a body rewrite -->
+    {relatedLinks.length > 0 && (
+      <section class="related-section" aria-labelledby="related-heading">
+        <div class="related-wrap">
+          <h2 id="related-heading" class="related-heading">Verder lezen</h2>
+          <ul class="related-list">
+            {relatedLinks.map((item) => (
+              <li>
+                <a href={item.href} class="related-card">
+                  <span class="related-title">{item.title}</span>
+                  <span class="related-context">{item.context}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+<!-- ══════════════════════════════════════════
          POST-ARTICLE CTA
     ══════════════════════════════════════════ -->
     <section class="post-cta-section">
@@ -633,6 +654,53 @@ const accent = categoryColors[category] ?? '#7AAFC4';
 /* ════════════════════════════════════════════
    POST-ARTICLE CTA
 ════════════════════════════════════════════ */
+
+.related-section {
+  padding-inline: var(--page-px, 1.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+.related-wrap { max-width: 800px; margin-inline: auto; }
+.related-heading {
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #E8F0F4;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+.related-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.15rem;
+  border-radius: 1rem;
+  background: #0E1118;
+  border: 1px solid rgba(122,175,196,0.14);
+  text-decoration: none;
+  transition: border-color 0.25s ease;
+}
+.related-card:hover,
+.related-card:focus-visible {
+  border-color: rgba(122,175,196,0.4);
+}
+.related-title {
+  color: #E8F0F4;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.related-context {
+  color: #8EAAB8;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
 .post-cta-section {
   padding-inline: var(--page-px);
   padding-bottom: clamp(4rem, 7vw, 7rem);

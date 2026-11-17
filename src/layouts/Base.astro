@@ -66,18 +66,27 @@ const crumbNames: Record<string, string> = {
 };
 const crumbPath = new URL(canonicalURL).pathname;
 const crumbSegments = crumbPath.split('/').filter(Boolean);
-const breadcrumbSchema = (autoBreadcrumb && !noCanonical && crumbSegments.length > 0 && robots.startsWith('index'))
+// /en/ 301s to the English calibration page, so it is not a real breadcrumb node.
+const skipCrumbSegments = new Set(['en']);
+const crumbItems = [];
+let crumbPos = 2;
+crumbSegments.forEach((seg, i) => {
+  if (skipCrumbSegments.has(seg)) return;
+  crumbItems.push({
+    "@type": "ListItem",
+    "position": crumbPos,
+    "name": crumbNames[seg] ?? seg,
+    "item": `${siteBase}/${crumbSegments.slice(0, i + 1).join('/')}/`,
+  });
+  crumbPos += 1;
+});
+const breadcrumbSchema = (autoBreadcrumb && !noCanonical && crumbItems.length > 0 && robots.startsWith('index'))
   ? {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteBase}/` },
-        ...crumbSegments.map((seg, i) => ({
-          "@type": "ListItem",
-          "position": i + 2,
-          "name": crumbNames[seg] ?? seg,
-          "item": `${siteBase}/${crumbSegments.slice(0, i + 1).join('/')}/`,
-        })),
+        ...crumbItems,
       ],
     }
   : null;
