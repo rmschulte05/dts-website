@@ -1,0 +1,181 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavIsland from '../../components/modules/NavIsland.astro';
+import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
+
+const pageUrl = 'https://www.dutchtorqueservice.nl/de/drehmomentschluessel-kalibrierung/';
+const nlUrl = 'https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie/';
+const enUrl = 'https://www.dutchtorqueservice.nl/en/torque-wrench-calibration/';
+
+const faq = [
+  {
+    q: 'Veröffentlichen Sie Preise für die Kalibrierung von Drehmomentschlüsseln?',
+    a: 'Nein. Wir veröffentlichen keine Preisliste. Der Preis hängt vom Typ des Drehmomentschlüssels, der Marke und dem erforderlichen Aufwand ab. Reparatur oder Justierung erfolgt nur, wenn sie nötig ist, und nur nach Ihrer Zustimmung. Sie erhalten innerhalb eines Arbeitstages ein Angebot.',
+  },
+  {
+    q: 'Bieten Sie eine Kalibrierung vor Ort oder mobil an?',
+    a: 'Nein. Sie senden den Drehmomentschlüssel ein oder bringen ihn in unser Labor in Riethoven, Niederlande. Wir kalibrieren nicht vor Ort.',
+  },
+  {
+    q: 'Welche Marken bearbeiten Sie?',
+    a: 'Unter anderem Snap-On, Stahlwille, Gedore, Facom, Hazet und Würth sowie andere gängige Qualitätsmarken. Wir bearbeiten auch hydraulisches und High-Torque-Industriewerkzeug. Dutch Torque Service ist kein Händler und verkauft kein neues Werkzeug.',
+  },
+];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Drehmomentschlüssel kalibrieren in den Niederlanden",
+  "serviceType": "Kalibrierung von Drehmomentschlüsseln",
+  "url": pageUrl,
+  "inLanguage": "de-DE",
+  "description": "Kalibrierung von Drehmomentschlüsseln nach Einsendung oder Abgabe im Labor in Riethoven, Niederlande, gemäß ISO 6789:2017 und 2003, mit Kalibrierzertifikat. ±2 % Servicegarantie, innerhalb der ISO-6789-Toleranz von ±4 %. Angebot innerhalb eines Arbeitstages.",
+  "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "areaServed": [
+    { "@type": "Country", "name": "Netherlands" },
+    { "@type": "Country", "name": "Belgium" },
+    { "@type": "Country", "name": "Germany" }
+  ],
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceLocation": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+    "serviceUrl": pageUrl
+  }
+};
+
+const hreflang = [
+  { lang: 'de', href: pageUrl },
+  { lang: 'nl', href: nlUrl },
+  { lang: 'en', href: enUrl },
+  { lang: 'x-default', href: 'https://www.dutchtorqueservice.nl/' },
+];
+---
+
+<Base
+  title="Drehmomentschlüssel kalibrieren | Labor Riethoven, NL"
+  description="Drehmomentschlüssel nach ISO 6789:2017 und 2003 kalibrieren, mit Zertifikat. ±2 % Servicegarantie. Angebot innerhalb eines Arbeitstages. Labor in Riethoven."
+  canonicalPath="/de/drehmomentschluessel-kalibrierung/"
+  htmlLang="de"
+  ogLocale="de_DE"
+  ogLocaleAlternate={['nl_NL', 'en_GB']}
+  hreflang={hreflang}
+  skipLinkLabel="Zum Inhalt springen"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <NavIsland currentPage="de" />
+
+  <main>
+    <PageSection hero center animate>
+      <div class="sec-eyebrow">
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Deutsch</span>
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+      </div>
+      <h1 class="font-black tracking-tight text-white" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
+        Drehmomentschlüssel kalibrieren in den Niederlanden.
+      </h1>
+      <p class="sec-sub">
+        Senden Sie Ihren Drehmomentschlüssel ein oder bringen Sie ihn in unser Labor in Riethoven, Noord-Brabant. Wir diagnostizieren, reparieren, justieren und kalibrieren nach ISO 6789:2017 und 2003 und stellen ein Kalibrierzertifikat aus. Keine Kalibrierung vor Ort.
+      </p>
+      <div class="lang-ctas" data-animate data-animate-delay="0.16">
+        <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-primary">Angebot anfordern</a>
+        <a href="tel:+31613172774" class="btn btn-outline">Anrufen +31 6 131 72 774</a>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="lang-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">Was wir tun</h2>
+        <p>Dutch Torque Service ist ein Familienbetrieb in Riethoven, geführt von Jan-Piet Schulte (Inhaber und Kalibriertechniker) und seinen Söhnen. Seit dem 1. Januar 2026 führt DTS diese Arbeiten fort, nachdem die Werkstattausrüstung von Van Rootselaar Technic bv. in Stiens übernommen wurde.</p>
+        <p>Wir diagnostizieren, reparieren, justieren und kalibrieren Drehmomentschlüssel und stellen ein Kalibrierzertifikat nach ISO 6789:2017 und 2003 (Typ I und Typ II) aus. Wir bearbeiten auch hydraulisches und High-Torque-Industriewerkzeug.</p>
+        <p>Die Kalibrierung erfolgt über den gesamten Messbereich. Das Zertifikat enthält die Werte vor und nach der Kalibrierung (as-found und as-left), die verwendeten rückführbaren Referenzmessgeräte und ein empfohlenes Folgeintervall. Sie erhalten das Zertifikat per E-Mail. Unsere Servicegarantie beträgt ±2 %, innerhalb der ISO-6789-Toleranz von ±4 %.</p>
+        <p>Reparatur oder Justierung erfolgt nur, wenn sie nötig ist, und nur nach Ihrer Zustimmung.</p>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="lang-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">So vereinbaren Sie eine Kalibrierung</h2>
+        <p>Schreiben Sie an <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>, rufen Sie <a href="tel:+31613172774">+31 6 131 72 774</a> an oder nutzen Sie das <a href="/contact/">Kontaktformular</a> (niederländisch). Sie erhalten innerhalb eines Arbeitstages ein Angebot. Eine Preisliste veröffentlichen wir nicht; der Preis hängt vom Typ des Drehmomentschlüssels, der Marke und dem erforderlichen Aufwand ab.</p>
+        <p>Senden Sie den Schlüssel ein oder bringen Sie ihn ins Labor:</p>
+        <p><strong>Dutch Torque Service</strong><br />Tonterstraat 42<br />5561 AN Riethoven<br />Niederlande</p>
+        <p>Öffnungszeiten: Montag bis Freitag, 08:00–17:00. Wir arbeiten für Werkstätten und Unternehmen in den Niederlanden, Belgien und Deutschland, auch im Rahmen von Qualitätsmanagementsystemen wie ISO 9001, IATF 16949 oder VCA. Wir beanspruchen keine RvA-Akkreditierung und keine Akkreditierung nach ISO/IEC 17025.</p>
+        <p>Zu den Marken, die wir bearbeiten, gehören unter anderem Snap-On, Stahlwille, Gedore, Facom, Hazet und Würth sowie andere gängige Qualitätsmarken. Wir sind kein Händler und verkaufen kein neues Werkzeug.</p>
+        <p>Eine ausführliche Anleitung zum Verpacken und Versand steht auf unserer niederländischen Seite <a href="/blog/momentsleutel-opsturen-voor-kalibratie/">Momentsleutel opsturen voor kalibratie</a>. Die niederländische Leistungsseite ist <a href="/diensten/momentsleutel-kalibratie/">Momentsleutel laten kalibreren</a>. Es gibt auch eine <a href="/en/torque-wrench-calibration/">englische Seite</a>. Der übrige Teil dieser Website ist niederländisch.</p>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="lang-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">Häufige Fragen</h2>
+        {faq.map((item) => (
+          <details class="lang-faq">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </PageSection>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  .lang-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .lang-wrap {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .lang-wrap p,
+  .lang-faq p {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+    margin-bottom: 1rem;
+  }
+  .lang-wrap a {
+    color: #7AAFC4;
+    text-decoration: underline;
+  }
+  .lang-wrap strong {
+    color: #E8F0F4;
+    font-weight: 600;
+  }
+  .lang-faq {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .lang-faq summary {
+    cursor: pointer;
+    color: #E8F0F4;
+    font-weight: 600;
+    list-style: none;
+  }
+  .lang-faq summary::-webkit-details-marker { display: none; }
+  .lang-faq[open] summary { margin-bottom: 0.75rem; }
+  .lang-faq p { margin-bottom: 0; }
+</style>

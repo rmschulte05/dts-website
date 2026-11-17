@@ -59,11 +59,16 @@ const KLOPT: RelatedLink = {
   title: 'Mijn momentsleutel klopt niet meer, wat nu?',
   context: 'Signalen, oorzaken en de volgende stap',
 };
+const BRABANT: RelatedLink = {
+  href: '/diensten/momentsleutel-kalibratie-noord-brabant/',
+  title: 'Momentsleutel kalibreren in Noord-Brabant',
+  context: 'Lab in Riethoven, gemeente Bergeijk. Opsturen of langsbrengen',
+};
 
 /** Related links by article path (with or without trailing slash). */
 const byPath: Record<string, RelatedLink[]> = {
-  '/blog/wat-kost-momentsleutel-kalibreren/': [KALIBRATIE, OPSTUREN, CERTIFICAAT],
-  '/blog/momentsleutel-opsturen-voor-kalibratie/': [KALIBRATIE, PRIJS, CERTIFICAAT],
+  '/blog/wat-kost-momentsleutel-kalibreren/': [KALIBRATIE, OPSTUREN, BRABANT, CERTIFICAAT],
+  '/blog/momentsleutel-opsturen-voor-kalibratie/': [KALIBRATIE, BRABANT, PRIJS, CERTIFICAAT],
   '/blog/hoe-vaak-momentsleutel-kalibreren/': [KALIBRATIE, GEVALLEN, VERSCHIL],
   '/blog/iso-6789-type-1-type-2-uitgelegd/': [CERTIFICAAT, KALIBRATIE, VERSCHIL],
   '/blog/verschil-kalibreren-justeren-ijken/': [KALIBRATIE, JUSTEREN, CERTIFICAAT],
