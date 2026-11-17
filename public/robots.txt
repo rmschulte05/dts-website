@@ -1,9 +1,9 @@
 # Dutch Torque Service — robots.txt
-# Updated 2026-11-14. Full crawl access for search engines and AI assistants.
-# Content signals (contentsignals.org): search, AI answers/grounding and training all allowed.
+# Updated 2026-11-17. Full crawl access for search engines and AI assistants.
+# Policy (also expressed via the explicit user-agent allows below): search, AI answers/grounding and training are all allowed.
+# The Content-Signal line was removed: Lighthouse flags it as an unknown directive, and major crawlers ignore unknown robots.txt fields.
 
 User-agent: *
-Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 # Explicit allow for AI search, assistant and training crawlers (clarity over implicit *).
