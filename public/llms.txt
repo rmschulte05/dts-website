@@ -2,7 +2,7 @@
 
 > Dutch Torque Service (DTS) diagnosticeert, repareert, justeert en kalibreert momentsleutels en levert een kalibratiecertificaat volgens ISO 6789:2017 en 2003 (Type I en Type II). Lab in Riethoven, Noord-Brabant. Klanten: werkplaatsen en bedrijven in Nederland, België en Duitsland.
 
-Laatst bijgewerkt: 2026-11-16
+Laatst bijgewerkt: 2026-11-17
 
 ## Kernfeiten
 
@@ -12,7 +12,7 @@ Laatst bijgewerkt: 2026-11-16
 - Werkwijze: je stuurt de momentsleutel op of brengt hem langs in het lab in Riethoven. DTS kalibreert niet op locatie.
 - Kalibratie: volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt. Het certificaat vermeldt as-found en as-left waarden, de traceerbare referentieapparatuur en een aanbevolen volgend interval.
 - Servicegarantie: ±2%, binnen de ISO 6789-tolerantie van ±4%.
-- Diagnose is gratis. Reparatie of justeren alleen als het nodig is en pas na akkoord van de klant.
+- Reparatie of justeren alleen als het nodig is en pas na akkoord van de klant.
 - Merken: onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en alle andere gangbare kwaliteitsmerken. DTS is geen dealer en verkoopt geen nieuw gereedschap.
 - Prijzen staan niet online; je krijgt binnen één werkdag een prijsopgave.
 - Geschikt voor kwaliteitssystemen zoals ISO 9001, IATF 16949 en VCA. DTS claimt geen RvA-accreditatie of ISO/IEC 17025-accreditatie.
@@ -20,7 +20,7 @@ Laatst bijgewerkt: 2026-11-16
 ## Diensten
 
 - [Momentsleutel kalibratie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie/): kalibratie volgens ISO 6789:2017 en 2003, certificaat per e-mail.
-- [Momentsleutel reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie/): gratis diagnose, reparatie na akkoord, daarna kalibratie en certificaat.
+- [Momentsleutel reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie/): reparatie na akkoord, daarna kalibratie en certificaat.
 - [Momentsleutel justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren/): bijstellen na val, slijtage of overbelasting, gevolgd door hercalibratie met as-left waarden.
 - [ISO 6789 certificering / kalibratiecertificaat](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering/): wat er op het certificaat staat, met een geredigeerd voorbeeld.
 - [Alle diensten](https://www.dutchtorqueservice.nl/diensten/)
@@ -31,7 +31,7 @@ Laatst bijgewerkt: 2026-11-16
 
 ## Kennisbank
 
-- [Wat kost het om een momentsleutel te laten kalibreren?](https://www.dutchtorqueservice.nl/blog/wat-kost-momentsleutel-kalibreren/): geen prijslijst online; de prijs hangt af van type, merk en het werk dat nodig is. Offerte binnen één werkdag. Diagnose is gratis.
+- [Wat kost het om een momentsleutel te laten kalibreren?](https://www.dutchtorqueservice.nl/blog/wat-kost-momentsleutel-kalibreren/): geen prijslijst online; de prijs hangt af van type, merk en het werk dat nodig is. Offerte binnen één werkdag.
 - [Momentsleutel opsturen voor kalibratie: hoe werkt dat?](https://www.dutchtorqueservice.nl/blog/momentsleutel-opsturen-voor-kalibratie/): inpakken, wat je meestuurt, adres (Tonterstraat 42, 5561 AN Riethoven) en wat er daarna gebeurt. Niet op locatie.
 - [Hoe vaak moet je een momentsleutel laten kalibreren?](https://www.dutchtorqueservice.nl/blog/hoe-vaak-momentsleutel-kalibreren/)
 - [ISO 6789 Type I en Type II uitgelegd](https://www.dutchtorqueservice.nl/blog/iso-6789-type-1-type-2-uitgelegd/)

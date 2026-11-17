@@ -22,10 +22,10 @@ export const WORK_SEQUENCE: WorkStep[] = [
     id: 'diagnosticeren',
     n: '01',
     title: 'Diagnosticeren',
-    subtitle: 'Gratis inspectie',
-    body: 'Visuele en mechanische inspectie plus as-found meting. We brengen schade, slijtage en afwijking in kaart voordat we iets aan de sleutel doen. Altijd gratis.',
+    subtitle: 'Inspectie en as-found meting',
+    body: 'Visuele en mechanische inspectie plus as-found meting. We brengen schade, slijtage en afwijking in kaart voordat we iets aan de sleutel doen.',
     howToText:
-      'Visuele en mechanische inspectie plus as-found meting. We brengen schade, slijtage en afwijking in kaart voordat we iets aan de sleutel doen. Altijd gratis.',
+      'Visuele en mechanische inspectie plus as-found meting. We brengen schade, slijtage en afwijking in kaart voordat we iets aan de sleutel doen.',
     accent: '#8EAAB8',
     href: '/diensten/',
     linkLabel: 'Onze diensten',
