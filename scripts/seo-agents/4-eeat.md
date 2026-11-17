@@ -110,7 +110,6 @@ Build mechanic-level credibility:
 **Trust builders to add/verify:**
 - "Raming altijd vooraf — wij repareren pas na jouw akkoord"
 - "Geen verborgen kosten"
-- "Gratis diagnose" (on reparatie content)
 - Full phone number in every CTA section: +31(0)6-131 72 774
 - Concrete turnaround: "48 uur na ontvangst — niet 'zo snel mogelijk'"
 

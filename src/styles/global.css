@@ -383,6 +383,7 @@ main + footer {
   line-height: 1.75;
   color: #9AAEB8;
   max-width: 52ch;
+  margin-inline: auto;
 }
 
 /* CTA / button row */

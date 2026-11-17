@@ -101,7 +101,7 @@ SERVICES:
 
 - Momentsleutel reparatie   → /diensten/momentsleutel-reparatie
   What: diagnosing and repairing click mechanisms, springs, ratchets
-  Key facts: free diagnosis, repair estimate before any work starts
+  Key facts: repair estimate before any work starts
 
 - Momentsleutel Justeren    → /diensten/momentsleutel-justeren
   What: re-adjusting a wrench that has drifted outside tolerance

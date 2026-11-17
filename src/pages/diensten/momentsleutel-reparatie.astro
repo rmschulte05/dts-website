@@ -15,7 +15,7 @@ const schema = {
   "serviceType": "Momentsleutel reparatie",
   "name": "Momentsleutel reparatie",
   "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
-  "description": "Professionele Momentsleutel reparatie van alle merken. Gratis diagnose, raming vooraf, ISO 6789:2017 en 2003 gecertificeerd resultaat. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie.",
+  "description": "Professionele Momentsleutel reparatie van alle merken. Raming vooraf, ISO 6789:2017 en 2003 gecertificeerd resultaat. ±2% servicegarantie, ruim binnen de ±4% ISO-tolerantie.",
   "areaServed": [
     { "@type": "Country", "name": "Netherlands" },
     { "@type": "Country", "name": "Belgium" },
@@ -65,9 +65,9 @@ const whyCards = [
       <path d="M21 21l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       <path d="M14 11v6M11 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>`,
-    tagline: 'Geen kosten vooraf',
-    title: 'Gratis diagnose',
-    body: 'Wij inspecteren jouw sleutel kosteloos en sturen daarna een heldere raming. Reparatie pas na jouw akkoord, geen verrassingen achteraf.',
+    tagline: 'Eerst duidelijkheid',
+    title: 'Diagnose en raming',
+    body: 'Wij inspecteren jouw sleutel en sturen daarna een heldere raming. Reparatie pas na jouw akkoord, geen verrassingen achteraf.',
   },
   {
     number: '02',
@@ -77,7 +77,7 @@ const whyCards = [
     </svg>`,
     tagline: 'Alle merken',
     title: 'Elk gangbaar merk',
-    body: 'Wij repareren momentsleutels van alle gangbare merken, waaronder Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth. Diagnose altijd gratis, reparatie pas na jouw akkoord.',
+    body: 'Wij repareren momentsleutels van alle gangbare merken, waaronder Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth. Reparatie pas na jouw akkoord.',
   },
   {
     number: '03',
@@ -97,7 +97,7 @@ const whyCards = [
 const faq = [
   {
     q: 'Hoeveel kost een reparatie?',
-    a: 'Dat hangt af van de schade en het merk. Wij doen altijd eerst een gratis diagnose en sturen je een heldere raming. Reparatie vindt pas plaats na jouw akkoord.',
+    a: 'Dat hangt af van de schade en het merk. Wij doen altijd eerst een diagnose en sturen je een heldere raming. Reparatie vindt pas plaats na jouw akkoord.',
   },
   {
     q: 'Kan ik mijn Snap-On sleutel bij jullie laten repareren?',
@@ -131,7 +131,7 @@ const faqSchema = {
 
 <Base
   title="Momentsleutel reparatie | Snap-On, Stahlwille | DTS"
-  description="Momentsleutel reparatie van Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth. Gratis diagnose, raming vooraf. Lab in Riethoven. Stuur je sleutel op."
+  description="Momentsleutel reparatie van Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth. Raming vooraf, reparatie pas na akkoord. Lab in Riethoven. Stuur je sleutel op."
   canonicalPath="/diensten/momentsleutel-reparatie"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -159,7 +159,7 @@ const faqSchema = {
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
-            Reparatie van alle gangbare merken. Gratis diagnose, raming vooraf.<br />
+            Reparatie van alle gangbare merken. Raming vooraf, reparatie pas na jouw akkoord.<br />
             Kalibratie conform ISO 6789:2017 en 2003 erna. Stuur hem gewoon op en wij kijken er even naar.
           </p>
 
@@ -171,7 +171,7 @@ const faqSchema = {
           <!-- Stats badges -->
           <div class="hero-badges" data-animate data-animate-delay="0.30">
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Alle Merken</span>
-            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Gratis Diagnose</span>
+            <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Raming vooraf</span>
             <span class="badge" style="background:rgba(122,175,196,0.10); border:1px solid rgba(122,175,196,0.28); color:#7AAFC4;">Snelle Doorlooptijd</span>
           </div>
         </div>
@@ -181,7 +181,7 @@ const faqSchema = {
     <PageSection>
       <ChatExplainer
         question="Wat als mijn momentsleutel niet meer klopt?"
-        answer="Dan repareren wij hem. We inspecteren gratis, geven je een heldere raming vóór we beginnen, vervangen de slijtdelen en kalibreren na afloop opnieuw conform <a href='/diensten/iso-6789-certificering' style='color:#7AAFC4; text-decoration:underline;'>ISO 6789:2017 en 2003</a>. Geen verrassingen."
+        answer="Dan repareren wij hem. We inspecteren de sleutel, geven je een heldere raming vóór we beginnen, vervangen de slijtdelen en kalibreren na afloop opnieuw conform <a href='/diensten/iso-6789-certificering' style='color:#7AAFC4; text-decoration:underline;'>ISO 6789:2017 en 2003</a>. Geen verrassingen."
         accent="#C48A64"
         reactions={[
           { emoji: '🔧', count: 16 },
@@ -333,7 +333,7 @@ const faqSchema = {
             </details>
           ))}
         </div>
-        <p class="sec-sub" style="margin-top:1.25rem; text-align:center;">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a> of <a href="/blog/mijn-momentsleutel-klopt-niet-meer/">mijn momentsleutel klopt niet meer</a>.</p>
+        <p class="sec-sub" style="margin-top:1.25rem; margin-inline:auto; text-align:center;">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a> of <a href="/blog/mijn-momentsleutel-klopt-niet-meer/">mijn momentsleutel klopt niet meer</a>.</p>
     </PageSection>
 
     <!-- ══════════════════════════════════════
