@@ -31,11 +31,16 @@ Laatst bijgewerkt: 2026-11-17
 - [Momentsleutel reparatie](https://www.dutchtorqueservice.nl/diensten/momentsleutel-reparatie/): reparatie na akkoord, daarna kalibratie en certificaat.
 - [Momentsleutel justeren](https://www.dutchtorqueservice.nl/diensten/momentsleutel-justeren/): bijstellen na val, slijtage of overbelasting, gevolgd door hercalibratie met as-left waarden.
 - [ISO 6789 certificering / kalibratiecertificaat](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering/): wat er op het certificaat staat, met een geredigeerd voorbeeld.
+- [Momentsleutel kalibreren in Noord-Brabant](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie-noord-brabant/): lab in Riethoven, gemeente Bergeijk. Opsturen of langsbrengen. Geen kalibratie op locatie.
 - [Alle diensten](https://www.dutchtorqueservice.nl/diensten/)
 
 ## English
 
 - [Torque wrench calibration in the Netherlands](https://www.dutchtorqueservice.nl/en/torque-wrench-calibration/): send-in or lab visit in Riethoven. ISO 6789:2017 and 2003 certificate, ±2% service guarantee. Quote within one working day. No on-site calibration. The rest of the site is in Dutch.
+
+## Deutsch
+
+- [Drehmomentschlüssel kalibrieren in den Niederlanden](https://www.dutchtorqueservice.nl/de/drehmomentschluessel-kalibrierung/): Einsenden oder Abgabe im Labor in Riethoven, Noord-Brabant. Kalibrierzertifikat nach ISO 6789:2017 und 2003, ±2 % Servicegarantie. Angebot innerhalb eines Arbeitstages. Keine Kalibrierung vor Ort. Der übrige Teil der Website ist niederländisch.
 
 ## Kennisbank
 

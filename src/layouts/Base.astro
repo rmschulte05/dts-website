@@ -63,11 +63,14 @@ const crumbNames: Record<string, string> = {
   'privacy': 'Privacybeleid',
   'en': 'English',
   'torque-wrench-calibration': 'Torque wrench calibration',
+  'de': 'Deutsch',
+  'drehmomentschluessel-kalibrierung': 'Drehmomentschlüssel-Kalibrierung',
+  'momentsleutel-kalibratie-noord-brabant': 'Momentsleutel kalibratie Noord-Brabant',
 };
 const crumbPath = new URL(canonicalURL).pathname;
 const crumbSegments = crumbPath.split('/').filter(Boolean);
 // /en/ 301s to the English calibration page, so it is not a real breadcrumb node.
-const skipCrumbSegments = new Set(['en']);
+const skipCrumbSegments = new Set(['en', 'de']);
 const crumbItems = [];
 let crumbPos = 2;
 crumbSegments.forEach((seg, i) => {

@@ -25,6 +25,8 @@ const lastmodByPath = {
   '/blog/momentsleutel-opsturen-voor-kalibratie/': '2026-11-17',
   '/blog/wat-kost-momentsleutel-kalibreren/': '2026-11-17',
   '/en/torque-wrench-calibration/': '2026-11-17',
+  '/de/drehmomentschluessel-kalibrierung/': '2026-11-17',
+  '/diensten/momentsleutel-kalibratie-noord-brabant/': '2026-11-17',
 };
 
 // Internal links in page bodies were written without a trailing slash, which

@@ -1,0 +1,175 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavIsland from '../../components/modules/NavIsland.astro';
+import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
+
+const pageUrl = 'https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie-noord-brabant/';
+
+const faq = [
+  {
+    q: 'Kalibreren jullie ook op locatie in Noord-Brabant?',
+    a: 'Nee. Je stuurt de momentsleutel op of je brengt hem langs in ons lab in Riethoven. We kalibreren niet op locatie.',
+  },
+  {
+    q: 'Hebben jullie een vestiging in andere Brabantse steden?',
+    a: 'Nee. Dutch Torque Service heeft één lab, in Riethoven, gemeente Bergeijk. We hebben geen vestiging of afhaalpunt in andere steden.',
+  },
+  {
+    q: 'Kan ik mijn momentsleutel langsbrengen?',
+    a: 'Ja. Tijdens openingstijden, maandag tot en met vrijdag 08:00–17:00, op Tonterstraat 42, 5561 AN Riethoven. Meer over opsturen en wat je meestuurt staat op de pagina Momentsleutel opsturen voor kalibratie. Voor een vraag of offerte kun je bellen, mailen of het contactformulier gebruiken.',
+  },
+  {
+    q: 'Staat er een prijslijst online?',
+    a: 'Nee. De prijs hangt af van type, merk en het werk dat nodig is. Je krijgt binnen één werkdag een offerte.',
+  },
+];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Momentsleutel kalibratie in Noord-Brabant",
+  "serviceType": "Kalibratie momentsleutel",
+  "url": pageUrl,
+  "inLanguage": "nl-NL",
+  "description": "Momentsleutel kalibreren in Noord-Brabant: opsturen of langsbrengen in het lab in Riethoven, gemeente Bergeijk. Kalibratie volgens ISO 6789:2017 en 2003, met certificaat. ±2% servicegarantie, binnen de ±4% ISO-tolerantie. Offerte binnen één werkdag. Geen kalibratie op locatie.",
+  "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+  "areaServed": { "@type": "AdministrativeArea", "name": "Noord-Brabant" },
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "serviceLocation": { "@id": "https://www.dutchtorqueservice.nl/#business" },
+    "serviceUrl": pageUrl
+  }
+};
+---
+
+<Base
+  title="Momentsleutel kalibreren in Noord-Brabant | DTS"
+  description="Momentsleutel kalibreren in Noord-Brabant? Lab in Riethoven (Bergeijk). Opsturen of langsbrengen. ISO 6789:2017 en 2003 certificaat. Offerte binnen één werkdag."
+  canonicalPath="/diensten/momentsleutel-kalibratie-noord-brabant/"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <NavIsland currentPage="diensten" />
+
+  <main>
+    <PageSection hero center animate>
+      <div class="sec-eyebrow">
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Noord-Brabant</span>
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+      </div>
+      <h1 class="font-black tracking-tight text-white" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
+        Momentsleutel kalibreren in Noord-Brabant.
+      </h1>
+      <p class="sec-sub">
+        Ons kalibratielab staat in Riethoven, gemeente Bergeijk. Je stuurt je momentsleutel op of je brengt hem langs. We kalibreren niet op locatie.
+      </p>
+      <div class="local-ctas" data-animate data-animate-delay="0.16">
+        <a href="mailto:info@dutchtorqueservice.nl" class="btn btn-primary">Vraag een offerte</a>
+        <a href="tel:+31613172774" class="btn btn-outline">Bel +31 6 131 72 774</a>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="local-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">Waar je terechtkunt</h2>
+        <p>Dutch Torque Service heeft één lab:</p>
+        <p><strong>Dutch Torque Service</strong><br />Tonterstraat 42<br />5561 AN Riethoven<br />gemeente Bergeijk, Noord-Brabant</p>
+        <p>Openingstijden: maandag tot en met vrijdag, 08:00–17:00. Werkplaatsen in Noord-Brabant kunnen hun momentsleutel opsturen of langsbrengen in Riethoven. We hebben geen vestiging of afhaalpunt in andere steden.</p>
+        <p>Meer over inpakken, meesturen en het adres staat op <a href="/blog/momentsleutel-opsturen-voor-kalibratie/">Momentsleutel opsturen voor kalibratie</a>.</p>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="local-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">Wat we doen</h2>
+        <p>We diagnosticeren, repareren, justeren en kalibreren momentsleutels en leveren een kalibratiecertificaat volgens ISO 6789:2017 en 2003 (Type I en Type II). We werken ook aan hydraulisch en high-torque industrieel gereedschap.</p>
+        <p>De kalibratie gebeurt over het hele meetbereik. Het certificaat vermeldt de waarden vóór en na de kalibratie (as-found en as-left), de gebruikte traceerbare referentieapparatuur en een aanbevolen volgend interval. Je krijgt het certificaat per e-mail. Onze servicegarantie is ±2%, binnen de ISO 6789-tolerantie van ±4%.</p>
+        <p>Reparatie of justeren gebeurt alleen als het nodig is, en alleen na jouw akkoord. We claimen geen RvA-accreditatie en geen accreditatie volgens ISO/IEC 17025. Dutch Torque Service is geen dealer en verkoopt geen nieuw gereedschap. Merken die we onder meer behandelen zijn Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken.</p>
+        <p>De volledige dienstbeschrijving staat op <a href="/diensten/momentsleutel-kalibratie/">Momentsleutel laten kalibreren</a>. Wat er op het certificaat staat, lees je bij <a href="/diensten/iso-6789-certificering/">ISO 6789 certificering</a>.</p>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="local-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">Hoe je een kalibratie regelt</h2>
+        <p>Mail <a href="mailto:info@dutchtorqueservice.nl">info@dutchtorqueservice.nl</a>, bel <a href="tel:+31613172774">+31 6 131 72 774</a> of gebruik het <a href="/contact/">contactformulier</a>. Je krijgt binnen één werkdag een offerte. Er staat geen prijslijst online; de prijs hangt af van type, merk en het werk dat nodig is.</p>
+        <p>Dutch Torque Service is een familiebedrijf van Jan-Piet Schulte (eigenaar en kalibratietechnicus) en zijn zonen. Per 1 januari 2026 zet DTS dit werk voort, nadat de werkplaatsuitrusting is overgenomen van Van Rootselaar Technic bv. in Stiens. KvK 67183360.</p>
+        <p>We werken voor werkplaatsen en bedrijven in Nederland, België en Duitsland, ook in het kader van kwaliteitssystemen zoals ISO 9001, IATF 16949 of VCA. Werkplaatsen buiten Noord-Brabant sturen hun sleutel gewoon op naar hetzelfde lab in Riethoven.</p>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="local-wrap" data-animate>
+        <h2 class="sec-title" style="margin-bottom: 1.25rem;">Veelgestelde vragen</h2>
+        {faq.map((item) => (
+          <details class="local-faq">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+        <p>Sleutel kapot? Bekijk <a href="/diensten/momentsleutel-reparatie/">momentsleutel reparatie</a>. Meer algemene vragen staan op de <a href="/faq/">veelgestelde vragen</a>.</p>
+      </div>
+    </PageSection>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  .local-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  .local-wrap {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .local-wrap p,
+  .local-faq p {
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+    margin-bottom: 1rem;
+  }
+  .local-wrap a {
+    color: #7AAFC4;
+    text-decoration: underline;
+  }
+  .local-wrap strong {
+    color: #E8F0F4;
+    font-weight: 600;
+  }
+  .local-faq {
+    background: #0E1118;
+    border: 1px solid rgba(122,175,196,0.14);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .local-faq summary {
+    cursor: pointer;
+    color: #E8F0F4;
+    font-weight: 600;
+    list-style: none;
+  }
+  .local-faq summary::-webkit-details-marker { display: none; }
+  .local-faq[open] summary { margin-bottom: 0.75rem; }
+  .local-faq p { margin-bottom: 0; }
+</style>
