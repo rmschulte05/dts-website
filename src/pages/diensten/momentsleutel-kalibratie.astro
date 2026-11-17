@@ -46,7 +46,7 @@ const included = [
   { item: 'As-found meting',        detail: 'Meetwaarden vóór ingreep, meetpunten volgens de norm, met meerdere metingen per punt', html: false },
   { item: 'As-left meting',         detail: 'Meetwaarden na ingreep', html: false },
   { item: 'Referentieapparatuur',   detail: 'Traceerbaar, eigen kalibratiestatus vermeld', html: false },
-  { item: '<a href="/diensten/iso-6789-certificering">Kalibratiecertificaat</a>', detail: 'Conform ISO 6789:2017 en 2003', html: true },
+  { item: 'Kalibratiecertificaat', detail: 'Conform ISO 6789:2017 en 2003', html: false },
   { item: 'Volgende kalibratietermijn', detail: 'Aanbeveling op basis van gebruik en belasting', html: false },
   { item: 'E-mailbevestiging',      detail: 'Direct na afronding', html: false },
 ];
@@ -115,7 +115,7 @@ const faq = [
   },
   {
     q: 'Mijn kwaliteitshandboek vereist ISO-kalibratie, voldoen jullie hieraan?',
-    a: 'Ja. Wij kalibreren conform <a href="/diensten/iso-6789-certificering">ISO 6789:2017 en 2003</a> Type I en II, met traceerbare referentieapparatuur en een geldig certificaat.',
+    a: 'Ja. Wij kalibreren conform <a href="/diensten/iso-6789-certificering/">ISO 6789:2017 en 2003</a> <a href="/blog/iso-6789-type-1-type-2-uitgelegd/">Type I en II</a>, met traceerbare referentieapparatuur en een geldig certificaat.',
     html: true,
   },
   {
@@ -135,7 +135,7 @@ const faq = [
   },
   {
     q: 'Krijg ik een certificaat en meetrapport bij de kalibratie?',
-    a: 'Ja. Je krijgt een <a href="/diensten/iso-6789-certificering">kalibratiecertificaat</a> met het kalibratieprotocol: as-found en as-left meetwaarden, de gebruikte referentieapparatuur en een aanbevolen termijn voor de volgende kalibratie.',
+    a: 'Ja. Je krijgt een kalibratiecertificaat met het kalibratieprotocol: as-found en as-left meetwaarden, de gebruikte referentieapparatuur en een aanbevolen termijn voor de volgende kalibratie.',
     html: true,
   },
 ];
@@ -219,7 +219,7 @@ const faqSchema = {
           Een momentsleutel kalibreren betekent meten hoeveel jouw sleutel afwijkt van de ingestelde waarde en dat vastleggen. De kalibratie van een momentsleutel gebeurt bij ons op meetpunten volgens ISO 6789:2017 en 2003 over het hele bereik, met meerdere metingen per punt, en eindigt met een certificaat en meetrapport. Wijkt de sleutel te veel af, dan <a href="/diensten/momentsleutel-justeren">justeren</a> we hem en meten we opnieuw.
         </p>
         <p class="body-text" style="margin-top:1rem;">
-          Meestal eens per jaar, bij intensief gebruik vaker, en altijd na een val. Meer daarover lees je in <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak je een momentsleutel moet kalibreren</a>.
+          Meestal eens per jaar, bij intensief gebruik vaker, en altijd <a href="/blog/momentsleutel-gevallen-wat-nu/">na een val</a>. Meer daarover lees je in <a href="/blog/hoe-vaak-momentsleutel-kalibreren/">hoe vaak je een momentsleutel moet kalibreren</a>.
         </p>
       </div>
     </PageSection>
@@ -370,7 +370,7 @@ const faqSchema = {
             </details>
           ))}
         </div>
-        <p class="sec-sub" style="margin-top:1.25rem; margin-inline:auto; text-align:center;">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a>. Sleutel kapot? Bekijk <a href="/diensten/momentsleutel-reparatie/">momentsleutel reparatie</a>. Lab in Riethoven? <a href="/diensten/momentsleutel-kalibratie-noord-brabant/">Momentsleutel kalibreren in Noord-Brabant</a>.</p>
+        <p class="sec-sub" style="margin-top:1.25rem; margin-inline:auto; text-align:center;">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a>. Sleutel kapot? Bekijk <a href="/diensten/momentsleutel-reparatie/">momentsleutel reparatie</a>. Lab in Riethoven? <a href="/diensten/momentsleutel-kalibratie-noord-brabant/">Momentsleutel kalibreren in Noord-Brabant</a>. Ook beschikbaar in het <a href="/en/torque-wrench-calibration/" lang="en" hreflang="en">Engels</a> en in het <a href="/de/drehmomentschluessel-kalibrierung/" lang="de" hreflang="de">Duits</a>.</p>
     </PageSection>
 
     <!-- ══════════════════════════════════════

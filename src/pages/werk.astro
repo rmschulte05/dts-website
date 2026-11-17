@@ -13,7 +13,7 @@ const features = [
   {
     n: '01',
     label: 'ISO 6789 Gecertificeerd',
-    body: 'Elk gereedschap wordt gekalibreerd conform ISO 6789:2017 en 2003, type I en type II. U ontvangt een volledig kalibratieprotocol.',
+    body: 'Elk gereedschap wordt gekalibreerd conform ISO 6789:2017 en 2003, <a href="/blog/iso-6789-type-1-type-2-uitgelegd/">type I en type II</a>. U ontvangt een volledig kalibratieprotocol.',
     icon: `<svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <rect x="4" y="4" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
       <path d="M9 14l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -161,13 +161,13 @@ const services = SELLABLE_SERVICES.map((step) => ({
           <h2 class="services-title">Wat wij doen, in deze volgorde.</h2>
           <p class="services-intro">
             Wij werken aan momentsleutels van Snap-On, Stahlwille, Gedore, Facom, Hazet, Würth en alle andere
-            kwaliteitsmerken. Hieronder een overzicht van de diensten die wij dagelijks uitvoeren in ons lab in
-            Riethoven, Noord-Brabant.
+            kwaliteitsmerken. Hieronder een overzicht van de <a href="/diensten/">diensten</a> die wij dagelijks uitvoeren in ons lab in
+            <a href="/diensten/momentsleutel-kalibratie-noord-brabant/">Riethoven, Noord-Brabant</a>.
           </p>
         </div>
 
         <div class="werk-process">
-          <ProcessSteps heading="Van diagnosticeren tot certificeren." />
+          <ProcessSteps heading="Van diagnosticeren tot certificeren." bodies={{ certificeren: 'ISO 6789:2017 en 2003 certificaat met as-found en as-left waarden, gebruikte referentieapparatuur en <a href="/blog/hoe-vaak-momentsleutel-kalibreren/">aanbevolen interval</a>. Audit-proof.' }} />
         </div>
 
         <div class="services-grid">
@@ -225,7 +225,7 @@ const services = SELLABLE_SERVICES.map((step) => ({
               </div>
               <div class="fc-rule" style={`background:${f.accent}30;`}></div>
               <h3 class="fc-label">{f.label}</h3>
-              <p class="fc-body">{f.body}</p>
+              <p class="fc-body" set:html={f.body} />
               <div class="fc-corner" style={`border-color:${f.accent}40;`}></div>
             </div>
           ))}
@@ -408,6 +408,7 @@ const services = SELLABLE_SERVICES.map((step) => ({
     letter-spacing: -0.02em;
     color: #fff;
   }
+  .services-intro a, .fc-body a { color: #7AAFC4; text-decoration: underline; }
   .services-intro {
     font-size: 1rem;
     line-height: 1.75;
