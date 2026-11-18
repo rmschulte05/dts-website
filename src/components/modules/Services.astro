@@ -1,6 +1,13 @@
 ---
 import { WORK_SEQUENCE, type WorkStepId } from '../../data/workSequence';
 
+interface Props {
+  bodies?: Partial<Record<WorkStepId, string>>;
+  linkLabels?: Partial<Record<WorkStepId, string>>;
+}
+
+const { bodies, linkLabels } = Astro.props;
+
 const icons: Record<WorkStepId, string> = {
   diagnosticeren: `<svg width="32" height="32" viewBox="0 0 28 28" fill="none">
       <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"/>
@@ -41,6 +48,8 @@ const icons: Record<WorkStepId, string> = {
 const services = WORK_SEQUENCE.map((step) => ({
   ...step,
   icon: icons[step.id],
+  body: bodies?.[step.id] ?? step.body,
+  linkLabel: linkLabels?.[step.id] ?? step.linkLabel,
 }));
 ---
 

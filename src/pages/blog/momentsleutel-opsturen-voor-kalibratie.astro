@@ -27,6 +27,65 @@ const schema = {
   "url": pageUrl,
   "inLanguage": "nl-NL"
 };
+
+// Mirrors the 11 question H2s and the visible answer text on the page, verbatim.
+// Where an answer continues in a list or address block, the whole visible answer is used.
+const faq = [
+  {
+    q: 'Kun je een momentsleutel opsturen voor kalibratie?',
+    a: 'Ja. Dutch Torque Service kalibreert in een eigen lab in Riethoven (Noord-Brabant). Je stuurt je momentsleutel op, of je brengt hem langs. We ontvangen sleutels van werkplaatsen uit heel de Benelux. Kalibreren op locatie doen we niet: de meting gebeurt altijd in ons lab, met traceerbare referentieapparatuur.',
+  },
+  {
+    q: 'Hoe pak je een momentsleutel in om op te sturen?',
+    a: 'Stevig, zodat hij niet kan schuiven of vallen in de doos. Een momentsleutel is een meetinstrument, en een harde klap onderweg kan de meting beïnvloeden. Gebruik bij voorkeur de originele koffer of doos. Geen koffer? Wikkel de sleutel goed in bubbeltjesplastic en vul de lege ruimte in de doos op. Stel de sleutel niet eerst zelf bij. Dan laat de eerste meting (as-found) zien hoe hij echt in jouw werkplaats werkte.',
+  },
+  {
+    q: 'Wat stuur je mee met je momentsleutel?',
+    a: 'Een briefje met je naam en contactgegevens, zodat we je direct kunnen bereiken. Handig om er ook op te zetten: je bedrijfsnaam en het e-mailadres waar het certificaat naartoe moet; het eigen identificatie- of inventarisnummer van de sleutel, als jouw kwaliteitssysteem dat gebruikt (het certificaat heeft daar een vast veld voor); wat je opviel: klikt te vroeg of te laat, gevallen, overbelast, of gewoon toe aan de periodieke kalibratie.',
+  },
+  {
+    q: 'Naar welk adres stuur je de momentsleutel?',
+    a: 'Dutch Torque Service, Tonterstraat 42, 5561 AN Riethoven, Nederland. Na ontvangst bevestigen we dat per e-mail, en we houden je op de hoogte van de voortgang.',
+  },
+  {
+    q: 'Wat gebeurt er met je momentsleutel als hij binnen is?',
+    a: 'Diagnose. Visuele en mechanische inspectie plus een as-found meting. Zo zie je hoe de sleutel binnenkwam. Alleen als het nodig is: Bij mechanische schade beoordelen we reparatie, maar alleen na jouw akkoord. Meer over reparatie na mechanische schade. Alleen als het nodig is: justeren. Valt de sleutel buiten tolerantie, dan stellen we hem bij tot binnen onze ±2% servicegarantie, ruim binnen de ±4% van ISO 6789. Kalibreren. Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het bereik, met meerdere metingen per punt. Certificaat. Met de as-found en as-left waarden, de gebruikte referentieapparatuur en het aanbevolen volgende interval. Je ontvangt het per e-mail.',
+  },
+  {
+    q: 'Hoe lang duurt het voordat je je momentsleutel terug hebt?',
+    a: 'We kalibreren snel na ontvangst en communiceren de doorlooptijd altijd vooraf. Heb je spoed? Neem dan eerst contact op.',
+  },
+  {
+    q: 'Wat kost het om een momentsleutel te laten kalibreren?',
+    a: 'We publiceren geen prijslijst, omdat de prijs afhangt van het type sleutel en het merk. Stuur ons een bericht voor een prijsopgave; we reageren binnen één werkdag. Meer uitleg: wat kost momentsleutel kalibreren.',
+  },
+  {
+    q: 'Kun je ook meerdere momentsleutels tegelijk opsturen?',
+    a: 'Ja. Neem bij een grotere batch eerst even contact op, dan stemmen we de aanlevering samen af.',
+  },
+  {
+    q: 'Kun je je momentsleutel ook langsbrengen?',
+    a: 'Ja, in Riethoven, maandag tot en met vrijdag van 08:00 tot 17:00. Bel of mail even vooraf, dan weet je zeker dat er iemand is: +31 6 131 72 774 of info@dutchtorqueservice.nl.',
+  },
+  {
+    q: 'Welke momentsleutels kun je opsturen?',
+    a: 'Type I (aanwijzende) en Type II (instellende) momentsleutels, van onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. Ook hydraulisch en high-torque gereedschap kun je bij ons laten kalibreren of repareren. Niet zeker welk type je hebt? Lees ISO 6789 Type I en Type II uitgelegd.',
+  },
+  {
+    q: 'Wanneer stuur je je momentsleutel op?',
+    a: 'Als de kalibratietermijn uit jouw kwaliteitshandboek verloopt, en direct na een val of overbelasting. Meer daarover lees je in hoe vaak je een momentsleutel moet laten kalibreren en momentsleutel gevallen, wat nu?',
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
 ---
 
 <BlogLayout
@@ -41,6 +100,7 @@ const schema = {
   excerpt="Ja, je kunt je momentsleutel opsturen. Pak hem stevig in, stuur een briefje met je contactgegevens mee en stuur hem naar ons lab in Riethoven. We repareren of justeren pas na jouw akkoord."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <Image
     slot="featured-image"
@@ -80,7 +140,7 @@ const schema = {
     <h2>Wat gebeurt er met je momentsleutel als hij binnen is?</h2>
     <ol>
       <li><strong>Diagnose.</strong> Visuele en mechanische inspectie plus een as-found meting. Zo zie je hoe de sleutel binnenkwam.</li>
-      <li><strong>Alleen als het nodig is: <a href="/diensten/momentsleutel-reparatie/">reparatie</a>.</strong> Bij mechanische schade, en pas na jouw akkoord.</li>
+      <li><strong>Alleen als het nodig is:</strong> Bij mechanische schade beoordelen we reparatie, maar alleen na jouw akkoord. Meer over <a href="/diensten/momentsleutel-reparatie/">reparatie na mechanische schade</a>.</li>
       <li><strong>Alleen als het nodig is: <a href="/diensten/momentsleutel-justeren/">justeren</a>.</strong> Valt de sleutel buiten tolerantie, dan stellen we hem bij tot binnen onze ±2% servicegarantie, ruim binnen de ±4% van ISO 6789.</li>
       <li><strong><a href="/diensten/momentsleutel-kalibratie/">Kalibreren</a>.</strong> Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het bereik, met meerdere metingen per punt.</li>
       <li><strong><a href="/diensten/iso-6789-certificering/">Certificaat</a>.</strong> Met de as-found en as-left waarden, de gebruikte referentieapparatuur en het aanbevolen volgende interval. Je ontvangt het per e-mail.</li>

@@ -5,9 +5,29 @@ import FooterDTS from '../../components/modules/FooterDTS.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 import ChatExplainer from '../../components/modules/ChatExplainer.astro';
 import ProcessSteps from '../../components/modules/ProcessSteps.astro';
-import { getHowToSteps } from '../../data/workSequence';
 
 const accent = '#7AAFC4';
+
+const justerenSteps = [
+  {
+    n: '01',
+    title: 'Meten',
+    body: 'We meten de sleutel en bepalen of hij buiten de tolerantie valt.',
+    accent: '#8EAAB8',
+  },
+  {
+    n: '02',
+    title: 'Bijstellen',
+    body: 'We stellen hem bij tot binnen onze ±2% servicegarantie.',
+    accent: '#C4AF64',
+  },
+  {
+    n: '03',
+    title: 'Herkalibreren',
+    body: 'We meten opnieuw en leggen de as-left waarden vast in een nieuw ISO 6789:2017 en 2003 certificaat.',
+    accent: '#7AAFC4',
+  },
+];
 
 const schema = {
   "@context": "https://schema.org",
@@ -29,15 +49,20 @@ const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "Hoe wij een momentsleutel justeren",
-  "description": "Diagnosticeren, repareren indien nodig, justeren indien nodig, kalibreren en certificeren conform ISO 6789:2017 en 2003.",
+  "description": "Meten, bijstellen en herkalibreren van een momentsleutel conform ISO 6789:2017 en 2003.",
   "inLanguage": "nl-NL",
-  "step": getHowToSteps(),
+  "step": justerenSteps.map((step, i) => ({
+    "@type": "HowToStep",
+    "position": i + 1,
+    "name": step.title,
+    "text": step.body,
+  })),
 };
 
 const adviesTable = [
-  { situatie: 'Kleine afwijking (< 6%), geen mechanische schade', aanpak: 'Justeren + <a href="/diensten/momentsleutel-kalibratie">hercalibratie</a>' },
-  { situatie: 'Grote afwijking of click voelt anders', aanpak: '<a href="/diensten/momentsleutel-reparatie">Reparatie</a> + justering + kalibratie' },
-  { situatie: 'Sleutel is gevallen zonder zichtbare schade', aanpak: 'Justeren + <a href="/diensten/momentsleutel-kalibratie">kalibreren</a> (interne schade mogelijk)' },
+  { situatie: 'Kleine afwijking (< 6%), geen mechanische schade', aanpak: 'Justeren + hercalibratie' },
+  { situatie: 'Grote afwijking of click voelt anders', aanpak: 'Reparatie + justering + kalibratie' },
+  { situatie: 'Sleutel is gevallen zonder zichtbare schade', aanpak: 'Justeren + kalibreren (interne schade mogelijk)' },
 ];
 
 const faq = [
@@ -118,7 +143,7 @@ const faqSchema = {
     <PageSection>
       <ChatExplainer
         question="Wanneer moet ik mijn sleutel laten justeren?"
-        answer='Als de gemeten waarden buiten de toegestane tolerantie vallen. Dit kan na intensief gebruik, een val of gewoon door veroudering. Na justering <a href="/diensten/momentsleutel-kalibratie">kalibreren we opnieuw</a> en ontvang je een nieuw <a href="/diensten/iso-6789-certificering">ISO 6789:2017 en 2003 certificaat</a>.'
+        answer='Als de gemeten waarden buiten de toegestane tolerantie vallen. Dit kan na intensief gebruik, een val of gewoon door veroudering. Na justering <a href="/diensten/momentsleutel-kalibratie">kalibreren we opnieuw</a> en ontvang je een nieuw ISO 6789:2017 en 2003 certificaat. Na het justeren ontvang je een nieuw certificaat met de waarden vóór en na de ingreep. Meer over <a href="/diensten/iso-6789-certificering">nieuw kalibratiecertificaat</a>.'
         accent="#C4AF64"
         reactions={[
           { emoji: '🎯', count: 13 },
@@ -159,7 +184,13 @@ const faqSchema = {
          PROCESS
     ══════════════════════════════════════ -->
     <PageSection>
-      <ProcessSteps heading="Hoe wij een momentsleutel justeren." bodies={{ certificeren: 'ISO 6789:2017 en 2003 certificaat met as-found en as-left waarden, gebruikte referentieapparatuur en <a href="/blog/hoe-vaak-momentsleutel-kalibreren/">aanbevolen interval</a>. Audit-proof.' }} />
+      <ProcessSteps
+        heading="Hoe wij een momentsleutel justeren."
+        steps={justerenSteps}
+      />
+      <p class="kalibratie-note" data-animate>
+        Alleen kalibreren nodig? Bekijk <a href="/diensten/momentsleutel-kalibratie/">hoe we je momentsleutel kalibreren</a>.
+      </p>
     </PageSection>
 
     <!-- ══════════════════════════════════════
@@ -193,6 +224,13 @@ const faqSchema = {
             </tbody>
           </table>
         </div>
+
+        <p class="advies-note" data-animate>
+          Na het bijstellen kalibreren we de sleutel opnieuw, zodat je de as-left waarden op het certificaat ziet. Meer over <a href="/diensten/momentsleutel-kalibratie/">kalibreren na justeren</a>.
+        </p>
+        <p class="advies-note" data-animate>
+          Is de klik beschadigd of is de sleutel gevallen, dan beoordelen we eerst of reparatie nodig is. Meer over <a href="/diensten/momentsleutel-reparatie">reparatie van je momentsleutel</a>.
+        </p>
     </PageSection>
 
     <!-- ══════════════════════════════════════
@@ -290,6 +328,27 @@ const faqSchema = {
     font-size: 0.975rem;
     line-height: 1.8;
     color: #8EAAB8;
+  }
+
+  /* ── Notes under the process and advice sections ── */
+  .kalibratie-note {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.925rem;
+    line-height: 1.7;
+    color: #8EAAB8;
+  }
+  .advies-note {
+    margin-top: 1.5rem;
+    max-width: 820px;
+    font-size: 0.925rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+  .kalibratie-note a,
+  .advies-note a {
+    color: #7AAFC4;
+    text-decoration: underline;
   }
 
   /* ── Cards ── */

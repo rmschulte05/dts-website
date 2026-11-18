@@ -1,11 +1,20 @@
 ---
 import { WORK_SEQUENCE, type WorkStepId } from '../../data/workSequence';
 
+interface StepItem {
+  n: string;
+  title: string;
+  body: string;
+  accent: string;
+}
+
 interface Props {
   heading?: string;
   headingId?: string;
   eyebrow?: string;
   bodies?: Partial<Record<WorkStepId, string>>;
+  /** Page-specific sequence. Omit to keep the shared five-step WORK_SEQUENCE. */
+  steps?: StepItem[];
 }
 
 const {
@@ -13,9 +22,10 @@ const {
   headingId,
   eyebrow = 'Ons proces',
   bodies,
+  steps: customSteps,
 } = Astro.props;
 
-const steps = WORK_SEQUENCE.map((step) => ({
+const steps = customSteps ?? WORK_SEQUENCE.map((step) => ({
   ...step,
   body: bodies?.[step.id] ?? step.body,
 }));
@@ -30,7 +40,7 @@ const steps = WORK_SEQUENCE.map((step) => ({
   <h2 class="proc-title" id={headingId}>{heading}</h2>
 </div>
 
-<div class="proc-grid">
+<div class={`proc-grid${customSteps ? ` proc-grid--${customSteps.length}` : ''}`}>
   {steps.map((step, i) => (
     <div
       class="proc-card"
@@ -100,6 +110,9 @@ const steps = WORK_SEQUENCE.map((step) => ({
   }
   @media (min-width: 1200px) {
     .proc-grid { grid-template-columns: repeat(5, 1fr); }
+  }
+  @media (min-width: 900px) {
+    .proc-grid--3 { grid-template-columns: repeat(3, 1fr); }
   }
 
   .proc-card {

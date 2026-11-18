@@ -61,7 +61,18 @@ const servicesSchema = {
   <main>
     <HeroDTS />
     <AboutSnippet />
-    <Services />
+    <Services
+      bodies={{
+        repareren: 'Alleen bij mechanische schade: demontage, reiniging en vervanging van slijtdelen, pas na jouw akkoord. Geen schade? Dan slaan we deze stap over. Bij mechanische schade repareren we slijtdelen en kalibreren we de sleutel daarna opnieuw.',
+        kalibreren: 'Gedocumenteerde meting volgens ISO 6789:2017 en 2003 over het volledige bereik (as-left na de ingreep). Meerdere metingen per punt, traceerbare referentieapparatuur. Laat je momentsleutel kalibreren volgens ISO 6789:2017 en 2003, met de gemeten waarden op het certificaat.',
+        certificeren: 'ISO 6789:2017 en 2003 certificaat met as-found en as-left waarden, gebruikte referentieapparatuur en aanbevolen interval. Audit-proof. Voor je audit krijg je een certificaat met de as-found- en as-left waarden, bruikbaar onder ISO 9001, IATF 16949 en VCA.',
+      }}
+      linkLabels={{
+        repareren: 'Momentsleutel repareren',
+        kalibreren: 'Momentsleutel laten kalibreren',
+        certificeren: 'ISO 6789-kalibratiecertificaat',
+      }}
+    />
     <CoreValues />
   </main>
 
