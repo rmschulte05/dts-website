@@ -87,6 +87,40 @@ const serviceSchema = {
   ]
 };
 
+const hubFaq = [
+  {
+    q: 'Wat is het verschil tussen kalibreren en justeren?',
+    a: 'Kalibreren meet en documenteert de afwijking. Justeren stelt de sleutel bij tot binnen de tolerantie, waarna we opnieuw meten en een nieuw certificaat afgeven.',
+  },
+  {
+    q: 'Kalibreren jullie op locatie?',
+    a: 'Nee. Je stuurt de momentsleutel op of brengt hem langs in Riethoven.',
+  },
+  {
+    q: 'Hoe lang duurt een kalibratie?',
+    a: 'We kalibreren snel na ontvangst en communiceren de doorlooptijd vooraf. Heb je spoed, neem dan eerst contact op.',
+  },
+  {
+    q: 'Welk certificaat krijg ik?',
+    a: 'Een certificaat volgens ISO 6789:2017 en 2003 met as-found- en as-left-waarden, de gebruikte referentieapparatuur en een aanbevolen volgend interval.',
+  },
+  {
+    q: 'Kan ik meerdere sleutels tegelijk opsturen?',
+    a: 'Ja. Stuur ze samen op of breng ze langs; stem grotere batches vooraf met ons af.',
+  },
+];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const hubFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": hubFaq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
+
 const services = [
   {
     href: '/diensten/momentsleutel-reparatie',
@@ -137,6 +171,7 @@ const services = [
   canonicalPath="/diensten"
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(hubFaqSchema)} />
 
   <NavIsland currentPage="diensten" />
 
@@ -214,6 +249,90 @@ const services = [
             </a>
           ))}
         </div>
+    </PageSection>
+
+    <!-- WELKE DIENST -->
+    <PageSection>
+        <div class="sec-head" data-animate>
+          <div class="sec-eyebrow">
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+            <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Keuzehulp</span>
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+          </div>
+          <h2 class="sec-title">Welke momentsleutel service heb je nodig?</h2>
+        </div>
+        <div class="hub-card" data-animate>
+          <p class="hub-text"><strong>Kalibreren</strong> meet hoeveel je sleutel afwijkt en legt dat vast in een certificaat. <strong>Justeren</strong> stelt de sleutel bij tot binnen de tolerantie, waarna we opnieuw meten. <strong>Repareren</strong> is nodig bij mechanische schade; daarna kalibreren we de sleutel opnieuw. <strong>Certificeren</strong> levert de conformiteitsverklaring volgens ISO 6789:2017 en 2003 voor je kwaliteitssysteem of audit.</p>
+          <p class="hub-text">Twijfel je? Beschrijf wat je merkt; we adviseren je welke stap nodig is. <a href="/diensten/momentsleutel-kalibratie/">Bekijk kalibratie</a>, <a href="/diensten/momentsleutel-justeren/">justeren</a>, <a href="/diensten/momentsleutel-reparatie/">reparatie</a> of <a href="/diensten/iso-6789-certificering/">certificering</a>.</p>
+        </div>
+    </PageSection>
+
+    <!-- OPSTUREN OF LANGSBRENGEN -->
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+        <div class="sec-head" data-animate>
+          <div class="sec-eyebrow">
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+            <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Aanlevering</span>
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+          </div>
+          <h2 class="sec-title">Hoe werkt opsturen of langsbrengen?</h2>
+        </div>
+        <div class="hub-card" data-animate>
+          <p class="hub-text">Pak de momentsleutel stevig in en voeg je naam, contactgegevens en eventuele klachten toe. Stuur het pakket naar Dutch Torque Service, Tonterstraat 42, 5561 AN Riethoven, of breng het langs tijdens openingstijden (maandag tot en met vrijdag, 08:00–17:00). Na ontvangst bevestigen we de ontvangst en krijg je binnen één werkdag een prijsopgave. Op locatie kalibreren we niet.</p>
+          <p class="hub-text">Alle stappen staan in <a href="/blog/momentsleutel-opsturen-voor-kalibratie/">momentsleutel opsturen voor kalibratie</a>.</p>
+        </div>
+    </PageSection>
+
+    <!-- KWALITEITSSYSTEMEN -->
+    <PageSection>
+        <div class="sec-head" data-animate>
+          <div class="sec-eyebrow">
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+            <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Certificaat</span>
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+          </div>
+          <h2 class="sec-title">Voor welke kwaliteitssystemen is het certificaat bruikbaar?</h2>
+        </div>
+        <div class="hub-card" data-animate>
+          <p class="hub-text">Het certificaat is een conformiteitsverklaring volgens ISO 6789:2017 en 2003 en is bruikbaar voor kwaliteitssystemen zoals ISO 9001, IATF 16949 en VCA. Dutch Torque Service claimt geen RvA-accreditatie en geen ISO/IEC 17025-accreditatie. Wat er precies op het certificaat staat, lees je op <a href="/diensten/iso-6789-certificering/">kalibratiecertificaat momentsleutel</a>.</p>
+        </div>
+    </PageSection>
+
+    <!-- PRIJS -->
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+        <div class="sec-head" data-animate>
+          <div class="sec-eyebrow">
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+            <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Prijs</span>
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+          </div>
+          <h2 class="sec-title">Wat kost een kalibratie?</h2>
+        </div>
+        <div class="hub-card" data-animate>
+          <p class="hub-text">We publiceren geen prijslijst. De prijs hangt af van het type momentsleutel, het merk en het werk dat nodig is. Je krijgt binnen één werkdag een prijsopgave; reparatie of justeren doen we alleen na jouw akkoord. Meer uitleg staat in <a href="/blog/wat-kost-momentsleutel-kalibreren/">wat kost momentsleutel kalibreren</a>.</p>
+          <p class="hub-text">Reken eenheden om of check de tolerantie met de <a href="/hulpmiddelen/momentsleutel-omrekenen/">omrekenaar en tolerantiecheck</a>.</p>
+        </div>
+    </PageSection>
+
+    <!-- HUB FAQ -->
+    <PageSection>
+        <div class="sec-head" data-animate>
+          <div class="sec-eyebrow">
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+            <span class="text-[10px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
+            <span class="w-8 h-px opacity-60" style="background:#7AAFC4;"></span>
+          </div>
+          <h2 class="sec-title">Veelgestelde vragen</h2>
+        </div>
+        <div class="faq-list hub-faq" data-animate data-animate-delay="0.08">
+          {hubFaq.map((item) => (
+            <details>
+              <summary>{item.q}</summary>
+              <div class="faq-body">{item.a}</div>
+            </details>
+          ))}
+        </div>
+        <p class="hub-text hub-faq-more">Meer vragen? Zie de <a href="/faq/">veelgestelde vragen</a>.</p>
     </PageSection>
 
     <!-- CTA -->
@@ -335,6 +454,60 @@ const services = [
   .service-card:hover svg,
   .service-card:focus-visible svg {
     transform: translateX(4px);
+  }
+
+  /* ── Expanded hub content ── */
+  .hub-card {
+    max-width: 820px;
+    margin-inline: auto;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 1.5rem;
+    background: #0E1118;
+    border: 1px solid rgba(122, 175, 196, 0.14);
+  }
+  .hub-text {
+    margin: 0 0 1.1rem;
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: #8EAAB8;
+  }
+  .hub-text:last-child { margin-bottom: 0; }
+  .hub-text strong { color: #E8F0F4; font-weight: 650; }
+  .hub-text a {
+    color: #7AAFC4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .hub-faq {
+    max-width: 820px;
+  }
+  .hub-faq details {
+    background: #0E1118;
+    border: 1px solid rgba(122, 175, 196, 0.14);
+    border-radius: 1rem;
+    margin-bottom: 0.65rem;
+    padding: 0.25rem 1.25rem;
+  }
+  .hub-faq summary {
+    cursor: pointer;
+    padding: 0.95rem 0;
+    color: #DDE8EE;
+    font-weight: 700;
+    font-size: 0.92rem;
+    list-style: none;
+  }
+  .hub-faq summary::-webkit-details-marker { display: none; }
+  .hub-faq details[open] summary { color: #ffffff; }
+  .hub-faq .faq-body {
+    padding: 0 0 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: #8EAAB8;
+  }
+  .hub-faq-more {
+    max-width: 820px;
+    margin: 1.25rem auto 0;
+    text-align: center;
   }
 </style>
 

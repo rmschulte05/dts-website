@@ -1,0 +1,470 @@
+---
+import Base from '../../layouts/Base.astro';
+import NavIsland from '../../components/modules/NavIsland.astro';
+import FooterDTS from '../../components/modules/FooterDTS.astro';
+import PageSection from '../../components/ui/PageSection.astro';
+
+const pageUrl = 'https://www.dutchtorqueservice.nl/hulpmiddelen/momentsleutel-omrekenen/';
+
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Momentsleutel omrekenen en tolerantiecheck",
+  "url": pageUrl,
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "inLanguage": "nl-NL",
+  "provider": { "@id": "https://www.dutchtorqueservice.nl/#business" }
+};
+
+const faq = [
+  {
+    q: 'Rekent de tool ook in ft-lb en in-lb?',
+    a: 'Ja. Je vult een waarde en een eenheid in; de tool toont dezelfde waarde in Nm, ft-lb en in-lb.',
+  },
+  {
+    q: 'Is de rekentool gratis?',
+    a: 'Ja. De tool is gratis, werkt in je browser en verstuurt je invoer niet.',
+  },
+  {
+    q: 'Is de tolerantiecheck een certificaat?',
+    a: 'Nee. Het is een rekenhulp. Het kalibratiecertificaat met de gemeten as-found- en as-left-waarden is leidend.',
+  },
+  {
+    q: 'Welke tolerantie gebruikt DTS?',
+    a: 'Onze servicegarantie is ±2%, binnen de ±4%-tolerantie die we op deze site noemen.',
+  },
+  {
+    q: 'Kan ik meerdere momentsleutels tegelijk laten kalibreren?',
+    a: 'Ja. Stuur ze samen op of breng ze langs; we stemmen grotere batches vooraf af.',
+  },
+];
+
+const stripTags = (s) => s.replace(/<[^>]+>/g, '');
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faq.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripTags(a) },
+  })),
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.dutchtorqueservice.nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Momentsleutel omrekenen", "item": pageUrl }
+  ]
+};
+---
+
+<Base
+  title="Momentsleutel omrekenen: Nm, ft-lb en in-lb | DTS"
+  description="Reken Nm om naar ft-lb en in-lb, of check de ±4%-tolerantie en onze ±2%-serviceband. Gratis rekentool, zonder account. Lab in Riethoven."
+  canonicalPath="/hulpmiddelen/momentsleutel-omrekenen/"
+  autoBreadcrumb={false}
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <NavIsland currentPage="diensten" />
+
+  <main>
+    <PageSection hero center animate>
+      <div class="sec-eyebrow">
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Hulpmiddelen</span>
+        <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+      </div>
+      <h1 class="font-black tracking-tight text-white" style="font-size: clamp(2.3rem, 5.5vw, 4rem); line-height: 1.08;">
+        Momentsleutel omrekenen en tolerantie checken.
+      </h1>
+      <p class="sec-sub">
+        Twee gratis rekentools voor momentsleutels: een omrekenaar tussen Nm, ft-lb en in-lb, en een tolerantiecheck die laat zien binnen welke band een instelwaarde valt. Je hebt geen account nodig.
+      </p>
+    </PageSection>
+
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+      <div class="tool-grid">
+        <!-- Tool A -->
+        <section class="tool-card" aria-labelledby="converter-title" data-animate>
+          <p class="tool-card__eyebrow">Omrekenaar</p>
+          <h2 class="tool-card__title" id="converter-title">Eenheden omrekenen</h2>
+          <p class="tool-card__intro">Vul een waarde in en kies de eenheid. Je ziet meteen alle drie de eenheden.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="conv-value">Waarde</label>
+              <input id="conv-value" name="conv-value" type="number" inputmode="decimal" min="0" step="any" placeholder="Bijv. 100" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="conv-unit">Eenheid</label>
+              <select id="conv-unit" name="conv-unit">
+                <option value="Nm">Nm</option>
+                <option value="ft-lb">ft-lb</option>
+                <option value="in-lb">in-lb</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="tool-error" id="conv-error" role="status" aria-live="polite" hidden></p>
+
+          <div class="result-panel" aria-live="polite" aria-atomic="true">
+            <div class="result-row">
+              <span class="result-label">Newtonmeter (Nm)</span>
+              <output class="result-value" id="conv-nm" for="conv-value conv-unit">—</output>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Voet-pond (ft-lb)</span>
+              <output class="result-value" id="conv-ftlb" for="conv-value conv-unit">—</output>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Inch-pound (in-lb)</span>
+              <output class="result-value" id="conv-inlb" for="conv-value conv-unit">—</output>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tool B -->
+        <section class="tool-card" aria-labelledby="tolerance-title" data-animate data-animate-delay="0.08">
+          <p class="tool-card__eyebrow">Tolerantiecheck</p>
+          <h2 class="tool-card__title" id="tolerance-title">Tolerantie berekenen</h2>
+          <p class="tool-card__intro">Kies een instelwaarde en eenheid. De check toont de ±4%-ISO-band en onze ±2%-serviceband.</p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="tol-value">Instelwaarde</label>
+              <input id="tol-value" name="tol-value" type="number" inputmode="decimal" min="0" step="any" placeholder="Bijv. 100" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="tol-unit">Eenheid</label>
+              <select id="tol-unit" name="tol-unit">
+                <option value="Nm">Nm</option>
+                <option value="ft-lb">ft-lb</option>
+                <option value="in-lb">in-lb</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="tool-error" id="tol-error" role="status" aria-live="polite" hidden></p>
+
+          <div class="result-panel" aria-live="polite" aria-atomic="true">
+            <div class="result-row">
+              <span class="result-label">Nominale waarde</span>
+              <output class="result-value" id="tol-nominal" for="tol-value tol-unit">—</output>
+            </div>
+            <div class="result-row">
+              <span class="result-label">ISO-band (±4%)</span>
+              <output class="result-value" id="tol-iso" for="tol-value tol-unit">—</output>
+            </div>
+            <div class="result-row">
+              <span class="result-label">DTS-serviceband (±2%)</span>
+              <output class="result-value" id="tol-dts" for="tol-value tol-unit">—</output>
+            </div>
+          </div>
+
+          <p class="tool-note">
+            Deze check gebruikt de ±4%-tolerantie die Dutch Torque Service op deze site noemt en de eigen ±2%-servicegarantie. De exacte eis hangt af van het type momentsleutel, de klasse en het toepasselijke ISO 6789-protocol. Het kalibratiecertificaat is leidend.
+          </p>
+        </section>
+      </div>
+    </PageSection>
+
+    <PageSection>
+      <div class="tool-copy">
+        <h2 class="sec-title">Hoe reken je Nm om naar ft-lb?</h2>
+        <p>1 Nm = 0,7376 ft-lb. 1 ft-lb = 1,3558 Nm. 1 in-lb = 0,1130 Nm. 1 Nm = 8,8507 in-lb. De tool rekent met deze factoren en rondt af op twee decimalen.</p>
+
+        <h2 class="sec-title">Wat betekent de ±4%-tolerantie?</h2>
+        <p>De ISO 6789-tolerantie die Dutch Torque Service hanteert is ±4% van de instelwaarde. Bij een instelwaarde van 100 Nm ligt de band dus tussen 96 en 104 Nm. Onze eigen servicegarantie is ±2%, dus tussen 98 en 102 Nm. De exacte eis hangt af van het type, de klasse en het toepasselijke protocol; het kalibratiecertificaat is leidend.</p>
+
+        <h2 class="sec-title">Wanneer laat je een momentsleutel kalibreren?</h2>
+        <p>Als richtlijn eens per jaar. Gebruik je de sleutel dagelijks in productie of assemblage, dan is elke 3 tot 6 maanden of na 5.000 gebruikscycli verstandiger. Kalibreer ook opnieuw na een val of bij twijfel. Meer uitleg staat in <a href="/blog/hoe-vaak-momentsleutel-kalibreren/">hoe vaak moet je een momentsleutel kalibreren</a>.</p>
+
+        <h2 class="sec-title">Kalibreren, justeren of repareren?</h2>
+        <p>Kalibreren is meten en documenteren hoeveel de sleutel afwijkt. Justeren is bijstellen tot binnen de tolerantie, gevolgd door opnieuw meten en een nieuw certificaat. Repareren is nodig bij mechanische schade; daarna kalibreren we opnieuw. Bekijk <a href="/diensten/momentsleutel-kalibratie/">kalibreren</a>, <a href="/diensten/momentsleutel-justeren/">justeren</a> of <a href="/diensten/momentsleutel-reparatie/">reparatie</a>.</p>
+
+        <h2 class="sec-title">Waar laat je de sleutel kalibreren?</h2>
+        <p>Bij Dutch Torque Service in Riethoven, Noord-Brabant. Je stuurt de momentsleutel op of brengt hem langs; op locatie kalibreren we niet. Je krijgt binnen één werkdag een prijsopgave en na de kalibratie een certificaat volgens ISO 6789:2017 en 2003. Bekijk <a href="/diensten/momentsleutel-kalibratie/">momentsleutel laten kalibreren</a>.</p>
+      </div>
+    </PageSection>
+
+    <PageSection class="[background:rgba(14,17,24,0.5)]">
+      <div class="sec-head" data-animate>
+        <div class="sec-eyebrow">
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">FAQ</span>
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        </div>
+        <h2 class="sec-title">Veelgestelde vragen</h2>
+      </div>
+
+      <div class="faq-list" data-animate data-animate-delay="0.08">
+        {faq.map((item) => (
+          <details>
+            <summary>{item.q}</summary>
+            <div class="faq-body">{item.a}</div>
+          </details>
+        ))}
+      </div>
+    </PageSection>
+  </main>
+
+  <FooterDTS />
+</Base>
+
+<style>
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .tool-grid { grid-template-columns: 1fr; }
+  }
+
+  .tool-card {
+    position: relative;
+    padding: 2rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(140deg, rgba(122, 175, 196, 0.07) 0%, transparent 58%), #0E1118;
+    border: 1px solid rgba(122, 175, 196, 0.22);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+  }
+
+  .tool-card__eyebrow {
+    margin: 0 0 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #7AAFC4;
+  }
+
+  .tool-card__title {
+    margin: 0 0 0.6rem;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+
+  .tool-card__intro {
+    margin: 0 0 1.5rem;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: #8EAAB8;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .field label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #A8BDC7;
+  }
+
+  .field input,
+  .field select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.6rem;
+    border: 1px solid rgba(122, 175, 196, 0.28);
+    background: #080B10;
+    color: #E8F0F4;
+    font-size: 1rem;
+  }
+
+  .field input:focus-visible,
+  .field select:focus-visible {
+    outline: 2px solid rgba(122, 175, 196, 0.65);
+    outline-offset: 2px;
+    border-color: rgba(122, 175, 196, 0.65);
+  }
+
+  .tool-error {
+    margin: 0 0 1rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.55rem;
+    border: 1px solid rgba(212, 146, 122, 0.45);
+    background: rgba(212, 146, 122, 0.08);
+    color: #F0C3B0;
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .result-panel {
+    margin-top: 1.25rem;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(122, 175, 196, 0.16);
+    background: rgba(6, 8, 10, 0.55);
+    overflow: hidden;
+  }
+
+  .result-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(122, 175, 196, 0.10);
+  }
+  .result-row:last-child { border-bottom: 0; }
+
+  .result-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #9AAEB8;
+  }
+
+  .result-value {
+    font-variant-numeric: tabular-nums;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #9BC5D8;
+    text-align: right;
+  }
+
+  .tool-note {
+    margin: 1.25rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(122, 175, 196, 0.12);
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #7F97A3;
+  }
+
+  .tool-copy {
+    max-width: 780px;
+    margin-inline: auto;
+  }
+
+  .tool-copy h2 {
+    margin: 2.75rem 0 0.9rem;
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #E8F0F4;
+  }
+  .tool-copy h2:first-child { margin-top: 0; }
+
+  .tool-copy p {
+    margin: 0 0 1.1rem;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #9AAEB8;
+  }
+
+  .tool-copy a {
+    color: #7AAFC4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  @media (max-width: 520px) {
+    .field-row { grid-template-columns: 1fr; }
+    .tool-card { padding: 1.4rem; }
+  }
+</style>
+
+<script>
+  import { convert, tolerance, format2, INVALID_MESSAGE } from '../../lib/torque.mjs';
+
+  const convValue = document.getElementById('conv-value') as HTMLInputElement | null;
+  const convUnit = document.getElementById('conv-unit') as HTMLSelectElement | null;
+  const convError = document.getElementById('conv-error');
+  const convNm = document.getElementById('conv-nm');
+  const convFtLb = document.getElementById('conv-ftlb');
+  const convInLb = document.getElementById('conv-inlb');
+
+  const tolValue = document.getElementById('tol-value') as HTMLInputElement | null;
+  const tolUnit = document.getElementById('tol-unit') as HTMLSelectElement | null;
+  const tolError = document.getElementById('tol-error');
+  const tolNominal = document.getElementById('tol-nominal');
+  const tolIso = document.getElementById('tol-iso');
+  const tolDts = document.getElementById('tol-dts');
+
+  function setError(el: HTMLElement | null, message: string | null) {
+    if (!el) return;
+    el.textContent = message ?? '';
+    el.hidden = !message;
+  }
+
+  function setText(el: HTMLElement | null, text: string) {
+    if (el) el.textContent = text;
+  }
+
+  function renderConverter() {
+    if (!convValue || !convUnit) return;
+    const result = convert(convValue.validity.badInput ? NaN : convValue.value, convUnit.value);
+    if (!result.valid) {
+      setText(convNm, '—');
+      setText(convFtLb, '—');
+      setText(convInLb, '—');
+      setError(convError, result.empty ? null : INVALID_MESSAGE);
+      return;
+    }
+    setError(convError, null);
+    setText(convNm, format2(result.nm));
+    setText(convFtLb, format2(result.ftLb));
+    setText(convInLb, format2(result.inLb));
+  }
+
+  function band(min: number, max: number, unit: string) {
+    return `${format2(min)} – ${format2(max)} ${unit}`;
+  }
+
+  function renderTolerance() {
+    if (!tolValue || !tolUnit) return;
+    const result = tolerance(tolValue.validity.badInput ? NaN : tolValue.value, tolUnit.value);
+    if (!result.valid) {
+      setText(tolNominal, '—');
+      setText(tolIso, '—');
+      setText(tolDts, '—');
+      setError(tolError, result.empty ? null : INVALID_MESSAGE);
+      return;
+    }
+    setError(tolError, null);
+    const unit = result.unit;
+    const nominal = unit === 'Nm'
+      ? `${format2(result.nominalNm)} Nm`
+      : `${format2(result.nominalNm)} Nm · ${format2(result.nominal)} ${unit}`;
+    setText(tolNominal, nominal);
+    setText(tolIso, band(result.iso4.min, result.iso4.max, unit));
+    setText(tolDts, band(result.dts2.min, result.dts2.max, unit));
+  }
+
+  if (convValue && convUnit) {
+    convValue.addEventListener('input', renderConverter);
+    convUnit.addEventListener('change', renderConverter);
+    renderConverter();
+  }
+
+  if (tolValue && tolUnit) {
+    tolValue.addEventListener('input', renderTolerance);
+    tolUnit.addEventListener('change', renderTolerance);
+    renderTolerance();
+  }
+</script>

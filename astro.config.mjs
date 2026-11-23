@@ -27,6 +27,7 @@ const lastmodByPath = {
   '/en/torque-wrench-calibration/': '2026-11-17',
   '/de/drehmomentschluessel-kalibrierung/': '2026-11-17',
   '/diensten/momentsleutel-kalibratie-noord-brabant/': '2026-11-17',
+  '/hulpmiddelen/momentsleutel-omrekenen/': '2026-11-23',
 };
 
 // Internal links in page bodies were written without a trailing slash, which

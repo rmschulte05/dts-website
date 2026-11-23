@@ -2,7 +2,7 @@
 
 > Dutch Torque Service (DTS) diagnosticeert, repareert, justeert en kalibreert momentsleutels en levert een kalibratiecertificaat volgens ISO 6789:2017 en 2003 (Type I en Type II). Lab in Riethoven, Noord-Brabant. Klanten: werkplaatsen en bedrijven in Nederland, België en Duitsland.
 
-Laatst bijgewerkt: 2026-11-17
+Laatst bijgewerkt: 2026-11-23
 
 ## Kernfeiten
 
@@ -33,6 +33,10 @@ Laatst bijgewerkt: 2026-11-17
 - [ISO 6789 certificering / kalibratiecertificaat](https://www.dutchtorqueservice.nl/diensten/iso-6789-certificering/): wat er op het certificaat staat, met een geredigeerd voorbeeld.
 - [Momentsleutel kalibreren in Noord-Brabant](https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie-noord-brabant/): lab in Riethoven, gemeente Bergeijk. Opsturen of langsbrengen. Geen kalibratie op locatie.
 - [Alle diensten](https://www.dutchtorqueservice.nl/diensten/)
+
+## Hulpmiddelen
+
+- [Momentsleutel omrekenen en tolerantiecheck](https://www.dutchtorqueservice.nl/hulpmiddelen/momentsleutel-omrekenen/): gratis omrekenaar voor Nm, ft-lb en in-lb, plus een tolerantiecheck voor de ±4%-ISO-band en de ±2%-serviceband.
 
 ## English
 
