@@ -10,6 +10,11 @@ export const meta = {
 };
 import BlogLayout from '../../layouts/BlogLayout.astro';
 
+// TODO(owner): replace null with the approved wording, e.g.
+// 'Vanaf € 89,-' or '€ 79–€ 129,-'.
+// Do not merge this branch until the owner has supplied the figure.
+const priceAnswer: string | null = null;
+
 const pageUrl = 'https://www.dutchtorqueservice.nl/blog/wat-kost-momentsleutel-kalibreren/';
 
 const faq = [
@@ -74,6 +79,16 @@ const schema = {
 
   <div class="prose">
     <p>Bij Dutch Torque Service staat er geen prijslijst online. Wat een <a href="/diensten/momentsleutel-kalibratie/">momentsleutel kalibratie</a> kost, hangt af van het type momentsleutel, het merk, en van het werk dat nodig is. Je krijgt binnen één werkdag een prijsopgave.</p>
+
+    {priceAnswer && (
+      <div class="price-answer" data-price-answer>
+        <p>
+          <strong>{priceAnswer}</strong> voor een momentsleutel die alleen gekalibreerd hoeft te worden.
+          De definitieve prijs hangt af van het type, het merk en het werk dat nodig is.
+          Je krijgt binnen één werkdag een prijsopgave.
+        </p>
+      </div>
+    )}
 
     <h2>Zo krijg je een prijsopgave</h2>
     <p>Mail of bel met deze gegevens:</p>
@@ -150,3 +165,24 @@ const schema = {
     ))}
   </div>
 </BlogLayout>
+
+<style>
+  .price-answer {
+    margin: 1.75rem 0 2rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(122, 175, 196, 0.22);
+    border-left: 3px solid #7AAFC4;
+    background: linear-gradient(135deg, rgba(122, 175, 196, 0.07), transparent 65%), #0E1118;
+  }
+  .price-answer p {
+    margin: 0;
+    color: #C4D0D8;
+    font-size: 0.975rem;
+    line-height: 1.8;
+  }
+  .price-answer strong {
+    color: #E8F0F4;
+    font-weight: 700;
+  }
+</style>
