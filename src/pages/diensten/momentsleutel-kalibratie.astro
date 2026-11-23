@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import AuthorBox from '../../components/modules/AuthorBox.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 import ChatExplainer from '../../components/modules/ChatExplainer.astro';
 import ProcessSteps from '../../components/modules/ProcessSteps.astro';
@@ -157,6 +158,8 @@ const faqSchema = {
   title="Momentsleutel laten kalibreren | Dutch Torque Service"
   description="Momentsleutel laten kalibreren volgens ISO 6789:2017 en 2003, met certificaat. Lab in Riethoven. Offerte binnen één werkdag, bel +31 6 131 72 774."
   canonicalPath="/diensten/momentsleutel-kalibratie"
+  ogImage="/og/kalibratie.jpg"
+  ogImageAlt="Dutch Torque Service: momentsleutel laten kalibreren volgens ISO 6789:2017 en 2003, met certificaat, lab in Riethoven."
   hreflang={[
     { lang: 'nl', href: 'https://www.dutchtorqueservice.nl/diensten/momentsleutel-kalibratie/' },
     { lang: 'en', href: 'https://www.dutchtorqueservice.nl/en/torque-wrench-calibration/' },
@@ -345,6 +348,8 @@ const faqSchema = {
         </p>
       </div>
     </PageSection>
+
+    <AuthorBox />
 
     <!-- ══════════════════════════════════════
          FAQ

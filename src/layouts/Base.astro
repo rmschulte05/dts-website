@@ -19,6 +19,8 @@ interface Props {
   ogLocaleAlternate?: string[];
   hreflang?: HreflangLink[];
   skipLinkLabel?: string;
+  ogImage?: string;    // absolute path or URL, default /og-image.jpg
+  ogImageAlt?: string;
 }
 const {
   title,
@@ -33,6 +35,8 @@ const {
   ogLocaleAlternate = [],
   hreflang = [],
   skipLinkLabel = 'Ga naar inhoud',
+  ogImage = '/og-image.jpg',
+  ogImageAlt = 'Dutch Torque Service, Precisie op elk moment. Momentsleutel kalibratie, reparatie en certificering, Riethoven, Noord-Brabant',
 } = Astro.props;
 
 const siteBase = 'https://www.dutchtorqueservice.nl';
@@ -44,9 +48,15 @@ function absoluteUrl(path?: string): string {
   return siteBase + (withSlash.endsWith('/') ? withSlash : `${withSlash}/`);
 }
 
+/** Absolute URL for an OG image path (absolute URLs pass through). */
+function absoluteAsset(path: string): string {
+  if (/^https?:\/\//.test(path)) return path;
+  return siteBase + (path.startsWith('/') ? path : `/${path}`);
+}
+
 const canonicalURL = absoluteUrl(canonicalPath ?? '/');
-const ogImage = `${siteBase}/og-image.jpg`;
-const ogImageAlt = 'Dutch Torque Service, Precisie op elk moment. Momentsleutel kalibratie, reparatie en certificering, Riethoven, Noord-Brabant';
+const defaultOgImage = `${siteBase}/og-image.jpg`;
+const ogImageURL = absoluteAsset(ogImage);
 
 // BreadcrumbList for every page except home, unless the page emits its own.
 const crumbNames: Record<string, string> = {
@@ -103,7 +113,7 @@ const localBusinessSchema = {
   "description": "Professionele momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering. \u00b12% servicegarantie, ruim binnen de ISO 6789 tolerantie van \u00b14%.",
   "url": "https://www.dutchtorqueservice.nl/",
   "logo": "https://www.dutchtorqueservice.nl/logo/dts-logo-2x.webp",
-  "image": ogImage,
+  "image": defaultOgImage,
   "telephone": "+31613172774",
   "email": "info@dutchtorqueservice.nl",
   "identifier": {
@@ -216,7 +226,7 @@ const personSchema = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -234,7 +244,7 @@ const personSchema = {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageURL} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />

@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import AuthorBox from '../../components/modules/AuthorBox.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 import ChatExplainer from '../../components/modules/ChatExplainer.astro';
 import ProcessSteps from '../../components/modules/ProcessSteps.astro';
@@ -132,6 +133,8 @@ const faqSchema = {
   title="Momentsleutel reparatie | Snap-On, Stahlwille | DTS"
   description="Momentsleutel reparatie van Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth. Raming vooraf, reparatie na akkoord. Lab in Riethoven. Stuur je sleutel op."
   canonicalPath="/diensten/momentsleutel-reparatie"
+  ogImage="/og/reparatie.jpg"
+  ogImageAlt="Dutch Torque Service: momentsleutel reparatie voor Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
@@ -311,6 +314,8 @@ const faqSchema = {
           })}
         </div>
     </PageSection>
+
+    <AuthorBox />
 
     <!-- ══════════════════════════════════════
          FAQ
