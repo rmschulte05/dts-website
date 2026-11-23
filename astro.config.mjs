@@ -8,7 +8,7 @@ const lastmodByPath = {
   '/': '2026-11-23',
   '/blog/': '2026-11-17',
   '/blog/hoe-vaak-momentsleutel-kalibreren/': '2026-11-17',
-  '/blog/iso-6789-type-1-type-2-uitgelegd/': '2026-11-13',
+  '/blog/iso-6789-type-1-type-2-uitgelegd/': '2026-11-18',
   '/blog/mijn-momentsleutel-klopt-niet-meer/': '2026-11-23',
   '/blog/momentsleutel-gevallen-wat-nu/': '2026-11-23',
   '/blog/verschil-kalibreren-justeren-ijken/': '2026-11-17',
