@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import AuthorBox from '../../components/modules/AuthorBox.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 import { Image } from 'astro:assets';
 import certP1 from '../../img/certificates/sample-certificate-redacted-p1-1400.webp';
@@ -145,6 +146,8 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
   title="Kalibratiecertificaat momentsleutel | traceerbaar, ISO 6789"
   description="Kalibratiecertificaat voor je momentsleutel volgens ISO 6789:2017, met echte meetwaarden. Bruikbaar voor ISO 9001, IATF 16949 en VCA. Lab in Riethoven."
   canonicalPath="/diensten/iso-6789-certificering"
+  ogImage="/og/iso.jpg"
+  ogImageAlt="Dutch Torque Service: kalibratiecertificaat volgens ISO 6789:2017 en 2003, met as-found- en as-left-waarden."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
 
@@ -357,6 +360,8 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
           <footer>— Jan-Piet Schulte, eigenaar en kalibratietechnicus</footer>
         </blockquote>
     </PageSection>
+
+    <AuthorBox />
 
     <PageSection>
         <div class="sec-head" data-animate>

@@ -9,38 +9,16 @@ const contactSchema = {
   "@type": "ContactPage",
   "name": "Contact Dutch Torque Service",
   "url": "https://www.dutchtorqueservice.nl/contact/",
-  "mainEntity": {
-    "@type": "LocalBusiness",
-    "@id": "https://www.dutchtorqueservice.nl/#business",
-    "name": "Dutch Torque Service",
-    "description": "Momentsleutel kalibratie, reparatie en ISO 6789:2017 en 2003 certificering in Riethoven, Noord-Brabant.",
-    "url": "https://www.dutchtorqueservice.nl/",
-    "telephone": "+31613172774",
-    "email": "info@dutchtorqueservice.nl",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Tonterstraat 42",
-      "addressLocality": "Riethoven",
-      "addressRegion": "Noord-Brabant",
-      "postalCode": "5561 AN",
-      "addressCountry": "NL"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00",
-        "closes": "17:00"
-      }
-    ]
-  }
+  "mainEntity": { "@id": "https://www.dutchtorqueservice.nl/#business" }
 };
 ---
 
 <Base
-  title="Momentsleutel Kalibratie Riethoven | Dutch Torque Service"
+  title="Contact: kalibratie of reparatie | DTS"
   description="Contact over momentsleutel kalibratie, reparatie of certificering? Lab in Riethoven, Tonterstraat 42. Bel +31 6 131 72 774, ma–vr 08:00–17:00."
   canonicalPath="/contact"
+  ogImage="/og/contact.jpg"
+  ogImageAlt="Dutch Torque Service: contact over kalibratie of reparatie. Bel, mail of breng je momentsleutel langs in Riethoven."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(contactSchema)} />
 

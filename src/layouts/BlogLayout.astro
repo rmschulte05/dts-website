@@ -14,8 +14,10 @@ interface Props {
   publishDate: string;
   updatedDate?: string;
   excerpt: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
-const { title, description, canonicalPath, headline, category, readTime, publishDate, updatedDate, excerpt } = Astro.props;
+const { title, description, canonicalPath, headline, category, readTime, publishDate, updatedDate, excerpt, ogImage, ogImageAlt } = Astro.props;
 const relatedLinks = getRelatedLinks(canonicalPath);
 
 // Emit a BreadcrumbList JSON-LD. Home › Blog › {headline}, for every article.
@@ -42,7 +44,7 @@ const categoryColors: Record<string, string> = {
 const accent = categoryColors[category] ?? '#7AAFC4';
 ---
 
-<Base title={title} description={description} canonicalPath={canonicalPath} ogType="article" autoBreadcrumb={false}>
+<Base title={title} description={description} canonicalPath={canonicalPath} ogType="article" autoBreadcrumb={false} ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     <slot name="head" />

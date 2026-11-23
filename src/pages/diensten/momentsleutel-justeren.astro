@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
+import AuthorBox from '../../components/modules/AuthorBox.astro';
 import PageSection from '../../components/ui/PageSection.astro';
 import ChatExplainer from '../../components/modules/ChatExplainer.astro';
 import ProcessSteps from '../../components/modules/ProcessSteps.astro';
@@ -71,6 +72,8 @@ const faqSchema = {
   title="Momentsleutel justeren (bijstellen) | Dutch Torque Service"
   description="Momentsleutel justeren: bijstellen naar de juiste Nm-waarde. Alleen indien nodig, na jouw akkoord, met herkalibratie en as-left waarden op het certificaat."
   canonicalPath="/diensten/momentsleutel-justeren"
+  ogImage="/og/justeren.jpg"
+  ogImageAlt="Dutch Torque Service: momentsleutel justeren tot binnen ±2%, met nieuw certificaat."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
@@ -194,6 +197,8 @@ const faqSchema = {
           </table>
         </div>
     </PageSection>
+
+    <AuthorBox />
 
     <!-- ══════════════════════════════════════
          FAQ
