@@ -100,6 +100,24 @@ const aboutPageSchema = {
         </div>
     </PageSection>
 
+    <!-- VAN ROOTSELAAR CONTINUATION -->
+    <PageSection>
+      <div class="vr-wrap" data-animate>
+        <div class="sec-eyebrow" style="justify-content:center;">
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+          <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Van Rootselaar</span>
+          <span class="w-8 h-px opacity-75" style="background:#7AAFC4;"></span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-black tracking-tight text-white" style="line-height:1.1; text-align:center; margin: 1.25rem 0 1.75rem;">
+          Van Van Rootselaar Technic naar Dutch Torque Service
+        </h2>
+        <div class="vr-card">
+          <p>Per 1 januari 2026 heeft Dutch Torque Service de werkplaatsuitrusting voor momentsleutelreparatie en -kalibratie overgenomen van Van Rootselaar Technic bv. in Stiens. De werkzaamheden worden vanuit Riethoven voortgezet.</p>
+          <p>Je kunt je momentsleutel nu opsturen of langsbrengen in Riethoven. Vragen over de werkwijze, een eerdere opdracht of een nieuwe aanvraag? <a href="/contact/">Neem contact op</a>.</p>
+        </div>
+      </div>
+    </PageSection>
+
     <!-- TEAM / VALUES -->
     <PageSection>
         <div class="text-center" data-animate style="margin-bottom: clamp(4rem, 8vw, 7rem);">
@@ -263,4 +281,23 @@ const aboutPageSchema = {
     background-size: 100% 1px;
   }
   .team-card a, p a { color: #7AAFC4; text-decoration: underline; }
+
+  .vr-wrap {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .vr-card {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 1.5rem;
+    background: #0E1118;
+    border: 1px solid rgba(122, 175, 196, 0.14);
+  }
+  .vr-card p {
+    margin: 0 0 1rem;
+    font-size: 0.975rem;
+    line-height: 1.8;
+    color: #A8B8C4;
+  }
+  .vr-card p:last-child { margin-bottom: 0; }
+  .vr-card a { color: #7AAFC4; text-decoration: underline; }
 </style>
