@@ -9,8 +9,6 @@ export const meta = {
   accent: '#7AAFC4',
 };
 import BlogLayout from '../../layouts/BlogLayout.astro';
-import { Image } from 'astro:assets';
-import certP1 from '../../img/certificates/sample-certificate-redacted-p1-1400.webp';
 
 const pageUrl = 'https://www.dutchtorqueservice.nl/blog/momentsleutel-opsturen-voor-kalibratie/';
 const schema = {
@@ -23,7 +21,7 @@ const schema = {
   "mainEntityOfPage": pageUrl,
   "image": "https://www.dutchtorqueservice.nl/og-image.jpg",
   "datePublished": "2026-11-14",
-  "dateModified": "2026-11-23",
+  "dateModified": "2026-11-26",
   "url": pageUrl,
   "inLanguage": "nl-NL"
 };
@@ -98,22 +96,11 @@ const faqSchema = {
   category="Kalibratie"
   readTime="4 min"
   publishDate="14 november 2026"
-  updatedDate="23 november 2026"
+  updatedDate="26 november 2026"
   excerpt="Ja, je kunt je momentsleutel opsturen. Pak hem stevig in, stuur een briefje met je contactgegevens mee en stuur hem naar ons lab in Riethoven. We repareren of justeren pas na jouw akkoord."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-
-  <Image
-    slot="featured-image"
-    src={certP1}
-    alt="Voorbeeld van een kalibratiecertificaat van Dutch Torque Service volgens DIN EN ISO 6789-1:2017, met identnummer en naam van de tester zwart gemaakt"
-    widths={[700, 1400]}
-    sizes="(max-width: 900px) 100vw, 900px"
-    loading="eager"
-    style="width:100%; height:auto; max-height:560px; object-fit:cover; object-position:top; display:block; border-radius:12px;"
-    fetchpriority="high"
-  />
 
   <div class="prose">
     <h2>Kun je een momentsleutel opsturen voor kalibratie?</h2>

@@ -4,9 +4,6 @@ import NavIsland from '../../components/modules/NavIsland.astro';
 import FooterDTS from '../../components/modules/FooterDTS.astro';
 import AuthorBox from '../../components/modules/AuthorBox.astro';
 import PageSection from '../../components/ui/PageSection.astro';
-import { Image } from 'astro:assets';
-import certP1 from '../../img/certificates/sample-certificate-redacted-p1-1400.webp';
-import certP2 from '../../img/certificates/sample-certificate-redacted-p2-1400.webp';
 
 const schema = {
   "@context": "https://schema.org",
@@ -58,7 +55,7 @@ const schema = {
           "name": "Wat is een kalibratie test?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Een kalibratietest is een gedocumenteerde meting van je momentsleutel tegen traceerbare referentieapparatuur. Op het kalibratiecertificaat (de conformiteitsverklaring) staan de methode, de meetpunten, de uitlezingen, de afwijking en de aanbevolen volgende kalibratiedatum. Op het voorbeeldcertificaat is dat DIN EN ISO 6789-1:2017, drie meetpunten met vijf metingen per punt, rechtsom en linksom. Dit is geen wettelijke ijk: voor momentsleutels geldt ijken niet."
+            "text": "Een kalibratietest is een gedocumenteerde meting van je momentsleutel tegen traceerbare referentieapparatuur. Op het kalibratiecertificaat (de conformiteitsverklaring) staan de methode, de meetpunten, de uitlezingen, de afwijking en de aanbevolen volgende kalibratiedatum. Daarvan is DIN EN ISO 6789-1:2017 een voorbeeld: drie meetpunten met vijf metingen per punt, rechtsom en linksom. Dit is geen wettelijke ijk: voor momentsleutels geldt ijken niet."
           }
         },
         {
@@ -66,7 +63,7 @@ const schema = {
           "name": "Moet een momentsleutel gekalibreerd worden?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Je hebt een kalibratiecertificaat nodig als jouw kwaliteitssysteem of opdrachtgever om traceerbaar bewijs vraagt, bijvoorbeeld onder ISO 9001, IATF 16949 of VCA. ISO 6789 schrijft geen vaste geldigheidsduur voor; dat staat in jouw eigen kwaliteitshandboek. Op het voorbeeldcertificaat van 4 november 2026 is de volgende kalibratie 4 november 2027. Na een val of overbelasting laat je de sleutel opnieuw kalibreren, ook als die datum nog niet is bereikt."
+            "text": "Je hebt een kalibratiecertificaat nodig als jouw kwaliteitssysteem of opdrachtgever om traceerbaar bewijs vraagt, bijvoorbeeld onder ISO 9001, IATF 16949 of VCA. ISO 6789 schrijft geen vaste geldigheidsduur voor; dat staat in jouw eigen kwaliteitshandboek. In de praktijk staat op het certificaat een aanbevolen volgende kalibratiedatum, meestal een jaar later. Na een val of overbelasting laat je de sleutel opnieuw kalibreren, ook als die datum nog niet is bereikt."
           }
         },
         {
@@ -74,7 +71,7 @@ const schema = {
           "name": "Welke momentsleutel heb ik nodig?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Wij certificeren Type I (aanwijzend) en Type II (instellend) momentsleutels. Het voorbeeldcertificaat is een Type I, Klasse C, volgens DIN EN ISO 6789-1:2017. We kalibreren onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. Welk type jouw sleutel is, lees je in onze uitleg over ISO 6789 Type I en Type II; wij verkopen zelf geen nieuwe gereedschappen."
+            "text": "Wij certificeren Type I (aanwijzend) en Type II (instellend) momentsleutels. Het voorbeeld op deze pagina gaat uit van een Type I, Klasse C, volgens DIN EN ISO 6789-1:2017. We kalibreren onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. Welk type jouw sleutel is, lees je in onze uitleg over ISO 6789 Type I en Type II; wij verkopen zelf geen nieuwe gereedschappen."
           }
         },
         {
@@ -91,21 +88,21 @@ const schema = {
 };
 
 const certFields = [
-  { label: 'Documenttype', value: 'Conformiteitsverklaring / Declaration of Conformance, nrs. 669 en 670' },
+  { label: 'Documenttype', value: 'Conformiteitsverklaring / Declaration of Conformance (voorbeelddocument)' },
   { label: 'Testmethode', value: 'DIN EN ISO 6789-1:2017' },
-  { label: 'Gereedschap', value: 'Momentsleutel, Milwaukee 481162 R-L, meetbereik 16,9–203 N·m' },
+  { label: 'Gereedschap', value: 'Type I momentsleutel, meetbereik 20–200 N·m' },
   { label: 'Type / klasse', value: 'Type I: aanwijzend, Klasse C' },
-  { label: 'Serienummer', value: '000185 - A2025 (nr. 669) en 000205 - A2025 (nr. 670) — twee verschillende sleutels' },
-  { label: 'Identificatie-nr. en tester', value: 'Deze velden staan op het formulier en zijn ingevuld; op de afbeeldingen zwart gemaakt' },
-  { label: 'Aanpassing', value: 'Leeg op beide pagina’s' },
-  { label: 'Afwijking (toetsing op het formulier)', value: '2,0 %' },
-  { label: 'Meetpunten', value: 'Drie: 16,9 N·m (minimum), 122 N·m (60,01 %), 203 N·m (100,00 %)' },
+  { label: 'Serienummer', value: '000000 - VOORBEELD' },
+  { label: 'Identificatie-nr. en tester', value: 'Voorbeeldvelden; geen echte namen of nummers' },
+  { label: 'Aanpassing', value: 'Leeg' },
+  { label: 'Afwijking (toetsing op het formulier)', value: '1,5 %' },
+  { label: 'Meetpunten', value: 'Drie: 20 N·m (minimum), 120 N·m (60 %), 200 N·m (100 %)' },
   { label: 'Metingen', value: 'Vijf per punt, rechtsom en linksom' },
-  { label: 'Max. afwijking', value: 'Nr. 669: −2,00 % (ok); nr. 670: 1,55 % (ok)' },
-  { label: 'Referentieapparatuur', value: 'Transducer 7728-40 (40–400 N·m, 520270037, tot 8 juni 2030) en 7728-6 (6–60 N·m, 520070286, tot 8 juni 2030); kalibratie-inrichting 7791; software Torkmaster 5.1.3.1' },
-  { label: 'Omstandigheden', value: '21,0 °C, luchtvochtigheid 50,0 %' },
-  { label: 'Kalibratiedatum', value: '4 november 2026 (11:48:32 en 13:02:46)' },
-  { label: 'Volgende kalibratie', value: '4 november 2027' },
+  { label: 'Max. afwijking', value: '+1,20 % (ok)' },
+  { label: 'Referentieapparatuur', value: 'Traceerbare transducer en kalibratie-inrichting (specificaties staan op het certificaat)' },
+  { label: 'Omstandigheden', value: '21,0 °C, luchtvochtigheid 50 %' },
+  { label: 'Kalibratiedatum', value: '1 maart 2026 (voorbeeld)' },
+  { label: 'Volgende kalibratie', value: '1 maart 2027 (voorbeeld)' },
 ];
 
 const applySteps = [
@@ -117,15 +114,15 @@ const applySteps = [
 const faq = [
   {
     q: 'Wat is een kalibratie test?',
-    a: 'Een kalibratietest is een gedocumenteerde meting van je momentsleutel tegen traceerbare referentieapparatuur. Op het kalibratiecertificaat (de conformiteitsverklaring) staan de methode, de meetpunten, de uitlezingen, de afwijking en de aanbevolen volgende kalibratiedatum. Op het voorbeeldcertificaat is dat DIN EN ISO 6789-1:2017, drie meetpunten met vijf metingen per punt, rechtsom en linksom. Dit is geen wettelijke ijk: voor momentsleutels geldt ijken niet. Zie <a href="/blog/verschil-kalibreren-justeren-ijken">kalibreren, justeren of ijken</a>.',
+    a: 'Een kalibratietest is een gedocumenteerde meting van je momentsleutel tegen traceerbare referentieapparatuur. Op het kalibratiecertificaat (de conformiteitsverklaring) staan de methode, de meetpunten, de uitlezingen, de afwijking en de aanbevolen volgende kalibratiedatum. Daarvan is DIN EN ISO 6789-1:2017 een voorbeeld: drie meetpunten met vijf metingen per punt, rechtsom en linksom. Dit is geen wettelijke ijk: voor momentsleutels geldt ijken niet. Zie <a href="/blog/verschil-kalibreren-justeren-ijken">kalibreren, justeren of ijken</a>.',
   },
   {
     q: 'Moet een momentsleutel gekalibreerd worden?',
-    a: 'Je hebt een kalibratiecertificaat nodig als jouw kwaliteitssysteem of opdrachtgever om traceerbaar bewijs vraagt, bijvoorbeeld onder ISO 9001, IATF 16949 of VCA. ISO 6789 schrijft geen vaste geldigheidsduur voor; dat staat in jouw eigen kwaliteitshandboek. Op het voorbeeldcertificaat van 4 november 2026 is de volgende kalibratie 4 november 2027. Na een val of overbelasting laat je de sleutel opnieuw kalibreren, ook als die datum nog niet is bereikt. Zie <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak je een momentsleutel moet laten kalibreren</a>.',
+    a: 'Je hebt een kalibratiecertificaat nodig als jouw kwaliteitssysteem of opdrachtgever om traceerbaar bewijs vraagt, bijvoorbeeld onder ISO 9001, IATF 16949 of VCA. ISO 6789 schrijft geen vaste geldigheidsduur voor; dat staat in jouw eigen kwaliteitshandboek. In de praktijk staat op het certificaat een aanbevolen volgende kalibratiedatum, meestal een jaar later. Na een val of overbelasting laat je de sleutel opnieuw kalibreren, ook als die datum nog niet is bereikt. Zie <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak je een momentsleutel moet laten kalibreren</a>.',
   },
   {
     q: 'Welke momentsleutel heb ik nodig?',
-    a: 'Wij certificeren Type I (aanwijzend) en Type II (instellend) momentsleutels. Het voorbeeldcertificaat is een Type I, Klasse C, volgens DIN EN ISO 6789-1:2017. We kalibreren onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. Welk type jouw sleutel is, lees je in <a href="/blog/iso-6789-type-1-type-2-uitgelegd">ISO 6789 Type I en Type II uitgelegd</a>; wij verkopen zelf geen nieuwe gereedschappen.',
+    a: 'Wij certificeren Type I (aanwijzend) en Type II (instellend) momentsleutels. Het voorbeeld op deze pagina gaat uit van een Type I, Klasse C, volgens DIN EN ISO 6789-1:2017. We kalibreren onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. Welk type jouw sleutel is, lees je in <a href="/blog/iso-6789-type-1-type-2-uitgelegd">ISO 6789 Type I en Type II uitgelegd</a>; wij verkopen zelf geen nieuwe gereedschappen.',
   },
   {
     q: 'Wat kost kalibreren van een momentsleutel?',
@@ -168,7 +165,7 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
           </h1>
 
           <p class="hero-subtitle" data-animate data-animate-delay="0.16">
-            Je krijgt van ons een kalibratiecertificaat (conformiteitsverklaring) voor je momentsleutel, opgesteld volgens DIN EN ISO 6789-1:2017, met de echte meetwaarden op het document. Op het voorbeeldcertificaat staan drie meetpunten (minimum, circa 60% en 100% van het bereik), vijf metingen per punt, rechtsom en linksom, een toetsingsafwijking van 2,0% en een aanbevolen volgende kalibratiedatum.
+            Je krijgt van ons een kalibratiecertificaat (conformiteitsverklaring) voor je momentsleutel, opgesteld volgens DIN EN ISO 6789-1:2017, met de echte meetwaarden op het document. Een certificaat bevat drie meetpunten (minimum, circa 60% en 100% van het bereik), vijf metingen per punt, rechtsom en linksom, de toetsingsafwijking en een aanbevolen volgende kalibratiedatum.
           </p>
 
           <div class="hero-ctas" data-animate data-animate-delay="0.22">
@@ -199,23 +196,23 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
         <div class="sec-head" data-animate>
           <div class="sec-eyebrow">
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
-            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Voorbeeldcertificaat</span>
+            <span class="text-[11px] font-semibold tracking-[0.32em] uppercase" style="color:#7AAFC4;">Rekenvoorbeeld</span>
             <span class="w-8 h-px opacity-75" style="background:#7AAFC4; display:inline-block;"></span>
           </div>
-          <h2 class="sec-title" id="wat-staat-er-in-een-dts-certificaat">Wat staat er in een DTS-certificaat?</h2>
+          <h2 class="sec-title" id="wat-staat-er-in-een-dts-certificaat">Wat staat er in een kalibratiecertificaat?</h2>
         </div>
 
         <div class="def-card" data-animate data-animate-delay="0.08">
-          <p class="body-lead">Op het voorbeeldcertificaat kun je de meting helemaal volgen: instrumentgegevens, drie meetpunten met vijf uitlezingen per punt, de toetsingsafwijking, de transducers met hun eigen vervaldatum, en de volgende kalibratiedatum.</p>
-          <p class="body-text">De tabel en de afbeeldingen hieronder beschrijven dit document: twee conformiteitsverklaringen van 4 november 2026, voor twee verschillende momentsleutels.</p>
+          <p class="body-lead">Op een kalibratiecertificaat kun je de meting helemaal volgen: instrumentgegevens, drie meetpunten met vijf uitlezingen per punt, de toetsingsafwijking, de referentieapparatuur met haar eigen vervaldatum, en de volgende kalibratiedatum.</p>
+          <p class="body-text">De tabel hieronder toont een fictief voorbeeld van die velden. De waarden zijn willekeurig gekozen en horen niet bij een echte klant of een echt uitgegeven certificaat.</p>
         </div>
 
-        <div class="table-wrap" data-animate data-animate-delay="0.12" id="asset-669">
+        <div class="table-wrap" data-animate data-animate-delay="0.12" id="asset-voorbeeld">
           <table class="incl-table">
             <thead>
               <tr>
                 <th>Veld</th>
-                <th>Op het voorbeeldcertificaat</th>
+                <th>Voorbeeldwaarde</th>
               </tr>
             </thead>
             <tbody>
@@ -228,37 +225,7 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
             </tbody>
           </table>
         </div>
-        <p class="body-text table-source" data-animate>Bron van de hele tabel: voorbeeldcertificaat van 4 november 2026 (geredigeerde weergave hieronder).</p>
-
-        <figure class="cert-figure" data-animate>
-          <Image
-            src={certP1}
-            alt="Voorbeeld DTS-conformiteitsverklaring 669, 4 november 2026. Milwaukee 481162 R-L, Type I Klasse C, DIN EN ISO 6789-1:2017. Identificatienummer en naam van de tester zijn zwart gemaakt."
-            widths={[700, 1000, 1400]}
-            sizes="(min-width: 900px) 820px, 100vw"
-            format="webp"
-            quality={85}
-            loading="lazy"
-            decoding="async"
-            class="cert-image"
-          />
-          <figcaption>Voorbeeldcertificaat, pagina 1: Conformiteitsverklaring 669 (4 november 2026). Milwaukee 481162 R-L, Type I: aanwijzend, Klasse C, methode DIN EN ISO 6789-1:2017. Drie meetpunten (16,9 / 122 / 203 N·m) met vijf metingen per punt, rechtsom en linksom. Max. afwijking −2,00 %, beoordeeld als ok. Volgende kalibratie 4 november 2027. Het identificatienummer en de naam van de tester zijn zwart gemaakt.</figcaption>
-        </figure>
-
-        <figure class="cert-figure" data-animate>
-          <Image
-            src={certP2}
-            alt="Voorbeeld DTS-conformiteitsverklaring 670, 4 november 2026. Zelfde type momentsleutel, ander serienummer. Identificatienummer en naam van de tester zijn zwart gemaakt."
-            widths={[700, 1000, 1400]}
-            sizes="(min-width: 900px) 820px, 100vw"
-            format="webp"
-            quality={85}
-            loading="lazy"
-            decoding="async"
-            class="cert-image"
-          />
-          <figcaption>Voorbeeldcertificaat, pagina 2: Conformiteitsverklaring 670, een tweede momentsleutel (serienummer 000205 - A2025), geen voor-en-nameting van dezelfde sleutel. Zelfde methode, dezelfde drie meetpunten en vijf metingen per punt. Max. afwijking 1,55 %, beoordeeld als ok. Ook hier zijn het identificatienummer en de naam van de tester zwart gemaakt.</figcaption>
-        </figure>
+        <p class="body-text table-source" data-animate>Fictief voorbeeld. De waarden zijn willekeurig gekozen om de velden te tonen; ze zijn niet afkomstig van een klant of een echt certificaat.</p>
     </PageSection>
 
     <PageSection>
@@ -274,7 +241,7 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
           <p class="body-lead">ISO 6789 schrijft geen vaste geldigheidsduur voor; of je een kalibratiecertificaat nodig hebt, bepaalt jouw kwaliteitshandboek of je opdrachtgever.</p>
           <p class="body-text">Er is geen algemene wettelijke plicht om een momentsleutel te laten kalibreren. Meer daarover staat in <a href="/blog/hoe-vaak-momentsleutel-kalibreren">hoe vaak je een momentsleutel moet laten kalibreren</a>.</p>
           <p class="body-text">Je hebt dit momentsleutelcertificaat wél nodig als je werkt onder ISO 9001, IATF 16949 of VCA, of als een klant om traceerbaar bewijs vraagt.</p>
-          <p class="body-text">Op het voorbeeldcertificaat van 4 november 2026 staat als volgende kalibratie 4 november 2027 — een jaar later. Na een val of overbelasting laat je de sleutel opnieuw kalibreren, ook als die datum nog niet is bereikt. Zie ook <a href="/blog/momentsleutel-gevallen-wat-nu">Momentsleutel gevallen, wat nu?</a>.</p>
+          <p class="body-text">In het rekenvoorbeeld is de volgende kalibratie een jaar later. Na een val of overbelasting laat je de sleutel opnieuw kalibreren, ook als die datum nog niet is bereikt. Zie ook <a href="/blog/momentsleutel-gevallen-wat-nu">Momentsleutel gevallen, wat nu?</a>.</p>
         </div>
     </PageSection>
 
@@ -311,7 +278,7 @@ faqPage.mainEntity = faq.map(({ q, a }) => ({
           <h2 class="sec-title">Type I of Type II: welke sleutel certificeren wij?</h2>
         </div>
         <div class="def-card" data-animate data-animate-delay="0.08">
-          <p class="body-lead">Wij certificeren Type I (aanwijzend) en Type II (instellend) momentsleutels; het voorbeeldcertificaat is een Type I, Klasse C, volgens DIN EN ISO 6789-1:2017.</p>
+          <p class="body-lead">Wij certificeren Type I (aanwijzend) en Type II (instellend) momentsleutels; het voorbeeld op deze pagina gaat uit van een Type I, Klasse C, volgens DIN EN ISO 6789-1:2017.</p>
           <p class="body-text">Welk type jouw sleutel is, en wat dat voor de kalibratie betekent, lees je in <a href="/blog/iso-6789-type-1-type-2-uitgelegd">ISO 6789 Type I en Type II uitgelegd</a>.</p>
           <p class="body-text">We kalibreren onder meer Snap-On, Stahlwille, Gedore, Facom, Hazet en Würth, en andere gangbare kwaliteitsmerken. We verkopen geen nieuwe gereedschappen; dit is geen koopwijzer.</p>
         </div>
